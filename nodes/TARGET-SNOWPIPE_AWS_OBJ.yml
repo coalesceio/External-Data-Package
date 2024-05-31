@@ -7,7 +7,7 @@ steps:
         compression: AUTO
         dateformat: ""
         enforceLength: ""
-        errornumber: "44"
+        errornumber: "4"
         fieldDelim: ","
         fieldEnclosed: \042
         fileFormatName: MYJSONFILEFORMAT1

@@ -1,63 +1,65 @@
-steps:
-  INFER_EMP-0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce:
-    operation:
-      database: ""
-      dataset: ""
-      deployEnabled: true
-      description: ""
-      locationName: TARGET
-      metadata:
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ab5b359d-bd9d-4576-b055-80f358cbc994
-              stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
-            config: {}
-            dataType: VARCHAR(16777216)
-            defaultValue: ""
-            description: ""
-            name: username
-            nullable: false
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ea05a027-746e-4db6-b935-37e0cb71cecd
-              stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
-            config: {}
-            dataType: VARCHAR(16777216)
-            defaultValue: ""
-            description: ""
-            name: tweet
-            nullable: false
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 2f45ccaa-5a04-4348-97f0-3e126e87d47a
-              stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
-            config: {}
-            dataType: NUMBER(38,0)
-            defaultValue: ""
-            description: ""
-            name: timestamp
-            nullable: false
-            primaryKey: false
-            uniqueKey: false
-        join:
-          joinCondition: FROM {{ ref('TARGET', 'INFER_EMP') }}
-      name: INFER_EMP
-      schema: ""
-      sqlType: Source
-      table: INFER_EMP
-      type: sourceInput
-    stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
+fileVersion: 1
+id: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
+name: INFER_EMP
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: TARGET
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab5b359d-bd9d-4576-b055-80f358cbc994
+          stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: username
+        nullable: false
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ea05a027-746e-4db6-b935-37e0cb71cecd
+          stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: tweet
+        nullable: false
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2f45ccaa-5a04-4348-97f0-3e126e87d47a
+          stepCounter: 0360fcd6-8187-4bb5-adaa-b27b9c5bd7ce
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: timestamp
+        nullable: false
+        primaryKey: false
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('TARGET', 'INFER_EMP') }}
+  name: INFER_EMP
+  schema: ""
+  sqlType: Source
+  table: INFER_EMP
+  type: sourceInput
+  version: 1
+type: Node

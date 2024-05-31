@@ -1,0 +1,57 @@
+fileVersion: 1
+id: "299"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |+
+    capitalized: INFERSCHEMA
+    short: 'INFER'
+    tagColor: '#8AD19D'
+    isDisabled: false
+    plural: INFERSCHEMA
+
+    deployStrategy: advanced
+
+    config:
+    - groupName: Source Data
+      items:
+      - displayName: Stage Storage Location
+        attributeName: stageStorageLocationName
+        type: textBox
+        default: 'Enter Storage Location name'
+        isRequired: true
+
+      - displayName: Stage Name
+        attributeName: stageName
+        type: textBox
+        default: 'stage_name/folder/'
+        isRequired: true
+
+      - displayName: File Name(s) ( Ex:a.csv,b.csv)
+        attributeName: fileNames
+        type: textBox
+        isRequired: true
+      
+      - displayName: File Format Name
+        attributeName: fileFormatName
+        type: textBox
+        default: ""
+        isRequired: true
+
+
+      - displayName: Redeployment Behavior
+        attributeName: redeploymentBehavior
+        type: dropdownSelector
+        default: Create or Replace
+        options:
+          - Create or Replace
+          - Alter existing table
+          - Drop existing table
+        isRequired: true
+
+
+
+
+name: Inferschema
+type: NodeType

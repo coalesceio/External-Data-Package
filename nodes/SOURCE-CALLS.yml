@@ -1,108 +1,110 @@
-steps:
-  CALLS-fb69605c-11d2-44a7-b4d5-510416243905:
-    operation:
-      database: ""
-      dataset: ""
-      deployEnabled: true
-      description: ""
-      locationName: SOURCE
-      metadata:
-        columns:
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 077ac9c4-6bcf-4e99-b601-61ad8db471f4
-              stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
-            config: {}
-            dataType: TIMESTAMP_NTZ(9)
-            defaultValue: ""
-            description: ""
-            name: TS
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 70cb0cc6-fbed-4f1c-8b78-ce019e96d103
-              stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
-            config: {}
-            dataType: VARIANT
-            defaultValue: ""
-            description: ""
-            name: CALL_CENTER
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 66e26610-d288-4588-91c7-a215ab667a17
-              stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
-            config: {}
-            dataType: VARIANT
-            defaultValue: ""
-            description: ""
-            name: CC_GROUP
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: ee8ef827-5809-4157-af22-cf321a1cb78e
-              stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
-            config: {}
-            dataType: VARIANT
-            defaultValue: ""
-            description: ""
-            name: PRODUCT
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: c8bbf2aa-c432-4014-a70d-ae800abd81cc
-              stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
-            config: {}
-            dataType: VARIANT
-            defaultValue: ""
-            description: ""
-            name: WEEKS_SINCE_LAUNCH
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-          - acceptedValues:
-              strictMatch: true
-              values: []
-            appliedColumnTests: {}
-            columnReference:
-              columnCounter: 12cd3e81-e530-4f2f-bac9-73f66bab0b57
-              stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
-            config: {}
-            dataType: VARIANT
-            defaultValue: ""
-            description: ""
-            name: ESCALATED
-            nullable: true
-            primaryKey: false
-            uniqueKey: false
-        join:
-          joinCondition: FROM {{ ref('SOURCE', 'CALLS') }}
-      name: CALLS
-      schema: ""
-      sqlType: Source
-      table: CALLS
-      type: sourceInput
-    stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+fileVersion: 1
+id: fb69605c-11d2-44a7-b4d5-510416243905
+name: CALLS
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: SOURCE
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 077ac9c4-6bcf-4e99-b601-61ad8db471f4
+          stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: TS
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 70cb0cc6-fbed-4f1c-8b78-ce019e96d103
+          stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: CALL_CENTER
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 66e26610-d288-4588-91c7-a215ab667a17
+          stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: CC_GROUP
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ee8ef827-5809-4157-af22-cf321a1cb78e
+          stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: PRODUCT
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8bbf2aa-c432-4014-a70d-ae800abd81cc
+          stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: WEEKS_SINCE_LAUNCH
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 12cd3e81-e530-4f2f-bac9-73f66bab0b57
+          stepCounter: fb69605c-11d2-44a7-b4d5-510416243905
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: ESCALATED
+        nullable: true
+        primaryKey: false
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('SOURCE', 'CALLS') }}
+  name: CALLS
+  schema: ""
+  sqlType: Source
+  table: CALLS
+  type: sourceInput
+  version: 1
+type: Node

@@ -1,0 +1,146 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : Inferschema == #}
+{# == Node Type Description    : This node infers schema of the file in internal or external stage and dynamically creates the target table == #}
+
+{% if (currentState == undefined and desiredState != undefined) or (currentState != undefined and desiredState != undefined ) %}
+
+{% set srcSchName = desiredState.node.location.name %}
+{% set db = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[0]%}
+{% set sch = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[1]%}
+
+{% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
+{% set dbStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[0] %}
+{% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
+
+
+{%- if ","  in desiredState.config.fileNames %} 
+    {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
+     {% set final_variable = "'" + formatted_variable + "'" %}
+    {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
+{%- elif  desiredState.config.fileNames  -%}
+    {% set fileNameSQL = " "+"FILES =>''"+desiredState.config.fileNames+"''," %}
+{% endif %}
+
+
+{% if currentState == undefined or desiredState.config.redeploymentBehavior == 'Create or Replace' %}
+
+# Infers schema of the file in internal or external stage and dynamically creates the target table
+
+ {{ stage('Infer schema and Create target table') }}
+ -- Anonymous stored procedure block
+ DECLARE
+  -- Variables
+  col_name VARCHAR;
+  col_type VARCHAR;
+  create_sql VARCHAR;
+  final_sql VARCHAR;
+  
+  -- Cursor to loop through each row in GROUP_LOAD table
+  res RESULTSET;
+  select_statement := 'CREATE OR REPLACE TABLE {{db}}.{{sch}}.{{desiredState.node.name}}
+                       USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
+                      FROM TABLE(
+                        INFER_SCHEMA(
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          {{fileNameSQL }}
+                          FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
+                        )
+                      ))';
+  
+  BEGIN
+          
+    EXECUTE IMMEDIATE :select_statement ;
+	
+	 -- Return a success message
+    RETURN '{{desiredState.node.name}} table created successfully.';
+
+  END;
+
+{%elif currentState != undefined and desiredState.config.redeploymentBehavior == 'Alter existing table' %}
+
+# Infers schema of the file in internal or external stage and alters the existing table on comparing the dynamically created table and changes in file structure if any
+
+
+     {{ stage('Infer schema and Alter target table') }}
+     
+ -- Anonymous stored procedure block
+DECLARE
+  -- Variables
+  col_name VARCHAR;
+  col_type VARCHAR;
+
+  res RESULTSET;
+  res2 RESULTSET;
+  
+  columnlsadd STRING := 'SELECT COLUMN_NAME,TYPE
+                      FROM TABLE(
+                        INFER_SCHEMA(
+                         LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          {{fileNameSQL }}
+                          FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
+                        )
+                      )where COLUMN_NAME not in (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' 
+                          AND TABLE_NAME = ''{{desiredState.node.name}}'')';
+
+  columnlsrm STRING  := 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' 
+                          AND TABLE_NAME = ''{{desiredState.node.name}}''AND COLUMN_NAME not in (SELECT COLUMN_NAME
+                      FROM TABLE(
+                        INFER_SCHEMA(
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          {{fileNameSQL }}
+                          FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
+                        )))';
+
+BEGIN
+  -- Execute the dynamic SQL statement to retrieve column names
+
+  EXECUTE IMMEDIATE 'Use {{db}}' ;
+ 
+  res := (EXECUTE IMMEDIATE columnlsrm);
+  res2 := (EXECUTE IMMEDIATE columnlsadd);
+
+  -- Loop through each row in the result set
+  FOR col IN res DO
+    -- Drop existing columns
+    EXECUTE IMMEDIATE 'ALTER TABLE {{db}}.{{sch}}.{{desiredState.node.name}} DROP COLUMN "' ||col.COLUMN_NAME||'"';
+  END FOR;
+
+    -- Loop through each row in the result set
+  FOR col IN res2 DO
+    -- Drop existing columns
+    EXECUTE IMMEDIATE 'ALTER TABLE {{db}}.{{sch}}.{{desiredState.node.name}} ADD COLUMN "' ||col.COLUMN_NAME||'"' ||  col.TYPE;
+  END FOR;
+  
+  -- Return a success message
+  RETURN 'Columns added and dropped successfully.';
+
+END; 
+
+{%elif currentState != undefined and desiredState.config.redeploymentBehavior == 'Drop existing table' %}
+
+# Drops the dynamically created table based on inferred schema
+
+    {# Table or View Name #}
+    {% set targetObjectDatabase = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[0] %} 
+    {% set targetObjectSchema = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[1] %} 
+    {% set fullyQualifiedTargetObjectName = ref_no_link(currentState.node.location.name, currentState.node.name) %}
+    
+    {{ stage('Drop inferred table' , true, "sql", "drop") }}
+       DROP TABLE IF EXISTS {{ fullyQualifiedTargetObjectName }}
+
+
+{%endif%}
+
+{% else %}
+
+{{ stage('Nothing to do.') }}
+select 1 = 0
+
+{% endif %}

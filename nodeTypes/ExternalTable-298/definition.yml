@@ -1,0 +1,195 @@
+fileVersion: 1
+id: "298"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |-
+    capitalized: Copy of External Table
+    short: 'EXT'
+    tagColor: '#C39BD3'
+    isDisabled: false
+    plural: External Tables
+
+    deployStrategy: advanced
+
+    config:
+    - groupName: File Location
+      items: 
+
+      - displayName: Stage Storage Location
+        attributeName: stageStorageLocationName
+        type: textBox
+        default: 'Enter Storage Location name'
+        isRequired: true
+
+      - displayName: Stage Name
+        attributeName: stageName
+        type: textBox
+        default: 'stage_name/folder/'
+        isRequired: true
+
+      - displayName: File Pattern
+        attributeName: filePattern
+        type: textBox
+        default: ".*[.]json"
+
+
+    - groupName: File Format 
+      items:
+
+      - displayName: File Format Definition
+        attributeName: fileFormatType
+        type: dropdownSelector
+        default: "File Format Name"
+        options:
+        - File Format Name
+        - File Format Values
+
+      - displayName: File Format Name
+        attributeName: fileFormatName
+        type: textBox
+        default: ""
+        isRequired: false
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+
+      - displayName: File Type
+        attributeName: fileType
+        type: dropdownSelector
+        default: JSON
+        options:
+        - "CSV"
+        - "PARQUET"
+        - "JSON"
+        - "AVRO"
+        - "ORC"
+        isRequired: true
+
+      - displayName: Compression
+        attributeName: compression
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV','JSON')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        default: "AUTO"
+        options:
+        - "AUTO"
+        - "GZIP"
+        - "BZ2"
+        - "BROTLI"
+        - "ZSTD"
+        - "DEFLATE"
+        - "RAW_DEFLATE"
+        - "NONE"
+        isRequired: false
+
+      - displayName: Record delimiter
+        attributeName: recDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\n"
+        isRequired: false
+
+      - displayName: Field delimiter
+        attributeName: fieldDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: ","
+        isRequired: false
+
+      - displayName: Field optionally enclosed by
+        attributeName: fieldEnclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\042"
+        isRequired: false
+
+      - displayName: Number of header lines to skip
+        attributeName: skipHeader
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "1"
+        isRequired: false
+
+      - displayName: Skip blank lines
+        attributeName: skipBlankLines
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false
+
+      - displayName: Trim space
+        attributeName: trimSpace
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false
+
+      - displayName: Replace invalid characters
+        attributeName: replaceinvalidcharacters
+        enableIf: "{% if (config.fileFormatType != 'File Format Name') %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: false
+        isRequired: false    
+
+      - displayName: Strip Outer Array
+        attributeName: stripouterarray
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON')) %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: false
+        isRequired: false  
+
+    - groupName: Additional Options
+      items:
+      - displayName: Auto Refresh
+        attributeName: autoRefresh
+        type: toggleButton
+        default: false
+        isRequired: false
+
+      - displayName: Cloud Provider
+        attributeName: cloudProvider
+        type: dropdownSelector
+        default: "AWS"
+        options:
+        - "AWS"
+        - "Azure"
+        - "GCP"
+        enableIf: "{{ config.autoRefresh }}"
+
+      - displayName: AWS SNS Topic
+        attributeName: snsTopic
+        type: textBox
+        enableIf: "{% if config.autoRefresh == true and config.cloudProvider == 'AWS' %} true {% else %} false {% endif %}"
+        default: "arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification"
+        isRequired: false
+
+      - displayName: Integration
+        attributeName: integration
+        type: textBox
+        isRequired: false
+        enableIf: "{% if config.autoRefresh == true and config.cloudProvider != 'AWS' %} true {% else %} false {% endif %}"
+
+    - groupName: Hidden config
+      enableIf: "false"
+      items:
+      - displayName: Type
+        type: materializationSelector
+        default: table
+        options:
+        - table
+        isRequired: true
+
+    systemColumns:
+
+    - displayName: 'VALUE'
+      attributeName: 'VALUE'
+      transform: ''
+      dataType: VARIANT
+      placement: beginning
+
+    - displayName: FILENAME
+      attributeName: 'METADATA$FILENAME'
+      transform: 'METADATA$FILENAME'
+      dataType: STRING
+      placement: end
+name: External Table
+type: NodeType

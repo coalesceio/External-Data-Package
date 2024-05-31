@@ -1,0 +1,381 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : CopyInto-SnowPipe == #}
+{# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
+
+{% set srcSchName = node.location.name %}
+{% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+{% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+{% set tbl = node.name %}
+{% set fqTblName = '"' + db + '"."' + sch + '"."' + tbl + '"' %}
+{% set fqPipeName = '"' + db + '"."' + sch + '"."' + tbl + '_PIPE"' %}
+
+#External Stage locations
+
+{% set stageStorageLocationName = config.stageStorageLocationName %}
+{% set dbStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
+{% set schStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
+{% set ns = namespace(counter=1) %}
+
+{%- if config.filePattern | length > 0 -%} 
+    {%- set filePatternSQL = 'PATTERN = ' + config.filePattern -%} 
+{%- else -%}
+    {%- set filePatternSQL = "" -%} 
+{%- endif -%}
+
+{%- if config.fileNames | length > 0 %} 
+    {% set fileNameSQL = 'FILES = (' + config.fileNames + ')' %} 
+{%- else -%}
+    {% set fileNameSQL = "" %} 
+{% endif %}
+
+{{ stage('Create Table') }}
+CREATE OR REPLACE TABLE {{ fqTblName }} (
+    {% for col in columns %}
+        "{{ col.name }}" {{ col.dataType }}
+    {%- if col.Description | length > 0 %} COMMENT '{{ col.Description }}'{% endif %}
+    {%- if not loop.last -%}, {% endif %}
+{% endfor %}
+)
+
+{%- if (config.flagSnowpipe != true) and parameters.loadType != 'Reload' -%}
+
+    {{ stage('Historical Full Load-Using Copy-into') }}
+    
+             COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
+            {%- for col in columns %}
+                "{{ col.name }}"
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+        )
+        FROM (SELECT
+            {%- for col in sources[0].columns %}
+	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
+                      {%if (config.fileType == 'JSON') or (config.fileType == 'PARQUET') or (config.fileType == 'ORC') or (config.fileType == 'AVRO')%}
+                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  
+                      {%else%}
+                        ${{ ns.counter}}::{{ col.dataType}}    
+                        {% set ns.counter = ns.counter + 1 %}       
+                      {%endif%}       
+	           {% else %}
+	                  {{ col.transform }}
+	           {%endif%}
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+
+           FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
+        {{fileNameSQL}}
+        {{ filePatternSQL }}
+
+         {%- if config.fileFormatType == 'File Format Name' %}
+          FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ config.fileFormatName}}')
+         {%else%}
+            FILE_FORMAT = ( TYPE = {{ config.fileType}}
+             {% if config.compression != "NONE" %}
+              COMPRESSION = {{ config.compression }}
+             {%endif%}
+			 
+             {% if config.recDelim and config.fileType in ('CSV')%}
+              RECORD_DELIMITER = '{{ config.recDelim}}'
+             {%endif%}
+			 
+            {% if config.fieldDelim and config.fileType in ('CSV')%}
+              FIELD_DELIMITER = '{{ config.fieldDelim}}'
+            {%endif%}
+          {% if config.fieldEnclosed and config.fileType in ('CSV')%}
+               FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+          {%endif%}
+          {% if config.skipBlankLines and config.fileType in ('CSV')%}
+             SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
+          {%endif%}
+          {% if config.skipHeader and config.fileType in ('CSV')%}
+             SKIP_HEADER = {{config.skipHeader}}
+          {%endif%}
+          {% if config.trimSpace%}
+              TRIM_SPACE = {{ config.trimSpace }}
+          {%endif%}
+          {% if config.replaceinvalidcharacters%}
+              REPLACE_INVALID_CHARACTERS = {{config.replaceinvalidcharacters}}
+          {%endif%}
+          {% if config.stripouterarray and config.fileType in ('JSON')%}
+              STRIP_OUTER_ARRAY = {{config.stripouterarray}}
+          {%endif%}
+
+           {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('JSON','CSV')%}
+              DATE_FORMAT = '{{config.dateformat}}'
+	       {% elif config.dateformat == "AUTO" %}
+	         DATE_FORMAT = AUTO
+           {%endif%}
+             {% if config.timeformat != "AUTO" and config.timeformat != ""   and config.fileType in ('JSON','CSV')%}
+              TIME_FORMAT = '{{config.timeformat}}'
+	       {% elif config.timeformat == "AUTO" %}
+	         TIME_FORMAT = AUTO
+           {%endif%}
+           {% if config.timestampformat != "AUTO" and config.timestampformat != ""   and config.fileType in ('JSON','CSV')%}
+              TIMESTAMP_FORMAT = '{{config.timestampformat}}'
+	       {% elif config.timestampformat == "AUTO" %}
+	         TIMESTAMP_FORMAT = AUTO
+           {%endif%}
+
+          )
+        {%endif%}
+
+        {% if config.onError1 != "" %}
+            {% if config.onError1 in ('SKIP_FILE_<num>') %}
+              {% set onErrorReplaced = config.onError1 | replace('<num>', config.errornumber|string) %}
+               ON_ERROR = {{ onErrorReplaced }}
+            {%elif config.onError1 in ('SKIP_FILE_<num>%') %}
+              {% set onErrorReplaced = config.onError1 | replace('<num>', config.errornumber|string) %}
+               ON_ERROR = '{{ onErrorReplaced }}'
+            {%else%}
+               ON_ERROR = {{ config.onError1 }}
+            {%endif%}
+        {%endif%}
+
+        {% if config.sizeLimit != "" %}
+             SIZE_LIMIT = {{ config.sizeLimit }}
+        {%endif%}
+        {% if config.returnFailedOnly != "" %}
+             RETURN_FAILED_ONLY = {{ config.returnFailedOnly }}
+        {%endif%}
+        {% if config.loadUncertainFiles != "" %}
+              LOAD_UNCERTAIN_FILES = {{ config.loadUncertainFiles }}
+        {%endif%}
+        {% if config.purgeBehavior != "" %}
+              PURGE =  {{ config.purgeBehavior }}
+        {%endif%}
+        {% if config.enforceLength != "" %}
+              ENFORCE_LENGTH = {{ config.enforceLength }}
+        {%endif%}
+        {% if config.truncateColumns != ""%}
+              TRUNCATECOLUMNS = {{ config.truncateColumns }}
+        {%endif%}
+
+{%- elif config.flagSnowpipe == true -%}
+ 
+  {{ stage('Create Pipe') }}
+        CREATE OR REPLACE PIPE {{ fqPipeName }} AUTO_INGEST = TRUE 
+        {% if config.awsSnsTopic != "" %}
+              AWS_SNS_TOPIC = '{{ config.awsSnsTopic }}'
+        {%endif%}
+        {% if config.integration != "" %}
+              INTEGRATION = '{{ config.integration }}'
+        {%endif%}
+        AS
+        COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
+            {%- for col in columns %}
+                "{{ col.name }}"
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+        )
+        FROM (SELECT
+
+            {%- for col in sources[0].columns %}
+	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
+                      {%if (config.fileType == 'JSON') or (config.fileType == 'PARQUET') or (config.fileType == 'ORC') or (config.fileType == 'AVRO')%}
+                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  
+                      {%else%}
+                        ${{ ns.counter}}::{{ col.dataType}}    
+                        {% set ns.counter = ns.counter + 1 %}       
+                      {%endif%}       
+	           {% else %}
+	                  {{ col.transform }}
+	           {%endif%}
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+          
+            FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
+            {{ filePatternSQL }}
+      
+          {%- if config.fileFormatType == 'File Format Name' %}
+          FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ config.fileFormatName}}')
+         {%else%}
+            FILE_FORMAT = ( TYPE = {{ config.fileType}}
+             {% if config.compression != "NONE" %}
+              COMPRESSION = {{ config.compression }}
+             {%endif%}
+			 
+             {% if config.recDelim and config.fileType in ('CSV')%}
+              RECORD_DELIMITER = '{{ config.recDelim}}'
+             {%endif%}
+			 
+            {% if config.fieldDelim and config.fileType in ('CSV')%}
+              FIELD_DELIMITER = '{{ config.fieldDelim}}'
+            {%endif%}
+          {% if config.fieldEnclosed and config.fileType in ('CSV')%}
+               FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+          {%endif%}
+          {% if config.skipBlankLines and config.fileType in ('CSV')%}
+             SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
+          {%endif%}
+          {% if config.skipHeader and config.fileType in ('CSV')%}
+             SKIP_HEADER = {{config.skipHeader}}
+          {%endif%}
+          {% if config.trimSpace%}
+              TRIM_SPACE = {{ config.trimSpace }}
+          {%endif%}
+          {% if config.replaceinvalidcharacters%}
+              REPLACE_INVALID_CHARACTERS = {{config.replaceinvalidcharacters}}
+          {%endif%}
+          {% if config.stripouterarray and config.fileType in ('JSON')%}
+              STRIP_OUTER_ARRAY = {{config.stripouterarray}}
+          {%endif%}
+                     {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('JSON','CSV')%}
+              DATE_FORMAT = '{{config.dateformat}}'
+	       {% elif config.dateformat == "AUTO" %}
+	         DATE_FORMAT = AUTO
+           {%endif%}
+             {% if config.timeformat != "AUTO" and config.timeformat != ""   and config.fileType in ('JSON','CSV')%}
+              TIME_FORMAT = '{{config.timeformat}}'
+	       {% elif config.timeformat == "AUTO" %}
+	         TIME_FORMAT = AUTO
+           {%endif%}
+           {% if config.timestampformat != "AUTO" and config.timestampformat != ""   and config.fileType in ('JSON','CSV')%}
+              TIMESTAMP_FORMAT = '{{config.timestampformat}}'
+	       {% elif config.timestampformat == "AUTO" %}
+	         TIMESTAMP_FORMAT = AUTO
+           {%endif%} 
+          )
+        {%endif%}
+
+        {% if config.onError != "" %}
+            {% if config.onError in ('SKIP_FILE_<num>','SKIP_FILE_<num>%') %}
+              {% set onErrorReplaced = config.onError | replace('<num>', config.errornumber|string) %}
+               ON_ERROR = {{ onErrorReplaced }}
+        {%elif config.onError in ('SKIP_FILE_<num>%') %}
+              {% set onErrorReplaced = config.onError | replace('<num>', config.errornumber|string) %}
+               ON_ERROR = '{{ onErrorReplaced }}'
+        {%else%}
+               ON_ERROR = {{ config.onError }}
+            {%endif%}
+        {%endif%}
+
+        {% if config.enforceLength != ""%}
+              ENFORCE_LENGTH = {{ config.enforceLength }}
+        {%endif%}
+        {% if config.truncateColumns != ""%}
+              TRUNCATECOLUMNS = {{ config.truncateColumns }}
+        {%endif%}
+  
+{%- elif config.flagSnowpipe != true and parameters.loadType == 'Reload' -%}
+
+{{ stage('Truncate Target Table') }}
+    TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ node.name }}"
+
+    {{ stage('Reload data-Copy Into Force') }}
+
+         COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
+            {%- for col in columns %}
+                "{{ col.name }}"
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+        )
+        FROM (SELECT
+            {%- for col in sources[0].columns %}
+	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
+                      {%if (config.fileType == 'JSON') or (config.fileType == 'PARQUET') or (config.fileType == 'ORC') or (config.fileType == 'AVRO')%}
+                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  
+                      {%else%}
+                        ${{ ns.counter}}::{{ col.dataType}}    
+                        {% set ns.counter = ns.counter + 1 %}       
+                      {%endif%}       
+	           {% else %}
+	                  {{ col.transform }}
+	           {%endif%}
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+
+           FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
+        {{fileNameSQL}}
+        {{ filePatternSQL }}
+        
+            {%- if config.fileFormatType == 'File Format Name' %}
+          FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ config.fileFormatName}}')
+         {%else%}
+            FILE_FORMAT = ( TYPE = {{ config.fileType}}
+             {% if config.compression != "NONE" %}
+              COMPRESSION = {{ config.compression }}
+             {%endif%}
+			 
+             {% if config.recDelim and config.fileType in ('CSV')%}
+              RECORD_DELIMITER = '{{ config.recDelim}}'
+             {%endif%}
+			 
+            {% if config.fieldDelim and config.fileType in ('CSV')%}
+              FIELD_DELIMITER = '{{ config.fieldDelim}}'
+            {%endif%}
+          {% if config.fieldEnclosed and config.fileType in ('CSV')%}
+               FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+          {%endif%}
+          {% if config.skipBlankLines and config.fileType in ('CSV')%}
+             SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
+          {%endif%}
+          {% if config.skipHeader and config.fileType in ('CSV')%}
+             SKIP_HEADER = {{config.skipHeader}}
+          {%endif%}
+          {% if config.trimSpace%}
+              TRIM_SPACE = {{ config.trimSpace }}
+          {%endif%}
+          {% if config.replaceinvalidcharacters%}
+              REPLACE_INVALID_CHARACTERS = {{config.replaceinvalidcharacters}}
+          {%endif%}
+          {% if config.stripouterarray and config.fileType in ('JSON')%}
+              STRIP_OUTER_ARRAY = {{config.stripouterarray}}
+          {%endif%}
+                     {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('JSON','CSV')%}
+              DATE_FORMAT = '{{config.dateformat}}'
+	       {% elif config.dateformat == "AUTO" %}
+	         DATE_FORMAT = AUTO
+           {%endif%}
+             {% if config.timeformat != "AUTO" and config.timeformat != ""   and config.fileType in ('JSON','CSV')%}
+              TIME_FORMAT = '{{config.timeformat}}'
+	       {% elif config.timeformat == "AUTO" %}
+	         TIME_FORMAT = AUTO
+           {%endif%}
+           {% if config.timestampformat != "AUTO" and config.timestampformat != ""   and config.fileType in ('JSON','CSV')%}
+              TIMESTAMP_FORMAT = '{{config.timestampformat}}'
+	       {% elif config.timestampformat == "AUTO" %}
+	         TIMESTAMP_FORMAT = AUTO
+           {%endif%})
+        {%endif%}
+        
+        {% if config.onError1 != "" %}
+            {% if config.onError1 in ('SKIP_FILE_<num>','SKIP_FILE_<num>%') %}
+              {% set onErrorReplaced = config.onError1 | replace('<num>', config.errornumber|string) %}
+               ON_ERROR = {{ onErrorReplaced }}
+            {%elif config.onError1 in ('SKIP_FILE_<num>%') %}
+              {% set onErrorReplaced = config.onError1 | replace('<num>', config.errornumber|string) %}
+               ON_ERROR = '{{ onErrorReplaced }}'
+            {%else%}
+               ON_ERROR = {{ config.onError1 }}
+            {%endif%}
+        {%endif%}
+
+        {% if config.sizeLimit != "" %}
+             SIZE_LIMIT = {{ config.sizeLimit }}
+        {%endif%}
+        {% if config.returnFailedOnly != "" %}
+             RETURN_FAILED_ONLY = {{ config.returnFailedOnly }}
+        {%endif%}
+        {% if config.loadUncertainFiles != ""%}
+              LOAD_UNCERTAIN_FILES = {{ config.loadUncertainFiles }}
+        {%endif%}
+        {% if config.purgeBehavior != "" %}
+              PURGE =  {{ config.purgeBehavior }}
+        {%endif%}
+        {% if config.enforceLength != ""%}
+              ENFORCE_LENGTH = {{ config.enforceLength }}
+        {%endif%}
+        {% if config.truncateColumns != ""%}
+              TRUNCATECOLUMNS = {{ config.truncateColumns }}
+        {%endif%}
+        
+        FORCE = TRUE
+ 
+{% endif %}

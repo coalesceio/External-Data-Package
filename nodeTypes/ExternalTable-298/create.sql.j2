@@ -1,0 +1,80 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : Table == #}
+{# == Node Type Description    : This node creates an external table to load  data from a set of one or more files in a specified external stages == #}
+
+{% if desiredState == currentState %}
+
+{{ stage('Nothing to do.') }}
+select 1 = 0
+
+{% elif desiredState == undefined %}
+
+  {{ stage('Drop External Table') }}
+  DROP EXTERNAL TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
+
+{% elif currentState == undefined or (desiredState != currentState )%} 
+
+#External Stage locations
+
+{% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
+{% set dbStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
+{% set schStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
+{% set ns = namespace(counter=1) %}
+ 
+{{ stage('Create External Table') }}
+
+ CREATE OR REPLACE EXTERNAL TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+
+
+    {% for col in desiredState.sources[0].columns if (col.name | upper != "VALUE" ) %}
+      {% if loop.first %}({% endif %} 
+      {%if col.name != "FILENAME" %}
+          {% if desiredState.config.fileType == "CSV" %}
+		       "{{ col.name }}" {{ col.dataType }} AS (value:c{{ loop.index }}::{{ col.dataType }})
+           {%else%}
+           "{{ col.name }}" {{ col.dataType }} AS (value:{{ col.name }}::{{ col.dataType }})
+          {%endif%}
+		  {%elif col.name == "FILENAME" %}
+		      "{{ col.name }}" {{ col.dataType }} AS METADATA$FILENAME
+		  {%endif%}
+      {%- if col.description | length > 0 %} COMMENT '{{ col.description }}'{% endif %}
+      {%- if not loop.last -%}, {% else %}){% endif %}
+    {% endfor %}
+ 
+  
+  location = @{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}
+  {% if desiredState.config.filePattern %}
+  pattern='{{ desiredState.config.filePattern }}'
+  {%endif%}
+  
+  {%- if desiredState.config.fileFormatType == 'File Format Name' %}
+          FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}')
+  {%else%}
+  file_format = (type = {{ desiredState.config.fileType }}
+  {% if desiredState.config.fileType == "CSV" %}
+    {% if desiredState.config.recDelim != null %}record_delimiter = '{{ desiredState.config.recDelim }}'{% endif %}
+    {% if desiredState.config.fieldDelim != null %}field_delimiter = '{{ desiredState.config.fieldDelim }}'{% endif %}
+    {% if desiredState.config.fieldEnclosed != null %}field_optionally_enclosed_by = '{{ desiredState.config.fieldEnclosed }}'{% endif %}
+    {% if desiredState.config.skipHeader != null %}skip_header = {{ desiredState.config.skipHeader }}{% endif %}
+    {% if desiredState.config.skipBlankLines %}skip_blank_lines = {{ desiredState.config.skipBlankLines }}{% endif %}
+    {% if desiredState.config.trimSpace %}trim_space = {{ desiredState.config.trimSpace }}{% endif %}
+  {% endif %})
+  {% endif %}
+  auto_refresh = {{ desiredState.config.autoRefresh }}
+
+  {% if desiredState.config.autoRefresh and (desiredState.config.snsTopic != null or desiredState.config.snsTopic !="" )%}
+  aws_sns_topic = '{{ desiredState.config.snsTopic }}'{% endif %}
+
+    {% if desiredState.config.autoRefresh and (desiredState.config.integration != null or desiredState.config.integration !="" )%}
+  integration = '{{ desiredState.config.integration }}'{% endif %}
+  
+  {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description }}'{% endif %}
+
+{%endif%}

@@ -174,8 +174,8 @@ There are four configs within the **Node Properties** group.
 ### Snowpipe Options
 
 * **Enable Snowpipe**:True/False toggle that helps us to load historical data or create a pipe to auto ingest files from external stage
-       * True - provides option to load data from files in internal or external stage
-      * False - provides option to load data by auto ingesting files from external stage/location in AWS,GCP,Azure
+       *  True - provides option to load data from files in internal or external stage
+       *  False - provides option to load data by auto ingesting files from external stage/location in AWS,GCP,Azure
 * **Cloud Provider**: 
       * AWS
 	  * GCP

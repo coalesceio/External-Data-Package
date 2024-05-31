@@ -1,11 +1,11 @@
 fileVersion: 1
 id: "298"
-isDisabled: false
+isDisabled: true
 metadata:
   defaultStorageLocation: null
   error: null
   nodeMetadataSpec: |-
-    capitalized: Copy of External Table
+    capitalized: External Table
     short: 'EXT'
     tagColor: '#C39BD3'
     isDisabled: false

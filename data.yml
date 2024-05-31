@@ -5,8 +5,8 @@ locations:
   SNOWPIPE:
     mappingDefinitions:
       "169":
-        database: DE_UDN_DB
-        schema: RM_DUMP
+        database: ANANDHIS_DEV
+        schema: TARGET
   SOURCE:
     mappingDefinitions:
       "169":
@@ -15,13 +15,13 @@ locations:
   STAGE:
     mappingDefinitions:
       "169":
-        database: DE_UDN_DB
-        schema: RM_QA_STG
+        database: ANANDHIS_DEV
+        schema: TARGET
   TARGET:
     mappingDefinitions:
       "169":
-        database: DE_UDN_DB
-        schema: RM_QA_TGT
+        database: ANANDHIS_DEV
+        schema: TARGET
 macros: {}
 packages: {}
 projects: {}
@@ -361,33 +361,33 @@ stepTypes:
             {# == Node Type Version        : 1  == #}
             {# == Node Type Name           : CopyInto-SnowPipe == #}
             {# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
-            
+
             {% set srcSchName = node.location.name %}
             {% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
             {% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
             {% set tbl = node.name %}
             {% set fqTblName = '"' + db + '"."' + sch + '"."' + tbl + '"' %}
             {% set fqPipeName = '"' + db + '"."' + sch + '"."' + tbl + '_PIPE"' %}
-            
+
             #External Stage locations
-            
+
             {% set stageStorageLocationName = config.stageStorageLocationName %}
             {% set dbStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
             {% set schStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
             {% set ns = namespace(counter=1) %}
-            
+
             {%- if config.filePattern | length > 0 -%} 
                 {%- set filePatternSQL = 'PATTERN = ' + config.filePattern -%} 
             {%- else -%}
                 {%- set filePatternSQL = "" -%} 
             {%- endif -%}
-            
+
             {%- if config.fileNames | length > 0 %} 
                 {% set fileNameSQL = 'FILES = (' + config.fileNames + ')' %} 
             {%- else -%}
                 {% set fileNameSQL = "" %} 
             {% endif %}
-            
+
             {{ stage('Create Table') }}
             CREATE OR REPLACE TABLE {{ fqTblName }} (
                 {% for col in columns %}
@@ -396,9 +396,9 @@ stepTypes:
                 {%- if not loop.last -%}, {% endif %}
             {% endfor %}
             )
-            
+
             {%- if (config.flagSnowpipe != true) and parameters.loadType != 'Reload' -%}
-            
+
                 {{ stage('Historical Full Load-Using Copy-into') }}
                 
                          COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
@@ -421,11 +421,11 @@ stepTypes:
             	           {%endif%}
                         {%- if not loop.last -%}, {% endif %}
                         {%- endfor %}
-            
+
                        FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
                     {{fileNameSQL}}
                     {{ filePatternSQL }}
-            
+
                      {%- if config.fileFormatType == 'File Format Name' %}
                       FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ config.fileFormatName}}')
                      {%else%}
@@ -459,7 +459,7 @@ stepTypes:
                       {% if config.stripouterarray and config.fileType in ('JSON')%}
                           STRIP_OUTER_ARRAY = {{config.stripouterarray}}
                       {%endif%}
-            
+
                        {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('JSON','CSV')%}
                           DATE_FORMAT = '{{config.dateformat}}'
             	       {% elif config.dateformat == "AUTO" %}
@@ -475,10 +475,10 @@ stepTypes:
             	       {% elif config.timestampformat == "AUTO" %}
             	         TIMESTAMP_FORMAT = AUTO
                        {%endif%}
-            
+
                       )
                     {%endif%}
-            
+
                     {% if config.onError1 != "" %}
                         {% if config.onError1 in ('SKIP_FILE_<num>') %}
                           {% set onErrorReplaced = config.onError1 | replace('<num>', config.errornumber|string) %}
@@ -490,7 +490,7 @@ stepTypes:
                            ON_ERROR = {{ config.onError1 }}
                         {%endif%}
                     {%endif%}
-            
+
                     {% if config.sizeLimit != "" %}
                          SIZE_LIMIT = {{ config.sizeLimit }}
                     {%endif%}
@@ -509,7 +509,7 @@ stepTypes:
                     {% if config.truncateColumns != ""%}
                           TRUNCATECOLUMNS = {{ config.truncateColumns }}
                     {%endif%}
-            
+
             {%- elif config.flagSnowpipe == true -%}
              
               {{ stage('Create Pipe') }}
@@ -528,7 +528,7 @@ stepTypes:
                         {%- endfor %}
                     )
                     FROM (SELECT
-            
+
                         {%- for col in sources[0].columns %}
             	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                                   {%if (config.fileType == 'JSON') or (config.fileType == 'PARQUET') or (config.fileType == 'ORC') or (config.fileType == 'AVRO')%}
@@ -596,7 +596,7 @@ stepTypes:
                        {%endif%} 
                       )
                     {%endif%}
-            
+
                     {% if config.onError != "" %}
                         {% if config.onError in ('SKIP_FILE_<num>','SKIP_FILE_<num>%') %}
                           {% set onErrorReplaced = config.onError | replace('<num>', config.errornumber|string) %}
@@ -608,7 +608,7 @@ stepTypes:
                            ON_ERROR = {{ config.onError }}
                         {%endif%}
                     {%endif%}
-            
+
                     {% if config.enforceLength != ""%}
                           ENFORCE_LENGTH = {{ config.enforceLength }}
                     {%endif%}
@@ -617,12 +617,12 @@ stepTypes:
                     {%endif%}
               
             {%- elif config.flagSnowpipe != true and parameters.loadType == 'Reload' -%}
-            
+
             {{ stage('Truncate Target Table') }}
                 TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ node.name }}"
-            
+
                 {{ stage('Reload data-Copy Into Force') }}
-            
+
                      COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
                         {%- for col in columns %}
                             "{{ col.name }}"
@@ -643,7 +643,7 @@ stepTypes:
             	           {%endif%}
                         {%- if not loop.last -%}, {% endif %}
                         {%- endfor %}
-            
+
                        FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
                     {{fileNameSQL}}
                     {{ filePatternSQL }}
@@ -709,7 +709,7 @@ stepTypes:
                            ON_ERROR = {{ config.onError1 }}
                         {%endif%}
                     {%endif%}
-            
+
                     {% if config.sizeLimit != "" %}
                          SIZE_LIMIT = {{ config.sizeLimit }}
                     {%endif%}
@@ -942,31 +942,31 @@ stepTypes:
             {# == Node Type Version        : 1  == #}
             {# == Node Type Name           : Table == #}
             {# == Node Type Description    : This node creates an external table to load  data from a set of one or more files in a specified external stages == #}
-            
+
             {% if desiredState == currentState %}
-            
+
             {{ stage('Nothing to do.') }}
             select 1 = 0
-            
+
             {% elif desiredState == undefined %}
-            
+
               {{ stage('Drop External Table') }}
               DROP EXTERNAL TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
-            
+
             {% elif currentState == undefined or (desiredState != currentState )%} 
-            
+
             #External Stage locations
-            
+
             {% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
             {% set dbStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
             {% set schStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
             {% set ns = namespace(counter=1) %}
              
             {{ stage('Create External Table') }}
-            
+
              CREATE OR REPLACE EXTERNAL TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
-            
-            
+
+
                 {% for col in desiredState.sources[0].columns if (col.name | upper != "VALUE" ) %}
                   {% if loop.first %}({% endif %} 
                   {%if col.name != "FILENAME" %}
@@ -1002,15 +1002,15 @@ stepTypes:
               {% endif %})
               {% endif %}
               auto_refresh = {{ desiredState.config.autoRefresh }}
-            
+
               {% if desiredState.config.autoRefresh and (desiredState.config.snsTopic != null or desiredState.config.snsTopic !="" )%}
               aws_sns_topic = '{{ desiredState.config.snsTopic }}'{% endif %}
-            
+
                 {% if desiredState.config.autoRefresh and (desiredState.config.integration != null or desiredState.config.integration !="" )%}
               integration = '{{ desiredState.config.integration }}'{% endif %}
               
               {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description }}'{% endif %}
-            
+
             {%endif%}
         run:
           templateString: ""
@@ -1084,18 +1084,18 @@ stepTypes:
             {# == Node Type Version        : 1  == #}
             {# == Node Type Name           : Inferschema == #}
             {# == Node Type Description    : This node infers schema of the file in internal or external stage and dynamically creates the target table == #}
-            
+
             {% if (currentState == undefined and desiredState != undefined) or (currentState != undefined and desiredState != undefined ) %}
-            
+
             {% set srcSchName = desiredState.node.location.name %}
             {% set db = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[0]%}
             {% set sch = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[1]%}
-            
+
             {% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
             {% set dbStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[0] %}
             {% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
-            
-            
+
+
             {%- if ","  in desiredState.config.fileNames %} 
                 {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
                  {% set final_variable = "'" + formatted_variable + "'" %}
@@ -1103,12 +1103,12 @@ stepTypes:
             {%- elif  desiredState.config.fileNames  -%}
                 {% set fileNameSQL = " "+"FILES =>''"+desiredState.config.fileNames+"''," %}
             {% endif %}
-            
-            
+
+
             {% if currentState == undefined or desiredState.config.redeploymentBehavior == 'Create or Replace' %}
-            
+
             # Infers schema of the file in internal or external stage and dynamically creates the target table
-            
+
              {{ stage('Infer schema and Create target table') }}
              -- Anonymous stored procedure block
              DECLARE
@@ -1136,14 +1136,14 @@ stepTypes:
             	
             	 -- Return a success message
                 RETURN '{{desiredState.node.name}} table created successfully.';
-            
+
               END;
-            
+
             {%elif currentState != undefined and desiredState.config.redeploymentBehavior == 'Alter existing table' %}
-            
+
             # Infers schema of the file in internal or external stage and alters the existing table on comparing the dynamically created table and changes in file structure if any
-            
-            
+
+
                  {{ stage('Infer schema and Alter target table') }}
                  
              -- Anonymous stored procedure block
@@ -1151,7 +1151,7 @@ stepTypes:
               -- Variables
               col_name VARCHAR;
               col_type VARCHAR;
-            
+
               res RESULTSET;
               res2 RESULTSET;
               
@@ -1164,7 +1164,7 @@ stepTypes:
                                     )
                                   )where COLUMN_NAME not in (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' 
                                       AND TABLE_NAME = ''{{desiredState.node.name}}'')';
-            
+
               columnlsrm STRING  := 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' 
                                       AND TABLE_NAME = ''{{desiredState.node.name}}''AND COLUMN_NAME not in (SELECT COLUMN_NAME
                                   FROM TABLE(
@@ -1173,21 +1173,21 @@ stepTypes:
                                       {{fileNameSQL }}
                                       FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
                                     )))';
-            
+
             BEGIN
               -- Execute the dynamic SQL statement to retrieve column names
-            
+
               EXECUTE IMMEDIATE 'Use {{db}}' ;
              
               res := (EXECUTE IMMEDIATE columnlsrm);
               res2 := (EXECUTE IMMEDIATE columnlsadd);
-            
+
               -- Loop through each row in the result set
               FOR col IN res DO
                 -- Drop existing columns
                 EXECUTE IMMEDIATE 'ALTER TABLE {{db}}.{{sch}}.{{desiredState.node.name}} DROP COLUMN "' ||col.COLUMN_NAME||'"';
               END FOR;
-            
+
                 -- Loop through each row in the result set
               FOR col IN res2 DO
                 -- Drop existing columns
@@ -1196,13 +1196,13 @@ stepTypes:
               
               -- Return a success message
               RETURN 'Columns added and dropped successfully.';
-            
+
             END; 
-            
+
             {%elif currentState != undefined and desiredState.config.redeploymentBehavior == 'Drop existing table' %}
-            
+
             # Drops the dynamically created table based on inferred schema
-            
+
                 {# Table or View Name #}
                 {% set targetObjectDatabase = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[0] %} 
                 {% set targetObjectSchema = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[1] %} 
@@ -1210,15 +1210,15 @@ stepTypes:
                 
                 {{ stage('Drop inferred table' , true, "sql", "drop") }}
                    DROP TABLE IF EXISTS {{ fullyQualifiedTargetObjectName }}
-            
-            
+
+
             {%endif%}
-            
+
             {% else %}
-            
+
             {{ stage('Nothing to do.') }}
             select 1 = 0
-            
+
             {% endif %}
         run:
           templateString: ""

@@ -171,7 +171,7 @@ There are four configs within the **Node Properties** group.
 
 ### Snowpipe Options
 
-* **Enable Snowpipe **:True/False toggle that helps us to load historical data or create a pipe to auto ingest files from external stage
+* **Enable Snowpipe**:True/False toggle that helps us to load historical data or create a pipe to auto ingest files from external stage
        * True - provides option to load data from files in internal or external stage
       * False - provides option to load data by auto ingesting files from external stage/location in AWS,GCP,Azure
 * **Cloud Provider**: 
@@ -183,18 +183,18 @@ There are four configs within the **Node Properties** group.
 
 ### File Location
 
-* **Stage Storage Location **:A storage location in coleasce wherein the stage is located.
+* **Stage Storage Location**:A storage location in coleasce wherein the stage is located.
 * **Stage Name**: Internal or External stage where the files containing data to be loaded are staged
 * **File Name(s) (Optional - Ex:'a.csv','b.csv' ))**: Enabled when 'Enable Snowpipe' option is disabled.Specifies a list of one or more files names (separated by commas) to be loaded
-* **File Pattern(Optional - Ex:'.*hea.*[.]csv'):A regular expression pattern string, enclosed in single quotes, specifying the file names and/or paths to match.
+* **File Pattern(Optional - Ex:'.*hea.*[.]csv')**:A regular expression pattern string, enclosed in single quotes, specifying the file names and/or paths to match.
 
 
 ### File Format
 
-* **File Format Definition **:Specifies the format of the data files to load.
+* **File Format Definition**:Specifies the format of the data files to load.
     *File Format Name -Specifies an existing named file format to use for loading data into the table
 	*File Format Values -Provides file format options for thr File Type chosen
-* **File Type **:Specifies the type of files to load into the table
+* **File Type**:Specifies the type of files to load into the table
     *CSV
 	*JSON
 	*ORC
@@ -205,91 +205,91 @@ There are four configs within the **Node Properties** group.
 File Type -CSV 
 
 
-* **Compression **:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Record delimiter **:Characters that separate records in an input file
-* **Field delimiter **:One or more singlebyte or multibyte characters that separate fields in an input file
-* **Field optionally enclosed by **:Character used to enclose strings
-* **Number of header lines to skip **:Number of lines at the start of the file to skip.
-* **Skip blank lines **:Boolean that specifies to skip any blank lines encountered in the data files
-* **Replace invalid characters **:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
-* **Trim Space **:Boolean that specifies whether to remove white space from fields.
-* **Date format **:String that defines the format of date values in the data files to be loaded. 
-* **Time format **:String that defines the format of time values in the data files to be loaded
-* **Timestamp format **:String that defines the format of timestamp values in the data files to be loaded.
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Record delimiter**:Characters that separate records in an input file
+* **Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file
+* **Field optionally enclosed by**:Character used to enclose strings
+* **Number of header lines to skip**:Number of lines at the start of the file to skip.
+* **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+* **Trim Space**:Boolean that specifies whether to remove white space from fields.
+* **Date format**:String that defines the format of date values in the data files to be loaded. 
+* **Time format**:String that defines the format of time values in the data files to be loaded
+* **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
 
 File Type -JSON
 
-* **Compression **:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space **:Boolean that specifies whether to remove white space from fields.
-* **Strip Outer Array **:
-* **Replace invalid characters **:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
-* **Date format **:String that defines the format of date values in the data files to be loaded. 
-* **Time format **:String that defines the format of time values in the data files to be loaded
-* **Timestamp format **:String that defines the format of timestamp values in the data files to be loaded.
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Trim Space**:Boolean that specifies whether to remove white space from fields.
+* **Strip Outer Array**:
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+* **Date format**:String that defines the format of date values in the data files to be loaded. 
+* **Time format**:String that defines the format of time values in the data files to be loaded
+* **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
 
 File Type -PARQUET
 
-* **Compression **:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space **:Boolean that specifies whether to remove white space from fields.
-* **Replace invalid characters **:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Trim Space**:Boolean that specifies whether to remove white space from fields.
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
 
 File Type -AVRO
 
-* **Compression **:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space **:Boolean that specifies whether to remove white space from fields.
-* **Replace invalid characters **:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Trim Space**:Boolean that specifies whether to remove white space from fields.
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
 
 
 File Type -ORC
 
-* **Compression **:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space **:Boolean that specifies whether to remove white space from fields.
-* **Replace invalid characters **:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Trim Space**:Boolean that specifies whether to remove white space from fields.
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
 
 
 File Type -XML
 
-* **Replace invalid characters **:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
 
 ### Copy Options
 
 Enable Snowpipe-False
 
-* **On Error Behavior **:String (constant) that specifies the error handling for the load operation.
+* **On Error Behavior**:String (constant) that specifies the error handling for the load operation.
     *CONTINUE
 	*SKIP_FILE
 	*SKIP_FILE_num
 	*SKIP_FILE_num%
-* ** Specify the number of errors that can be skipped **:
-* **Size Limit **:
-* **Purge Behavior **:
-* **Return Failed Only **:
-* **Force **:
-* **Load Uncertain Files **:
-* **Enforce Length **:
-* **Truncate Columns **:
+* ** Specify the number of errors that can be skipped**:
+* **Size Limit**:
+* **Purge Behavior**:
+* **Return Failed Only**:
+* **Force**:
+* **Load Uncertain Files**:
+* **Enforce Length**:
+* **Truncate Columns**:
 
 Enable Snowpipe-True 
 
 
-* **On Error Behavior **:String (constant) that specifies the error handling for the load operation.
+* **On Error Behavior**:String (constant) that specifies the error handling for the load operation.
     *CONTINUE
 	*SKIP_FILE
 	*SKIP_FILE_num
 	*SKIP_FILE_num%
-* ** Specify the number of errors that can be skipped **:
-* **Enforce Length **:
-* **Truncate Columns **:
+* **Specify the number of errors that can be skipped**:
+* **Enforce Length**:
+* **Truncate Columns**:
 
 
 ### System Columns
 
-* **SRC **:
-* **LOAD_TIMESTAMP **:
-* **FILENAME **:
-* **FILE_ROW_NUMBER **:
-* **FILE_LAST_MODIFIED **:
-* **SCAN_TIME **:
+* **SRC**:
+* **LOAD_TIMESTAMP**:
+* **FILENAME**:
+* **FILE_ROW_NUMBER**:
+* **FILE_LAST_MODIFIED**:
+* **SCAN_TIME**:
 
 ## Deployment
 
@@ -310,11 +310,21 @@ When the
 
 ### Initial Deployment
 
-When deployed for the first time into an environment the InferSchema node will execute the below stage
+When deployed for the first time into an environment the InferSchema node will execute the below stage with Enable Snowpipe config set to false and paremeter loadType is empty
 
-* **Infer and Create target table**
+* **Create table**
+* **Historical Full load-Using CopyInto**
 
+When deployed for the first time into an environment the InferSchema node will execute the below stage with Enable Snowpipe config set to false and paremeter loadType is set to Reload
 
+* **Truncate Target Table**
+* **Reload data-Copy Into Force**
+  
+When deployed for the first time into an environment the InferSchema node will execute the below stage with Enable Snowpipe config set to true
+
+* **Create table**
+* **Create Pipe**
+  
 # External Tables
 
 

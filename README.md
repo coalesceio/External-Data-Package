@@ -131,7 +131,7 @@ Also can be used to create a pipe to auto ingest files from AWS,GCP or Azure.
 This means you can load data from files in micro-batches, making it available to users within minutes, rather than manually executing COPY statements on a schedule to load larger batches.
 
 ## Version Information
- * UDN Name: InferSchema
+ * UDN Name: CopyInto Snowpipe
  * Package Name: 
 
  * Certified Version: 1.0
@@ -143,14 +143,14 @@ This means you can load data from files in micro-batches, making it available to
  * Create Template: Yes
  * Run Template: No
 
- * Deployment Strategy: Advanced
+ * Deployment Strategy: advanced
  * Deployment Method: ALTER when possible otherwise CREATE OR REPLACE
 
  * Test Enabled: No
  
  ## Node Configuration
 
-The InferSchema node type has two configuration groups:
+The Copy-Into Snowpipe node type has two configuration groups:
 
 * [Node Properties](#node-properties)
 * [Snowpipe Options](#snowpipe-options)
@@ -318,17 +318,17 @@ When the parameter value is set to `Reload`,the data is reloaded into the table 
 
 ### Initial Deployment
 
-When deployed for the first time into an environment the InferSchema node will execute the below stage with Enable Snowpipe config set to false and paremeter loadType is empty
+When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage with Enable Snowpipe config set to false and paremeter loadType is empty
 
 * **Create table**
 * **Historical Full load-Using CopyInto**
 
-When deployed for the first time into an environment the InferSchema node will execute the below stage with Enable Snowpipe config set to false and paremeter loadType is set to Reload
+When deployed for the first time into an environment the CopyInto-Snowpipe will execute the below stage with Enable Snowpipe config set to false and paremeter loadType is set to Reload
 
 * **Truncate Target Table**
 * **Reload data-Copy Into Force**
   
-When deployed for the first time into an environment the InferSchema node will execute the below stage with Enable Snowpipe config set to true
+When deployed for the first time into an environment the CopyInto-Snowpipe will execute the below stage with Enable Snowpipe config set to true
 
 * **Create table**
 * **Create Pipe**
@@ -363,4 +363,101 @@ The Coalesce External Table nodes create a new external table in the current/spe
 
 An [external table](https://docs.snowflake.com/en/sql-reference/sql/create-external-table#examples) reads data from a set of one or more files in a specified external stage which can point to AWS,GCP or Azure cloud providers.
 
+## Version Information
+ * UDN Name: CopyInto Snowpipe
+ * Package Name: 
 
+ * Certified Version: 1.0
+ * Documentation Version: 1.0
+ * Current Version: 1.1
+ * Originally Developed by: John Gontarz
+ * Current Owner: John Gontarz
+ * Materialization Type: external table
+ * Create Template: Yes
+ * Run Template: No
+
+ * Deployment Strategy: Advanced
+ * Deployment Method: ALTER when possible otherwise CREATE OR REPLACE
+
+ * Test Enabled: No
+ 
+ ## Node Configuration
+
+The External table node type has four configuration groups:
+
+* [Node Properties](#node-properties)
+* [File Location](#file-location)
+* [File Format](#file-format)
+* [Additional Options](#additional-options)
+
+### Node Properties
+
+There are four configs within the **Node Properties** group.
+
+* **Storage Location**: Storage Location where the WORK will be created.
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+### File Location
+
+* **Stage Storage Location**:A storage location in coleasce wherein the stage is located.
+* **Stage Name**: Internal or External stage where the files containing data to be loaded are staged
+* **File Name(s) (Optional - Ex:'a.csv','b.csv' ))**: Enabled when 'Enable Snowpipe' option is disabled.Specifies a list of one or more files names (separated by commas) to be loaded
+* **File Pattern(Optional - Ex:'.*hea.*[.]csv')**:A regular expression pattern string, enclosed in single quotes, specifying the file names and/or paths to match.
+
+![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
+### File Format
+
+![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+
+
+* **File Format Definition**:Specifies the format of the data files to load.
+    *File Format Name -Specifies an existing named file format to use for loading data into the table
+	*File Format Values -Provides file format options for thr File Type chosen
+* **File Type**:Specifies the type of files to load into the table
+    *CSV
+	*JSON
+	*ORC
+	*AVRO
+	*PARQUET
+	*XML
+
+File Type -CSV /JSON/PARQUET/AVRO/ORC/XML
+
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+
+File Type -CSV
+
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Record delimiter**:Characters that separate records in an input file
+* **Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file
+* **Field optionally enclosed by**:Character used to enclose strings
+* **Number of header lines to skip**:Number of lines at the start of the file to skip.
+* **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files
+
+File Type -JSON
+
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Strip Outer Array**:
+
+### System Columns
+The set of columns which has source data and file metadata information
+
+* **VALUE**
+* **FILENAME**
+
+#### VALUE
+The data from the file is loaded into this variant column
+
+#### FILENAME
+Name of the staged data file the current row belongs to. Includes the full path to the data file.
+
+### Initial Deployment
+When deployed for the first time into an environment the External table node will execute the below stage:
+
+**Create External Table**
+This will execute a CREATE OR REPLACE statement and create a table in the target environment.

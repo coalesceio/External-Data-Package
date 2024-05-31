@@ -1,0 +1,97 @@
+steps:
+  STG_INFER_EMP-5d602426-ed50-4d48-a115-435c7aa332d2:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: STAGE
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 6c48d96f-702f-49ed-90e0-1f3b4781ebae
+              stepCounter: 5d602426-ed50-4d48-a115-435c7aa332d2
+            dataType: VARIANT
+            description: ""
+            name: VALUE
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 67b79c91-2402-44aa-8cd4-07935044a677
+                    stepCounter: f4f1ddea-fb6f-446b-a9d2-cfed7205ec6a
+                transform: ""
+          - columnReference:
+              columnCounter: 88ac4cda-8f59-47d1-9929-604a7cd18a1f
+              stepCounter: 5d602426-ed50-4d48-a115-435c7aa332d2
+            dataType: VARCHAR(16777216)
+            description: ""
+            name: username
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: f1409c5d-4434-420c-8517-566ffe592d19
+                    stepCounter: f4f1ddea-fb6f-446b-a9d2-cfed7205ec6a
+                transform: ""
+          - columnReference:
+              columnCounter: a372fd6c-53a3-4d60-b354-664a9341d97c
+              stepCounter: 5d602426-ed50-4d48-a115-435c7aa332d2
+            dataType: VARCHAR(16777216)
+            description: ""
+            name: tweet
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 649d7bcb-17b1-4b1e-bc4e-1c503043b919
+                    stepCounter: f4f1ddea-fb6f-446b-a9d2-cfed7205ec6a
+                transform: ""
+          - columnReference:
+              columnCounter: 23d82ba1-de75-407f-8109-1bb7ef21becf
+              stepCounter: 5d602426-ed50-4d48-a115-435c7aa332d2
+            dataType: NUMBER(38,0)
+            description: ""
+            name: timestamp
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 52ea6baa-684c-4882-bdf7-4aa88c127d34
+                    stepCounter: f4f1ddea-fb6f-446b-a9d2-cfed7205ec6a
+                transform: ""
+          - columnReference:
+              columnCounter: 151c0d96-eb9d-4990-90bd-59738cadab2a
+              stepCounter: 5d602426-ed50-4d48-a115-435c7aa332d2
+            dataType: STRING
+            description: ""
+            name: FILENAME
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 22113de3-928a-4728-a28f-d596ba9fc315
+                    stepCounter: f4f1ddea-fb6f-446b-a9d2-cfed7205ec6a
+                transform: ""
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: TARGET
+                nodeName: EXT_INFER_EMP
+            join:
+              joinCondition: FROM {{ ref('TARGET', 'EXT_INFER_EMP') }} "EXT_INFER_EMP"
+            name: STG_INFER_EMP
+            noLinkRefs: []
+      name: STG_INFER_EMP
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: 5d602426-ed50-4d48-a115-435c7aa332d2

@@ -7,12 +7,12 @@ steps:
         compression: AUTO
         dateformat: ""
         enforceLength: ""
-        errornumber: ""
+        errornumber: "44"
         fieldDelim: ","
         fieldEnclosed: \042
         fileFormatName: MYJSONFILEFORMAT1
         fileFormatType: File Format Name
-        fileNames: ""
+        fileNames: "'contacts.json'"
         filePattern: ""
         fileType: JSON
         flagSnowpipe: false
@@ -20,7 +20,7 @@ steps:
         integration: ""
         loadUncertainFiles: ""
         onError: ""
-        onError1: ""
+        onError1: SKIP_FILE_<num>%
         purgeBehavior: ""
         recDelim: |+
 
@@ -29,7 +29,7 @@ steps:
         sizeLimit: ""
         skipBlankLines: true
         skipHeader: "1"
-        stageName: spstagesample/contacts.json
+        stageName: spstagesample/
         stageStorageLocationName: SNOWPIPE
         stripouterarray: false
         timeformat: ""
@@ -40,7 +40,7 @@ steps:
       deployEnabled: true
       description: ""
       isMultisource: false
-      locationName: SOURCE
+      locationName: TARGET
       materializationType: table
       metadata:
         appliedNodeTests: []

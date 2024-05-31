@@ -158,6 +158,8 @@ The InferSchema node type has two configuration groups:
 * [File Format](#file-format)
 * [Copy Options](#copy-options)
 
+![Snowpipe-config](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/14cfeadf-2996-4665-80a1-ecd528691326)
+
 ### Node Properties
 
 There are four configs within the **Node Properties** group.
@@ -181,6 +183,8 @@ There are four configs within the **Node Properties** group.
 * **AWS SNS Topic**: Enabled only when Cloud Provider is AWS.Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.
 * **Integration**:Enabled when Cloud Provider is GCP/Azure.Specifies the existing notification integration used to access the storage queue.
 
+![Snowpipe](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/49b17d06-2a35-4bf4-b208-145e5f9c607d)
+
 ### File Location
 
 * **Stage Storage Location**:A storage location in coleasce wherein the stage is located.
@@ -188,8 +192,12 @@ There are four configs within the **Node Properties** group.
 * **File Name(s) (Optional - Ex:'a.csv','b.csv' ))**: Enabled when 'Enable Snowpipe' option is disabled.Specifies a list of one or more files names (separated by commas) to be loaded
 * **File Pattern(Optional - Ex:'.*hea.*[.]csv')**:A regular expression pattern string, enclosed in single quotes, specifying the file names and/or paths to match.
 
+![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
 
 ### File Format
+
+![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+
 
 * **File Format Definition**:Specifies the format of the data files to load.
     *File Format Name -Specifies an existing named file format to use for loading data into the table
@@ -234,6 +242,8 @@ File Type -JSON
 
 Enable Snowpipe-False
 
+![copyintooptions2](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/a2dff298-801b-4b29-b303-0a295b82322c)
+
 * **On Error Behavior**:String (constant) that specifies the error handling for the load operation.
     *CONTINUE
 	*SKIP_FILE
@@ -252,6 +262,7 @@ Enable Snowpipe-False
 
 Enable Snowpipe-True 
 
+![copyoptions2](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/6de13884-7e02-42c0-a79d-7836ce622c2a)
 
 * **On Error Behavior**:String (constant) that specifies the error handling for the load operation.
     *CONTINUE
@@ -322,6 +333,30 @@ When deployed for the first time into an environment the InferSchema node will e
 * **Create table**
 * **Create Pipe**
   
+### Redeployment
+
+After the CopyInto-Snowpipe node with materialization type table has been deployed for the first time into a target environment, subsequent deployments may result in either altering the WORK Table or recreating the WORK table.
+
+#### Altering the CopyInto-Snowpipe tables
+
+There are few column or table changes like Change in table name,Dropping existing column, Alter Column data type,Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.
+
+The following stages are executed:
+
+* **Clone Table**: Creates an internal table.
+* **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
+* **Swap cloned Table**: Upon successful completion of all updates, the clone replaces the main table ensuring that no data is lost.
+* **Delete Table**: Drops the internal table.
+
+### Undeployment
+
+If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+
+This is executed in two stages:
+
+* **Delete Table: Coalesce Internal table is dropped**
+* **Delete Table: Target table in Snowflake is dropped**
+
 # External Tables
 
 The Coalesce External Table nodes create a new external table in the current/specified schema or replaces an existing external table.

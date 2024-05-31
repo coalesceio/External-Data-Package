@@ -9,6 +9,7 @@
 # InferSchema
 
 The Coalesce InferSchema UDN is a versatile node infers schema of the file in internal or external stage and dynamically creates the target table of the same name as inferschema node.
+
 [InferSchema](https://docs.snowflake.com/en/sql-reference/functions/infer_schema) in Snowflake automatically detects the file metadata schema in a set of staged data files that contain semi-structured data and retrieves the column definitions.
 
 ## Version Information
@@ -123,7 +124,6 @@ If the InferSchema node is deleted from a Workspace, that Workspace is committed
 
 # CopyInto Snowpipe
 
-
 The Coalesce CopyInto-Snowpipe node is a node that performs two operations.It can be used to load historical data using CopyInto.
 Also can be used to create a pipe to auto ingest files from AWS,GCP or Azure.
 
@@ -202,8 +202,16 @@ There are four configs within the **Node Properties** group.
 	*PARQUET
 	*XML
 
-File Type -CSV 
+File Type -CSV /JSON/PARQUET/AVRO/ORC/XML
 
+* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
+
+File Type -CSV /JSON/PARQUET/AVRO/ORC
+
+* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
+* **Trim Space**:Boolean that specifies whether to remove white space from fields.
+
+File Type -CSV
 
 * **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
 * **Record delimiter**:Characters that separate records in an input file
@@ -211,45 +219,16 @@ File Type -CSV
 * **Field optionally enclosed by**:Character used to enclose strings
 * **Number of header lines to skip**:Number of lines at the start of the file to skip.
 * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files
-* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
-* **Trim Space**:Boolean that specifies whether to remove white space from fields.
 * **Date format**:String that defines the format of date values in the data files to be loaded. 
 * **Time format**:String that defines the format of time values in the data files to be loaded
 * **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
 
 File Type -JSON
 
-* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space**:Boolean that specifies whether to remove white space from fields.
 * **Strip Outer Array**:
-* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
 * **Date format**:String that defines the format of date values in the data files to be loaded. 
 * **Time format**:String that defines the format of time values in the data files to be loaded
 * **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
-
-File Type -PARQUET
-
-* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space**:Boolean that specifies whether to remove white space from fields.
-* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
-
-File Type -AVRO
-
-* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space**:Boolean that specifies whether to remove white space from fields.
-* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
-
-
-File Type -ORC
-
-* **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Trim Space**:Boolean that specifies whether to remove white space from fields.
-* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
-
-
-File Type -XML
-
-* **Replace invalid characters**:Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character
 
 ### Copy Options
 
@@ -260,14 +239,16 @@ Enable Snowpipe-False
 	*SKIP_FILE
 	*SKIP_FILE_num
 	*SKIP_FILE_num%
-* ** Specify the number of errors that can be skipped**:
-* **Size Limit**:
-* **Purge Behavior**:
-* **Return Failed Only**:
-* **Force**:
-* **Load Uncertain Files**:
-* **Enforce Length**:
-* **Truncate Columns**:
+        *ABORT_STATEMENT
+* ** Specify the number of errors that can be skipped**:When the **On Error Behavior** is either 'SKIP_FILE_num' or 'SKIP_FILE_num%',
+ the number of errorsis required which will replace 'num' value.
+* **Size Limit**:Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement
+* **Purge Behavior**:Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully.
+* **Return Failed Only**:Boolean that specifies whether to return only files that have failed to load in the statement result.
+* **Force**:Boolean that specifies to load all files, regardless of whether they’ve been loaded previously and have not changed since they were loaded. 
+* **Load Uncertain Files**:Boolean that specifies to load files for which the load status is unknown. The COPY command skips these files by default.
+* **Enforce Length**:Boolean that specifies whether to truncate text strings that exceed the target column length
+* **Truncate Columns**:Boolean that specifies whether to truncate text strings that exceed the target column length
 
 Enable Snowpipe-True 
 
@@ -277,19 +258,35 @@ Enable Snowpipe-True
 	*SKIP_FILE
 	*SKIP_FILE_num
 	*SKIP_FILE_num%
-* **Specify the number of errors that can be skipped**:
-* **Enforce Length**:
-* **Truncate Columns**:
-
+* **Specify the number of errors that can be skipped**:When the **On Error Behavior** is either 'SKIP_FILE_num' or 'SKIP_FILE_num%',
+ the number of errorsis required which will replace 'num' value.
+* **Enforce Length**:Boolean that specifies whether to truncate text strings that exceed the target column length
+* **Truncate Columns**:Boolean that specifies whether to truncate text strings that exceed the target column length
 
 ### System Columns
+The set of columns which has source data and file metadata information
 
-* **SRC**:
-* **LOAD_TIMESTAMP**:
-* **FILENAME**:
-* **FILE_ROW_NUMBER**:
-* **FILE_LAST_MODIFIED**:
-* **SCAN_TIME**:
+* **SRC**
+* **LOAD_TIMESTAMP**
+* **FILENAME**
+* **FILE_ROW_NUMBER**
+* **FILE_LAST_MODIFIED**
+* **SCAN_TIME**
+
+#### SRC
+The data from the file is loaded into this variant column
+
+#### LOAD_TIMESTAMP
+Current timestamp when the file gets loaded
+
+#### FILENAME
+Name of the staged data file the current row belongs to. Includes the full path to the data file.
+
+#### FILE_ROW_NUMBER
+Row number for each record in the staged data file.
+
+#### SCAN_TIME
+Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
 ## Deployment
 
@@ -306,7 +303,7 @@ The parameter name is `loadType` and the default value is ``.
 }
 ```
 
-When the 
+When the parameter value is set to `Reload`,the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded. 
 
 ### Initial Deployment
 
@@ -326,7 +323,6 @@ When deployed for the first time into an environment the InferSchema node will e
 * **Create Pipe**
   
 # External Tables
-
 
 The Coalesce External Table nodes create a new external table in the current/specified schema or replaces an existing external table.
 

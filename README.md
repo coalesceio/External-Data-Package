@@ -495,3 +495,18 @@ The following stages are executed:
 If the External table node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 * **Drop External Table**
+  
+#### Code
+
+## InferSchema
+[Node definition]()
+[Create Template]()
+
+## CopyInto-Snowpipe
+[Node definition]()
+[Create Template]()
+
+## External tables
+[Node definition]()
+[Create Template]()
+

@@ -1,0 +1,108 @@
+steps:
+  ANOMALYCALLS-02205607-6809-4340-8c66-a23034cb5be9:
+    operation:
+      database: ""
+      dataset: ""
+      deployEnabled: true
+      description: ""
+      locationName: SOURCE
+      metadata:
+        columns:
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 4ed9bee5-1522-48c7-815d-1bd7a1d31a76
+              stepCounter: 02205607-6809-4340-8c66-a23034cb5be9
+            config: {}
+            dataType: TIMESTAMP_NTZ(9)
+            defaultValue: ""
+            description: ""
+            name: TS
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: e5271ca6-3efa-4a18-8ee1-345304e1548b
+              stepCounter: 02205607-6809-4340-8c66-a23034cb5be9
+            config: {}
+            dataType: VARIANT
+            defaultValue: ""
+            description: ""
+            name: CALL_CENTER
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 92337d0f-9fee-43fe-8f27-73944291c2a4
+              stepCounter: 02205607-6809-4340-8c66-a23034cb5be9
+            config: {}
+            dataType: VARIANT
+            defaultValue: ""
+            description: ""
+            name: CC_GROUP
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 045476a6-0217-4251-b5c9-7d3d269f9da8
+              stepCounter: 02205607-6809-4340-8c66-a23034cb5be9
+            config: {}
+            dataType: VARIANT
+            defaultValue: ""
+            description: ""
+            name: PRODUCT
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 43e77cd1-8094-4cb2-8603-5c9eee4f9f68
+              stepCounter: 02205607-6809-4340-8c66-a23034cb5be9
+            config: {}
+            dataType: VARIANT
+            defaultValue: ""
+            description: ""
+            name: WEEKS_SINCE_LAUNCH
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+          - acceptedValues:
+              strictMatch: true
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: aa70240f-d4ab-49c9-9542-63e84728a2b5
+              stepCounter: 02205607-6809-4340-8c66-a23034cb5be9
+            config: {}
+            dataType: VARIANT
+            defaultValue: ""
+            description: ""
+            name: ESCALATED
+            nullable: true
+            primaryKey: false
+            uniqueKey: false
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'ANOMALYCALLS') }}
+      name: ANOMALYCALLS
+      schema: ""
+      sqlType: Source
+      table: ANOMALYCALLS
+      type: sourceInput
+    stepCounter: 02205607-6809-4340-8c66-a23034cb5be9

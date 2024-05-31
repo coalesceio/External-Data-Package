@@ -233,7 +233,7 @@ File Type -CSV
 
 File Type -JSON
 
-* **Strip Outer Array**:
+* **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
 * **Date format**:String that defines the format of date values in the data files to be loaded. 
 * **Time format**:String that defines the format of time values in the data files to be loaded
 * **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
@@ -442,7 +442,25 @@ File Type -CSV
 File Type -JSON
 
 * **Compression**:String (constant) that specifies the current compression algorithm for the data files to be loaded.
-* **Strip Outer Array**:
+* **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
+
+### Additional Options
+
+* **Auto refresh**:True/False Specifies whether Snowflake should enable triggering automatic refreshes of the external table 
+          metadata when new or updated data files are available in the named external stage 
+       * True - auto refresh takes place
+      * False - auto refresh does not take place
+  
+![additional options](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48a126fa-b47c-4227-ad1d-8e6e617bd271)
+
+![additional options2](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/fe4db393-bd26-4343-a8b8-89cdcfdd307b)
+
+* **Cloud Provider**: 
+      * AWS
+	  * GCP
+	  * Azure
+* **AWS SNS Topic**: Enabled only when Cloud Provider is AWS and auto refresh is true.Required only when configuring AUTO_REFRESH for Amazon S3 stages using Amazon Simple Notification Service (SNS).
+* **Integration**:Enabled when Cloud Provider is GCP/Azure.Specifies the existing notification integration used to access the storage queue.
 
 ### System Columns
 The set of columns which has source data and file metadata information
@@ -459,5 +477,21 @@ Name of the staged data file the current row belongs to. Includes the full path 
 ### Initial Deployment
 When deployed for the first time into an environment the External table node will execute the below stage:
 
-**Create External Table**
+* **Create External Table**
 This will execute a CREATE OR REPLACE statement and create a table in the target environment.
+
+#### Redeployment
+
+#### Recreating the External table
+
+The subsequent deployment of External table with changes in config options will recreate the table
+
+The following stages are executed:
+
+* **Create External Table**
+  
+#### Undeployment
+
+If the External table node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+
+* **Drop External Table**

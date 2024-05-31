@@ -1,0 +1,35 @@
+steps:
+  INFER_EMP-eec44606-f333-4a08-8920-a60afdf12ade:
+    operation:
+      config:
+        fileFormatName: myavrofileformat
+        fileNames: twitter_samp.avro
+        redeploymentBehavior: Create or Replace
+        stageName: spstagesample/
+        stageStorageLocationName: SNOWPIPE
+      database: ""
+      deployEnabled: true
+      description: ""
+      isMultisource: false
+      locationName: TARGET
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns: []
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - aliases: {}
+            customSQL:
+              customSQL: ""
+            dependencies: []
+            join:
+              joinCondition: ""
+            name: INFER_EMP
+            noLinkRefs: []
+      name: INFER_EMP
+      overrideSQL: false
+      schema: ""
+      sqlType: "299"
+      type: sql
+    stepCounter: eec44606-f333-4a08-8920-a60afdf12ade

@@ -175,7 +175,7 @@ The Copy-Into Snowpipe node type the following configurations available:
     * **Field optionally enclosed by**:Character used to enclose strings
     * **Number of header lines to skip**:Number of lines at the start of the file to skip.
     * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
-    * **Trim Space**: [Missing definition]
+    * **Trim Space**: oolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **Replace invalid characters**: [Missing definition]
     * **Date format**:String that defines the format of date values in the data files to be loaded. 
     * **Time format**: String that defines the format of time values in the data files to be loaded

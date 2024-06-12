@@ -183,13 +183,13 @@ The Copy-Into Snowpipe node type the following configurations available:
     * **JSON**
       * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-      * **Trim Space** - [Missing definition]
+      * **Trim Space** - Specifies whether to remove white space from fields
       * **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
       * **Date format**:String that defines the format of date values in the data files to be loaded. 
       * **Time format**:String that defines the format of time values in the data files to be loaded
       * **Timestamp format**: String that defines the format of timestamp values in the data files to be loaded.
     * **ORC**
-      * **Trim Space** - [Missing definition]
+      * **Trim Space** - Specifies whether to remove white space from fields
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **AVRO**
       * **Trim Space** - [Missing definition]

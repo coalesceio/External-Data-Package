@@ -98,11 +98,9 @@ If you want to drop the inferred table you can redeploy the Infer Schema node wi
 
 If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
 
-## CopyInto Snowpipe
+<h2 id="CopyInto - Snowpipe">CopyInto - Snowpipe </h2>
 
-[What is the name of this node? I've seen it written multiple ways. CopyInto Snowpipe, CopyInto - Snowpipe, Copy Into - SnowPipe? Choose a formatting option and fix all instances to match, including the package data.]
-
-The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using CopyInto [Should this be a link to something in Snowflake]. CopyInto can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
+The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table)]. CopyInto can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
 
 [Snowpipe](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro) enables loading data from files as soon as they’re available in a stage. 
 
@@ -175,7 +173,7 @@ The Copy-Into Snowpipe node type the following configurations available:
     * **Field optionally enclosed by**:Character used to enclose strings
     * **Number of header lines to skip**:Number of lines at the start of the file to skip.
     * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
-    * **Trim Space**: oolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+    * **Trim Space**: Boolean that specifies whether to remove white space from fields.
     * **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **Date format**:String that defines the format of date values in the data files to be loaded. 
     * **Time format**: String that defines the format of time values in the data files to be loaded
@@ -183,7 +181,7 @@ The Copy-Into Snowpipe node type the following configurations available:
     * **JSON**
       * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-      * **Trim Space** - Specifies whether to remove white space from fields
+      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
       * **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
       * **Date format**:String that defines the format of date values in the data files to be loaded. 
       * **Time format**:String that defines the format of time values in the data files to be loaded
@@ -192,10 +190,10 @@ The Copy-Into Snowpipe node type the following configurations available:
       * **Trim Space** - Specifies whether to remove white space from fields
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **AVRO**
-      * **Trim Space** - [Missing definition]
+      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **PARQUET**
-      * **Trim Space** - [Missing definition]
+      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **XML**
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
@@ -375,7 +373,7 @@ The External table node type has four configuration groups:
 ### System Columns
 The set of columns which has source data and file metadata information.
 
-* **VALUE** - [I don't see this in the node in Coalesce] The data from the file is loaded into this variant column
+* **VALUE** - The data from the file is loaded into this variant column
 * **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
 
 ### Initial Deployment

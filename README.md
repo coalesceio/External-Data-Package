@@ -106,7 +106,7 @@ The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It
 
 This means you can load data from files in micro-batches, making it available to users within minutes, rather than manually executing COPY statements on a schedule to load larger batches.
 
-### Copy Into Snowpipe Node Configuration
+### CopyInto - Snowpipe Node Configuration
 
 The Copy-Into Snowpipe node type the following configurations available:
 
@@ -118,7 +118,7 @@ The Copy-Into Snowpipe node type the following configurations available:
 
 ![Snowpipe-config](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/14cfeadf-2996-4665-80a1-ecd528691326)
 
-<h3 id="copy-into-snowpipe-node-properties">CopyInto Snowpipe Node Properties</h3>
+<h3 id="copy-into-snowpipe-node-properties">CopyInto - Snowpipe Node Properties</h3>
 
 * **Storage Location**: Storage Location where the WORK will be created.
 * **Node Type**: Name of template used to create node objects.
@@ -127,7 +127,7 @@ The Copy-Into Snowpipe node type the following configurations available:
   * If TRUE the node will be deployed / redeployed when changes are detected.
   * If FALSE the node will not be deployed or will be dropped during redeployment.
 
-<h3 id="copy-into-snowpipe-snowpipe-options"> CopyInto Snowpipe Options </h3>
+<h3 id="copy-into-snowpipe-snowpipe-options"> CopyInto - Snowpipe Options </h3>
 
 ![Snowpipe](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/49b17d06-2a35-4bf4-b208-145e5f9c607d)
 
@@ -138,7 +138,7 @@ The Copy-Into Snowpipe node type the following configurations available:
     * Azure - Integration. Specifies the existing notification integration used to access the storage queue.
     * GCP -  Integration. Specifies the existing notification integration used to access the storage queue.
 
-<h3 id="copy-into-snowpipe-file-location">  CopyInto Snowpipe File Location </h3>
+<h3 id="copy-into-snowpipe-file-location">  CopyInto - Snowpipe File Location </h3>
 
 
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
@@ -149,7 +149,7 @@ The Copy-Into Snowpipe node type the following configurations available:
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
 
 
-<h3 id="copy-into-snowpipe-file-format"> CopyInto Snowpipe File Format </h3>
+<h3 id="copy-into-snowpipe-file-format"> CopyInto - Snowpipe File Format </h3>
 
 ![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
 
@@ -198,7 +198,7 @@ The Copy-Into Snowpipe node type the following configurations available:
     * **XML**
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 
-<h3 id="copy-into-snowpipe-copy-options"> CopyInto Snowpipe Copy Options </h3>
+<h3 id="copy-into-snowpipe-copy-options"> CopyInto - Snowpipe Copy Options </h3>
 
 If you toggle Enable Snowpipe under Snowpipe Options to *ON*, these configuration options are available.
 
@@ -229,7 +229,7 @@ If you toggle Enable Snowpipe under Snowpipe Options to *OFF*, these configurati
 * **Enforce Length**: Boolean that specifies whether to truncate text strings that exceed the target column length
 * **Truncate Columns**: Boolean that specifies whether to truncate text strings that exceed the target column length
 
-### CopyInto Snowpipe System Columns
+### CopyInto - Snowpipe System Columns
 
 The set of columns which has source data and file metadata information.
 
@@ -237,11 +237,11 @@ The set of columns which has source data and file metadata information.
 * **LOAD_TIMESTAMP** - Current timestamp when the file gets loaded.
 * **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
 * **FILE_ROW_NUMBER** - Row number for each record in the staged data file.
-* **FILE_LAST_MODIFIED** - [Missing definition]
+* **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
 
-### CopyInto Snowpipe Deployment
+### CopyInto - Snowpipe Deployment
 
 #### CopyInto Snowpipe Deployment Parameters
 
@@ -257,7 +257,7 @@ The parameter name is `loadType` and the default value is ``.
 
 When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.
 
-#### CopyInto Snowpipe Initial Deployment
+#### CopyInto - Snowpipe Initial Deployment
 
 When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
@@ -265,9 +265,9 @@ When deployed for the first time into an environment the CopyInto-Snowpipe node 
 |--|--|---|--|
 |  Initial Deployment | `false`  |empty | Create Table. </br> Historical full load using CopyInto. |
 | Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force|
-| Initial Deployment | `true` | [Missing] | Create table </br> Create Pipe |
+| Initial Deployment | `true` | parameter not required | Create table </br> Create Pipe |
 
-### CopyInto Snowpipe Redeployment
+### CopyInto - Snowpipe Redeployment
 
 After the CopyInto-Snowpipe node with materialization type table has been deployed for the first time into a target environment, subsequent deployments may result in either altering the WORK Table or recreating the WORK table.
 
@@ -282,7 +282,7 @@ The following stages are executed:
 * **Swap cloned Table**: Upon successful completion of all updates, the clone replaces the main table ensuring that no data is lost.
 * **Delete Table**: Drops the internal table.
 
-### CopyInto Snowpipe Undeployment
+### CopyInto - Snowpipe Undeployment
 
 If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
@@ -346,7 +346,7 @@ The External table node type has four configuration groups:
     * **Field optionally enclosed by**: Character used to enclose strings
     * **Number of header lines to skip**: Number of lines at the start of the file to skip.
     * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
-    * **Trim Space**: [Missing definition]
+    * **Trim Space**: Boolean that specifies whether to remove white space from fields.
     * **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
     * **JSON**
       * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.

@@ -107,7 +107,8 @@ If the InferSchema node is deleted from a Workspace, that Workspace is committed
 
 <h2 id="CopyIntoSnowpipe">CopyInto - Snowpipe </h2>
 
-The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table)]. CopyInto can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
+The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using     
+ [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table). CopyInto can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
 
 [Snowpipe](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro) enables loading data from files as soon as they’re available in a stage. 
 

@@ -1,5 +1,12 @@
 # External Data Package
 
+The Coalesce External Data Package includes:
+
+* [Inferschema](#inferschema)
+* [CopyInto-Snowpipe](#CopyIntoSnowpipe)
+* [External Table](#external-tables)
+* [Code](#code)
+
 <h2 id="inferschema"> InferSchema </h2>
 
 The Coalesce InferSchema UDN is a versatile node infers schema of the file in internal or external stage and dynamically creates the target table of the same name as inferschema node.
@@ -98,7 +105,7 @@ If you want to drop the inferred table you can redeploy the Infer Schema node wi
 
 If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
 
-<h2 id="CopyInto - Snowpipe">CopyInto - Snowpipe </h2>
+<h2 id="CopyIntoSnowpipe">CopyInto - Snowpipe </h2>
 
 The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table)]. CopyInto can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
 

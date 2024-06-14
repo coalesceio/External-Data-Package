@@ -402,18 +402,18 @@ If the External table node is deleted from a Workspace, that Workspace is commit
 
 ### InferSchema
 
-[Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/definition.yml)
-[Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/create.sql.j2)
-[Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/run.sql.j2)
+* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/definition.yml)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/run.sql.j2)
 
 ### CopyInto-Snowpipe
 
-[Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/definition.yml)
-[Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/create.sql.j2)
-[Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/run.sql.j2)
+* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/definition.yml)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/run.sql.j2)
 
 ### External Tables 
 
-[Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/definition.yml)
-[Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/create.sql.j2)
-[Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/run.sql.j2)
+* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/definition.yml)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/run.sql.j2)

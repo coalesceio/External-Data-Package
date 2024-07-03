@@ -1,15 +1,9 @@
 fileVersion: 1
 id: "169"
 mappingDefinitions:
-  SNOWPIPE:
-    database: ANANDHIS_DEV
-    schema: TARGET
   SOURCE:
     database: DE_UDN_DB
     schema: RM_DEV
-  STAGE:
-    database: ANANDHIS_DEV
-    schema: TARGET
   TARGET:
     database: ANANDHIS_DEV
     schema: TARGET

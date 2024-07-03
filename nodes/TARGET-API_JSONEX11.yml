@@ -1,0 +1,82 @@
+fileVersion: 1
+id: 46c92c2f-814d-4606-8776-282046f2cd12
+name: API_JSONEX11
+operation:
+  config:
+    doc: ""
+    extIntegration: apis_access_integration
+    headers: |-
+      {
+             "accept": "application/json",
+             "authorization": "Bearer "
+          }
+    method: put
+    payload: |2-
+       {
+              "userId": 10,
+              "id": 202,
+              "title": "ipsam aperiam voluptates qui",
+              "completed": False
+          }
+    uri: " https://jsonplaceholder.typicode.com/todos"
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2930cd8-eeca-4ecc-85eb-a7ba66301adc
+          stepCounter: 46c92c2f-814d-4606-8776-282046f2cd12
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: URI
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        uri: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f308fb5-3988-4736-8284-afbcb705a4a5
+          stepCounter: 46c92c2f-814d-4606-8776-282046f2cd12
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: RESPONSE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        value: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: API_JSONEX11
+        noLinkRefs: []
+  name: API_JSONEX11
+  overrideSQL: false
+  schema: ""
+  sqlType: "303"
+  type: sql
+  version: 1
+type: Node

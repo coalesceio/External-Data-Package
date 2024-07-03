@@ -1,0 +1,41 @@
+{% set udtfName = node.name %}
+{% set udtfStrLoc = config.udtfLocation %}
+{% set udtfDb = storageLocations | selectattr('name', 'equalto', udtfStrLoc) | map(attribute='database') | first %}
+{% set udtfSch = storageLocations | selectattr('name', 'equalto', udtfStrLoc) | map(attribute='schema') | first %}
+
+{% set fqUdtfName = '"' + udtfDb + '"."' + udtfSch + '"."' + udtfName + '"' %}
+
+{% set tgtTbl = node.name %}
+{% set srcFileStrLoc = config.srcFileStrLoc %}
+{% set srcFileStage = config.srcStage %}
+{% set srcJsonArrName = config.srcJsonArr %}
+{% set srcFile = config.srcFile %}
+
+{% set tgtTblStLoc = node.location.name %}
+
+{% set srcDb = storageLocations | selectattr('name', 'equalto', srcFileStrLoc) | map(attribute='database') | first %}
+{% set srcSch = storageLocations | selectattr('name', 'equalto', srcFileStrLoc) | map(attribute='schema') | first %}
+{% set fqSrcFileStage = '@"' + srcDb + '"."' + srcSch + '"."' + srcFileStage + '"' %}
+
+{% set tgtDb = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='database') | first %}
+{% set tgtSch = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='schema') | first %}
+
+
+
+
+{{ stage('Run Python Parse Excel udtf') }}
+INSERT INTO {{ ref_no_link(node.location.name, node.name) }}
+SELECT 	
+         {% for source in sources %}		
+            {% for col in source.columns %}
+               {%if col.transform != ""%}
+                    {{col.transform}}
+               {%else%}
+                    {{col.name}}
+                {%endif%}
+	        {%- if not loop.last -%}, {% endif %}
+	    {% endfor %}
+            {% endfor %} 
+FROM TABLE( {{ fqUdtfName }} (build_scoped_file_url({{ fqSrcFileStage }}, '{{ srcFile }}'), '{{ srcJsonArrName }}') )
+
+

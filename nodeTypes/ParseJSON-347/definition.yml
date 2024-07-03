@@ -1,0 +1,55 @@
+fileVersion: 1
+id: "347"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |-
+    capitalized: Parse JSON Array >16 MB
+    short: LARGE JSON ARRAY LOAD
+    plural: none
+    tagColor: 'aqua'
+
+    deployStrategy: advanced
+
+    config:
+    - groupName: UDTF Procedure Options
+      items:
+
+      - displayName: User Defined Table Function Location
+        attributeName: udtfLocation
+        type: textBox
+        
+    - groupName: JSON File Processing Options
+      items:
+      - displayName: Source File Storage Location
+        attributeName: srcFileStrLoc
+        type: textBox
+        isRequired: true
+
+      - displayName: Source File Stage
+        attributeName: srcStage
+        type: textBox
+        default: stage_name
+        isRequired: true
+
+      - displayName: Source File Name
+        attributeName: srcFile
+        type: textBox
+        default: file.json
+        isRequired: true
+
+      - displayName: JSON Array Name
+        attributeName: srcJsonArr
+        type: textBox
+        default: arrayname
+        
+
+    systemColumns:
+    - displayName: 'SRC'
+      attributeName: src
+      transform: ''
+      dataType: VARIANT
+      placement: beginning
+name: Parse JSON
+type: NodeType

@@ -1,0 +1,28 @@
+{% set spName = node.name %}
+{% set spStrLoc = config.spLocation %}
+{% set spDb = storageLocations | selectattr('name', 'equalto', spStrLoc) | map(attribute='database') | first %}
+{% set spSch = storageLocations | selectattr('name', 'equalto', spStrLoc) | map(attribute='schema') | first %}
+{% set spName = node.name %}
+
+{% set fqSpName = '"' + spDb + '"."' + spSch + '"."' + spName + '"' %}
+
+{% set tgtTbl = node.name %}
+{% set srcFileStrLoc = config.srcFileStrLoc %}
+{% set srcFileStage = config.srcStage %}
+{% set srcFile = config.srcFile %}
+
+{% set tgtTblStLoc = node.location.name %}
+
+{% set srcDb = storageLocations | selectattr('name', 'equalto', srcFileStrLoc) | map(attribute='database') | first %}
+{% set srcSch = storageLocations | selectattr('name', 'equalto', srcFileStrLoc) | map(attribute='schema') | first %}
+{% set fqSrcFileStage = '@"' + srcDb + '"."' + srcSch + '"."' + srcFileStage + '"' %}
+
+{% set tgtDb = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='database') | first %}
+{% set tgtSch = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='schema') | first %}
+
+{% set fqTgtTbl = '"' + tgtDb + '"."' + tgtSch + '"."' + tgtTbl + '"' %}
+
+
+
+{{ stage('Run Python Parse Excel SP') }}
+CALL {{ fqSpName }}(build_scoped_file_url({{ fqSrcFileStage }}, '{{ srcFile }}'), '{{ fqTgtTbl }}') 

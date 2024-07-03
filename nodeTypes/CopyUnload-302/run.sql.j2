@@ -1,0 +1,122 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : Copy Unload == #}
+{# == Node Type Description    : This node unloads data from table into CSV/PARQUET/JSON files == #}
+
+
+
+{% set srcSchName = node.location.name %}
+{% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+{% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+
+{# Figure out Partition by Clause#}
+
+        {% set nsVariables = namespace(partitionBySQL="") %}
+        {% if config.partitionConfig == true %}
+            {% if config.partitionConfigExpressions == true %}
+                {% set column, expression = config.partitionbyConfigExpressions.get('items') | map(attribute='columnNameExpressions.name') | list, config.partitionbyConfigExpressions.get('items') | map(attribute='sqlExpression') | list %}
+
+                {%- set nsVariables = namespace(partitionValues=[]) %}
+
+                {% for r in column %}
+                    {% if expression[loop.index0] == "" %}
+                        {% set nsVariables.partitionValues = nsVariables.partitionValues + [r] %}
+                    {% else %}
+                        {% set nsVariables.partitionValues = nsVariables.partitionValues + [expression[loop.index0]] %}
+                    {% endif %}
+                {% endfor %}
+
+                {% set nsVariables.partitionBySQL = 'PARTITION BY (' + nsVariables.partitionValues | join('||') + ')' %}
+
+            {% else %}
+
+                {% set column = config.partitionbyConfig.get('items') | map(attribute='columnName.name') | list %}
+
+                {%- set nsVariables = namespace(partitionValues=[]) %}
+
+                {% for r in column %}
+                    {% set nsVariables.partitionValues = nsVariables.partitionValues +  [r] %}
+                {% endfor %}
+
+                {% set nsVariables.partitionBySQL = 'PARTITION BY ( to_varchar(' + nsVariables.partitionValues | join('||') + '))' %}
+
+            {% endif %}
+        {% endif %}
+
+
+{{ stage('Unloading ' + node.name | string ) }}
+
+ {% for source in sources %}
+    {% for dep in source.dependencies if dep.node %}
+        
+        COPY INTO @{{ ref_no_link(node.location.name, config.fileLocation) | trim | upper ~ "/" ~ node.name }}{% if config.singleFile %}.{{ config.fileType | lower }}{% endif %}
+        FROM( SELECT 
+             {%- for col in sources[0].columns %}
+             {%if config.fileType in  ('JSON')%}
+                  {%if col.transform != ""%}
+	                  to_variant({{ col.transform }})
+                  {%else%}
+                     to_variant({{ col.name }})
+                  {%endif%}
+              {%else%}
+                  {%if col.transform != ""%}
+	                   {{ col.transform }}
+                  {%else%}
+                     {{ col.name }}
+                  {%endif%}
+              {%endif%}
+            {%- if not loop.last -%}, {% endif %}
+            {%- endfor %}
+        FROM {{ ref_no_link(dep.node.location.name, dep.node.name) | upper }} 
+        )
+        {{ nsVariables.partitionBySQL}}
+         {%- if config.fileFormatType == 'File Format Name' %}
+          FILE_FORMAT = (FORMAT_NAME = '{{ db }}.{{ sch }}.{{ config.fileFormatName}}')
+         {%else%}
+            FILE_FORMAT = ( TYPE = {{ config.fileType}}
+             {% if config.compression != ""  and config.fileType in ('CSV','JSON') %}
+              COMPRESSION = {{ config.compression }}
+             {%endif%}
+             {% if config.compression1 != ""  and config.fileType in ('PARQUET')%}
+              COMPRESSION = {{ config.compression1 }}
+             {%endif%}				 
+             {% if config.recDelim and config.fileType in ('CSV')%}
+              RECORD_DELIMITER = '{{ config.recDelim}}'
+             {%endif%}
+            {% if config.fieldDelim and config.fileType in ('CSV')%}
+              FIELD_DELIMITER = '{{ config.fieldDelim}}'
+            {%endif%}
+            {% if config.fieldEnclosed and config.fileType in ('CSV')%}
+               FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+           {%endif%}
+            {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('CSV')%}
+              DATE_FORMAT = '{{ config.dateformat}}'
+	       {% elif config.dateformat == "AUTO" and config.fileType in ('CSV') %}
+	         DATE_FORMAT = AUTO
+           {%endif%}
+             {% if config.timeformat != "AUTO" and config.timeformat != ""   and config.fileType in ('CSV')%}
+              TIME_FORMAT = '{{config.timeformat}}'
+	       {% elif config.timeformat == "AUTO" and config.fileType in ('CSV')%}
+	         TIME_FORMAT = AUTO
+           {%endif%}
+           {% if config.timestampformat != "AUTO" and config.timestampformat != ""   and config.fileType in ('CSV')%}
+              TIMESTAMP_FORMAT = '{{config.timestampformat}}'
+	         {% elif config.timestampformat == "AUTO" and config.fileType in ('CSV') %}
+	         TIMESTAMP_FORMAT = AUTO
+           {%endif%})
+        {%endif%}
+        overwrite = {{ config.overwriteFiles }}
+        single = {{ config.singleFile }}
+        max_file_size = {{ config.sizeLimit | int * 1024 * 1024 }} 
+        include_query_id = {{ config.queryId }}
+        detailed_output = {{ config.detailedOutput }}
+        header ={{ config.header }}
+    {% endfor %}
+{% endfor %}
+  

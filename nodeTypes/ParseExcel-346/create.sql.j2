@@ -96,7 +96,7 @@ select 1 = 0
             {% endfor %}
 
             {# Rename / Move Object #}
-            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
+            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name or currentState.node.location.name != desiredState.node.location.name) %}
                 {{ stage('Rename and / or Move Table', true, "sql", "alter") }}
                 ALTER TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
                 RENAME TO   {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}

@@ -55,8 +55,8 @@ select 1 = 0
 
             {% set nsVariables.nsCurrentUsedStorageLocations =  nsVariables.nsCurrentTargetStorageLocations %}
 
-            {% set currentStorageLocations = (nsVariables.nsCurrentUsedStorageLocations).split(',') | list %}
-            {% set currentUniqueStorageLocations = currentStorageLocations | unique | sort | list %}
+            {% set currentStorageLocations = nsVariables.nsCurrentUsedStorageLocations %}
+            {% set currentUniqueStorageLocations = currentStorageLocations  %}
 
             {# Desired Namespace Variables #}
             {% set nsVariables = namespace(nsDesiredDepStorageLocations="") %}
@@ -72,12 +72,13 @@ select 1 = 0
 
             {% set nsVariables.nsDesiredUsedStorageLocations =  nsVariables.nsDesiredTargetStorageLocations %}
 
-            {% set desiredStorageLocations = (nsVariables.nsDesiredUsedStorageLocations).split(',') | list %}
-            {% set desiredUniqueStorageLocations = desiredStorageLocations | unique | sort | list %}
+            {% set desiredStorageLocations = nsVariables.nsDesiredUsedStorageLocations%}
+            {% set desiredUniqueStorageLocations = desiredStorageLocation %}
 
             {# Test  #}
             {% set nsVariables.storageLocationTest = true %}
             {% set nodeCommentTest = currentState.node.description == desiredState.node.description %}
+            
 
             {% for name in desiredUniqueStorageLocations if nsVariables.storageLocationTest == true %}
                 {# Current mappings #}
@@ -94,9 +95,10 @@ select 1 = 0
                     {% set nsVariables.storageLocationTest = false %}
                 {% endif %}
             {% endfor %}
-
+            
+            
             {# Rename / Move Object #}
-            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
+            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name or currentState.node.location.name != desiredState.node.location.name ) %}
                 {{ stage('Rename and / or Move Table', true, "sql", "alter") }}
                 ALTER TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
                 RENAME TO   {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
@@ -263,7 +265,7 @@ select 1 = 0
 {% set udtfName = desiredState.node.name %}
 {% set udtfStrLoc = desiredState.config.udtfLocation %}
 {% set udtfDb = desiredState.storageLocations | selectattr('name', 'equalto', udtfStrLoc) | map(attribute='database') | first %}
-{% set udtfSch = storageLocations | selectattr('name', 'equalto', udtfStrLoc) | map(attribute='schema') | first %}
+{% set udtfSch = desiredState.storageLocations | selectattr('name', 'equalto', udtfStrLoc) | map(attribute='schema') | first %}
 
 {% set fqUdtfName = '"' + udtfDb + '"."' + udtfSch + '"."' + udtfName + '"' %}
 

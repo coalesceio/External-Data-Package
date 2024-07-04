@@ -1,14 +1,14 @@
 fileVersion: 1
-id: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
-name: JDBC_P
+id: 00be7986-f025-44f4-9265-14aff4b73d18
+name: JDBC_PRO1
 operation:
   config:
-    acc_int: sales_jdbc
+    acc_int: sales_jdbc1
     jar_loc: SPSTAGESAMPLE
     jar_name: mssql-jdbc-12.6.2.jre11.jar
     jdbc_driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
     jdbc_url: jdbc:sqlserver://coalesce-source.database.windows.net:1433;database=coalesce_source
-    secret: sales
+    secret: sales1
     sql: SELECT * FROM saleslt.product
     truncateBefore: true
   database: ""
@@ -25,14 +25,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c3feec9a-e597-49a1-8e45-e105464617ca
-          stepCounter: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
+          columnCounter: be122fbd-70dc-482c-890f-0ec8d1542d27
+          stepCounter: 00be7986-f025-44f4-9265-14aff4b73d18
         config: {}
         data: true
         dataType: VARIANT
         defaultValue: ""
         description: ""
-        name: DATA1
+        name: DATA
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
@@ -42,8 +42,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7767b74a-0a3b-49ef-a1d5-7f2b7df5887c
-          stepCounter: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
+          columnCounter: 18efc032-3a2a-41eb-af67-2a713b5fdeaf
+          stepCounter: 00be7986-f025-44f4-9265-14aff4b73d18
         config: {}
         dataType: TIMESTAMP
         defaultValue: ""
@@ -63,9 +63,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: JDBC_P
+        name: JDBC_PRO1
         noLinkRefs: []
-  name: JDBC_P
+  name: JDBC_PRO1
   overrideSQL: false
   schema: ""
   sqlType: "327"

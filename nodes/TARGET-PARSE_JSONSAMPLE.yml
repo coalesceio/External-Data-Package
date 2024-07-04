@@ -1,0 +1,91 @@
+fileVersion: 1
+id: 5f3cae6f-3acd-46d0-a05e-10b0cba02a23
+name: PARSE_JSONSAMPLE
+operation:
+  config:
+    spLocation: TARGET_DB
+    srcFile: Tele_Sample_JSON.json
+    srcFileStrLoc: TARGET
+    srcJsonArr: list
+    srcStage: STAGE_LOCAL
+    udtfLocation: TARGET
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b2eea7b-dc2b-438c-9a6b-65c93bfc4f10
+          stepCounter: 5f3cae6f-3acd-46d0-a05e-10b0cba02a23
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        src: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1324680-b8cc-4fa9-8d44-0ad9b0517209
+          stepCounter: 5f3cae6f-3acd-46d0-a05e-10b0cba02a23
+        config: {}
+        dataType: timestamp
+        defaultValue: ""
+        description: ""
+        name: ld_ts
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CURRENT_TIMESTAMP()
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c4ba2dec-10df-4a35-addd-0e9656721615
+          stepCounter: 5f3cae6f-3acd-46d0-a05e-10b0cba02a23
+        config: {}
+        dataType: string
+        defaultValue: ""
+        description: ""
+        name: defcol
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: "'ABC'"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: PARSE_JSONSAMPLE
+        noLinkRefs: []
+  name: PARSE_JSONSAMPLE
+  overrideSQL: false
+  schema: ""
+  sqlType: "347"
+  type: sql
+  version: 1
+type: Node

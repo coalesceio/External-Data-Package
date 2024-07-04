@@ -1,0 +1,53 @@
+fileVersion: 1
+id: ee76ccb8-9225-42dd-bb47-7a93a9a81dc3
+name: EL_EMPLOYEES12
+operation:
+  config:
+    spLocation: TARGET
+    srcFile: employees.xlsx
+    srcFileStrLoc: SOURCE
+    srcStage: STAGE_LOCAL
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 72ab848f-8eee-4c5e-a70d-14839baae389
+          stepCounter: ee76ccb8-9225-42dd-bb47-7a93a9a81dc3
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        src: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: EL_EMPLOYEES12
+        noLinkRefs: []
+  name: EL_EMPLOYEES12
+  overrideSQL: false
+  schema: ""
+  sqlType: "346"
+  type: sql
+  version: 1
+type: Node

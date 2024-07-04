@@ -37,7 +37,7 @@ select 1 = 0
     
          {{ stage('Create Table') }}
           CREATE OR REPLACE TABLE {{ fqTblName }} (
-         {% for col in columns %}
+         {% for col in desiredState.columns %}
           "{{ col.name }}" {{ col.dataType }}
          {%- if col.Description | length > 0 %} COMMENT '{{ col.Description }}'{% endif %}
          {%- if not loop.last -%}, {% endif %}
@@ -332,22 +332,22 @@ select 1 = 0
 	    {{ stage('Create Pipe') }}
 
         CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE
-        {% if desiredState.config.awsSnsTopic != "" %}           
-              AWS_SNS_TOPIC = '{{ config.awsSnsTopic }}'
+        {% if desiredState.config.awsSnsTopic != "" and desiredState.config.cloudProvider == 'AWS'%}           
+              AWS_SNS_TOPIC = '{{ desiredState.config.awsSnsTopic }}'
         {%endif%}
-        {% if desiredState.config.integration != "" %}
-              INTEGRATION = '{{ config.integration }}'
+        {% if desiredState.config.integration != "" and desiredState.config.cloudProvider != 'AWS' %}
+              INTEGRATION = '{{ desiredState.config.integration }}'
         {%endif%}
         AS
             COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
-            {%- for col in columns %}
+            {%- for col in desiredState.columns %}
                 "{{ col.name }}"
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
         )
         FROM (SELECT
 
-            {%- for col in sources[0].columns %}
+            {%- for col in desiredState.sources[0].columns %}
 	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                       {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
                          ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}"  
@@ -361,13 +361,13 @@ select 1 = 0
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
           
-            FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
+            FROM '@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}') 
             {{ filePatternSQL }}
       
           {%- if desiredState.config.fileFormatType == 'File Format Name' %}
           FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}')
          {%else%}
-            FILE_FORMAT = ( TYPE = {{ config.fileType}}
+            FILE_FORMAT = ( TYPE = {{ desiredState.config.fileType}}
              {% if desiredState.config.compression != "NONE" %}
               COMPRESSION = {{ desiredState.config.compression }}
              {%endif%}
@@ -383,19 +383,19 @@ select 1 = 0
                FIELD_OPTIONALLY_ENCLOSED_BY ='{{ desiredState.config.fieldEnclosed }}'
           {%endif%}
           {% if desiredState.config.skipBlankLines and desiredState.config.fileType in ('CSV')%}
-             SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
+             SKIP_BLANK_LINES =  {{ desiredState.config.skipBlankLines }}
           {%endif%}
           {% if desiredState.config.skipHeader and desiredState.config.fileType in ('CSV')%}
-             SKIP_HEADER = {{config.skipHeader}}
+             SKIP_HEADER = {{desiredState.config.skipHeader}}
           {%endif%}
           {% if desiredState.config.trimSpace%}
-              TRIM_SPACE = {{ config.trimSpace }}
+              TRIM_SPACE = {{ desiredState.config.trimSpace }}
           {%endif%}
           {% if desiredState.config.replaceinvalidcharacters%}
               REPLACE_INVALID_CHARACTERS = {{desiredState.config.replaceinvalidcharacters}}
           {%endif%}
           {% if desiredState.config.stripouterarray and desiredState.config.fileType in ('JSON')%}
-              STRIP_OUTER_ARRAY = {{config.stripouterarray}}
+              STRIP_OUTER_ARRAY = {{desiredState.config.stripouterarray}}
           {%endif%}
           {% if desiredState.config.dateformat != "AUTO" and desiredState.config.dateformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
               DATE_FORMAT = '{{desiredState.config.dateformat}}'
@@ -408,7 +408,7 @@ select 1 = 0
 	         TIME_FORMAT = AUTO
            {%endif%}
            {% if desiredState.config.timestampformat != "AUTO" and desiredState.config.timestampformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
-              TIMESTAMP_FORMAT = '{{config.timestampformat}}'
+              TIMESTAMP_FORMAT = '{{desiredState.config.timestampformat}}'
 	       {% elif desiredState.config.timestampformat == "AUTO" %}
 	         TIMESTAMP_FORMAT = AUTO
            {%endif%} 
@@ -423,7 +423,7 @@ select 1 = 0
               {% set onErrorReplaced = desiredState.config.onError | replace('<num>', desiredState.config.errornumber|string) %}
                ON_ERROR = '{{ onErrorReplaced }}'
         {%else%}
-               ON_ERROR = {{ config.onError }}
+               ON_ERROR = {{ desiredState.config.onError }}
             {%endif%}
         {%endif%}
 
@@ -446,7 +446,7 @@ select 1 = 0
         )
         FROM (SELECT
 
-            {%- for col in sources[0].columns %}
+            {%- for col in desiredState.sources[0].columns %}
 	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                       {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
                          ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}"
@@ -460,7 +460,7 @@ select 1 = 0
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
           
-            FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
+            FROM '@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}') 
             {{ fileNameSQL }}
             {{ filePatternSQL }}
       
@@ -483,19 +483,19 @@ select 1 = 0
                FIELD_OPTIONALLY_ENCLOSED_BY ='{{ desiredState.config.fieldEnclosed }}'
           {%endif%}
           {% if desiredState.config.skipBlankLines and desiredState.config.fileType in ('CSV')%}
-             SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
+             SKIP_BLANK_LINES =  {{ desiredState.config.skipBlankLines }}
           {%endif%}
           {% if desiredState.config.skipHeader and desiredState.config.fileType in ('CSV')%}
-             SKIP_HEADER = {{config.skipHeader}}
+             SKIP_HEADER = {{desiredState.config.skipHeader}}
           {%endif%}
           {% if desiredState.config.trimSpace%}
-              TRIM_SPACE = {{ config.trimSpace }}
+              TRIM_SPACE = {{ desiredState.config.trimSpace }}
           {%endif%}
           {% if desiredState.config.replaceinvalidcharacters%}
               REPLACE_INVALID_CHARACTERS = {{desiredState.config.replaceinvalidcharacters}}
           {%endif%}
           {% if desiredState.config.stripouterarray and desiredState.config.fileType in ('JSON')%}
-              STRIP_OUTER_ARRAY = {{config.stripouterarray}}
+              STRIP_OUTER_ARRAY = {{desiredState.config.stripouterarray}}
           {%endif%}
           {% if desiredState.config.dateformat != "AUTO" and desiredState.config.dateformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
               DATE_FORMAT = '{{desiredState.config.dateformat}}'
@@ -508,7 +508,7 @@ select 1 = 0
 	         TIME_FORMAT = AUTO
            {%endif%}
            {% if desiredState.config.timestampformat != "AUTO" and desiredState.config.timestampformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
-              TIMESTAMP_FORMAT = '{{config.timestampformat}}'
+              TIMESTAMP_FORMAT = '{{desiredState.config.timestampformat}}'
 	       {% elif desiredState.config.timestampformat == "AUTO" %}
 	         TIMESTAMP_FORMAT = AUTO
            {%endif%} 
@@ -523,7 +523,7 @@ select 1 = 0
               {% set onErrorReplaced = desiredState.config.onError | replace('<num>', desiredState.config.errornumber|string) %}
                ON_ERROR = '{{ onErrorReplaced }}'
         {%else%}
-               ON_ERROR = {{ config.onError }}
+               ON_ERROR = {{ desiredState.config.onError }}
             {%endif%}
         {%endif%}
 

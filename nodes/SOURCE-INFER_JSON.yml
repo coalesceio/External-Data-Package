@@ -1,0 +1,37 @@
+fileVersion: 1
+id: 4665abae-1aff-411c-84d2-fe25d8f929f7
+name: INFER_JSON
+operation:
+  config:
+    fileFormatName: jsonfileformat
+    fileNames: employees.json
+    redeploymentBehavior: Create or Replace
+    stageName: SPSTAGESAMPLE/
+    stageStorageLocationName: TARGET
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_JSON
+        noLinkRefs: []
+  name: INFER_JSON
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

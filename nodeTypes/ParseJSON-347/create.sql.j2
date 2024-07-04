@@ -286,7 +286,7 @@ select 1 = 0
 
 {{ stage('Create Python Parse Json SP') }}
 CREATE OR REPLACE FUNCTION {{ fqUdtfName }} (file_path string, array_name string)
-RETURNS TABLE (src variant)
+RETURNS  TABLE(src variant)
 LANGUAGE PYTHON
 RUNTIME_VERSION = '3.8'
 PACKAGES = ('snowflake-snowpark-python')

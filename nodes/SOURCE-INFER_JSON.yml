@@ -16,7 +16,27 @@ operation:
   materializationType: table
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: be680379-839b-4de9-82c2-b02c2ec255aa
+          stepCounter: 4665abae-1aff-411c-84d2-fe25d8f929f7
+        config: {}
+        dataType: varchar2(30)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: AB
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

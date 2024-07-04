@@ -1,6 +1,6 @@
 fileVersion: 1
 id: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
-name: JDBC_PRODUCTS
+name: JDBC_PRODUCTS12
 operation:
   config:
     acc_int: sales_jdbc
@@ -63,9 +63,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: JDBC_PRODUCTS
+        name: JDBC_PRODUCTS12
         noLinkRefs: []
-  name: JDBC_PRODUCTS
+  name: JDBC_PRODUCTS12
   overrideSQL: false
   schema: ""
   sqlType: "327"

@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 78264faf-6c35-411d-a365-5280d3dcfdc8
-name: JDBC_CUSTOMER
+name: JDBC_CUSTOMER12
 operation:
   config:
     acc_int: sales_jdbc
@@ -63,9 +63,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: JDBC_CUSTOMER
+        name: JDBC_CUSTOMER12
         noLinkRefs: []
-  name: JDBC_CUSTOMER
+  name: JDBC_CUSTOMER12
   overrideSQL: false
   schema: ""
   sqlType: "327"

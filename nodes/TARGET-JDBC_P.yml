@@ -1,0 +1,74 @@
+fileVersion: 1
+id: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
+name: JDBC_P
+operation:
+  config:
+    acc_int: sales_jdbc
+    jar_loc: SPSTAGESAMPLE
+    jar_name: mssql-jdbc-12.6.2.jre11.jar
+    jdbc_driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jdbc_url: jdbc:sqlserver://coalesce-source.database.windows.net:1433;database=coalesce_source
+    secret: sales
+    sql: SELECT * FROM saleslt.product
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3feec9a-e597-49a1-8e45-e105464617ca
+          stepCounter: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
+        config: {}
+        data: true
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7767b74a-0a3b-49ef-a1d5-7f2b7df5887c
+          stepCounter: ccf1ee3a-8796-4c03-a3b6-56fe7f86d7e9
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: JDBC_P
+        noLinkRefs: []
+  name: JDBC_P
+  overrideSQL: false
+  schema: ""
+  sqlType: "327"
+  type: sql
+  version: 1
+type: Node

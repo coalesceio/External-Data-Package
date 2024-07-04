@@ -32,7 +32,7 @@ operation:
         dataType: VARIANT
         defaultValue: ""
         description: ""
-        name: DATA
+        name: DATA1
         nullable: true
         sourceColumnReferences:
           - columnReferences: []

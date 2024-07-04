@@ -1,0 +1,86 @@
+fileVersion: 1
+id: 19a859c2-f9f2-469c-9fb9-df6160647efc
+name: EXT_ORC
+operation:
+  config:
+    autoRefresh: false
+    cloudProvider: AWS
+    compression: AUTO
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    filePattern: ""
+    fileType: ORC
+    integration: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: false
+    skipBlankLines: true
+    skipHeader: "1"
+    snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
+    stageName: SPSTAGESAMPLE/
+    stageStorageLocationName: TARGET
+    stripouterarray: false
+    trimSpace: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - VALUE: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33e16ea4-f17b-4d5a-b355-ef908ddb9f86
+          stepCounter: 19a859c2-f9f2-469c-9fb9-df6160647efc
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - METADATA$FILENAME: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc8099a3-8b15-450e-8807-2154512aa74e
+          stepCounter: 19a859c2-f9f2-469c-9fb9-df6160647efc
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: EXT_ORC
+        noLinkRefs: []
+  name: EXT_ORC
+  overrideSQL: false
+  schema: ""
+  sqlType: "298"
+  type: sql
+  version: 1
+type: Node

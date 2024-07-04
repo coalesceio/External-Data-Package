@@ -1,3 +1,14 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : Parse Json == #}
+{# == Node Type Description    : This node loads data from large json arrays in json file located in internal or exteranl stage location. == #}
+
 {% set udtfName = node.name %}
 {% set udtfStrLoc = config.udtfLocation %}
 {% set udtfDb = storageLocations | selectattr('name', 'equalto', udtfStrLoc) | map(attribute='database') | first %}
@@ -19,7 +30,6 @@
 
 {% set tgtDb = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='database') | first %}
 {% set tgtSch = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='schema') | first %}
-
 
 
 

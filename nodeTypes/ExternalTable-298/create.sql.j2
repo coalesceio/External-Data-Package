@@ -19,7 +19,7 @@ select 1 = 0
   {{ stage('Drop External Table') }}
   DROP EXTERNAL TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
 
-{% elif currentState == undefined or (desiredState != currentState )%} 
+{% elif currentState == undefined or (currentState != undefined and desiredState != currentState )%} 
 
 #External Stage locations
 
@@ -69,10 +69,10 @@ select 1 = 0
   {% endif %}
   auto_refresh = {{ desiredState.config.autoRefresh }}
 
-  {% if desiredState.config.autoRefresh and (desiredState.config.snsTopic != null or desiredState.config.snsTopic !="" )%}
+  {% if desiredState.config.autoRefresh and desiredState.config.cloudProvider == 'AWS' and  desiredState.config.snsTopic !=""%}
   aws_sns_topic = '{{ desiredState.config.snsTopic }}'{% endif %}
 
-    {% if desiredState.config.autoRefresh and (desiredState.config.integration != null or desiredState.config.integration !="" )%}
+    {% if desiredState.config.autoRefresh and desiredState.config.cloudProvider != 'AWS' and  desiredState.config.snsTopic !=""%}
   integration = '{{ desiredState.config.integration }}'{% endif %}
   
   {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description }}'{% endif %}

@@ -1,0 +1,167 @@
+fileVersion: 1
+id: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+name: COPY_XMLEX
+operation:
+  config:
+    compression: NONE
+    dateformat: ""
+    enforceLength: "FALSE"
+    errornumber: "8"
+    externalURI: s3://dataentrega/testing/books.xml
+    extlocation: false
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileNames: "'books.xml'"
+    filePattern: ""
+    fileType: XML
+    forceLoad: ""
+    intextstage: true
+    loadUncertainFiles: ""
+    onError: SKIP_FILE_<num>%
+    purgeBehavior: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: false
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
+    skipHeader: "1"
+    stageName: SPSTAGESAMPLE/
+    stageStorageLocationName: TARGET
+    storageintegration: sp_int
+    stripouterarray: false
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    truncateColumns: "TRUE"
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+          stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: $1
+        sysJSON: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: daf49ea7-4efb-4311-9bf2-308bcb8a0cc6
+          stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: current_timestamp()::timestamp_ntz
+        sysLdTs: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6223676-5f97-43a5-888c-c8ee5ca4e740
+          stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5183405-1579-438f-9982-f198f1d8e94b
+          stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_ROW_NUMBER
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d17f5734-8a90-4240-b060-642eea59bdcf
+          stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_LAST_MODIFIED
+        sysFlLtMd: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 92635e9d-f164-415f-9eb3-bbbfd1e23e2a
+          stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$START_SCAN_TIME
+        sysFlScTm: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: COPY_XMLEX
+        noLinkRefs: []
+  name: COPY_XMLEX
+  overrideSQL: false
+  schema: ""
+  sqlType: "324"
+  type: sql
+  version: 1
+type: Node

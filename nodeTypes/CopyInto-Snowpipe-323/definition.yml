@@ -1,0 +1,277 @@
+fileVersion: 1
+id: "323"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |+
+    capitalized: COPY INTO - SNOWPIPE
+    short: 'COPY'
+    tagColor: '#6ca37b'
+    isDisabled: false
+    plural: Copy Into
+
+    deployStrategy: advanced
+
+    config:
+
+    - groupName: Snowpipe Options
+      items:
+      - displayName: Enable Snowpipe
+        attributeName: flagSnowpipe
+        type: toggleButton
+        enableIf: "{% if config.flagLoadHistorical == true %} false {% else %} true {% endif %}"
+
+      - displayName: Cloud Provider
+        attributeName: cloudProvider
+        type: dropdownSelector
+        default: "AWS"
+        options:
+        - "AWS"
+        - "Azure"
+        - "GCP"
+        enableIf: "{% if config.flagSnowpipe == true %} true {% else %} false {% endif %}"
+
+      - displayName: AWS SNS Topic
+        attributeName: awsSnsTopic
+        type: textBox
+        isRequired: false
+        enableIf: "{% if config.flagSnowpipe == true and config.cloudProvider == 'AWS' %} true {% else %} false {% endif %}"
+
+
+      - displayName: Integration
+        attributeName: integration
+        type: textBox
+        isRequired: false
+        enableIf: "{% if config.flagSnowpipe == true and config.cloudProvider != 'AWS' %} true {% else %} false {% endif %}"
+
+      - displayName: Load Historical Data
+        attributeName: flagLoadHistorical
+        type: toggleButton
+        default: false
+        enableIf: "{% if config.flagSnowpipe == true %} false {% else %} true {% endif %}"
+
+    - groupName: File Location
+      items:
+      - displayName: Stage Storage Location
+        attributeName: stageStorageLocationName
+        type: textBox
+        default: 'Enter Storage Location name'
+        isRequired: true
+
+      - displayName: Stage Name
+        attributeName: stageName
+        type: textBox
+        default: 'stage_name/foldername/'
+        isRequired: true
+
+      - displayName: File Name(s) (Optional - Ex:'a.csv','b.csv' )
+        attributeName: fileNames
+        type: textBox
+        isRequired: false
+        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
+
+      - displayName: File Pattern (Optional - Ex:'.*hea.*[.]csv')
+        attributeName: filePattern
+        type: textBox
+        isRequired: false
+      
+
+    - groupName: File Format
+      items:
+      - displayName: File Format Definition
+        attributeName: fileFormatType
+        type: dropdownSelector
+        default: "File Format Name"
+        options:
+        - File Format Name
+        - File Format Values
+
+      - displayName: File Format Name
+        attributeName: fileFormatName
+        type: textBox
+        default: ""
+        isRequired: false
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+
+      - displayName: File Type
+        attributeName: fileType
+        type: dropdownSelector
+        default: CSV
+        options:
+        - "CSV"
+        - "PARQUET"
+        - "JSON"
+        - "AVRO"
+        - "ORC"
+        - "XML"
+        isRequired: false
+        
+
+      - displayName: Compression
+        attributeName: compression
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV','JSON')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        default: "AUTO"
+        options:
+        - "AUTO"
+        - "GZIP"
+        - "BZ2"
+        - "BROTLI"
+        - "ZSTD"
+        - "DEFLATE"
+        - "RAW_DEFLATE"
+        - "NONE"
+        isRequired: false
+
+      - displayName: Record delimiter
+        attributeName: recDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\n"
+        isRequired: false
+
+      - displayName: Field delimiter
+        attributeName: fieldDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: ","
+        isRequired: false
+
+      - displayName: Field optionally enclosed by
+        attributeName: fieldEnclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\042"
+        isRequired: false
+
+      - displayName: Number of header lines to skip
+        attributeName: skipHeader
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "1"
+        isRequired: false
+
+      - displayName: Skip blank lines
+        attributeName: skipBlankLines
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false
+
+      - displayName: Trim space
+        attributeName: trimSpace
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML')) %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false
+
+      - displayName: Replace invalid characters
+        attributeName: replaceinvalidcharacters
+        enableIf: "{% if (config.fileFormatType != 'File Format Name') %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: false
+        isRequired: false    
+
+      - displayName: Strip Outer Array
+        attributeName: stripouterarray
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON')) %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: false
+        isRequired: false   
+      
+      - displayName: Date format
+        attributeName: dateformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: Time format
+        attributeName: timeformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: Timestamp format
+        attributeName: timestampformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+
+    - groupName: Copy Options
+      items:
+
+      - displayName: On Error Behavior
+        attributeName: onError
+        type: dropdownSelector
+        options:
+        - "CONTINUE"
+        - "SKIP_FILE"
+        - "SKIP_FILE_<num>"
+        - "SKIP_FILE_<num>%"
+        isRequired: false
+
+      - displayName: Specify the number of errors that can be skipped
+        attributeName: errornumber
+        type: textBox
+        enableIf: "{% if config.onError in('SKIP_FILE_<num>','SKIP_FILE_<num>%') or config.onError1 in('SKIP_FILE_<num>','SKIP_FILE_<num>%') %} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: Enforce Length
+        attributeName: enforceLength
+        type: dropdownSelector
+        options:
+        - "TRUE"
+        - "FALSE"
+        isRequired: false
+
+      - displayName: Truncate Columns
+        attributeName: truncateColumns
+        type: dropdownSelector
+        options:
+        - "TRUE"
+        - "FALSE"
+        isRequired: false
+
+
+    systemColumns:
+
+    - displayName: SRC
+      transform: '$1'
+      dataType: VARIANT
+      placement: end
+      attributeName: sysJSON
+
+    - displayName: LOAD_TIMESTAMP
+      transform: 'current_timestamp()::timestamp_ntz'
+      dataType: TIMESTAMP_NTZ
+      placement: end
+      attributeName: sysLdTs
+
+    - displayName: FILENAME
+      transform: 'METADATA$FILENAME'
+      dataType: STRING
+      placement: end
+      attributeName: sysFlNm
+
+    - displayName: FILE_ROW_NUMBER
+      transform: 'METADATA$FILE_ROW_NUMBER'
+      dataType: NUMBER
+      placement: end
+      attributeName: sysFlRwNm
+
+    - displayName: FILE_LAST_MODIFIED
+      transform: 'METADATA$FILE_LAST_MODIFIED'
+      dataType: TIMESTAMP_NTZ
+      placement: end
+      attributeName: sysFlLtMd
+
+    - displayName: SCAN_TIME
+      transform: 'METADATA$START_SCAN_TIME'
+      dataType: TIMESTAMP_NTZ
+      placement: end
+      attributeName: sysFlScTm
+
+
+name: CopyInto-Snowpipe
+type: NodeType

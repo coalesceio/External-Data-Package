@@ -1,3 +1,14 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : JDBC Load == #}
+{# == Node Type Description    : This node creates target table to load data from external databases via JDBC as a JSON rowset == #}
+
 {% set udtfName = node.name %}
 {% set tgtTblStLoc = node.location.name %}
 {% set tgtDb = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='database') | first %}

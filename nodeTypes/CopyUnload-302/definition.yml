@@ -202,7 +202,7 @@ metadata:
         type: toggleButton
         isRequired: true
         default: false
-        enableIf: "{% if config.partitionConfig %} true {% else %} false {% endif %}"
+        
 
       - displayName: Detailed Output
         attributeName: detailedOutput

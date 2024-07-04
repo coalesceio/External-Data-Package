@@ -114,7 +114,11 @@ does not permit copying or modification for any other purpose.
         overwrite = {{ config.overwriteFiles }}
         single = {{ config.singleFile }}
         max_file_size = {{ config.sizeLimit | int * 1024 * 1024 }} 
+        {% if config.partitionConfig == true %}
+         include_query_id = true
+        {%else%}
         include_query_id = {{ config.queryId }}
+        {%endif%}
         detailed_output = {{ config.detailedOutput }}
         header ={{ config.header }}
     {% endfor %}

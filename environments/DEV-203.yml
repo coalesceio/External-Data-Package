@@ -1,11 +1,11 @@
 fileVersion: 1
-id: "169"
+id: "203"
 mappingDefinitions:
   SOURCE:
-    database: DE_UDN_DB
-    schema: RM_DEV
+    database: ANANDHIS_DEV
+    schema: SOURCE_DATA
   TARGET:
     database: ANANDHIS_DEV
-    schema: TARGET
-name: QA
+    schema: TARGET_QA
+name: DEV
 type: Environment

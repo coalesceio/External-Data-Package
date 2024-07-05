@@ -57,6 +57,7 @@ select 1 = 0
             {% set nsVariables = namespace(nsCurrentUsedStorageLocations="") %}
 
             {# Current State Storage Location Info #}
+        {% if currentState.sources.dependencies|length > 0 %}
             {% for source in currentState.sources %}
                 {% for dep in source.dependencies %}
                     {% set depSourceLocation = dep.node.location.name %}
@@ -66,6 +67,7 @@ select 1 = 0
                         {% set nsVariables.nsCurrentDepStorageLocations = nsVariables.nsCurrentDepStorageLocations + ',' + depSourceLocation %}
                     {% endif %}
                 {% endfor %}
+        
                 
                 {% if loop.first %}
                     {% set nsVariables.nsCurrentSourceStorageLocations = nsVariables.nsCurrentDepStorageLocations %}
@@ -73,10 +75,16 @@ select 1 = 0
                     {% set nsVariables.nsCurrentSourceStorageLocations = nsVariables.nsCurrentSourceStorageLocations + ',' + nsVariables.nsCurrentDepStorageLocations %}
                 {% endif %}
             {% endfor %}
+        {%endif%}
+        
 
             {% set nsVariables.nsCurrentTargetStorageLocations = currentState.node.location.name  %}
 
+          {% if currentState.sources.dependencies|length > 0 %}
             {% set nsVariables.nsCurrentUsedStorageLocations = nsVariables.nsCurrentSourceStorageLocations + ',' + nsVariables.nsCurrentTargetStorageLocations %}
+		  {% else %}
+		    {% set nsVariables.nsCurrentUsedStorageLocations = nsVariables.nsCurrentTargetStorageLocations %}
+		  {%endif%}
 
             {% set currentStorageLocations = (nsVariables.nsCurrentUsedStorageLocations).split(',') | list %}
             {% set currentUniqueStorageLocations = currentStorageLocations | unique | sort | list %}
@@ -90,6 +98,7 @@ select 1 = 0
             {% set nsVariables = namespace(storageLocationTest="") %}
 
             {# Desired State Storage Location Info #}
+        {% if currentState.sources.dependencies|length > 0 %}
             {% for source in desiredState.sources %}
                 {% for dep in source.dependencies %}
                     {% set depSourceLocation = dep.node.location.name %}
@@ -106,10 +115,15 @@ select 1 = 0
                     {% set nsVariables.nsDesiredSourceStorageLocations = nsVariables.nsDesiredSourceStorageLocations + ',' + nsVariables.nsDesiredDepStorageLocations %}
                 {% endif %}
             {% endfor %}
+        {% endif %}
 
             {% set nsVariables.nsDesiredTargetStorageLocations = desiredState.node.location.name  %}
 
-            {% set nsVariables.nsDesiredUsedStorageLocations = nsVariables.nsDesiredSourceStorageLocations + ',' + nsVariables.nsDesiredTargetStorageLocations %}
+		  {% if desiredState.sources.dependencies|length > 0 %}
+		      {% set nsVariables.nsDesiredUsedStorageLocations = nsVariables.nsDesiredSourceStorageLocations + ',' + nsVariables.nsDesiredTargetStorageLocations %}
+		  {% else %}
+		      {% set nsVariables.nsDesiredUsedStorageLocations = nsVariables.nsDesiredTargetStorageLocations %}
+		  {% endif %}
 
             {% set desiredStorageLocations = (nsVariables.nsDesiredUsedStorageLocations).split(',') | list %}
             {% set desiredUniqueStorageLocations = desiredStorageLocations | unique | sort | list %}
@@ -133,9 +147,10 @@ select 1 = 0
                     {% set nsVariables.storageLocationTest = false %}
                 {% endif %}
             {% endfor %}
+        
 
             {# Rename / Move Object #}
-            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
+            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name or currentState.node.location.name != desiredState.node.location.name) %}
                 {{ stage('Rename and / or Move Table', true, "sql", "alter") }}
                 ALTER TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
                 RENAME TO   {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
@@ -388,7 +403,7 @@ select 1 = 0
           {% if desiredState.config.skipHeader and desiredState.config.fileType in ('CSV')%}
              SKIP_HEADER = {{desiredState.config.skipHeader}}
           {%endif%}
-          {% if desiredState.config.trimSpace and config.fileType not in ('XML')%}
+          {% if desiredState.config.trimSpace and desiredState.config.fileType not in ('XML')%}
               TRIM_SPACE = {{ desiredState.config.trimSpace }}
           {%endif%}
           {% if desiredState.config.replaceinvalidcharacters%}

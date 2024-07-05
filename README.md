@@ -676,7 +676,7 @@ The JDBC Load Node Configuration type has two configuration groups:
 * [Node Properties](#JDBC-load-node-properties)
 * [Options](#JDBC-load-Options)
 
-<h4 id="JDBC-load-node-properties"> API Node Properties</h4>
+<h4 id="JDBC-load-node-properties"> JDBC Node Properties</h4>
 
 * **Storage Location**: Storage Location is the location of the destination where retrieved from external database are stored 
 * **Node Type**: Name of template used to create node objects.

@@ -832,6 +832,12 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 * [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/create.sql.j2)
 * [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Inferschema-299/run.sql.j2)
 
+### CopyInto
+
+* [Node definition]()
+* [Create Template]()
+* [Run Template]()
+
 ### CopyInto-Snowpipe
 
 * [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/definition.yml)
@@ -843,3 +849,35 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 * [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/definition.yml)
 * [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/create.sql.j2)
 * [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/ExternalTable-298/run.sql.j2)
+
+### Copy Unload
+
+* [Node definition]()
+* [Create Template]()
+* [Run Template]()
+
+### API
+
+* [Node definition]()
+* [Create Template]()
+* [Run Template]()
+
+### JDBC
+
+* [Node definition]()
+* [Create Template]()
+* [Run Template]()
+
+### Parse Excel
+
+* [Node definition]()
+* [Create Template]()
+* [Run Template]()
+
+### Parse Json
+
+* [Node definition]()
+* [Create Template]()
+* [Run Template]()
+
+  

@@ -219,9 +219,9 @@ The set of columns which has source data and file metadata information.
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
 
-### CopyInto - Snowpipe Deployment
+### CopyInto Deployment
 
-#### CopyInto Snowpipe Deployment Parameters
+#### CopyInto Deployment Parameters
 
 The CopyInto-Snowpipe includes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
 
@@ -235,7 +235,7 @@ The parameter name is `loadType` and the default value is ``.
 
 When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.
 
-#### CopyInto - Snowpipe Initial Deployment
+#### CopyInto Initial Deployment
 
 When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
@@ -244,7 +244,7 @@ When deployed for the first time into an environment the CopyInto-Snowpipe node 
 |  Initial Deployment | `false` | empty|Create Table. </br> Historical full load using CopyInto. |
 | Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force|
 
-### CopyInto - Snowpipe Redeployment
+### CopyInto Redeployment
 
 #### Altering the CopyInto-Snowpipe Tables
 
@@ -256,14 +256,14 @@ The following stages are executed:
 * **Create Pipe**: Pipe is recreated if enable snowpipe option is true
 * **Historical full load using CopyInto**:Historical data are loaded
 
-### CopyInto - Snowpipe Undeployment
+### CopyInto Undeployment
 
 If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 This is executed in two stages:
 
-* **Drop Table**: Target table is dropped
-* **Drop Pipe**: Pipe is dropped
+* **Delete Table**: Target table is dropped
+* **Delete Table**: Pipe is dropped
 
 
 <h2 id="CopyIntoSnowpipe">CopyInto - Snowpipe </h2>

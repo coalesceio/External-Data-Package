@@ -12,7 +12,7 @@ operation:
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatName: csvfileformat
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: ""
     filePattern: "'.*hea.*[.]csv'"
     fileType: CSV

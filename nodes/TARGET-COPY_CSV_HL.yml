@@ -5,14 +5,14 @@ operation:
   config:
     awsSnsTopic: ""
     cloudProvider: AWS
-    compression: ""
+    compression: NONE
     dateformat: ""
     enforceLength: ""
     errornumber: ""
-    fieldDelim: ","
+    fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatName: csvfileformat
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: ""
     filePattern: "'.*hea.*[.]csv'"
     fileType: CSV
@@ -20,8 +20,9 @@ operation:
     flagSnowpipe: false
     integration: ""
     onError: ""
-    recDelim: |+
+    recDelim: |-
 
+      \n
     replaceinvalidcharacters: false
     skipBlankLines: true
     skipHeader: "1"

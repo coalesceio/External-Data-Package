@@ -7,6 +7,10 @@ The Coalesce External Data Package includes:
 * [CopyInto-Snowpipe](#CopyIntoSnowpipe)
 * [External Table](#external-tables)
 * [CopyUnload](#CopyUnload)
+* [API](#API)
+* [JDBC LOAD](#jdbc-load)
+* [Parse Excel](#parse-excel)
+* [Parse Json](#parse-json)
 * [Code](#code)
 
 <h2 id="inferschema"> InferSchema </h2>

@@ -549,7 +549,17 @@ The following stages are executed:
 If the External table node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 * **Drop External Table**
-  
+
+<h2 id="CopyUnload">CopyUnload </h2>
+
+<h2 id="API">API </h2>
+
+<h2 id="JDBC LOAD">JDBC LOAD</h2>
+
+<h2 id="Parse Excel">Parse Excel </h2>
+
+<h2 id="Parse Json">Parse Json </h2>h2>
+
 ## Code
 
 ### InferSchema

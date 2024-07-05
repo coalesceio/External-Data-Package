@@ -558,7 +558,7 @@ If the External table node is deleted from a Workspace, that Workspace is commit
 
 <h2 id="Parse Excel">Parse Excel </h2>
 
-<h2 id="Parse Json">Parse Json </h2>h2>
+<h2 id="Parse Json">Parse Json </h2>
 
 ## Code
 

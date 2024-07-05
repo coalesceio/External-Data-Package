@@ -629,7 +629,70 @@ The Copy Unload node type has four configuration groups:
 
 <h2 id="API">API </h2>
 
+The Coalesce API Node loads external data which is external to snowflake with the help of EXTERNAL ACCESS INTEGRATION Name which has a network rule which allows access to external network locations using procedure handler
+
+
+### API Node Configuration
+
+The API Node Configuration type has two configuration groups:
+
+* [Node Properties](#api-node-properties)
+* [Options](#API-node-Options)
+
+<h4 id="api-node-properties"> API Node Properties</h4>
+
+* **Storage Location**: Storage Location is the location of the destination where retrieved data of API calls are stored 
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+<h4 id="api-node-options"> API Node Options </h4>
+
+
+* **Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
+* **Method(Required)**: HTTP Request methods Get,Put,Post
+  * **Get**: API Call to retrieve data
+  * **Put**: API Call to update existing data
+  * **Post**: API Call to create new data
+  
+* **URI(Required)**: Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API
+* **Headers**: headers are used to provide additional context and information about the request
+* **Payload**: when making HTTP requests to a URI, the request may include a payload (also known as a body)
+* ***Note:***: Payload applicable only to Put & Post API method calls
+  
 <h2 id="JDBC LOAD">JDBC LOAD</h2>
+
+The Coalesce JDBC Load Node allows to connect, interact, and retrieve data from various database management systems into Snowflake
+
+### JDBC Load Node Configuration
+
+The JDBC Load Node Configuration type has two configuration groups:
+
+* [Node Properties](#JDBC-load-node-properties)
+* [Options](#JDBC-load-Options)
+
+<h4 id="JDBC-load-node-properties"> API Node Properties</h4>
+
+* **Storage Location**: Storage Location is the location of the destination where retrieved from external database are stored 
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+<h4 id="JDBC-load-options"> JDBC Load Options </h4>
+
+* **JDBC Driver(Required)**: Required to establish the connection to external databse
+* **JAR file external stage location(Required)**: Location of the external stage where JAR file is located 
+* **JAR file name(Required)**: Name of JAR file located in external stage
+* **EXTERNAL ACCESS INTEGRATION(Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
+* **External database credentials**: Username, Password of the external Database in the form snowflake secret object
+* **JDBC URL(Required)**: URL of the database with port number (ex: "sqlserver-tests.database.windows.net:1433" )
+* **SQL(Required)**: SQL query to retrieve the required data
+* **Truncate Before**: 
+
 
 <h2 id="Parse Excel">Parse Excel </h2>
 

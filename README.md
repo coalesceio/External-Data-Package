@@ -699,7 +699,7 @@ The JDBC Load Node Configuration type has two configuration groups:
 * **Truncate Before**: 
 
 
-<h2 id="Parse Excel">Parse Excel </h2>
+<h2 id="parse-excel">Parse Excel </h2>
 
 The Coalesce Parse Excel node parses an large excel file in stage location to json format on the target location
 
@@ -761,7 +761,7 @@ If the Parse Excel node is deleted from a Workspace, that Workspace is committed
 * **Drop Table**
 * **Drop Procedure**
 
-<h2 id="Parse Json">Parse Json </h2>
+<h2 id="parse-json">Parse Json </h2>
 
 The Coalesce parses large json file containing json array to the provided target location 
 

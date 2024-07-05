@@ -111,6 +111,8 @@ If you want to drop the inferred table you can redeploy the Infer Schema node wi
 
 If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
 
+<h2 id="CopyInto"> CopyInto </h2>
+
 ### CopyInto Node Configuration
 
 The Copy-Into node type the following configurations available:
@@ -132,14 +134,12 @@ The Copy-Into node type the following configurations available:
 
 <h3 id="copy-into-file-location">  CopyInto - File Location </h3>
 
-
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
 
 * **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
-* **File Names**: Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
+* **File Names**: Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
-
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 
@@ -221,13 +221,28 @@ The set of columns which has source data and file metadata information.
 
 ### CopyInto - Snowpipe Deployment
 
+#### CopyInto Snowpipe Deployment Parameters
+
+The CopyInto-Snowpipe includes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
+
+The parameter name is `loadType` and the default value is ``.
+
+```json
+{
+    "loadType": ""
+}
+```
+
+When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.
+
 #### CopyInto - Snowpipe Initial Deployment
 
 When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
 | Deployment Behavior  | Enable Snowpipe |Stages Executed|
 |--|--|---|--|
-|  Initial Deployment | `false` | Create Table|
+|  Initial Deployment | `false` | empty|Create Table. </br> Historical full load using CopyInto. |
+| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force|
 
 ### CopyInto - Snowpipe Redeployment
 

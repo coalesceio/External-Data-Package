@@ -7,10 +7,10 @@ operation:
     compression1: AUTO
     dateformat: AUTO
     detailedOutput: false
-    fieldDelim: ","
+    fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatName: csvfileformat
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileLocation: SPSTAGESAMPLE
     fileType: CSV
     file_ext: ""
@@ -27,8 +27,9 @@ operation:
       items:
         - {}
     queryId: false
-    recDelim: |+
+    recDelim: |-
 
+      \n
     singleFile: false
     sizeLimit: "16"
     timeformat: AUTO

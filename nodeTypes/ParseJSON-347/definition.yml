@@ -6,7 +6,7 @@ metadata:
   error: null
   nodeMetadataSpec: |-
     capitalized: Parse JSON Array >16 MB
-    short: LARGE JSON ARRAY LOAD
+    short: Parse_Json
     plural: none
     tagColor: 'aqua'
 

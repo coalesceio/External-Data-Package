@@ -246,15 +246,18 @@ When deployed for the first time into an environment the CopyInto-Snowpipe node 
 
 ### CopyInto Redeployment
 
-#### Altering the CopyInto-Snowpipe Tables
+#### Altering the CopyInto Tables
 
 There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
 
 The following stages are executed:
 
+The following stages are executed:
+
+* **Clone Table**: Creates an internal table.
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
-* **Create Pipe**: Pipe is recreated if enable snowpipe option is true
-* **Historical full load using CopyInto**:Historical data are loaded
+* **Swap cloned Table**: Upon successful completion of all updates, the clone replaces the main table ensuring that no data is lost.
+* **Delete Table**: Drops the internal table.
 
 ### CopyInto Undeployment
 
@@ -262,9 +265,8 @@ If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is com
 
 This is executed in two stages:
 
-* **Delete Table**: Target table is dropped
-* **Delete Table**: Pipe is dropped
-
+* **Delete Table**: Coalesce Internal table is dropped.
+* **Delete Table**: Target table in Snowflake is dropped.
 
 <h2 id="CopyIntoSnowpipe">CopyInto - Snowpipe </h2>
 

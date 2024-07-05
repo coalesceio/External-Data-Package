@@ -16,7 +16,8 @@ The Coalesce InferSchema UDN is a versatile node infers schema of the file in in
 ### InferSchema Prerequisites
 
 * A sample file in the internal or external stage.
-* An existing file.
+* An existing fileformat to parse the file
+* The file format is also expected to be in the same location as stage
 
 ### InferSchema Node Configuration
 

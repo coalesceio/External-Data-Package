@@ -562,8 +562,6 @@ A [Copy Unload](https://docs.snowflake.com/en/sql-reference/sql/copy-into-locati
 
 The Copy Unload node type has four configuration groups:
 
-![NodeConfig](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
-
 * [Node Properties](#copy-unload-node-properties)
 * [File Location](#copy-unload-file-location)
 * [File Format](#copy-unload-file-format)
@@ -580,12 +578,15 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-file-location"> Copy Unload Node File Location </h4>
 
+![copy-unload-file](https://github.com/coalesceio/External-Data-Package/assets/169126315/02698cc6-1d16-4e0c-b0fa-c8d614a6e2ed)
 
 * **Stage (Required)**: Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded.
 * **Partition by (Optional)**: Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)
 * **Allow Expressions in partition by clause**:A regular expression pattern string, enclosed in single quotes, for example: ('date=' || to_varchar(dt, 'YYYY-MM-DD') || '/hour=' || to_varchar(date_part(hour, ts))- Concatenates labels and column values to output meaningful filenames
 
 <h4 id="copy-unload-file-format">Copy Unload  File Format</h4>
+
+<img width="217" alt="FileFormat" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/53434835-c071-4132-b1f0-d0c41810216f">
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format in Snowflake to use for unloading data into the table.
@@ -613,7 +614,8 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-copy-options"> Copy Unload Copy Options</h4>
 
-![CopyOptions](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+<img width="217" alt="CopyOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/4a1d32ec-a898-40ba-93e7-94194bcae02d">
+
 
 * **Overwrite Flag**: Toogle overwrites existing files with matching names, if any, in the location where files are unloaded
 * **Header**: 

@@ -708,7 +708,7 @@ The Coalesce Parse Excel node parses an large excel file in stage location to js
 The Parse Excel node type has three configuration groups:
 
 * [Node Properties](#parse-excel-node-properties)
-* [Stored Procedure Options](#parse-excel-file-location)
+* [Stored Procedure Options](#parse-excel-stored-procedure-options)
 * [Excel File Processing Options](#parse-excel-file-processing-options)
 
 <h4 id="parse-excel-node-properties"> Parse Excel Node Properties</h4>
@@ -770,8 +770,8 @@ The Coalesce parses large json file containing json array to the provided target
 The Parse Excel node type has three configuration groups:
 
 * [Node Properties](#parse-json-node-properties)
-* [UDTF Procedure Options](#parse-json-UDTF-Procedure-Options)
-* [JSON File Processing Options](#parse-json-JSON-File-Processing-Options)
+* [UDTF Procedure Options](#parse-json-UDTF-procedure-options)
+* [JSON File Processing Options](#parse-json-json-file-processing-options)
 
 <h4 id="parse-json-node-properties"> Parse json Node Properties</h4>
 

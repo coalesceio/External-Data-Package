@@ -3,8 +3,10 @@
 The Coalesce External Data Package includes:
 
 * [Inferschema](#inferschema)
+* [CopyInto](#CopyInto)
 * [CopyInto-Snowpipe](#CopyIntoSnowpipe)
 * [External Table](#external-tables)
+* [CopyUnload](#CopyUnload)
 * [Code](#code)
 
 <h2 id="inferschema"> InferSchema </h2>
@@ -39,7 +41,6 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
-[replace image because blurry]
 
 * **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
@@ -106,10 +107,150 @@ If you want to drop the inferred table you can redeploy the Infer Schema node wi
 
 If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
 
+### CopyInto Node Configuration
+
+The Copy-Into node type the following configurations available:
+
+* [Node Properties](#copy-into-node-properties)
+* [Snowpipe Options](#copy-into-snowpipe-options)
+* [File Location](#copy-into-file-location)
+* [File Format](#copy-into-file-format)
+* [Copy Options](#copy-into-copy-options)
+
+<h3 id="copy-into-node-properties">CopyInto - Node Properties</h3>
+
+* **Storage Location**: Storage Location where the WORK will be created.
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+<h3 id="copy-into-file-location">  CopyInto - File Location </h3>
+
+
+![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
+* **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
+* **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
+* **File Names**: Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
+* **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
+
+
+<h3 id="copy-into-file-format"> CopyInto - File Format </h3>
+
+![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+
+
+* **File Format Definition - File Format Name**:
+  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+  * **File Type**:
+    * CSV
+    * JSON
+    * ORC
+    * AVRO
+    * PARQUET
+    * XML
+* **File Format Definition - File Format Values**: 
+  * **File Format Values** -Provides file format options for the File Type chosen.
+  * **File Type**: Each file type has different configurations available.
+    * **CSV**
+    * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
+    * **Record delimiter**:Characters that separate records in an input file
+    * **Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file
+    * **Field optionally enclosed by**:Character used to enclose strings
+    * **Number of header lines to skip**:Number of lines at the start of the file to skip.
+    * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
+    * **Trim Space**: Boolean that specifies whether to remove white space from fields.
+    * **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+    * **Date format**:String that defines the format of date values in the data files to be loaded. 
+    * **Time format**: String that defines the format of time values in the data files to be loaded
+    * **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
+    * **JSON**
+      * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
+      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
+      * **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
+      * **Date format**:String that defines the format of date values in the data files to be loaded. 
+      * **Time format**:String that defines the format of time values in the data files to be loaded
+      * **Timestamp format**: String that defines the format of timestamp values in the data files to be loaded.
+    * **ORC**
+      * **Trim Space** - Specifies whether to remove white space from fields
+      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+    * **AVRO**
+      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
+      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+    * **PARQUET**
+      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
+      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+    * **XML**
+      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+
+<h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
+
+* **On Error Behavior**:String (constant) that specifies the error handling for the load operation.
+  * CONTINUE
+  * SKIP_FILE
+  * SKIP_FILE_num
+  * SKIP_FILE_num%
+  * ABORT_STATEMENT
+* **Specify the number of errors that can be skipped**: Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`. Specify the number of errors that can be skipped.
+* **Size Limit**: Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement.
+* **Purge Behavior**: Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully.
+* **Return Failed Only**: Boolean that specifies whether to return only files that have failed to load in the statement result.
+* **Force**: Boolean that specifies to load all files, regardless of whether they’ve been loaded previously and have not changed since they were loaded. 
+* **Load Uncertain Files**: Boolean that specifies to load files for which the load status is unknown. The COPY command skips these files by default.
+* **Enforce Length**: Boolean that specifies whether to truncate text strings that exceed the target column length
+* **Truncate Columns**: Boolean that specifies whether to truncate text strings that exceed the target column length
+
+### CopyInto - System Columns
+
+The set of columns which has source data and file metadata information.
+
+* **SRC** - The data from the file is loaded into this variant column.
+* **LOAD_TIMESTAMP** - Current timestamp when the file gets loaded.
+* **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
+* **FILE_ROW_NUMBER** - Row number for each record in the staged data file.
+* **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
+* **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
+
+
+### CopyInto - Snowpipe Deployment
+
+#### CopyInto - Snowpipe Initial Deployment
+
+When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
+
+| Deployment Behavior  | Enable Snowpipe |Stages Executed|
+|--|--|---|--|
+|  Initial Deployment | `false` | Create Table|
+
+### CopyInto - Snowpipe Redeployment
+
+#### Altering the CopyInto-Snowpipe Tables
+
+There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
+
+The following stages are executed:
+
+* **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
+* **Create Pipe**: Pipe is recreated if enable snowpipe option is true
+* **Historical full load using CopyInto**:Historical data are loaded
+
+### CopyInto - Snowpipe Undeployment
+
+If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+
+This is executed in two stages:
+
+* **Drop Table**: Target table is dropped
+* **Drop Pipe**: Pipe is dropped
+
+
 <h2 id="CopyIntoSnowpipe">CopyInto - Snowpipe </h2>
 
 The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using     
- [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table). CopyInto can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
+ [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table). CopyInto-Snowpipe node can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
 
 [Snowpipe](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro) enables loading data from files as soon as they’re available in a stage. 
 
@@ -138,14 +279,13 @@ The Copy-Into Snowpipe node type the following configurations available:
 
 <h3 id="copy-into-snowpipe-snowpipe-options"> CopyInto - Snowpipe Options </h3>
 
-![Snowpipe](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/49b17d06-2a35-4bf4-b208-145e5f9c607d)
-
-* **Enable Snowpipe**: Toggle that helps us to load historical data or create a pipe to auto ingest files from external stage.
+* **Enable Snowpipe**: Toggle that helps us to load create a pipe to auto ingest files from external stage.
   * Toggle Off - Provides option to load data from files in internal or external stage. This is under File Location configuration.
   * Toggle On - Load data auto ingesting files from AWS, Azure, or GCP. Choose your **Cloud Provider.**
     * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.
     * Azure - Integration. Specifies the existing notification integration used to access the storage queue.
     * GCP -  Integration. Specifies the existing notification integration used to access the storage queue.
+* **Load historical data**:When the toggle is enabled auto ingest does not take place and the files already in internal or external stages are loaded
 
 <h3 id="copy-into-snowpipe-file-location">  CopyInto - Snowpipe File Location </h3>
 
@@ -252,44 +392,26 @@ The set of columns which has source data and file metadata information.
 
 ### CopyInto - Snowpipe Deployment
 
-#### CopyInto Snowpipe Deployment Parameters
-
-The CopyInto-Snowpipe includes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
-
-The parameter name is `loadType` and the default value is ``.
-
-```json
-{
-    "loadType": ""
-}
-```
-
-When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.
-
 #### CopyInto - Snowpipe Initial Deployment
 
 When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
-| Deployment Behavior  | Enable Snowpipe | loadType | Stages Executed|
+| Deployment Behavior  | Enable Snowpipe |Stages Executed|
 |--|--|---|--|
-|  Initial Deployment | `false`  |empty | Create Table. </br> Historical full load using CopyInto. |
-| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force|
-| Initial Deployment | `true` | parameter not required | Create table </br> Create Pipe |
+|  Initial Deployment | `false` | Create Table. </br> Historical full load using CopyInto. |
+| Initial Deployment | `true` | Create table </br> Create Pipe |
 
 ### CopyInto - Snowpipe Redeployment
 
-After the CopyInto-Snowpipe node with materialization type table has been deployed for the first time into a target environment, subsequent deployments may result in either altering the WORK Table or recreating the WORK table.
-
 #### Altering the CopyInto-Snowpipe Tables
 
-There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.
+There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
 
 The following stages are executed:
 
-* **Clone Table**: Creates an internal table.
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
-* **Swap cloned Table**: Upon successful completion of all updates, the clone replaces the main table ensuring that no data is lost.
-* **Delete Table**: Drops the internal table.
+* **Create Pipe**: Pipe is recreated if enable snowpipe option is true
+* **Historical full load using CopyInto**:Historical data are loaded
 
 ### CopyInto - Snowpipe Undeployment
 
@@ -297,8 +419,8 @@ If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is com
 
 This is executed in two stages:
 
-* **Delete Table**: Coalesce Internal table is dropped
-* **Delete Table**: Target table in Snowflake is dropped
+* **Drop Table**: Target table is dropped
+* **Drop Pipe**: Pipe is dropped
 
 ## External Tables
 

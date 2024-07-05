@@ -652,6 +652,7 @@ The API Node Configuration type has two configuration groups:
 
 <h4 id="api-node-options"> API Node Options </h4>
 
+<img width="235" alt="Options" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530">
 
 * **Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
 * **Method(Required)**: HTTP Request methods Get,Put,Post
@@ -686,6 +687,8 @@ The JDBC Load Node Configuration type has two configuration groups:
 
 <h4 id="JDBC-load-options"> JDBC Load Options </h4>
 
+<img width="243" alt="JDBC_load_options" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/5af13d5b-576a-44ce-ae5b-d02d7501cc7f">
+
 * **JDBC Driver(Required)**: Required to establish the connection to external databse
 * **JAR file external stage location(Required)**: Location of the external stage where JAR file is located 
 * **JAR file name(Required)**: Name of JAR file located in external stage
@@ -698,8 +701,129 @@ The JDBC Load Node Configuration type has two configuration groups:
 
 <h2 id="Parse Excel">Parse Excel </h2>
 
+The Coalesce Parse Excel node parses an large excel file in stage location to json format on the target location
+
+### Parse Excel Node Configuration
+
+The Parse Excel node type has three configuration groups:
+
+* [Node Properties](#parse-excel-node-properties)
+* [Stored Procedure Options](#parse-excel-file-location)
+* [Excel File Processing Options](#parse-excel-file-processing-options)
+
+<h4 id="parse-excel-node-properties"> Parse Excel Node Properties</h4>
+
+* **Storage Location**: Storage Location is the location of the destination where source table is parsed. 
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+<h4 id="parse-excel-stored-procedure-options"> Parse Excel Stored Procedure Options </h4>
+
+<img width="228" alt="StoredProcedureOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/ad7e21b6-1ea2-43c9-875a-5a1ce34c9828">
+
+* **Stored Procedure Storage Location(Required)**: Location in Snowflake to be provided where Stored Procedure will be loaded by script
+* ***Note***: Stored Procedure location and Storage Location (i.e. destination) must be in same Schema
+
+<h4 id="parse-excel-file-processing-options">Excel File Processing Options</h4>
+
+<img width="227" alt="ExcelFileProcessingOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/f612a1cb-f5fe-420f-9a38-d040f0151e6a">
+
+
+* **Source File Storage Location(REQUIRED)**: Storage location name in Coalesce which points to the database and schema  where stage is located (source file has to be located under stages)
+* **Source File Stage(REQUIRED)**: Stage name in Snowflake where source file is located
+* **Source File Name(REQUIRED)**: Excel filename to be parsed
+
+### Initial Deployment
+
+When deployed for the first time into an environment the Parse Excel node will execute the below stage:
+
+* **Create OR Replace Table** - This will execute a CREATE OR REPLACE statement and create a table in the target environment.
+* **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the target environment 
+
+### Redeployment
+
+#### Recreating the Parse Excel
+
+There are few column or table changes like Change in table name, Dropping existing column, Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in  recreation of Stored Procedure
+
+The following stages are executed:
+
+* **Rename Table| Alter Column | Delete Column | Add Column| Edit table description** -  Alter table statement is executed to perform the alter operation.
+* **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the specified target environment  
+  
+### Undeployment
+
+If the Parse Excel node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+
+* **Drop Table**
+* **Drop Procedure**
+
 <h2 id="Parse Json">Parse Json </h2>
 
+The Coalesce parses large json file containing json array to the provided target location 
+
+### Parse Json Node Configuration
+
+The Parse Excel node type has three configuration groups:
+
+* [Node Properties](#parse-json-node-properties)
+* [UDTF Procedure Options](#parse-json-UDTF-Procedure-Options)
+* [JSON File Processing Options](#parse-json-JSON-File-Processing-Options)
+
+<h4 id="parse-json-node-properties"> Parse json Node Properties</h4>
+
+* **Storage Location**: Storage Location is the location of the destination where source table is parsed to. 
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+<h4 id="parse-json-UDTF-procedure-options"> Parse JSON UDTF Procedure Options </h4>
+
+<img width="223" alt="UDTFProcedureOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/c319c9f4-6654-4c9b-9416-5a979279055f">
+
+* **User Defined Table Function Location (Required)**: Location in Snowflake to be provided where UDTF will be loaded by script
+* ***Note***: UDTF location and Storage Location (i.e. destination) must be in same Schema
+
+<h4 id="parse-json-json-file-processing-options">Parse JSON JSON File Processing Options</h4>
+
+<img width="227" alt="JSONFileProcessingOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/b32ac841-6e29-4442-8474-8385cd9a0e97">
+
+
+* **Source File Storage Location(REQUIRED)**: Schema name in Snowflake where source file is located (source file has to be located under stages)
+* **Source File Stage(REQUIRED)**: Stage name in Snowflake where source file is located
+* **Source File Name(REQUIRED)**: Json filename to be parsed
+* **JSON Array Name(REQUIRED)**: Array name of the json
+
+### Initial Deployment
+
+When deployed for the first time into an environment the Parse Json node will execute the below stage:
+
+* **Create OR Replace Table** - This will execute a CREATE OR REPLACE statement and create a table in the target environment.
+* **Create OR Replace Function** - This will create a UDTF function in the target environment 
+
+### Redeployment
+
+#### Recreating the Parse Json
+
+There are few column or table changes like Change in table name, Dropping existing column, Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in  recreation of Stored Procedure
+
+The following stages are executed:
+
+* **Rename Table| Alter Column | Delete Column | Add Column| Edit table description** -  Alter table statement is executed to perform the alter operation.
+* **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the specified target environment  
+  
+### Undeployment
+
+If the Parse Json node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+
+* **Drop Table**
+* **Drop Procedure**
+  
 ## Code
 
 ### InferSchema

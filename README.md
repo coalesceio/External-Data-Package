@@ -528,6 +528,8 @@ The set of columns which has source data and file metadata information.
 * **VALUE** - The data from the file is loaded into this variant column
 * **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
 
+### External table Deployment
+
 ### Initial Deployment
 
 When deployed for the first time into an environment the External table node will execute the below stage:
@@ -569,8 +571,6 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-node-properties"> Copy Unload Node Properties</h4>
 
-![NodeProperties](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
-
 * **Storage Location**: Storage Location is the location(i.e. Database and Schema) of your source table. 
 * **Node Type**: Name of template used to create node objects.
 * **Description**: A description of the node's purpose.
@@ -580,16 +580,12 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-file-location"> Copy Unload Node File Location </h4>
 
-![FileLocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
 
 * **Stage (Required)**: Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded.
 * **Partition by (Optional)**: Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)
 * **Allow Expressions in partition by clause**:A regular expression pattern string, enclosed in single quotes, for example: ('date=' || to_varchar(dt, 'YYYY-MM-DD') || '/hour=' || to_varchar(date_part(hour, ts))- Concatenates labels and column values to output meaningful filenames
 
 <h4 id="copy-unload-file-format">Copy Unload  File Format</h4>
-
-![FileFormat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
-
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format in Snowflake to use for unloading data into the table.
@@ -626,6 +622,10 @@ The Copy Unload node type has four configuration groups:
 * **Include Query ID**:  When true provides unique identifier for unloaded files by including a universally unique identifier (UUID) in the filenames of unloaded data files 
 
 * **Detailed Output**: When true includes a row for each file unloaded to the specified stage. Columns show the path and name for each file, its size, and the number of rows that were unloaded to the file.
+
+  ### Copy Unload Deployment
+
+  Deployment not applicable for this node
 
 <h2 id="API">API </h2>
 

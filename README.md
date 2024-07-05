@@ -834,9 +834,9 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 
 ### CopyInto
 
-* [Node definition]()
-* [Create Template]()
-* [Run Template]()
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324)
 
 ### CopyInto-Snowpipe
 
@@ -852,32 +852,32 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 
 ### Copy Unload
 
-* [Node definition]()
-* [Create Template]()
-* [Run Template]()
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyUnload-302)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyUnload-302)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyUnload-302)
 
 ### API
 
-* [Node definition]()
-* [Create Template]()
-* [Run Template]()
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/API-303)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/API-303)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/API-303)
 
 ### JDBC
 
-* [Node definition]()
-* [Create Template]()
-* [Run Template]()
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/JDBCLoad-327)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/JDBCLoad-327)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/JDBCLoad-327)
 
 ### Parse Excel
 
-* [Node definition]()
-* [Create Template]()
-* [Run Template]()
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseExcel-346)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseExcel-346)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseExcel-346)
 
 ### Parse Json
 
-* [Node definition]()
-* [Create Template]()
-* [Run Template]()
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)
 
   

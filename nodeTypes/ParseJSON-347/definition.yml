@@ -19,6 +19,7 @@ metadata:
       - displayName: User Defined Table Function Location
         attributeName: udtfLocation
         type: textBox
+        isRequired: true
         
     - groupName: JSON File Processing Options
       items:
@@ -43,6 +44,7 @@ metadata:
         attributeName: srcJsonArr
         type: textBox
         default: arrayname
+        isRequired: true
         
 
     systemColumns:

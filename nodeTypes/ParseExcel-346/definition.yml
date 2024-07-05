@@ -19,6 +19,7 @@ metadata:
       - displayName: Stored Procedure Storage Location
         attributeName: spLocation
         type: textBox
+        isRequired: true
 
             
     - groupName: Excel File Processing Options
@@ -26,6 +27,7 @@ metadata:
       - displayName: Source File Storage Location
         attributeName: srcFileStrLoc
         type: textBox
+        isRequired: true
 
       - displayName: Source File Stage
         attributeName: srcStage

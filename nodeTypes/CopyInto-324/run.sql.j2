@@ -131,7 +131,7 @@ does not permit copying or modification for any other purpose.
           {% if config.skipHeader and config.fileType in ('CSV')%}
              SKIP_HEADER = {{config.skipHeader}}
           {%endif%}
-          {% if config.trimSpace%}
+          {% if config.trimSpace and config.fileType not in ('XML') %}
               TRIM_SPACE = {{ config.trimSpace }}
           {%endif%}
           {% if config.replaceinvalidcharacters%}

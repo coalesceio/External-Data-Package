@@ -1,0 +1,245 @@
+fileVersion: 1
+id: 0a93469c-1f7c-4331-9eb2-65440153f83f
+name: STG_XMLEX
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b220fb87-06ca-413d-87eb-911ef4eced5a
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fe7892b1-793f-48b2-b72c-28ff62ac195a
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: daf49ea7-4efb-4311-9bf2-308bcb8a0cc6
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a17cc75e-4058-40f2-8086-fbdd030f8467
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b6223676-5f97-43a5-888c-c8ee5ca4e740
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 811945a1-b74d-4d76-9182-72e941dca65e
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5183405-1579-438f-9982-f198f1d8e94b
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff8e8e86-4255-4706-9a08-db2edb41ddbc
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d17f5734-8a90-4240-b060-642eea59bdcf
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f58d0bc-1e70-4aee-91cb-f28dcba295bd
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 92635e9d-f164-415f-9eb3-bbbfd1e23e2a
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07146a9a-8b2d-4a97-b6c9-3282d82c7bbc
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_id
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(catalog_book.value, '@id')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ebf6fe5c-328d-4bfc-bd00-9a481a84eac5
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_author
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(xmlget(catalog_book.value, 'author'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15cb4578-927e-4e00-8f68-3425461be36a
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(xmlget(catalog_book.value, 'title'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c93db54-fca9-456c-ae58-9c005c3515fe
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_genre
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(xmlget(catalog_book.value, 'genre'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c561da9a-7695-4718-a24b-a9c567f0bece
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_price
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(xmlget(catalog_book.value, 'price'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 058b5226-5e13-4ed8-92fe-5e8ffc1ef934
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_publish_date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(xmlget(catalog_book.value, 'publish_date'), '$')
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 989c343a-8a23-46a8-ab67-7534a63ea77f
+          stepCounter: 0a93469c-1f7c-4331-9eb2-65440153f83f
+        config: {}
+        dataType: STRING
+        description: ""
+        name: catalog_book_description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a5bcf0f9-483c-4258-8f43-4c40d663ce6e
+                stepCounter: d4ea1fd7-4992-47ea-92a8-cac4907d6fa1
+            transform: get(xmlget(catalog_book.value, 'description'), '$')
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: COPY_XMLEX
+        join:
+          joinCondition: |-
+            FROM {{ ref('SOURCE', 'COPY_XMLEX') }} "COPY_XMLEX", 
+            LATERAL FLATTEN(input => get(COPY_XMLEX.SRC, '$')) catalog_book
+            where get(catalog_book.value, '@') = 'book'
+        name: STG_XMLEX
+        noLinkRefs: []
+  name: STG_XMLEX
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

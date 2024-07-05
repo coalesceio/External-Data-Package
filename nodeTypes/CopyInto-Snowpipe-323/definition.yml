@@ -112,7 +112,6 @@ metadata:
         attributeName: compression
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV','JSON')) %} true {% else %} false {% endif %}"
         type: dropdownSelector
-        default: "AUTO"
         options:
         - "AUTO"
         - "GZIP"
@@ -163,7 +162,6 @@ metadata:
         attributeName: trimSpace
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML')) %} true {% else %} false {% endif %}"
         type: toggleButton
-        default: true
         isRequired: false
 
       - displayName: Replace invalid characters

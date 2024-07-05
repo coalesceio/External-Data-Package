@@ -552,6 +552,81 @@ If the External table node is deleted from a Workspace, that Workspace is commit
 
 <h2 id="CopyUnload">CopyUnload </h2>
 
+The Coalesce Copy Unload node unloads the table into internal stage or external stage location in various file formats supported by Snowflake
+
+A [Copy Unload](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location#examples) node loads data from a table (or query) into one or more files in the internal or external location mentioned
+
+### Copy Unload Node Configuration
+
+The Copy Unload node type has four configuration groups:
+
+![NodeConfig](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
+* [Node Properties](#copy-unload-node-properties)
+* [File Location](#copy-unload-file-location)
+* [File Format](#copy-unload-file-format)
+* [Copy Options](#copy-unload-copy-options)
+
+<h4 id="copy-unload-node-properties"> Copy Unload Node Properties</h4>
+
+![NodeProperties](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
+* **Storage Location**: Storage Location is the location(i.e. Database and Schema) of your source table. 
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+
+<h4 id="copy-unload-file-location"> Copy Unload Node File Location </h4>
+
+![FileLocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
+* **Stage (Required)**: Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded.
+* **Partition by (Optional)**: Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)
+* **Allow Expressions in partition by clause**:A regular expression pattern string, enclosed in single quotes, for example: ('date=' || to_varchar(dt, 'YYYY-MM-DD') || '/hour=' || to_varchar(date_part(hour, ts))- Concatenates labels and column values to output meaningful filenames
+
+<h4 id="copy-unload-file-format">Copy Unload  File Format</h4>
+
+![FileFormat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+
+
+* **File Format Definition - File Format Name**:
+  * **File Format Name**: Specifies an existing named file format in Snowflake to use for unloading data into the table.
+  * **File Type**:
+    * CSV
+    * JSON
+    * PARQUET
+* **File Format Definition - File Format Values**: 
+  * **File Format Values** -Provides different file format options for the File Type chosen to unload.
+  * **File Type**: Each file type has different configurations available.
+    * **CSV**
+        * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded.
+        * **Record delimiter**: Characters that separate records in an unloaded file
+        * **Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an unloaded file
+        * **Field optionally enclosed by**: Character used to enclose strings. (Default is \042)
+        * **File Extension**: String that specifies the extension for files unloaded to a stage. Accepts any extension.
+        * **Date Format**: String that defines the format of date values in the unloaded data files.(Default is AUTO)
+        * **Time Format**: String that defines the format of time values in the unloaded data files.(Default is AUTO)
+        * **Timestamp Format**: String that defines the format of timestamp values in the unloaded data files.(Default is AUTO)
+    * **JSON**
+        * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded.
+        * **File extension** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+     * **PARQUET**
+        * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded.
+
+<h4 id="copy-unload-copy-options"> Copy Unload Copy Options</h4>
+
+![CopyOptions](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+
+* **Overwrite Flag**: Toogle overwrites existing files with matching names, if any, in the location where files are unloaded
+* **Header**: 
+* **Single File Flag**: Toggle generates a single file when true, else generates multiple files if partition by enabled
+* **Max File Size (MB)**: Number (> 0) that specifies the upper size limit (in bytes) of each file to be generated in parallel per thread. Note that the actual file size and number of files unloaded are determined by the total amount of data and number of nodes available for parallel processing.
+* **Include Query ID**:  When true provides unique identifier for unloaded files by including a universally unique identifier (UUID) in the filenames of unloaded data files 
+
+* **Detailed Output**: When true includes a row for each file unloaded to the specified stage. Columns show the path and name for each file, its size, and the number of rows that were unloaded to the file.
+
 <h2 id="API">API </h2>
 
 <h2 id="JDBC LOAD">JDBC LOAD</h2>

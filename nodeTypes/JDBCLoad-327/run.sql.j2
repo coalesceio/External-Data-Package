@@ -1,0 +1,45 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : JDBC Load == #}
+{# == Node Type Description    : This node creates target table to load data from external databases via JDBC as a JSON rowset == #}
+
+{% set udtfName = node.name %}
+{% set tgtTblStLoc = node.location.name %}
+{% set tgtDb = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='database') | first %}
+{% set tgtSch = storageLocations | selectattr('name', 'equalto', tgtTblStLoc) | map(attribute='schema') | first %}
+
+{% set fqUdtfName = '"' + tgtDb + '"."' + tgtSch + '"."' + udtfName + '"' %}
+
+{% if config.truncateBefore %}
+    
+    {{ stage('Truncate Table') }}
+    TRUNCATE IF EXISTS {{ this }}
+
+{% endif %}
+
+
+{{ stage('Run Insert Function') }}
+
+INSERT INTO {{ ref_no_link(node.location.name, node.name) }}
+SELECT 	
+         {% for source in sources %}		
+            {% for col in source.columns %}
+               {%if col.transform != ""%}
+                    {{col.transform}}
+               {%else%}
+                    {{col.name}}
+                {%endif%}
+	         {%- if not loop.last -%}, {% endif %}
+	       {% endfor %}
+        {% endfor %} 
+FROM TABLE ({{fqUdtfName}} (OBJECT_CONSTRUCT(
+    'driver', '{{config.jdbc_driver}}',
+    'url', '{{config.jdbc_url}}'),
+    '{{config.sql}}'
+))

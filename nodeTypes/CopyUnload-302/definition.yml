@@ -1,0 +1,213 @@
+fileVersion: 1
+id: "302"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |
+    capitalized: Copy UNLOAD
+    short: 'EXPORT'
+    tagColor: 'dodgerblue'
+    isDisabled: false
+    plural: Unloads
+
+
+    config:
+    - groupName: File Location
+      items:
+      - displayName: Stage
+        attributeName: fileLocation
+        type: textBox
+        default: <Enter Stage Name>
+        isRequired: true
+
+      - type: toggleButton
+        attributeName: partitionConfig
+        displayName: Partition by(Optional)
+        default: false
+        isRequired: false
+        enableIf: "{% if (config.fileType in ('CSV','PARQUET')) %} true {% else %} false {% endif %}"
+
+      - type: toggleButton
+        attributeName: partitionConfigExpressions
+        displayName: Allow Expressions in partition by clause
+        default: false
+        isRequired: false
+        enableIf: "{% if config.partitionConfig %} true {% else %} false {% endif %}"
+
+
+      - type: tabular
+        displayName: 'Partition  By'
+        attributeName: partitionbyConfig
+        columns:
+
+        -  type: columnDropdownSelector
+           displayName: Column Name
+           attributeName: columnName
+           isRequired: false
+      
+        isRequired: false
+        enableIf: "{% if (config.partitionConfig and not config.partitionConfigExpressions) %} true {% else %} false {% endif %}"
+
+      - type: tabular
+        displayName: 'Partition  By'
+        attributeName: partitionbyConfigExpressions
+        columns:
+
+        -  type: columnDropdownSelector
+           displayName: Column Name
+           attributeName: columnNameExpressions
+           isRequired: false
+      
+        -  type: textBox
+           displayName: Expression
+           attributeName: sqlExpression
+           default: "ex. 'date=' || to_varchar(<column_name>, 'YYYY-MM-DD')"
+           isRequired: false
+      
+        isRequired: false
+        enableIf: "{% if (config.partitionConfig and config.partitionConfigExpressions) %} true {% else %} false {% endif %}"
+
+    - groupName: File Format
+      items:
+      - displayName: File Format Definition
+        attributeName: fileFormatType
+        type: dropdownSelector
+        default: "File Format Name"
+        options:
+        - File Format Name
+        - File Format Values
+      - displayName: File Format Name
+        attributeName: fileFormatName
+        type: textBox
+        default: ""
+        isRequired: false
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+
+      - displayName: File Type
+        attributeName: fileType
+        type: dropdownSelector
+        default: CSV
+        options:
+        - "CSV"
+        - "PARQUET"
+        - "JSON"
+        isRequired: false
+
+      - displayName: Compression
+        attributeName: compression
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV','JSON')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        default: "AUTO"
+        options:
+        - "AUTO"
+        - "GZIP"
+        - "BZ2"
+        - "BROTLI"
+        - "ZSTD"
+        - "DEFLATE"
+        - "RAW_DEFLATE"
+        - "NONE"
+        isRequired: false
+
+      - displayName: Record delimiter
+        attributeName: recDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\n"
+        isRequired: false
+
+      - displayName: Compression
+        attributeName: compression1
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        default: "AUTO"
+        options:
+        - "AUTO"
+        - "LZO"
+        - "SNAPPY"
+        - "NONE"
+        isRequired: false
+
+      - displayName: Field delimiter
+        attributeName: fieldDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: ","
+        isRequired: false
+
+      - displayName: Field optionally enclosed by
+        attributeName: fieldEnclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\042"
+        isRequired: false
+
+      - displayName: File extension
+        attributeName: file_ext
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV','JSON')) %} true {% else %} false {% endif %}"
+        type: textBox
+        isRequired: false
+      
+      - displayName: Date format
+        attributeName: dateformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+        default: AUTO
+
+      - displayName: Time format
+        attributeName: timeformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+        default: AUTO
+
+      - displayName: Timestamp format
+        attributeName: timestampformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+        default: AUTO
+
+    - groupName: Copy Options
+      items:
+      - displayName: Overwrite Flag
+        attributeName: overwriteFiles
+        type: toggleButton
+        isRequired: true
+        default: false
+
+      - displayName: Header
+        attributeName: header
+        type: toggleButton
+        default: true
+        isRequired: true
+        
+
+      - displayName: Single File Flag
+        attributeName: singleFile
+        type: toggleButton
+        isRequired: true
+        default: false
+
+      - displayName: Max File Size (MB)
+        attributeName: sizeLimit
+        type: textBox
+        default: "16"
+        isRequired: true
+
+      - displayName: Include Query ID
+        attributeName: queryId
+        type: toggleButton
+        isRequired: true
+        default: false
+        
+
+      - displayName: Detailed Output
+        attributeName: detailedOutput
+        type: toggleButton
+        isRequired: true
+        default: false
+name: Copy Unload
+type: NodeType

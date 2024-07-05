@@ -1,0 +1,24 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : CopyInto with Full Load Option == #}
+{# == Node Type Description    : This node creates target table to load data from internal or external stages == #}
+
+
+{% set srcSchName = node.location.name %}
+{% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+{% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+
+{{ stage('Create Table') }}
+CREATE OR REPLACE TABLE "{{ db }}"."{{ sch }}"."{{ node.name }}" (
+    {% for col in columns %}
+        "{{ col.name }}" {{ col.dataType }}
+        {%- if col.Description | length > 0 %} COMMENT '{{ col.Description }}'{% endif %}
+        {%- if not loop.last -%}, {% endif %}
+    {%endfor%}
+)

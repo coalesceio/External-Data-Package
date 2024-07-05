@@ -1,6 +1,6 @@
 fileVersion: 1
-id: "297"
-isDisabled: true
+id: "323"
+isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
@@ -10,6 +10,9 @@ metadata:
     tagColor: '#6ca37b'
     isDisabled: false
     plural: Copy Into
+
+    deployStrategy: advanced
+
     config:
 
     - groupName: Snowpipe Options
@@ -17,8 +20,7 @@ metadata:
       - displayName: Enable Snowpipe
         attributeName: flagSnowpipe
         type: toggleButton
-        isRequired: true
-        default: false
+        enableIf: "{% if config.flagLoadHistorical == true %} false {% else %} true {% endif %}"
 
       - displayName: Cloud Provider
         attributeName: cloudProvider
@@ -36,11 +38,18 @@ metadata:
         isRequired: false
         enableIf: "{% if config.flagSnowpipe == true and config.cloudProvider == 'AWS' %} true {% else %} false {% endif %}"
 
+
       - displayName: Integration
         attributeName: integration
         type: textBox
         isRequired: false
         enableIf: "{% if config.flagSnowpipe == true and config.cloudProvider != 'AWS' %} true {% else %} false {% endif %}"
+
+      - displayName: Load Historical Data
+        attributeName: flagLoadHistorical
+        type: toggleButton
+        default: false
+        enableIf: "{% if config.flagSnowpipe == true %} false {% else %} true {% endif %}"
 
     - groupName: File Location
       items:
@@ -103,7 +112,6 @@ metadata:
         attributeName: compression
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV','JSON')) %} true {% else %} false {% endif %}"
         type: dropdownSelector
-        default: "AUTO"
         options:
         - "AUTO"
         - "GZIP"
@@ -154,7 +162,6 @@ metadata:
         attributeName: trimSpace
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML')) %} true {% else %} false {% endif %}"
         type: toggleButton
-        default: true
         isRequired: false
 
       - displayName: Replace invalid characters
@@ -201,68 +208,12 @@ metadata:
         - "SKIP_FILE_<num>"
         - "SKIP_FILE_<num>%"
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe == true %} true {% else %} false {% endif %}"
-        
-
-      - displayName: On Error Behavior
-        attributeName: onError1
-        type: dropdownSelector
-        options:
-        - "CONTINUE"
-        - "SKIP_FILE"
-        - "SKIP_FILE_<num>"
-        - "SKIP_FILE_<num>%"
-        - "ABORT_STATEMENT"
-        isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
 
       - displayName: Specify the number of errors that can be skipped
         attributeName: errornumber
         type: textBox
         enableIf: "{% if config.onError in('SKIP_FILE_<num>','SKIP_FILE_<num>%') or config.onError1 in('SKIP_FILE_<num>','SKIP_FILE_<num>%') %} true {% else %} false {% endif %}"
         isRequired: false
-
-      - displayName: Size Limit
-        attributeName: sizeLimit
-        type: textBox
-        isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
-
-      - displayName: Purge Behavior
-        attributeName: purgeBehavior
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
-
-      - displayName: Return Failed Only
-        attributeName: returnFailedOnly
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
-
-      - displayName: Force
-        attributeName: forceLoad
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
-
-      - displayName: Load Uncertain Files
-        attributeName: loadUncertainFiles
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
 
       - displayName: Enforce Length
         attributeName: enforceLength
@@ -320,5 +271,5 @@ metadata:
       attributeName: sysFlScTm
 
 
-name: Copy Into - Snowpipe
+name: CopyInto-Snowpipe
 type: NodeType

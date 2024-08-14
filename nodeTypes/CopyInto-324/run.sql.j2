@@ -22,6 +22,13 @@ does not permit copying or modification for any other purpose.
 {% set schStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
 {% set ns = namespace(counter=1, countercol=1, colist="") %}	
 
+# File format locations
+
+{% set fileFormatLocationName = config.fileFormatLoc %}
+{% set dbff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+{% set schff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+
+
 # File pattern
 
 {%- if config.filePattern | length > 0 -%} 
@@ -105,11 +112,9 @@ does not permit copying or modification for any other purpose.
          
 
           {%- if config.fileFormatType == 'File Format Name' %}
-            {%if config.extlocation %}  
-              FILE_FORMAT = (FORMAT_NAME = '{{ db }}.{{ sch }}.{{ config.fileFormatName}}')
-            {%else%}
-              FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ config.fileFormatName}}')
-            {%endif%}   
+            
+              FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ config.fileFormatName}}')
+     
             
       {%else%}
             FILE_FORMAT = ( TYPE = {{ config.fileType}}

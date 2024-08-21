@@ -19,7 +19,7 @@ operation:
     fileType: JSON
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    integration: ""
+    integration: "{{desiredState.parameters.targetIntegration}}"
     onError: ""
     recDelim: |+
 

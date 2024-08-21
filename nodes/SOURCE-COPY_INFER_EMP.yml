@@ -11,8 +11,8 @@ operation:
     extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: AVROFILEFORMAT
-    fileFormatName: TARGET
+    fileFormatLoc: TARGET
+    fileFormatName: MYAVROFILEFORMAT
     fileFormatType: File Format Name
     fileNames: "'twitter.avro'"
     filePattern: ""

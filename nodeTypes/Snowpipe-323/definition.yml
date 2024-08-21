@@ -14,6 +14,14 @@ metadata:
     deployStrategy: advanced
 
     config:
+    - groupName: General Options
+      items:
+      - type: materializationSelector
+        default: table
+        options:
+        - table
+        - transient table
+        isRequired: true
 
     - groupName: Snowpipe Options
       items:
@@ -53,6 +61,8 @@ metadata:
         attributeName: flagLoadHistorical
         type: toggleButton
         default: false
+        enableIf: "{% if config.flagSnowpipe != 'Test Copy Statement' %} true {% else %} false {% endif %}"
+
         
     - groupName: File Location
       items:

@@ -1,0 +1,506 @@
+fileVersion: 1
+id: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+name: COPY_INFER_HEALTH_EX1
+operation:
+  config:
+    compression: ""
+    dateformat: ""
+    enforceLength: ""
+    errornumber: ""
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: TARGET
+    fileFormatName: CSVFILEFORMAT
+    fileFormatType: File Format Name
+    fileNames: "'health_pipe1.csv'"
+    filePattern: ""
+    fileType: CSV
+    forceLoad: ""
+    intextstage: true
+    loadUncertainFiles: ""
+    onError: ""
+    purgeBehavior: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: false
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
+    skipHeader: "1"
+    stageName: SPSTAGESAMPLE/
+    stageStorageLocationName: TARGET
+    storageintegration: ""
+    stripouterarray: false
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    truncateColumns: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab2f539c-7a83-4489-983f-b744ccc78b8e
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(11,5)
+        description: ""
+        name: Average_Covered_Charges
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 82ce4fa9-ad98-4786-9933-867fe57d6638
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab9211e1-5cdd-4712-b4d8-34d5bbebf965
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(11,6)
+        description: ""
+        name: Average_Total_Payments
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5af0533a-5ff5-4015-87b4-1846bd5c097b
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e9c1a6ca-36b2-4275-80d2-52bf79994b63
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(2,0)
+        description: ""
+        name: Total_Discharges_
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 40d6b6cd-2fce-4cff-80d0-c2c0a186d31b
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 801d5009-9ae9-4976-8a31-731bd314c57f
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(3,1)
+        description: ""
+        name: Bachelor's_or_Higher
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 33fe7ba9-5b4c-486e-8b60-fd9c01392e8d
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6503c46b-2362-4b5e-adc9-e92e8258c14b
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(3,1)
+        description: ""
+        name: HS_Grad_or
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3d3ce36f-5201-475a-b298-ab92435b5bbb
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a9d4a93d-c542-4f85-881d-fc140916c0ee
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Payments__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6465226b-b095-472e-af2e-933f92923bae
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 378671f4-c2be-4aac-aa4e-300731228f65
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Reimbursement__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9afb21d5-fbf8-4261-9c77-261e128e49e3
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8002b968-2834-45cb-a2ee-8eebdaa2c64f
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Covered_Charges_
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 047ed299-13e4-48e0-9130-e030c56534c3
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d757aa5c-432a-40d0-99dd-e594223a7b9a
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Region_Provider_Name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1cd45279-8a34-4898-9c25-0790aacbe0ce
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8cf5380b-ccdf-461d-aaea-d07f3f3fa3fb
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(10,9)
+        description: ""
+        name: ReimbursementPercentage__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 40404e03-95ed-4c00-9e9a-be6613bc564c
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d6ff203a-e3d3-452d-9278-2cfee2250d41
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Definition__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b48aaaaa-5f1b-4fff-b4b2-f9f14d80f081
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26be8fd3-3bee-4cf0-b2a0-6856c7731fda
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Region__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3867f0a0-6c7d-47a7-a244-852814b48f18
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1cac019-0b11-4a6f-8542-a334dae3f71a
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: INCOME_PER_CAPITA__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1bacf604-8346-4edb-a188-cf2756f0260d
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 37320af6-f6b2-4d3e-aa0d-b189fdd8b9d1
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: EARNINGS_-_BACHELORS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1518cecd-5ffa-470d-89eb-76c86e39ffe6
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0cde6592-a837-4fea-ab3e-9baa230a9aa6
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: EARNINGS_-_GRADUATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bd4768c9-7060-443c-966b-5e008a51b591
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 491b8996-b6f2-41ed-8532-cffba5cceb3b
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: EARNINGS_-_HS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 91e6be19-4c1d-440c-b408-a92d2225cce1
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: db363034-fd76-4db8-bcda-7417b87f4712
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: EARNINGS-_LESS_THAN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 453846f2-8aa4-4c8d-8c8b-bed9188682f0
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a3382a6-69b1-4039-b4d7-5fa98627efe1
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: MEDIAN_FAMILY_INCOME__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3aa20f4e-b756-4589-a223-019be004e520
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: aadb89e3-3053-4352-82ee-73d687b5f39d
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(1,0)
+        description: ""
+        name: of_Records_
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bf12d607-0941-47b6-be50-36170c219c68
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: af8d7a92-4ee4-4dda-a79f-89b9d38b117b
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(5,0)
+        description: ""
+        name: POP_25_OVER__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 50aed2f4-cdeb-4bd4-b84b-1c6622fdb91b
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ecd0db19-caaa-4b28-a79c-e1fcbf488762
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: City__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5cb0952c-0ee2-4fbf-943a-8eb4c3978b47
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: be095a0d-4ace-418d-942f-e0c3c63c15a2
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER(6,0)
+        description: ""
+        name: Id__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4fe44948-b5e7-43ad-8005-159667d27a3f
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97c22ccc-0d81-4083-a961-2a1bb2629eb1
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: Name__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4aaaeffd-bd29-4f6b-8fd6-54cd9c7d3745
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e1f61556-95e1-48f3-9ee8-47696c73467d
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: State__
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f80aea6e-dbce-4a0a-bd97-8ecfcb874daa
+                stepCounter: 8b1e57d8-5be1-498d-acec-1f25f2029428
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3389b98f-f0d5-46ca-82ad-9ad50923c7a5
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: $1
+        sysJSON: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a344400-2858-4231-9841-157159599f04
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: current_timestamp()::timestamp_ntz
+        sysLdTs: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c6ea23cc-d49c-49d9-bc93-857edb8d4afa
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b87b6065-12e2-46b1-a074-e4e65e30ea44
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_ROW_NUMBER
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 179ac84a-0686-4b12-9502-9e6fb011b02f
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_LAST_MODIFIED
+        sysFlLtMd: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ac307373-1bec-4daf-9248-a244fda7c307
+          stepCounter: c4b563cb-c8d6-4e4b-af77-de7804f1a6dd
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$START_SCAN_TIME
+        sysFlScTm: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: INFER_HEALTH_EX
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'INFER_HEALTH_EX') }} "INFER_HEALTH_EX"
+        name: COPY_INFER_HEALTH_EX1
+        noLinkRefs: []
+  name: COPY_INFER_HEALTH_EX1
+  overrideSQL: false
+  schema: ""
+  sqlType: "324"
+  type: sql
+  version: 1
+type: Node

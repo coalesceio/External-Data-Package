@@ -1,0 +1,37 @@
+fileVersion: 1
+id: 8f06f9fd-82d6-44b9-9b28-3364c8518e4e
+name: INFER_HEALTH_EX
+operation:
+  config:
+    fileFormatName: CSVFILEFORMATF
+    fileNames: health_pipe.csv
+    redeploymentBehavior: Create or Replace
+    stageName: spstagesample/
+    stageStorageLocationName: TARGET
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_HEALTH_EX
+        noLinkRefs: []
+  name: INFER_HEALTH_EX
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

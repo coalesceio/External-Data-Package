@@ -161,11 +161,9 @@ The Copy-Into node type the following configurations available:
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 
-![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
-
-
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+  * **Coalesce file Format location**:Location in Coalesce pointing to the database and schema,the file format resides.
   * **File Type**:
     * CSV
     * JSON
@@ -266,16 +264,19 @@ When deployed for the first time into an environment the CopyInto-Snowpipe node 
 
 #### Altering the CopyInto Tables
 
-There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
+There are few column or table changes like Change in table name,Dropping existing column, Alter Column data type,Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the Work Table in the target environment.
 
 The following stages are executed:
 
-The following stages are executed:
+* **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-* **Clone Table**: Creates an internal table.
-* **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
-* **Swap cloned Table**: Upon successful completion of all updates, the clone replaces the main table ensuring that no data is lost.
-* **Delete Table**: Drops the internal table.
+#### Copy-Into change in materialization type
+
+When the materialization type of Copy-Into node is changed from table to transient table or viceversa,the below stages are executed:
+
+* **Drop table/transient table**
+* **Create transient table/table**
+
 
 ### CopyInto Undeployment
 

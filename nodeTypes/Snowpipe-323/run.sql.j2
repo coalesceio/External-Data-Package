@@ -42,7 +42,7 @@ does not permit copying or modification for any other purpose.
      {% set dbff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
      {% set schff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
-
+   {{ stage('Load-Using Copy-into', true, "sql", "alter") }}
 
 
 COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (

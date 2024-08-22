@@ -11,8 +11,18 @@ metadata:
     isDisabled: false
     plural: Copy Into
 
+    deployStrategy: advanced
 
     config:
+    - groupName: General Options
+      items:
+      - type: materializationSelector
+        default: table
+        options:
+        - table
+        - transient table
+        isRequired: true
+     
     - groupName: Source Data
       items:
 
@@ -28,7 +38,7 @@ metadata:
         isRequired: false  
         enableIf: "{% if config.intextstage %} false {% else %} true {% endif %}"
     	  
-      - displayName: Stage Storage Location
+      - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
         type: textBox
         default: 'Enter Storage Location name'
@@ -76,12 +86,21 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox
         default: ""
         isRequired: false
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+      
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+        isRequired: false
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
+      
       - displayName: File Type
         attributeName: fileType
         type: dropdownSelector

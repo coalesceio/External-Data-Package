@@ -1,0 +1,77 @@
+fileVersion: 1
+id: b29a0b34-ccb1-4c9a-b954-9f76b0147b72
+name: INFER_EMP
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: TARGET
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f4e33467-7dfc-4cf2-87bf-f572ad172814
+          stepCounter: b29a0b34-ccb1-4c9a-b954-9f76b0147b72
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: username
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e67a880-f8a8-4761-bf09-f53572fb4300
+          stepCounter: b29a0b34-ccb1-4c9a-b954-9f76b0147b72
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: tweet
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d87b65cc-2507-492d-b0df-96f9bb8629a1
+          stepCounter: b29a0b34-ccb1-4c9a-b954-9f76b0147b72
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: timestamp
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('TARGET_DB', 'INFER_EMP') }}
+  name: INFER_EMP
+  schema: ""
+  sqlType: Source
+  table: INFER_EMP
+  type: sourceInput
+  version: 1
+type: Node

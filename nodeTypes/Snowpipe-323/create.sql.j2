@@ -1,0 +1,591 @@
+{#
+    Copyright (c) 2023 Coalesce. All rights reserved.
+This script and its associated documentation are confidential and proprietary to Coalesce.
+Unauthorized reproduction, distribution, or disclosure of this material is strictly prohibited.
+Coalesce permits you to copy and modify this script for the purposes of using with Coalsce but
+does not permit copying or modification for any other purpose.  
+#}
+{# == Node Type Version        : 1  == #}
+{# == Node Type Name           : SnowPipe == #}
+{# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
+
+
+# Create table first
+{% if desiredState == currentState %}
+
+{{ stage('Nothing to do.') }}
+select 1 = 0
+
+{% elif desiredState %}
+
+    
+    {% if desiredState.node.materializationType == 'table' or desiredState.node.materializationType == 'transient table'  %}
+        
+        
+
+        {% if currentState != undefined and currentState.node.materializationType != desiredState.node.materializationType %}
+
+                {# Change in materialization type #}
+
+                {{ stage('Drop ' + currentState.node.materializationType + ' ' + ref_no_link(currentState.node.location.name, currentState.node.name), true, "sql", "create") }}
+
+                 {% if currentState.node.materializationType == 'view' %} 
+                      DROP {{currentState.node.materializationType}} IF EXISTS {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
+                {% else %}
+                      DROP TABLE IF EXISTS {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
+                {% endif %}
+                 
+                {{ stage('Create'+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
+               CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                (
+                {% for col in desiredState.columns %}
+                    "{{ col.name }}" {{ col.dataType }}
+                    {%- if not col.nullable %} NOT NULL
+                        {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
+                    {% endif %}
+                    {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+                    {%- if not loop.last -%}, {% endif %}
+                {% endfor %}
+                )
+               {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description | escape }}'{% endif %}
+
+                
+        {% endif %}
+
+        {% if currentState == undefined or currentState.storageLocations|length == 0 %}
+            {{ stage('Create '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
+            CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+            (
+                {% for col in desiredState.columns %}
+                    "{{ col.name }}" {{ col.dataType }}
+                    {%- if not col.nullable %} NOT NULL
+                        {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
+                    {% endif %}
+                    {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+                    {%- if not loop.last -%}, {% endif %}
+                {% endfor %}
+            )
+            {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description | escape }}'{% endif %}
+
+        {% elif currentState != undefined and currentState.node.materializationType == desiredState.node.materializationType %}
+
+            {# Change Node Name or Change Storage Location #}
+            {# Storage Location Tests #}
+            {# Only need to account for updated Storage Location mappings   #}
+            
+            {# Desired Namespace Variables #}
+            {% set nsVariables = namespace(nsDesiredDepStorageLocations="",
+			nsDesiredSourceStorageLocations="",
+			nsDesiredTargetStorageLocations="",
+			nsDesiredUsedStorageLocations="",
+			colchanges=0,
+			storageLocationTest="") %}
+                
+
+            {# Desired State Storage Location Info #}
+           
+            {% for source in desiredState.sources %}
+                {% for dep in source.dependencies %}
+                    {% set depSourceLocation = dep.node.location.name %}
+                    {% if loop.first %}
+                        {% set nsVariables.nsDesiredDepStorageLocations = depSourceLocation %}
+                    {% else %}
+                        {% set nsVariables.nnsDesiredDepStorageLocations = nsVariables.nsDesiredDepStorageLocations + ',' + depSourceLocation %}
+                    {% endif %}
+                {% endfor %}
+                
+                {% if loop.first %}
+                    {% set nsVariables.nsDesiredSourceStorageLocations = nsVariables.nsDesiredDepStorageLocations %}
+                {% else %}
+                    {% set nsVariables.nsDesiredSourceStorageLocations = nsVariables.nsDesiredSourceStorageLocations + ',' + nsVariables.nsDesiredDepStorageLocations %}
+                {% endif %}
+            {% endfor %}
+            
+
+            {% set nsVariables.nsDesiredTargetStorageLocations = desiredState.node.location.name  %}
+
+            
+            {%if nsVariables.nsDesiredSourceStorageLocations |length >0 %}
+               {% set nsVariables.nsDesiredUsedStorageLocations = nsVariables.nsDesiredSourceStorageLocations + ',' + nsVariables.nsDesiredTargetStorageLocations %}
+
+                {% set desiredStorageLocations = (nsVariables.nsDesiredUsedStorageLocations).split(',') | list %}
+
+                {% set desiredUniqueStorageLocations = desiredStorageLocations | unique | sort | list %}
+            {%else%}
+
+                {% set desiredUniqueStorageLocations = nsVariables.nsDesiredTargetStorageLocations %}
+
+            {%endif%}
+
+            {# Test  #}
+            {% set nsVariables.storageLocationTest = true %}
+            {% set nodeCommentTest = currentState.node.description == desiredState.node.description %}
+            
+            
+            {# Rename / Move Object #}
+            {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
+                {{ stage('Rename and / or Move Table', true, "sql", "alter") }}
+                ALTER TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
+                RENAME TO   {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+            {% endif %}
+
+            {# Change table description #}
+            {% if (nsVariables.nodeCommentTest == false or currentState.node.description != desiredState.node.description) %}
+                 {{ stage('Change table description', true, "sql", "alter") }}
+                 ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                SET COMMENT = '{{ desiredState.node.description | escape }}'
+            {% endif %}
+
+
+
+            {# Drop Columns #}
+            
+            {% for dropCurCol in currentState.columns %}
+                {% if dropCurCol.id not in desiredState.columns | map(attribute="id") %}
+                {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+
+                    {% if nsVariables.colchanges == 1 %}
+                        {{ stage('Drop Columns', true, "sql", "alter") }}
+                        ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                        DROP COLUMN 
+                    {% else %}
+                        , 
+                    {% endif %}
+                    "{{ dropCurCol.name }}"
+                {% endif %}
+            {% endfor %}
+
+            {# Add Columns #}
+            
+            {% for addDesCol in desiredState.columns %}
+                {% if addDesCol.id not in currentState.columns | map(attribute="id") %}
+                {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+
+                    {% if nsVariables.colchanges == 1 %}
+                        {{ stage('Add Columns', true, "sql", "alter") }}
+                        ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                        ADD COLUMN
+                    {% else %}
+                        ,
+                    {% endif %}
+                        "{{ addDesCol.name }}" {{ addDesCol.dataType }}
+                        {%- if not addDesCol.nullable %} NOT NULL
+                            {%- if addDesCol.defaultValue | length > 0 %} DEFAULT {{ addDesCol.defaultValue }}{% endif %}
+                        {% endif %}
+                        {%- if addDesCol.description | length > 0 %} COMMENT '{{ addDescol.description | escape }}'{% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {# Rename Columns #}
+            {% for renameCurCol in currentState.columns %}
+                {% if renameCurCol.id in desiredState.columns | map(attribute="id") %}
+                    {% set desiredColumnName = desiredState.columns | selectattr('id', 'equalto', renameCurCol.id) | map(attribute='name') | first %}
+                    {% if renameCurCol.name != desiredColumnName %}
+                        {{ stage('Rename Column ' + renameCurCol.name, true, "sql", "alter") }}
+                        ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                        RENAME COLUMN "{{ renameCurCol.name }}"
+                        TO "{{ desiredColumnName }}"
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+            {# Change data types etc #}
+            {% set nsVariables.colchanges = 0 %}
+            {% for alterCurCol in currentState.columns %}        
+                {% if alterCurCol.id in desiredState.columns | map(attribute="id") %}
+                    {% set currentDatatype = alterCurCol.dataType %}
+                    {% set currentNullable = alterCurCol.nullable %}
+                    {% set currentDefaultValue = alterCurCol.defaultValue %}
+                    {% set currentDescription = alterCurCol.description %}
+
+                    {% set desiredColumnName = desiredState.columns | selectattr('id', "equalto", alterCurCol.id) | map(attribute='name') | first %}
+                    {% set desiredDatatype = desiredState.columns | selectattr('id', "equalto", alterCurCol.id) | map(attribute='dataType') | first %}
+                    {% set desiredNullable = desiredState.columns | selectattr('id', "equalto", alterCurCol.id) | map(attribute='nullable') | first %}
+                    {% set desiredDefaultValue = desiredState.columns | selectattr('id', "equalto", alterCurCol.id) | map(attribute='defaultValue') | first %}
+                    {% set desiredDescription = desiredState.columns | selectattr('id', "equalto", alterCurCol.id) | map(attribute='description') | first %}
+
+                    {% set datatypeTest = currentDatatype == desiredDatatype %}
+                    {% set nullableTest = currentNullable == desiredNullable %}
+                    {% set defaultValueTest = currentDefaultValue == desiredDefaultValue %}
+                    {% set descriptionTest = currentDescription == desiredDescription %}
+
+                    {% if (datatypeTest == false or 
+                            nullableTest == false  or
+                            defaultValueTest == false or
+                            descriptionTest == false) %}
+                        {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+
+                        {% if nsVariables.colchanges == 1 %}
+                            {{ stage('Change Column Attributes', true, "sql", "alter") }}
+                            ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                            MODIFY
+                        {% endif %}
+                        {% if datatypeTest == false %}
+                            {% if nsVariables.colchanges > 1 %},{% endif %}
+                            COLUMN "{{ desiredColumnName }}"
+                            SET DATA TYPE {{ desiredDatatype }}
+                            {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+                        {% endif %}
+                        {% if nullableTest == false %}
+                            {% if nsVariables.colchanges > 1 %},{% endif %}
+                            COLUMN "{{ desiredColumnName }}"
+                            {% if currentNullable == true %}
+                                SET
+                            {% else %}
+                                DROP
+                            {% endif %}
+                            NOT NULL
+                            {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+                        {% endif %}
+                        {% if descriptionTest == false %}
+                            {% if nsVariables.colchanges > 1 %},{% endif %}
+                            COLUMN "{{ desiredColumnName }}"
+                            COMMENT '{{ desiredDescription }}'
+                            {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+                        {% endif %}
+                        {% if defaultValueTest == false %}
+                            {% if nsVariables.colchanges > 1 %},{% endif %}
+                            COLUMN "{{ desiredColumnName }}"
+                            {% if desiredDefaultValue == '' %}
+                                DROP DEFAULT
+                            {% else %}
+                                SET DEFAULT {{ desiredDefaultValue }}
+                            {% endif %}
+                            {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
+                        {% endif %}
+                        
+                    {% else %}
+                                            
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            
+            
+        {% endif %}
+
+
+    {% endif %}
+
+{% elif currentState != undefined and desiredState == undefined %}
+
+    {# Table or View Name #}
+    {% set targetObjectDatabase = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[0] %} 
+    {% set targetObjectSchema = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[1] %} 
+    {% set fullyQualifiedTargetObjectName = ref_no_link(currentState.node.location.name, currentState.node.name) %}
+    
+    {% if currentState.node.materializationType == 'view' %}
+
+     {{ stage('Drop Table or View', true, "sql", "drop") }}
+     DROP {{ currentState.node.materializationType }} IF EXISTS {{ fullyQualifiedTargetObjectName }}
+
+    {% else %}
+     
+       {{ stage('Drop ' + currentState.node.materializationType , true, "sql", "drop") }}
+       DROP TABLE IF EXISTS {{ fullyQualifiedTargetObjectName }}
+
+    {% endif %}
+
+{%- else -%}
+
+{{ stage('Nothing to do.') }}
+select 1 = 0
+
+{% endif %}
+
+
+{# Historical load and create pipe #}
+
+{% if desiredState == currentState %}
+
+{{ stage('Nothing to do.') }}
+select 1 = 0
+
+{% elif desiredState %}
+
+  {% set srcSchName = desiredState.node.location.name %}
+     {% set db = desiredState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+     {% set sch = desiredState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+     {% set tbl = desiredState.node.name %}
+     {% set fqTblName = '"' + db + '"."' + sch + '"."' + tbl + '"' %}
+     {% set fqPipeName = '"' + db + '"."' + sch + '"."' + tbl + '_PIPE"' %}
+
+     {% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
+     {% set dbStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
+     {% set schStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
+     {% set ns = namespace(counter=1) %}
+	 
+	  {%- if desiredState.config.filePattern | length > 0 -%} 
+        {%- set filePatternSQL = 'PATTERN = ' + desiredState.config.filePattern -%} 
+      {%- else -%}
+        {%- set filePatternSQL = "" -%} 
+     {%- endif -%}
+
+     {%- if desiredState.config.fileNames | length > 0 %} 
+       {% set fileNameSQL = 'FILES = (' + desiredState.config.fileNames + ')' %} 
+     {%- else -%}
+       {% set fileNameSQL = "" %} 
+     {% endif %}
+	 
+	 {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
+     {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+     {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+
+        
+
+             
+   {%if currentState == undefined or (currentState != undefined and desiredState!=currentState) %} 
+
+        {%if  desiredState.config.flagSnowpipe != 'Test Copy Statement'%}                   
+       
+                {%if desiredState.config.flagLoadHistorical == true%}
+
+                        {%- if desiredState.parameters.loadType == 'Reload' -%}
+
+                            {{ stage('Truncate Target Table', true, "sql", "alter") }}
+                            TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}"
+
+                            {{ stage('Historical Reload-Using Copy-into', true, "sql", "alter") }}
+                       {%else %}
+ 
+                            {{ stage('Historical Full Load-Using Copy-into', true, "sql", "alter") }}
+ 
+                        {%endif%}
+
+                 COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
+                   {%- for col in desiredState.columns %}
+                   "{{ col.name }}"
+                   {%- if not loop.last -%}, {% endif %}
+                   {%- endfor %}
+                   )
+                 FROM (SELECT
+
+                 {%- for col in desiredState.sources[0].columns %}
+	               {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
+                      {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
+                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}"
+                      {%else%}
+                        ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}" 
+                        {% set ns.counter = ns.counter + 1 %}       
+                      {%endif%}       
+	                {% else %}
+	                  {{ get_source_transform(col) }} AS "{{ col.name }}"
+	                {%endif%}
+                    {%- if not loop.last -%}, {% endif %}
+                 {%- endfor %}
+          
+                  FROM '@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}') 
+                  {{ fileNameSQL }}
+                  {{ filePatternSQL }}
+      
+                    {%- if desiredState.config.fileFormatType == 'File Format Name' %}
+                       FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}')
+                   {%else%}
+                        FILE_FORMAT = ( TYPE = {{ desiredState.config.fileType}}
+                   {% if desiredState.config.compression != "" %}
+                         COMPRESSION = {{ desiredState.config.compression }}
+                   {%endif%}
+			 
+                    {% if desiredState.config.recDelim and desiredState.config.fileType in ('CSV')%}
+                       RECORD_DELIMITER = '{{ desiredState.config.recDelim}}'
+                    {%endif%}
+			 
+                    {% if desiredState.config.fieldDelim and desiredState.config.fileType in ('CSV')%}
+                       FIELD_DELIMITER = '{{ desiredState.config.fieldDelim}}'
+                    {%endif%}
+                    {% if desiredState.config.fieldEnclosed and desiredState.config.fileType in ('CSV')%}
+                         FIELD_OPTIONALLY_ENCLOSED_BY ='{{ desiredState.config.fieldEnclosed }}'
+                    {%endif%}
+                    {% if desiredState.config.skipBlankLines and desiredState.config.fileType in ('CSV')%}
+                        SKIP_BLANK_LINES =  {{ desiredState.config.skipBlankLines }}
+                    {%endif%}
+                    {% if desiredState.config.skipHeader and desiredState.config.fileType in ('CSV')%}
+                          SKIP_HEADER = {{desiredState.config.skipHeader}}
+                    {%endif%}
+                    {% if desiredState.config.trimSpace and desiredState.config.fileType not in ('XML')%}
+                        TRIM_SPACE = {{ desiredState.config.trimSpace }}
+                    {%endif%}
+                    {% if desiredState.config.replaceinvalidcharacters%}
+                      REPLACE_INVALID_CHARACTERS = {{desiredState.config.replaceinvalidcharacters}}
+                    {%endif%}
+                    {% if desiredState.config.stripouterarray and desiredState.config.fileType in ('JSON')%}
+                       STRIP_OUTER_ARRAY = {{desiredState.config.stripouterarray}}
+                   {%endif%}
+                    {% if desiredState.config.dateformat != "AUTO" and desiredState.config.dateformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
+                         DATE_FORMAT = '{{desiredState.config.dateformat}}'
+	               {% elif desiredState.config.dateformat == "AUTO" %}
+	                     DATE_FORMAT = AUTO
+                    {%endif%}
+                    {% if desiredState.config.timeformat != "AUTO" and desiredState.config.timeformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
+                       TIME_FORMAT = '{{desiredState.config.timeformat}}'
+	               {% elif desiredState.config.timeformat == "AUTO" %}
+	                   TIME_FORMAT = AUTO
+                   {%endif%}
+                   {% if desiredState.config.timestampformat != "AUTO" and desiredState.config.timestampformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
+                     TIMESTAMP_FORMAT = '{{desiredState.config.timestampformat}}'
+	               {% elif desiredState.config.timestampformat == "AUTO" %}
+	                 TIMESTAMP_FORMAT = AUTO
+                   {%endif%} 
+                   )
+                  {%endif%}
+
+                  {% if desiredState.config.onError != "" %}
+                    {% if desiredState.config.onError in ('SKIP_FILE_<num>') %}
+                        {% set onErrorReplaced = desiredState.config.onError | replace('<num>', desiredState.config.errornumber|string) %}
+                        ON_ERROR = {{ onErrorReplaced }}
+                    {%elif desiredState.config.onError in ('SKIP_FILE_<num>%') %}
+                        {% set onErrorReplaced = desiredState.config.onError | replace('<num>', desiredState.config.errornumber|string) %}
+                       ON_ERROR = '{{ onErrorReplaced }}'
+                   {%else%}
+                       ON_ERROR = {{ desiredState.config.onError }}
+                   {%endif%}
+                  {%endif%}
+
+                  {% if desiredState.config.enforceLength != ""%}
+                     ENFORCE_LENGTH = {{ desiredState.config.enforceLength }}
+                  {%endif%}
+                  {% if desiredState.config.truncateColumns != ""%}
+                      TRUNCATECOLUMNS = {{ desiredState.config.truncateColumns }}
+                  {%endif%}
+                    {%- if desiredState.parameters.loadType == 'Reload' -%}
+		              FORCE=TRUE
+		            {%endif%}
+	            {%endif%}   
+                      
+                {%- if desiredState.config.flagSnowpipe == 'Enable Snowpipe' -%}
+
+	                   {{ stage('Create Pipe', true, "sql", "alter") }}
+
+                       CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE
+                       {% if desiredState.config.awsSnsTopic != "" and desiredState.config.cloudProvider == 'AWS'%}           
+                             AWS_SNS_TOPIC = '{{ desiredState.config.awsSnsTopic }}'
+                       {%endif%}
+                       {% if desiredState.config.integration != "" and desiredState.config.cloudProvider != 'AWS' %}
+                           INTEGRATION = '{{ desiredState.config.integration }}'
+                        {%endif%}
+                         AS
+                        COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
+                       {%- for col in desiredState.columns %}
+                           "{{ col.name }}"
+                       {%- if not loop.last -%}, {% endif %}
+                       {%- endfor %}
+                       )
+                      FROM (SELECT
+
+                      {%- for col in desiredState.sources[0].columns %}
+	                    {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
+                         {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
+                           ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}"  
+                         {%else%}
+                           ${{ ns.counter}}::{{ col.dataType}}  AS "{{ col.name }}"    
+                            {% set ns.counter = ns.counter + 1 %}       
+                         {%endif%}       
+	                  {% else %}
+	                      {{ get_source_transform(col) }} AS "{{ col.name }}"
+	                  {%endif%}
+                      {%- if not loop.last -%}, {% endif %}
+                      {%- endfor %}
+          
+                      FROM '@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}') 
+                       {{ filePatternSQL }}
+      
+                     {%- if desiredState.config.fileFormatType == 'File Format Name' %}
+                       FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}')
+                     {%else%}
+                        FILE_FORMAT = ( TYPE = {{ desiredState.config.fileType}}
+                      {% if desiredState.config.compression != "" %}
+                          COMPRESSION = {{ desiredState.config.compression }}
+                      {%endif%}
+			 
+                     {% if desiredState.config.recDelim and desiredState.config.fileType in ('CSV')%}
+                        RECORD_DELIMITER = '{{ desiredState.config.recDelim}}'
+                     {%endif%}
+			 
+                     {% if desiredState.config.fieldDelim and desiredState.config.fileType in ('CSV')%}
+                        FIELD_DELIMITER = '{{ desiredState.config.fieldDelim}}'
+                     {%endif%}
+                     {% if desiredState.config.fieldEnclosed and desiredState.config.fileType in ('CSV')%}
+                         FIELD_OPTIONALLY_ENCLOSED_BY ='{{ desiredState.config.fieldEnclosed }}'
+                     {%endif%}
+                     {% if desiredState.config.skipBlankLines and desiredState.config.fileType in ('CSV')%}
+                         SKIP_BLANK_LINES =  {{ desiredState.config.skipBlankLines }}
+                     {%endif%}
+                     {% if desiredState.config.skipHeader and desiredState.config.fileType in ('CSV')%}
+                         SKIP_HEADER = {{desiredState.config.skipHeader}}
+                     {%endif%}
+                       {% if desiredState.config.trimSpace and desiredState.config.fileType not in ('XML')%}
+                        TRIM_SPACE = {{ desiredState.config.trimSpace }}
+                     {%endif%}
+                     {% if desiredState.config.replaceinvalidcharacters%}
+                       REPLACE_INVALID_CHARACTERS = {{desiredState.config.replaceinvalidcharacters}}
+                     {%endif%}
+                      {% if desiredState.config.stripouterarray and desiredState.config.fileType in ('JSON')%}
+                       STRIP_OUTER_ARRAY = {{desiredState.config.stripouterarray}}
+                     {%endif%}
+                      {% if desiredState.config.dateformat != "AUTO" and desiredState.config.dateformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
+                      DATE_FORMAT = '{{desiredState.config.dateformat}}'
+	                 {% elif desiredState.config.dateformat == "AUTO" %}
+	                  DATE_FORMAT = AUTO
+                     {%endif%}
+                     {% if desiredState.config.timeformat != "AUTO" and desiredState.config.timeformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
+                      TIME_FORMAT = '{{desiredState.config.timeformat}}'
+	                 {% elif desiredState.config.timeformat == "AUTO" %}
+	                  TIME_FORMAT = AUTO
+                     {%endif%}
+                     {% if desiredState.config.timestampformat != "AUTO" and desiredState.config.timestampformat != ""   and desiredState.config.fileType in ('JSON','CSV')%}
+                       TIMESTAMP_FORMAT = '{{desiredState.config.timestampformat}}'
+	                  {% elif desiredState.config.timestampformat == "AUTO" %}
+	                   TIMESTAMP_FORMAT = AUTO
+                      {%endif%} 
+                      )
+                      {%endif%}
+
+                        {% if desiredState.config.onError != "" %}
+                             {% if desiredState.config.onError in ('SKIP_FILE_<num>') %}
+                              {% set onErrorReplaced = desiredState.config.onError | replace('<num>', desiredState.config.errornumber|string) %}
+                               ON_ERROR = {{ onErrorReplaced }}
+                             {%elif desiredState.config.onError in ('SKIP_FILE_<num>%') %}
+                               {% set onErrorReplaced = desiredState.config.onError | replace('<num>', desiredState.config.errornumber|string) %}
+                                ON_ERROR = '{{ onErrorReplaced }}'
+                           {%else%}
+                                ON_ERROR = {{ desiredState.config.onError }}
+                           {%endif%}
+                        {%endif%}
+
+                        {% if desiredState.config.enforceLength != ""%}
+                           ENFORCE_LENGTH = {{ desiredState.config.enforceLength }}
+                        {%endif%}
+                        {% if desiredState.config.truncateColumns != ""%}
+                            TRUNCATECOLUMNS = {{ desiredState.config.truncateColumns }}
+                       {%endif%}
+                  {%endif%}
+   
+                  {%if desiredState.config.flagLoadHistorical == true%}
+
+                    {{ stage('Alter Pipe',true, "sql", "alter") }}
+           
+                     ALTER PIPE {{ fqPipeName }} REFRESH;
+                  {%endif%}
+
+         {%else%}
+
+              {{ stage('Test Copy Statement-No Pipe creation') }}
+              select 1 = 0
+
+        {%endif%}
+             
+   {%endif%}
+
+{%elif  currentState != undefined and desiredState == undefined%}
+
+    {# Pipe name #}
+     {% set srcSchName = currentState.node.location.name %}
+     {% set db = currentState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+     {% set sch = currentState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+     {% set tbl = currentState.node.name %}
+     {% set fqPipeName = '"' + db + '"."' + sch + '"."' + tbl + '_PIPE"' %}
+           
+        {{ stage('Drop Pipe', true, "sql", "drop") }}
+         DROP PIPE IF EXISTS {{ fqPipeName }}
+
+
+{%endif%}

@@ -5,7 +5,7 @@ metadata:
   defaultStorageLocation: null
   error: null
   nodeMetadataSpec: |+
-    capitalized: COPY INTO - SNOWPIPE
+    capitalized: SNOWPIPE 
     short: 'COPY'
     tagColor: '#6ca37b'
     isDisabled: false
@@ -14,14 +14,26 @@ metadata:
     deployStrategy: advanced
 
     config:
+    - groupName: General Options
+      items:
+      - type: materializationSelector
+        default: table
+        options:
+        - table
+        - transient table
+        isRequired: true
 
     - groupName: Snowpipe Options
       items:
+
       - displayName: Enable Snowpipe
         attributeName: flagSnowpipe
-        type: toggleButton
-        enableIf: "{% if config.flagLoadHistorical == true %} false {% else %} true {% endif %}"
-
+        type: dropdownSelector
+        default: "Enable Snowpipe"
+        options:
+        - "Enable Snowpipe"
+        - "Test Copy Statement"
+         
       - displayName: Cloud Provider
         attributeName: cloudProvider
         type: dropdownSelector
@@ -30,30 +42,31 @@ metadata:
         - "AWS"
         - "Azure"
         - "GCP"
-        enableIf: "{% if config.flagSnowpipe == true %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagSnowpipe == 'Enable Snowpipe' %} true {% else %} false {% endif %}"
 
       - displayName: AWS SNS Topic
         attributeName: awsSnsTopic
         type: textBox
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe == true and config.cloudProvider == 'AWS' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagSnowpipe == 'Enable Snowpipe' and config.cloudProvider == 'AWS' %} true {% else %} false {% endif %}"
 
 
       - displayName: Integration
         attributeName: integration
         type: textBox
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe == true and config.cloudProvider != 'AWS' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagSnowpipe == 'Enable Snowpipe' and config.cloudProvider != 'AWS' %} true {% else %} false {% endif %}"
 
       - displayName: Load Historical Data
         attributeName: flagLoadHistorical
         type: toggleButton
         default: false
-        enableIf: "{% if config.flagSnowpipe == true %} false {% else %} true {% endif %}"
+        enableIf: "{% if config.flagSnowpipe != 'Test Copy Statement' %} true {% else %} false {% endif %}"
 
+        
     - groupName: File Location
       items:
-      - displayName: Stage Storage Location
+      - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
         type: textBox
         default: 'Enter Storage Location name'
@@ -69,7 +82,7 @@ metadata:
         attributeName: fileNames
         type: textBox
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe != true %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagSnowpipe != 'Enable Snowpipe' %} true {% else %} false {% endif %}"
 
       - displayName: File Pattern (Optional - Ex:'.*hea.*[.]csv')
         attributeName: filePattern
@@ -94,6 +107,13 @@ metadata:
         isRequired: false
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
 
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+        isRequired: false
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
+      
       - displayName: File Type
         attributeName: fileType
         type: dropdownSelector
@@ -271,5 +291,5 @@ metadata:
       attributeName: sysFlScTm
 
 
-name: CopyInto-Snowpipe
+name: Snowpipe
 type: NodeType

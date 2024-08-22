@@ -140,8 +140,6 @@ The Copy-Into node type the following configurations available:
 
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 
-![Sourcedata](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
-
 * **Internal or External Stage**
   * **Coalesce Storage Location of Stage**: A storage location in Coalesce where the stage is located.
   * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged
@@ -150,9 +148,7 @@ The Copy-Into node type the following configurations available:
       
 * **External location**
   * **External URI**: Enter the URI of the External location
-  * **Storage Integration**: -- Please change
-
-![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+  * **Storage Integration**: 
 
 * **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
@@ -252,13 +248,10 @@ The parameter name is `loadType` and the default value is ``.
 When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.
 
 #### CopyInto Initial Deployment
+When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:
 
-When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
-
-| Deployment Behavior  | Enable Snowpipe | Load Type parameter | Stages Executed |
-|--|--|---|---|
-|  Initial Deployment | `false` | empty| Create Table. </br> Historical full load using CopyInto. 
-| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force 
+**Create table/transient table**
+This will execute a CREATE OR REPLACE statement and create a table or transient table in the target environment.
 
 ### CopyInto Redeployment
 
@@ -292,15 +285,16 @@ The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It
 
 This means you can load data from files in micro-batches, making it available to users within minutes, rather than manually executing COPY statements on a schedule to load larger batches.
 
-### CopyInto - Snowpipe Node Configuration
+### Snowpipe Node Configuration
 
-The Copy-Into Snowpipe node type the following configurations available:
+The Snowpipe node type the following configurations available:
 
-* [Node Properties](#copy-into-snowpipe-node-properties)
-* [Snowpipe Options](#copy-into-snowpipe-snowpipe-options)
-* [File Location](#copy-into-snowpipe-file-location)
-* [File Format](#copy-into-snowpipe-file-format)
-* [Copy Options](#copy-into-snowpipe-copy-options)
+* [Node Properties](#snowpipe-node-properties)
+* [General Options](#snowpipe-general-options)
+* [Snowpipe Options](#snowpipe-snowpipe-options)
+* [File Location](#snowpipe-file-location)
+* [File Format](#snowpipe-file-format)
+* [Copy Options](#snowpipe-copy-options)
 
 ![Snowpipe-config](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/14cfeadf-2996-4665-80a1-ecd528691326)
 
@@ -312,6 +306,12 @@ The Copy-Into Snowpipe node type the following configurations available:
 * **Deploy Enabled**:
   * If TRUE the node will be deployed / redeployed when changes are detected.
   * If FALSE the node will not be deployed or will be dropped during redeployment.
+  * 
+<h3 id="snowpipe-general-options"> General Options </h3>
+
+* **Create As**: Dropdown that helps us to create a table or Transiet table to load data from external stage.  -- Please check
+  * Table 
+  * Transient Table 
 
 <h3 id="copy-into-snowpipe-snowpipe-options"> CopyInto - Snowpipe Options </h3>
 
@@ -323,10 +323,7 @@ The Copy-Into Snowpipe node type the following configurations available:
     * GCP -  Integration. Specifies the existing notification integration used to access the storage queue.
 * **Load historical data**:When the toggle is enabled auto ingest does not take place and the files already in internal or external stages are loaded
 
-<h3 id="copy-into-snowpipe-file-location">  CopyInto - Snowpipe File Location </h3>
-
-
-![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+<h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
 
 * **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
@@ -334,9 +331,7 @@ The Copy-Into Snowpipe node type the following configurations available:
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
 
 
-<h3 id="copy-into-snowpipe-file-format"> CopyInto - Snowpipe File Format </h3>
-
-![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
+<h3 id="snowpipe-file-format"> CopyInto - Snowpipe File Format </h3>
 
 
 * **File Format Definition - File Format Name**:

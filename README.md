@@ -325,17 +325,16 @@ The Snowpipe node type the following configurations available:
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
 
-* **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
+* **Coalesce Stage Storage Location of stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
 * **File Names**: Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
-
-
+  
 <h3 id="snowpipe-file-format"> CopyInto - Snowpipe File Format </h3>
-
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+  * **Coalesce Storage Location of File Format**: File format location in snowflake that is mapped as storage location in Coalesce
   * **File Type**:
     * CSV
     * JSON
@@ -409,7 +408,7 @@ If you toggle Enable Snowpipe under Snowpipe Options to *OFF*, these configurati
 * **Enforce Length**: Boolean that specifies whether to truncate text strings that exceed the target column length
 * **Truncate Columns**: Boolean that specifies whether to truncate text strings that exceed the target column length
 
-### CopyInto - Snowpipe System Columns
+### Snowpipe System Columns
 
 The set of columns which has source data and file metadata information.
 
@@ -421,16 +420,16 @@ The set of columns which has source data and file metadata information.
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
 
-### CopyInto - Snowpipe Deployment
+### Snowpipe Deployment
 
-#### CopyInto - Snowpipe Initial Deployment
+#### Snowpipe Initial Deployment
 
-When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
+When deployed for the first time into an environment the Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
-| Deployment Behavior  | Enable Snowpipe |Stages Executed|
+| Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed|
 |--|--|---|--|
-|  Initial Deployment | `false` | Create Table. </br> Historical full load using CopyInto. |
-| Initial Deployment | `true` | Create table </br> Create Pipe |
+|  Initial Deployment | `false` | ``|Create Table. </br> Historical full load using CopyInto. 
+| Initial Deployment | `true` | Reload|Create table </br> Create Pipe 
 
 ### CopyInto - Snowpipe Redeployment
 

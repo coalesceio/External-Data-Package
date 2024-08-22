@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 1b80d25b-8002-4555-b2de-2c41c0f69abe
-name: COPY_SP_JSON
+name: COPY_SP_JSON12
 operation:
   config:
     awsSnsTopic: ""
@@ -153,9 +153,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_SP_JSON
+        name: COPY_SP_JSON12
         noLinkRefs: []
-  name: COPY_SP_JSON
+  name: COPY_SP_JSON12
   overrideSQL: false
   schema: ""
   sqlType: "323"

@@ -118,7 +118,8 @@ If the InferSchema node is deleted from a Workspace, that Workspace is committed
 The Copy-Into node type the following configurations available:
 
 * [Node Properties](#copy-into-node-properties)
-* [File Location](#copy-into-file-location)
+* [General Options](#copy-into-snowpipe-options)
+* [Source Data](#copy-into-file-location)
 * [File Format](#copy-into-file-format)
 * [Copy Options](#copy-into-copy-options)
 
@@ -130,8 +131,26 @@ The Copy-Into node type the following configurations available:
 * **Deploy Enabled**:
   * If TRUE the node will be deployed / redeployed when changes are detected.
   * If FALSE the node will not be deployed or will be dropped during redeployment.
+    
+<h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
-<h3 id="copy-into-file-location">  CopyInto - File Location </h3>
+* **Create As**: Select from the options to create as Table or Transient Table
+    * Transient Table
+    * Table
+
+<h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
+
+![Sourcedata](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
+* **Internal or External Stage**
+  * **Coalesce Storage Location of Stage**: A storage location in Coalesce where the stage is located.
+  * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged
+  * **File Name(s)(Optional - Ex:'a.csv','b.csv')**: Specifies a list of one or more files names (separated by commas) to be loaded
+  * **File Pattern (Optional - Ex:'.*hea.*[.]csv') **: A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.
+      
+* **External location**
+  * **External URI**: Enter the URI of the External location
+  * **Storage Integration**: -- Please change
 
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
 

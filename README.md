@@ -4,7 +4,7 @@ The Coalesce External Data Package includes:
 
 * [Inferschema](#inferschema)
 * [CopyInto](#CopyInto)
-* [CopyInto-Snowpipe](#CopyIntoSnowpipe)
+* [Snowpipe](#Snowpipe)
 * [External Table](#external-tables)
 * [CopyUnload](#CopyUnload)
 * [API](#API)
@@ -60,9 +60,9 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * Add a InferSchema node, for example `INFER_JSON`.
 * Deploy the node. On deployment a table of the same name as the InferSchema node is created with columns inferred on parsing the file. For example, `InferSchema node:INFER_JSON,Inferred table:INFER_JSON`.
 * Add the inferred table to the browser using Add Sources tab.
-* Now we can add a Copy-Into Snowpipe or External table node on top of the inferred table to load staged files.
+* Now we can add a Snowpipe or External table node on top of the inferred table to load staged files.
 * If the structure of the file is changed, you can redeploy the InferSchema node with "Alter existing table" redeployment behaviour. The already inferred table is altered.
-* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto Copy-Into Snowpipe or External table node added on top of it.
+* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto,Snowpipe or External table node added on top of it.
 
 > 🚧 Inferred table and Copy-into nodes/External table cannot be deployed together
 >
@@ -118,7 +118,6 @@ If the InferSchema node is deleted from a Workspace, that Workspace is committed
 The Copy-Into node type the following configurations available:
 
 * [Node Properties](#copy-into-node-properties)
-* [Snowpipe Options](#copy-into-snowpipe-options)
 * [File Location](#copy-into-file-location)
 * [File Format](#copy-into-file-format)
 * [Copy Options](#copy-into-copy-options)
@@ -268,7 +267,7 @@ This is executed in two stages:
 * **Delete Table**: Coalesce Internal table is dropped.
 * **Delete Table**: Target table in Snowflake is dropped.
 
-<h2 id="CopyIntoSnowpipe">CopyInto - Snowpipe </h2>
+<h2 id="Snowpipe">Snowpipe </h2>
 
 The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using     
  [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table). CopyInto-Snowpipe node can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.

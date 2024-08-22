@@ -255,10 +255,10 @@ When the parameter value is set to `Reload`, the data is reloaded into the table
 
 When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
-| Deployment Behavior  | Enable Snowpipe |Stages Executed|
-|--|--|---|--|
-|  Initial Deployment | `false` | empty|Create Table. </br> Historical full load using CopyInto. |
-| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force|
+| Deployment Behavior  | Enable Snowpipe | Stages Executed |
+|--|--|---|
+|  Initial Deployment | `false` | empty| Create Table. </br> Historical full load using CopyInto. |
+| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force |
 
 ### CopyInto Redeployment
 

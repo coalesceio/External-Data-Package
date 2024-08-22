@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 15c17394-c093-4947-830b-d6dde42f4caf
-name: COPY_SP_AVRO
+name: COPY_SP_AVRO12
 operation:
   config:
     awsSnsTopic: ""
@@ -153,9 +153,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_SP_AVRO
+        name: COPY_SP_AVRO12
         noLinkRefs: []
-  name: COPY_SP_AVRO
+  name: COPY_SP_AVRO12
   overrideSQL: false
   schema: ""
   sqlType: "323"

@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: TARGET
     fileFormatName: MYAVROFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: "'twitter.avro'"
     filePattern: ""
     fileType: AVRO

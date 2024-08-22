@@ -6,7 +6,7 @@ Coalesce permits you to copy and modify this script for the purposes of using wi
 does not permit copying or modification for any other purpose.  
 #}
 {# == Node Type Version        : 1  == #}
-{# == Node Type Name           : CopyInto-SnowPipe == #}
+{# == Node Type Name           : SnowPipe == #}
 {# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
 
 
@@ -330,13 +330,7 @@ select 1 = 0
      {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
      {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
-        	{# Current Pipe name #}
-			
-			 {% set csrcSchName = currentState.node.location.name %}
-            {% set cdb = currentState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
-            {% set csch = currentState.storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
-            {% set ctbl = currentState.node.name %}
-            {% set cfqPipeName = '"' + cdb + '"."' + csch + '"."' + ctbl + '_PIPE"' %}
+        
 
              
    {%if currentState == undefined or (currentState != undefined and desiredState!=currentState) %} 
@@ -345,7 +339,17 @@ select 1 = 0
        
                 {%if desiredState.config.flagLoadHistorical == true%}
 
-                  {{ stage('Historical Load') }}
+                        {%- if desiredState.parameters.loadType == 'Reload' -%}
+
+                            {{ stage('Truncate Target Table', true, "sql", "alter") }}
+                            TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}"
+
+                            {{ stage('Historical Reload-Using Copy-into', true, "sql", "alter") }}
+                       {%else %}
+ 
+                            {{ stage('Historical Full Load-Using Copy-into', true, "sql", "alter") }}
+ 
+                        {%endif%}
 
                  COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
                    {%- for col in desiredState.columns %}
@@ -442,15 +446,13 @@ select 1 = 0
                   {% if desiredState.config.truncateColumns != ""%}
                       TRUNCATECOLUMNS = {{ desiredState.config.truncateColumns }}
                   {%endif%}
-	            {%endif%}     
-                  
-                {% if (currentState.node.name != desiredState.node.name) or nsVariables.storageLocationTest == false %}
-                    {{ stage('Drop Pipe at old location/name', true, "sql", "alter") }}             
-                       DROP PIPE IF EXISTS {{ cfqPipeName }}
-                {%endif%}
-
+                    {%- if desiredState.parameters.loadType == 'Reload' -%}
+		              FORCE=TRUE
+		            {%endif%}
+	            {%endif%}   
+                      
                 {%- if desiredState.config.flagSnowpipe == 'Enable Snowpipe' -%}
-	                   {{ stage('Create Pipe') }}
+	                   {{ stage('Create Pipe', true, "sql", "create") }}
 
                        CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE
                        {% if desiredState.config.awsSnsTopic != "" and desiredState.config.cloudProvider == 'AWS'%}           
@@ -558,7 +560,7 @@ select 1 = 0
    
                   {%if desiredState.config.flagLoadHistorical == true%}
 
-                    {{ stage('Alter Pipe') }}
+                    {{ stage('Alter Pipe',true, "sql", "alter") }}
            
                      ALTER PIPE {{ fqPipeName }} REFRESH;
                   {%endif%}

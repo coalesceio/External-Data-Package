@@ -18,9 +18,7 @@ select 1 = 0
 {% elif desiredState %}
 
     
-    {% if desiredState.node.materializationType == 'table' or desiredState.node.materializationType == 'transient table'  %}
-        
-        
+    {% if desiredState.node.materializationType == 'table' or desiredState.node.materializationType == 'transient table'  %}     
 
         {% if currentState != undefined and currentState.node.materializationType != desiredState.node.materializationType %}
 

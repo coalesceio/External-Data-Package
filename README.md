@@ -255,10 +255,10 @@ When the parameter value is set to `Reload`, the data is reloaded into the table
 
 When deployed for the first time into an environment the CopyInto-Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
-| Deployment Behavior  | Enable Snowpipe | Stages Executed |
-|--|--|---|
-|  Initial Deployment | `false` | empty| Create Table. </br> Historical full load using CopyInto. |
-| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force |
+| Deployment Behavior  | Enable Snowpipe | Load Type parameter | Stages Executed |
+|--|--|---|---|
+|  Initial Deployment | `false` | empty| Create Table. </br> Historical full load using CopyInto. 
+| Initial Deployment | `false` | `Reload` | Truncate Target Table </br> Reload data-Copy Into Force 
 
 ### CopyInto Redeployment
 
@@ -277,15 +277,11 @@ When the materialization type of Copy-Into node is changed from table to transie
 * **Drop table/transient table**
 * **Create transient table/table**
 
-
 ### CopyInto Undeployment
 
 If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
-This is executed in two stages:
-
-* **Delete Table**: Coalesce Internal table is dropped.
-* **Delete Table**: Target table in Snowflake is dropped.
+* **Drop table/transient table**: Target table in Snowflake is dropped
 
 <h2 id="Snowpipe">Snowpipe </h2>
 

@@ -278,8 +278,8 @@ If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is com
 
 <h2 id="Snowpipe">Snowpipe </h2>
 
-The Coalesce CopyInto - Snowpipe node is a node that performs two operations. It can be used to load historical data using     
- [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table). CopyInto-Snowpipe node can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
+The Coalesce Snowpipe node is a node that performs two operations. It can be used to load historical data using     
+ [CopyInto](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table). Also the Snowpipe node can be used to create a pipe to auto ingest files from AWS, GCP, or Azure.
 
 [Snowpipe](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro) enables loading data from files as soon as they’re available in a stage. 
 
@@ -315,13 +315,13 @@ The Snowpipe node type the following configurations available:
 
 <h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>
 
-* **Enable Snowpipe**: Toggle that helps us to load create a pipe to auto ingest files from external stage.
-  * Toggle Off - Provides option to load data from files in internal or external stage. This is under File Location configuration.
-  * Toggle On - Load data auto ingesting files from AWS, Azure, or GCP. Choose your **Cloud Provider.**
+* **Enable Snowpipe**: Drop down that helps us to load create a pipe to auto ingest files from external stage or .
+  * Enable Snowpipe - Load data auto ingesting files from AWS, Azure, or GCP. Choose your **Cloud Provider.**
     * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.
     * Azure - Integration. Specifies the existing notification integration used to access the storage queue.
     * GCP -  Integration. Specifies the existing notification integration used to access the storage queue.
-* **Load historical data**:When the toggle is enabled auto ingest does not take place and the files already in internal or external stages are loaded
+  * Test Copy Statement - To validate the Copy-into statement before we use it to create PIPE
+* **Load historical data**:Loads the historic data into the target table by executing a statement.
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
 

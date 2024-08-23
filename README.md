@@ -314,7 +314,7 @@ The Snowpipe node type the following configurations available:
 
 ![CopyInto-general options](https://github.com/user-attachments/assets/fa520f20-f609-40ed-8df0-0cf64885ea93)
 
-* **Create As**: Dropdown that helps us to create a table or Transiet table to load data from external stage.  -- Please check
+* **Create As**: Dropdown that helps us to create a table or Transiet table to load data from external stage.  
   * Table 
   * Transient Table 
 

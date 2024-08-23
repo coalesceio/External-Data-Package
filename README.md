@@ -148,7 +148,7 @@ The Copy-Into node type the following configurations available:
       
 * **External location**
   * **External URI**: Enter the URI of the External location
-  * **Storage Integration**: 
+  * **Storage Integration**: Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity
 
 * **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.

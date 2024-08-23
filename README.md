@@ -426,26 +426,26 @@ The set of columns which has source data and file metadata information.
 
 When deployed for the first time into an environment the Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
 
-| Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed|
-|--|--|---|--|
-|  Initial Deployment | `false` | ``|Create Table. </br> Historical full load using CopyInto. 
-| Initial Deployment | `true` | Reload|Create table </br> Create Pipe 
+| Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed |
+|--|--|---|--|--|
+|  Initial Deployment | `true` |true| ``|Create Table </br> Historical full load using CopyInto </br> Create Pipe
+| Initial Deployment | `true` |true| Reload|Create table </br> Truncate Target table </br> Historical full load using CopyInto </br> Create Pipe
 
-### CopyInto - Snowpipe Redeployment
+### Snowpipe Redeployment
 
-#### Altering the CopyInto-Snowpipe Tables
+#### Altering the Snowpipe Tables
 
 There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
 
 The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
-* **Create Pipe**: Pipe is recreated if enable snowpipe option is true
-* **Historical full load using CopyInto**:Historical data are loaded
+* **Historical full load using CopyInto**:Historical data are loaded if 'Load Historical' toggle is on.
+* * **Create Pipe**: Pipe is recreated if enable snowpipe option is true
 
-### CopyInto - Snowpipe Undeployment
+### Snowpipe Undeployment
 
-If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+If the Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 This is executed in two stages:
 

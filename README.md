@@ -298,7 +298,7 @@ The Snowpipe node type the following configurations available:
 
 ![Snowpipe-config](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/14cfeadf-2996-4665-80a1-ecd528691326)
 
-<h3 id="copy-into-snowpipe-node-properties">CopyInto - Snowpipe Node Properties</h3>
+<h3 id="snowpipe-snowpipe-node-properties">Snowpipe Node Properties</h3>
 
 * **Storage Location**: Storage Location where the WORK will be created.
 * **Node Type**: Name of template used to create node objects.
@@ -313,7 +313,7 @@ The Snowpipe node type the following configurations available:
   * Table 
   * Transient Table 
 
-<h3 id="copy-into-snowpipe-snowpipe-options"> CopyInto - Snowpipe Options </h3>
+<h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>
 
 * **Enable Snowpipe**: Toggle that helps us to load create a pipe to auto ingest files from external stage.
   * Toggle Off - Provides option to load data from files in internal or external stage. This is under File Location configuration.
@@ -330,7 +330,7 @@ The Snowpipe node type the following configurations available:
 * **File Names**: Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
   
-<h3 id="snowpipe-file-format"> CopyInto - Snowpipe File Format </h3>
+<h3 id="snowpipe-file-format"> Snowpipe File Format </h3>
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
@@ -377,7 +377,7 @@ The Snowpipe node type the following configurations available:
     * **XML**
       * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 
-<h3 id="copy-into-snowpipe-copy-options"> CopyInto - Snowpipe Copy Options </h3>
+<h3 id="snowpipe-copy-options"> Snowpipe Copy Options </h3>
 
 If you toggle Enable Snowpipe under Snowpipe Options to *ON*, these configuration options are available.
 
@@ -419,29 +419,31 @@ The set of columns which has source data and file metadata information.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
-
 ### Snowpipe Deployment
 
 #### Snowpipe Initial Deployment
 
-When deployed for the first time into an environment the Snowpipe node will execute the below stage depending on if Snowpipe is enabled and the `loadType`.
+When deployed for the first time into an environment the Snowpipe node will execute the below stages depending on if Enable Snowpipe is enabled,'Load Historical Data' is enabled and the `loadType` parameter.
 
 | Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed |
 |--|--|---|--|--|
-|  Initial Deployment | `true` |true| ``|Create Table </br> Historical full load using CopyInto </br> Create Pipe
-| Initial Deployment | `true` |true| Reload|Create table </br> Truncate Target table </br> Historical full load using CopyInto </br> Create Pipe
+| Initial Deployment | true |true| ``|Create Table </br> Historical full load using CopyInto </br> Create Pipe </br> Alter Pipe 
+| Initial Deployment | true |true| Reload|Create table </br> Truncate Target table </br> Historical full load using CopyInto </br> Create Pipe </br> Alter Pipe
+| Initial Deployment | true |false| Reload|Create table </br> Truncate Target table </br> Create Pipe
 
 ### Snowpipe Redeployment
 
-#### Altering the Snowpipe Tables
+#### Altering the Snowpipe node
 
 There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
 
 The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description |**: Alter table statement is executed to perform the alter operation.
+* **Truncate target table**:The target table is truncated in case the Load Type parameter is set to 'Reload'
 * **Historical full load using CopyInto**:Historical data are loaded if 'Load Historical' toggle is on.
-* * **Create Pipe**: Pipe is recreated if enable snowpipe option is true
+* **Create Pipe**: Pipe is recreated if enable snowpipe option is true
+* **Alter Pipe**:Pipe is refreshed if 'Load Historical' toggle is on.
 
 ### Snowpipe Undeployment
 

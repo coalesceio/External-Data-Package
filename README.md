@@ -134,28 +134,31 @@ The Copy-Into node type the following configurations available:
     
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
+![CopyInto-general options](https://github.com/user-attachments/assets/fa520f20-f609-40ed-8df0-0cf64885ea93)
+
 * **Create As**: Select from the options to create as Table or Transient Table
     * Transient Table
     * Table
 
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 
+![CopyInto-File location](https://github.com/user-attachments/assets/3f95f8d0-3c23-4a46-8242-fb81989c523b)
+
 * **Internal or External Stage**
   * **Coalesce Storage Location of Stage**: A storage location in Coalesce where the stage is located.
   * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged
   * **File Name(s)(Optional - Ex:'a.csv','b.csv')**: Specifies a list of one or more files names (separated by commas) to be loaded
-  * **File Pattern (Optional - Ex:'.*hea.*[.]csv') **: A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.
-      
+  * **File Pattern (Optional - Ex:'.*hea.*[.]csv')**: A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.
+
+![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
+
 * **External location**
   * **External URI**: Enter the URI of the External location
   * **Storage Integration**: Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity
 
-* **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
-* **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
-* **File Names**: Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
-* **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
-
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
+
+![copy-into-file-format](https://github.com/user-attachments/assets/2a737c5f-3bb3-471a-9365-bf3251677415)
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
@@ -309,13 +312,17 @@ The Snowpipe node type the following configurations available:
   * 
 <h3 id="snowpipe-general-options"> General Options </h3>
 
+![CopyInto-general options](https://github.com/user-attachments/assets/fa520f20-f609-40ed-8df0-0cf64885ea93)
+
 * **Create As**: Dropdown that helps us to create a table or Transiet table to load data from external stage.  -- Please check
   * Table 
   * Transient Table 
 
 <h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>
 
-* **Enable Snowpipe**: Drop down that helps us to load create a pipe to auto ingest files from external stage or .
+![snowpipe-snowpipe-options](https://github.com/user-attachments/assets/7e341bb3-4a36-4d4a-b451-5cde6805dad6)
+
+* **Enable Snowpipe**: Drop down that helps us to create a pipe to auto ingest files from external stage or validate the Copy-Into statement.
   * Enable Snowpipe - Load data auto ingesting files from AWS, Azure, or GCP. Choose your **Cloud Provider.**
     * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.
     * Azure - Integration. Specifies the existing notification integration used to access the storage queue.
@@ -325,12 +332,16 @@ The Snowpipe node type the following configurations available:
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
 
+![snowpipe-file-location](https://github.com/user-attachments/assets/70189562-bb34-49ba-9735-db63f34b271c)
+
 * **Coalesce Stage Storage Location of stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
 * **File Names**: Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
   
 <h3 id="snowpipe-file-format"> Snowpipe File Format </h3>
+
+![Snowpipe-file-format](https://github.com/user-attachments/assets/ae640901-16ce-4ed2-8e6c-efae278d3942)
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format to use for loading data into the table.

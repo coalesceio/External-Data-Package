@@ -125,7 +125,7 @@ The Copy-Into node type the following configurations available:
 
 <h3 id="copy-into-node-properties">CopyInto - Node Properties</h3>
 
-* **Storage Location**: Storage Location where the WORK will be created.
+* **Storage Location**: Storage Location where the target table will be created.
 * **Node Type**: Name of template used to create node objects.
 * **Description**: A description of the node's purpose.
 * **Deploy Enabled**:
@@ -303,7 +303,7 @@ The Snowpipe node type the following configurations available:
 
 <h3 id="snowpipe-node-properties">Snowpipe Node Properties</h3>
 
-* **Storage Location**: Storage Location where the WORK will be created.
+* **Storage Location**: Storage Location where the target table will be created.
 * **Node Type**: Name of template used to create node objects.
 * **Description**: A description of the node's purpose.
 * **Deploy Enabled**:

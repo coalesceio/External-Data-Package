@@ -328,7 +328,7 @@ The Snowpipe node type the following configurations available:
     * Azure - Integration. Specifies the existing notification integration used to access the storage queue.
     * GCP -  Integration. Specifies the existing notification integration used to access the storage queue.
   * Test Copy Statement - To validate the Copy-into statement before we use it to create PIPE
-* **Load historical data**:Loads the historic data into the target table by executing a statement.
+* **Load historical data**:Loads the historic data into the target table by executing a COPY_INTO statement.
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
 

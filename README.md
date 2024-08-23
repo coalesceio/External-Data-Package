@@ -60,7 +60,7 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * Add a InferSchema node, for example `INFER_JSON`.
 * Deploy the node. On deployment a table of the same name as the InferSchema node is created with columns inferred on parsing the file. For example, `InferSchema node:INFER_JSON,Inferred table:INFER_JSON`.
 * Add the inferred table to the browser using Add Sources tab.
-* Now we can add a Snowpipe or External table node on top of the inferred table to load staged files.
+* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
 * If the structure of the file is changed, you can redeploy the InferSchema node with "Alter existing table" redeployment behaviour. The already inferred table is altered.
 * Next, you can re-sync the columns of the inferred table and redeploy the CopyInto,Snowpipe or External table node added on top of it.
 
@@ -118,7 +118,7 @@ If the InferSchema node is deleted from a Workspace, that Workspace is committed
 The Copy-Into node type the following configurations available:
 
 * [Node Properties](#copy-into-node-properties)
-* [General Options](#copy-into-snowpipe-options)
+* [General Options](#copy-into-general-options)
 * [Source Data](#copy-into-file-location)
 * [File Format](#copy-into-file-format)
 * [Copy Options](#copy-into-copy-options)

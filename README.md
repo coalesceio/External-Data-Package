@@ -159,7 +159,7 @@ The Copy-Into node type the following configurations available:
 
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
-  * **Coalesce file Format location**:Location in Coalesce pointing to the database and schema,the file format resides.
+  * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
   * **File Type**:
     * CSV
     * JSON
@@ -298,7 +298,7 @@ The Snowpipe node type the following configurations available:
 
 ![Snowpipe-config](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/14cfeadf-2996-4665-80a1-ecd528691326)
 
-<h3 id="snowpipe-snowpipe-node-properties">Snowpipe Node Properties</h3>
+<h3 id="snowpipe-node-properties">Snowpipe Node Properties</h3>
 
 * **Storage Location**: Storage Location where the WORK will be created.
 * **Node Type**: Name of template used to create node objects.

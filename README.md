@@ -894,15 +894,15 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 
 ### CopyInto
 
-* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324)
-* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324)
-* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324)
+* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324/)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324/)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324/)
 
-### CopyInto-Snowpipe
+### Snowpipe
 
-* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/definition.yml)
-* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/create.sql.j2)
-* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-Snowpipe-297/run.sql.j2)
+* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Snowpipe-323/)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Snowpipe-323/)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/Snowpipe-323/)
 
 ### External Tables 
 

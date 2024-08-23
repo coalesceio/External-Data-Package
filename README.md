@@ -421,6 +421,43 @@ The set of columns which has source data and file metadata information.
 
 ### Snowpipe Deployment
 
+#### Snowpipe Deployment Parameters
+
+The Snowpipe includes twp environment parameters.The parameter `loadType` allows you to specify if you want to perform a full load or a reload based on the load type 
+when you are performing a Copy-Into operation.
+The another parameter `targetIntegrationOrAwsSNSTopic` allows you to specify the AWS SNS Topic or Integration name to be used for auto ingesting files from Clous providers
+
+The parameter name is `loadType` and the default value is ``.
+
+```json
+{
+    "loadType": ""
+}
+```
+
+When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously 
+and have not changed since they were loaded.
+
+The parameter name is targetIntegrationOrAwsSNSTopic and the default value is DEV ENVIRONMENT.
+
+When set to DEV ENVIRONMENT the value entered in the Snowpipe Options config AWS SNS TOpic/Integration is used for ingesting files from Cloud providers.
+
+```
+{
+    "targetIntegrationOrAwsSNSTopic": "DEV ENVIRONMENT"
+}
+```
+
+When set to any value other than DEV ENVIRONMENT the node will use the specified value for AWS SNS TOpic/Integration.
+
+For example, the Snowpipe node will use the specific value for auto ingestion.
+
+```
+{
+    "targetIntegrationOrAwsSNSTopic": "arn:aws:sqs:us-east-1:832620633027:sf-snowpipe-AIDA4DXAOTPB7IF437EPD-lZe8ciYpPqGgC9KwWLmiIQ"
+}
+```
+
 #### Snowpipe Initial Deployment
 
 When deployed for the first time into an environment the Snowpipe node will execute the below stages depending on if Enable Snowpipe is enabled,'Load Historical Data' is enabled and the `loadType` parameter.

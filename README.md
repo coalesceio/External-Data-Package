@@ -45,7 +45,6 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
-
 * **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
 * **File Names (Required)**: Use commas to seperate multiple files. File whose metatdata is to be inferred.
@@ -57,60 +56,14 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 
 ### InferSchema Example workflow
 
-* Add a InferSchema node, for example `INFER_JSON`.
-* Deploy the node. On deployment a table of the same name as the InferSchema node is created with columns inferred on parsing the file. For example, `InferSchema node:INFER_JSON,Inferred table:INFER_JSON`.
+* Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
 * Add the inferred table to the browser using Add Sources tab.
 * Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
-* If the structure of the file is changed, you can redeploy the InferSchema node with "Alter existing table" redeployment behaviour. The already inferred table is altered.
-* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto,Snowpipe or External table node added on top of it.
-
-> 🚧 Inferred table and Copy-into nodes/External table cannot be deployed together
->
-> Infer Schema node, inferred table and Copy-into nodes/External table cannot be deployed together. First deploy the Infer Schema node. Then add the inferred table in browser, add Copy-into node on top of the table and then deploy the same.
-
-### InferSchema Deployment
-
-#### InferSchema Initial Deployment
-
-When deployed for the first time into an environment the InferSchema node will execute the stage:
-
-* Stage executed: **Infer and Create target table**
-
-#### InferSchema Redeployment
-
-**Redeployment Behavior: Create or Replace**
-
-| Redeployment Behavior | Stage Executed |
-|---|---|
-| Create or Replace | Infer and Create target table
-
-If any of the Source Data options like Stage storage location, Stage name or filename are modified.
-Then you can redeploy the Infer Schema node with redeployment behaviour “Create or Replace”.
-
-> 📘 Info
-> 
-> You can go back to the browser and Re-sync columns of Inferred table, re-execute Copy-Into and redeploy
-
-**Redeployment Behavior: Alter Existing Table**
-
-| Redeployment Behavior | Stage Executed |
-|---|---|
-|Alter existing table| Infer and Alter target table
-
-If all Source Data options remain same and only there are changes in the existing file structure, you can redeploy the Infer Schema node with redeployment behaviour “Alter existing table”.
-
-**Redeployment Behavior: Drop Existing Table**
-
-| Redeployment Behavior | Stage Executed |
-|---|---|
-|Drop existing table |Drop inferred table
-
-If you want to drop the inferred table you can redeploy the Infer Schema node with redeployment behaviour “Drop existing table”.
+* Once we get the required metadata columns in our downstream node(Copy-Into,Snowpipe or External table),bulk edit the source in the node to be blank.Also delete the from clause in the Join tab.These information are not required for Copy-Into,Snowpipe or External table to  load data from files.
+* Delete the inferred table/source table for the downstream nodes mentioned step2.
+* Delete the inferschema node ,we created in step1 as we have derived all the columns required for the downstream nodes and the data for the same are derived from files.
+* Eventually Inferschema nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
   
-### InferSchema Undeployment
-
-If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
-
 <h2 id="CopyInto"> CopyInto </h2>
 
 ### CopyInto Node Configuration
@@ -233,6 +186,9 @@ The set of columns which has source data and file metadata information.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
+### Key points to use CopyInto node
+* CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
+* CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
 
 ### CopyInto Deployment
 
@@ -253,8 +209,10 @@ When the parameter value is set to `Reload`, the data is reloaded into the table
 #### CopyInto Initial Deployment
 When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:
 
-**Create table/transient table**
-This will execute a CREATE OR REPLACE statement and create a table or transient table in the target environment.
+| Deployment Behavior  | Load Type | Stages Executed |
+|--|--|--|
+| Initial Deployment | ``|Create Table/Transient Table
+| Initial Deployment | Reload| Truncate Target table </br> Create Table/Transient Table
 
 ### CopyInto Redeployment
 
@@ -430,6 +388,11 @@ The set of columns which has source data and file metadata information.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
+### Key points to use CopyInto node
+* Snowpipe node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
+* Snowpipe node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Snowpipe node on top of it.
+
+
 ### Snowpipe Deployment
 
 #### Snowpipe Deployment Parameters
@@ -587,6 +550,10 @@ The set of columns which has source data and file metadata information.
 
 * **VALUE** - The data from the file is loaded into this variant column
 * **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
+
+### Key points to use CopyInto node
+* External table node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
+* External node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add External node on top of it.
 
 ### External table Deployment
 

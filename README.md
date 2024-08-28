@@ -52,10 +52,22 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * **Redeployment Behavior**:
   * **CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area.
   * **ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table.
-  * **DROP EXISTING TABLE**: Drops the table inferred.
+* **DROP EXISTING TABLE**: Drops the table inferred.
 
-### InferSchema Example workflow
+### InferSchema Usage
 
+#### Option1-With deployment
+* Add a InferSchema node, for example `INFER_JSON`.
+* Deploy the node. On deployment a table of the same name as the InferSchema node is created with columns inferred on parsing the file. For example, `InferSchema node:INFER_JSON,Inferred table:INFER_JSON`.
+* Add the inferred table to the browser using Add Sources tab.
+* Now we can add a Copy-Into Snowpipe or External table node on top of the inferred table to load staged files.
+* If the structure of the file is changed, you can redeploy the InferSchema node with "Alter existing table" redeployment behaviour. The already inferred table is altered.
+* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto Copy-Into Snowpipe or External table node added on top of it.
+> 🚧 Inferred table and Copy-into nodes/External table cannot be deployed together
+>
+> Infer Schema node, inferred table and Copy-into nodes/External table cannot be deployed together. First deploy the Infer Schema node. Then add the inferred table in browser, add Copy-into node on top of the table and then deploy the same.
+
+#### Option2-Without deployment
 * Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
 * Add the inferred table to the browser using Add Sources tab.
 * Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
@@ -63,6 +75,50 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * Delete the inferred table/source table for the downstream nodes mentioned step2.
 * Delete the inferschema node ,we created in step1 as we have derived all the columns required for the downstream nodes and the data for the same are derived from files.
 * Eventually Inferschema nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
+
+
+### InferSchema Deployment
+
+#### InferSchema Initial Deployment
+
+When deployed for the first time into an environment the InferSchema node will execute the stage:
+
+* Stage executed: **Infer and Create target table**
+
+#### InferSchema Redeployment
+
+**Redeployment Behavior: Create or Replace**
+
+| Redeployment Behavior | Stage Executed |
+|---|---|
+| Create or Replace | Infer and Create target table
+
+If any of the Source Data options like Stage storage location, Stage name or filename are modified.
+Then you can redeploy the Infer Schema node with redeployment behaviour “Create or Replace”.
+
+> 📘 Info
+> 
+> You can go back to the browser and Re-sync columns of Inferred table, re-execute Copy-Into and redeploy
+
+**Redeployment Behavior: Alter Existing Table**
+
+| Redeployment Behavior | Stage Executed |
+|---|---|
+|Alter existing table| Infer and Alter target table
+
+If all Source Data options remain same and only there are changes in the existing file structure, you can redeploy the Infer Schema node with redeployment behaviour “Alter existing table”.
+
+**Redeployment Behavior: Drop Existing Table**
+
+| Redeployment Behavior | Stage Executed |
+|---|---|
+|Drop existing table |Drop inferred table
+
+If you want to drop the inferred table you can redeploy the Infer Schema node with redeployment behaviour “Drop existing table”.
+  
+### InferSchema Undeployment
+
+If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
   
 <h2 id="CopyInto"> CopyInto </h2>
 

@@ -1,34 +1,38 @@
 fileVersion: 1
-id: 1b80d25b-8002-4555-b2de-2c41c0f69abe
-name: COPY_SP_JSON
+id: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+name: COPY_INFER_EMP
 operation:
   config:
-    awsSnsTopic: ""
-    cloudProvider: AWS
     compression: ""
     dateformat: ""
     enforceLength: ""
     errornumber: ""
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: TARGET
-    fileFormatName: JSONFILEFORMAT
+    fileFormatName: MYAVROFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: ""
-    filePattern: "'.*.*[.]json'"
-    fileType: JSON
-    flagLoadHistorical: true
-    flagSnowpipe: Enable Snowpipe
-    integration: "{{desiredState.parameters.targetIntegration}}"
+    fileNames: "'twitter.avro'"
+    filePattern: ""
+    fileType: AVRO
+    forceLoad: ""
+    intextstage: true
+    loadUncertainFiles: ""
     onError: ""
+    purgeBehavior: ""
     recDelim: |+
 
     replaceinvalidcharacters: false
-    skipBlankLines: true
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
     skipHeader: "1"
     stageName: spstagesample/
     stageStorageLocationName: TARGET
-    stripouterarray: true
+    storageintegration: ""
+    stripouterarray: false
     timeformat: ""
     timestampformat: ""
     trimSpace: false
@@ -38,34 +42,59 @@ operation:
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: table
+  materializationType: transient table
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 89dd5c8c-eb8b-4687-b78f-58cd0e12abff
-          stepCounter: 1b80d25b-8002-4555-b2de-2c41c0f69abe
+          columnCounter: 1e29e17f-5cae-44ce-9063-664bbd186bac
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
         config: {}
-        dataType: VARIANT
-        defaultValue: ""
+        dataType: VARCHAR(16777216)
         description: ""
-        name: SRC1
-        nullable: true
+        name: username
+        nullable: false
         sourceColumnReferences:
-          - columnReferences: []
-            transform: $1
-        sysJSON: true
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f3b8089-0413-4b25-956a-b57929f65841
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: tweet
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bf1d82e7-b1c9-484f-9e66-aaa124ce60b2
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: timestamp
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 655154c3-f587-48c0-bc34-a2fff177097d
-          stepCounter: 1b80d25b-8002-4555-b2de-2c41c0f69abe
+          columnCounter: fc5e0584-7d1b-4187-9107-e230f7f93e3d
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -81,8 +110,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9b47ea80-df66-4db7-adc5-75ea2193bdf5
-          stepCounter: 1b80d25b-8002-4555-b2de-2c41c0f69abe
+          columnCounter: 79f8cd98-588c-4c96-9ab8-b3a1557ee2cd
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -98,8 +127,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e86d6874-56ad-4626-8f4c-5e2248fe02f5
-          stepCounter: 1b80d25b-8002-4555-b2de-2c41c0f69abe
+          columnCounter: ace3f363-d58b-423a-9687-581ac6ce38aa
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
         config: {}
         dataType: NUMBER
         defaultValue: ""
@@ -115,8 +144,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 49d1a0ae-0c52-479d-ba29-034e4f2d9499
-          stepCounter: 1b80d25b-8002-4555-b2de-2c41c0f69abe
+          columnCounter: 8c445a7d-ac20-46a8-923c-8e99989d38d8
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -132,8 +161,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 107382d9-bbc7-4cd0-99e5-f19d0433ea9c
-          stepCounter: 1b80d25b-8002-4555-b2de-2c41c0f69abe
+          columnCounter: ea992bea-3a76-4e19-b857-6cedbaac498d
+          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -153,12 +182,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_SP_JSON
+        name: COPY_INFER_EMP
         noLinkRefs: []
-  name: COPY_SP_JSON
+  name: COPY_INFER_EMP
   overrideSQL: false
   schema: ""
-  sqlType: "323"
+  sqlType: "324"
   type: sql
   version: 1
 type: Node

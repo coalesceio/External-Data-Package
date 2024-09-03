@@ -17,8 +17,8 @@ operation:
     fileNames: ""
     filePattern: " '.*con.*[.]json'"
     fileType: JSON
-    flagLoadHistorical: true
-    flagSnowpipe: Test Copy Statement
+    flagLoadHistorical: false
+    flagSnowpipe: Enable Snowpipe
     integration: ""
     onError: ""
     recDelim: |+

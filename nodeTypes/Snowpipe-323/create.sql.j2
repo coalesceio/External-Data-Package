@@ -79,7 +79,7 @@ select 1 = 0
 			nsDesiredTargetStorageLocations="",
 			nsDesiredUsedStorageLocations="",
 			colchanges=0,
-			storageLocationTest="") %}
+			storageLocationTest=true) %}
                 
 
             {# Desired State Storage Location Info #}
@@ -103,8 +103,7 @@ select 1 = 0
             
 
             {% set nsVariables.nsDesiredTargetStorageLocations = desiredState.node.location.name  %}
-
-            
+           
             {%if nsVariables.nsDesiredSourceStorageLocations |length >0 %}
                {% set nsVariables.nsDesiredUsedStorageLocations = nsVariables.nsDesiredSourceStorageLocations + ',' + nsVariables.nsDesiredTargetStorageLocations %}
 
@@ -121,7 +120,25 @@ select 1 = 0
             {% set nsVariables.storageLocationTest = true %}
             {% set nodeCommentTest = currentState.node.description == desiredState.node.description %}
             
+            {% for name in desiredUniqueStorageLocations %}
+            ## Current mappings
             
+                {%if name in currentState.storgeLocations%}
+                {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
+                {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
+                 {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}  
+              {%endif%}        
+               ## Desired mappings
+               {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
+               {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
+               {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}
+             
+               {% if currentDatabaseSchema != desiredDatabaseSchema %}
+                {% set ns.storageLocationTest = false %}
+               {% endif %}
+            {% endfor %}
+
+
             {# Rename / Move Object #}
             {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
                 {{ stage('Rename and / or Move Table', true, "sql", "alter") }}
@@ -456,12 +473,16 @@ select 1 = 0
 	                   {{ stage('Create Pipe', true, "sql", "alter") }}
 
                        CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE
-                       {% if desiredState.config.awsSnsTopic != "" and desiredState.config.cloudProvider == 'AWS'%}           
-                             AWS_SNS_TOPIC = '{{ desiredState.config.awsSnsTopic }}'
-                       {%endif%}
-                       {% if desiredState.config.integration != "" and desiredState.config.cloudProvider != 'AWS' %}
-                           INTEGRATION = '{{ desiredState.config.integration }}'
-                        {%endif%}
+                       {% if desiredState.parameters.targetIntegrationOrAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' %}
+                         AWS_SNS_TOPIC = '{{ desiredState.config.awsSnsTopic }}'
+                       {% elif desiredState.parameters.targetIntegrationOrAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider != 'AWS'  %}
+                          INTEGRATION = '{{ desiredState.config.integration }}'
+		               {% elif desiredState.parameters.targetIntegrationOrAwsSNSTopic != 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' %}
+		                  AWS_SNS_TOPIC = '{{ desiredState.parameters.targetIntegrationOrAwsSNSTopic }}'
+		               {%elif desiredState.parameters.targetIntegrationOrAwsSNSTopic != 'DEV ENVIRONMENT' and desiredState.config.cloudProvider != 'AWS' %}
+		                   INTEGRATION = '{{ desiredState.parameters.targetIntegrationOrAwsSNSTopic }}'
+                        {% endif %}
+
                          AS
                         COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
                        {%- for col in desiredState.columns %}

@@ -76,7 +76,7 @@ select 1 = 0
 			nsDesiredTargetStorageLocations="",
 			nsDesiredUsedStorageLocations="",
 			colchanges=0,
-			storageLocationTest="") %}
+			storageLocationTest=true) %}
                 
 
             {# Desired State Storage Location Info #}
@@ -118,6 +118,24 @@ select 1 = 0
             {% set nsVariables.storageLocationTest = true %}
             {% set nodeCommentTest = currentState.node.description == desiredState.node.description %}
             
+            {% for name in desiredUniqueStorageLocations %}
+              ## Current mappings
+            
+                  {%if name in currentState.storgeLocations%}
+                  {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
+                  {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
+                  {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}  
+                 {%endif%}        
+              ## Desired mappings
+                  {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
+                  {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
+                   {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}
+             
+                {% if currentDatabaseSchema != desiredDatabaseSchema %}
+                {% set ns.storageLocationTest = false %}
+                 {% endif %}
+            {% endfor %}
+
             
             {# Rename / Move Object #}
             {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
@@ -288,3 +306,4 @@ select 1 = 0
 select 1 = 0
 
 {% endif %}
+

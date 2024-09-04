@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
-name: COPY_INFER_EMP
+name: COPY_INFER_EMP12
 operation:
   config:
     compression: ""
@@ -182,9 +182,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_INFER_EMP
+        name: COPY_INFER_EMP12
         noLinkRefs: []
-  name: COPY_INFER_EMP
+  name: COPY_INFER_EMP12
   overrideSQL: false
   schema: ""
   sqlType: "324"

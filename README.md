@@ -268,7 +268,7 @@ When deployed for the first time into an environment the Copy-into node of mater
 | Deployment Behavior  | Load Type | Stages Executed |
 |--|--|--|
 | Initial Deployment | ``|Create Table/Transient Table
-| Initial Deployment | Reload| Truncate Target table </br> Create Table/Transient Table
+| Initial Deployment | Reload|Create Table/Transient Table
 
 ### CopyInto Redeployment
 

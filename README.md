@@ -669,8 +669,7 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-file-format">Copy Unload  File Format</h4>
 
-<img width="217" alt="FileFormat" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/53434835-c071-4132-b1f0-d0c41810216f">
-
+![FileFormat](https://github.com/coalesceio/External-Data-Package/assets/169126315/53434835-c071-4132-b1f0-d0c41810216f)
 * **File Format Definition - File Format Name**:
   * **File Format Name**: Specifies an existing named file format in Snowflake to use for unloading data into the table.
   * **File Type**:
@@ -697,8 +696,7 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-copy-options"> Copy Unload Copy Options</h4>
 
-<img width="217" alt="CopyOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/4a1d32ec-a898-40ba-93e7-94194bcae02d">
-
+![CopyOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/4a1d32ec-a898-40ba-93e7-94194bcae02d)
 
 * **Overwrite Flag**: Toogle overwrites existing files with matching names, if any, in the location where files are unloaded
 * **Header**: 
@@ -735,8 +733,7 @@ The API Node Configuration type has two configuration groups:
 
 <h4 id="api-node-options"> API Node Options </h4>
 
-<img width="235" alt="Options" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530">
-
+![Options](https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530)
 * **Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
 * **Method(Required)**: HTTP Request methods Get,Put,Post
   * **Get**: API Call to retrieve data
@@ -770,8 +767,7 @@ The JDBC Load Node Configuration type has two configuration groups:
 
 <h4 id="JDBC-load-options"> JDBC Load Options </h4>
 
-<img width="243" alt="JDBC_load_options" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/5af13d5b-576a-44ce-ae5b-d02d7501cc7f">
-
+![JDBC_load_options](https://github.com/coalesceio/External-Data-Package/assets/169126315/5af13d5b-576a-44ce-ae5b-d02d7501cc7f)
 * **JDBC Driver(Required)**: Required to establish the connection to external databse
 * **JAR file external stage location(Required)**: Location of the external stage where JAR file is located 
 * **JAR file name(Required)**: Name of JAR file located in external stage
@@ -805,15 +801,13 @@ The Parse Excel node type has three configuration groups:
 
 <h4 id="parse-excel-stored-procedure-options"> Parse Excel Stored Procedure Options </h4>
 
-<img width="228" alt="StoredProcedureOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/ad7e21b6-1ea2-43c9-875a-5a1ce34c9828">
-
+![StoredProcedureOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/ad7e21b6-1ea2-43c9-875a-5a1ce34c9828)
 * **Stored Procedure Storage Location(Required)**: Location in Snowflake to be provided where Stored Procedure will be loaded by script
 * ***Note***: Stored Procedure location and Storage Location (i.e. destination) must be in same Schema
 
 <h4 id="parse-excel-file-processing-options">Excel File Processing Options</h4>
 
-<img width="227" alt="ExcelFileProcessingOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/f612a1cb-f5fe-420f-9a38-d040f0151e6a">
-
+![ExcelFileProcessingOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/f612a1cb-f5fe-420f-9a38-d040f0151e6a)
 
 * **Source File Storage Location(REQUIRED)**: Storage location name in Coalesce which points to the database and schema  where stage is located (source file has to be located under stages)
 * **Source File Stage(REQUIRED)**: Stage name in Snowflake where source file is located
@@ -867,15 +861,13 @@ The Parse Excel node type has three configuration groups:
 
 <h4 id="parse-json-UDTF-procedure-options"> Parse JSON UDTF Procedure Options </h4>
 
-<img width="223" alt="UDTFProcedureOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/c319c9f4-6654-4c9b-9416-5a979279055f">
-
+![UDTFProcedureOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/c319c9f4-6654-4c9b-9416-5a979279055f)
 * **User Defined Table Function Location (Required)**: Location in Snowflake to be provided where UDTF will be loaded by script
 * ***Note***: UDTF location and Storage Location (i.e. destination) must be in same Schema
 
 <h4 id="parse-json-json-file-processing-options">Parse JSON JSON File Processing Options</h4>
 
-<img width="227" alt="JSONFileProcessingOptions" src="https://github.com/coalesceio/External-Data-Package/assets/169126315/b32ac841-6e29-4442-8474-8385cd9a0e97">
-
+![JSONFileProcessingOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/b32ac841-6e29-4442-8474-8385cd9a0e97)
 
 * **Source File Storage Location(REQUIRED)**: Schema name in Snowflake where source file is located (source file has to be located under stages)
 * **Source File Stage(REQUIRED)**: Stage name in Snowflake where source file is located

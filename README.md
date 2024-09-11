@@ -494,10 +494,10 @@ When deployed for the first time into an environment the Snowpipe node will exec
 
 | Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed |
 |--|--|---|--|--|
-| Initial Deployment | Enable Snowpipe |true| ``|Create Table </br> Historical full load using CopyInto </br> Create Pipe </br> Alter Pipe 
-| Initial Deployment | Enable Snowpipe |true| Reload|Create table </br> Truncate Target table </br> Historical full load using CopyInto </br> Create Pipe </br> Alter Pipe
-| Initial Deployment | Enable Snowpipe |false| Reload or Empty|Create table </br> Truncate Target table </br> Create Pipe
-| Initial Deployment | Test Copy Statement |false| Reload or Empty|Create table </br> Test Copy Statement-No pipe creation
+| Initial Deployment | Enable Snowpipe |true| ``|Create Table <br></br> Historical full load using CopyInto <br></br> Create Pipe <br></br> Alter Pipe 
+| Initial Deployment | Enable Snowpipe |true| Reload|Create table <br></br> Truncate Target table <br></br> Historical full load using CopyInto <br></br> Create Pipe <br></br> Alter Pipe
+| Initial Deployment | Enable Snowpipe |false| Reload or Empty|Create table <br></br> Truncate Target table <br></br> Create Pipe
+| Initial Deployment | Test Copy Statement |false| Reload or Empty|Create table <br></br> Test Copy Statement-No pipe creation
 
 ### Snowpipe Redeployment
 

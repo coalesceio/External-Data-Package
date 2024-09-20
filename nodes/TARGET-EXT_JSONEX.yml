@@ -1,0 +1,87 @@
+fileVersion: 1
+id: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+name: EXT_JSONEX
+operation:
+  config:
+    autoRefresh: false
+    cloudProvider: AWS
+    compression: AUTO
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
+    fileFormatType: File Format Name
+    filePattern: .*[.]json
+    fileType: JSON
+    integration: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: false
+    skipBlankLines: true
+    skipHeader: "1"
+    snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
+    stageName: spstagesample/
+    stageStorageLocationName: TARGET
+    stripouterarray: false
+    trimSpace: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - VALUE: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc491b03-9584-4492-9e0d-214981e0d590
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - METADATA$FILENAME: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 84781a70-ff75-4203-adcf-4527b9ad6818
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: EXT_JSONEX
+        noLinkRefs: []
+  name: EXT_JSONEX
+  overrideSQL: false
+  schema: ""
+  sqlType: "298"
+  type: sql
+  version: 1
+type: Node

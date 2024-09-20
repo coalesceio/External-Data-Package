@@ -17,7 +17,7 @@ metadata:
     - groupName: File Location
       items: 
 
-      - displayName: Stage Storage Location
+      - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
         type: textBox
         default: 'Enter Storage Location name'
@@ -45,6 +45,12 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
 
       - displayName: File Format Name
         attributeName: fileFormatName

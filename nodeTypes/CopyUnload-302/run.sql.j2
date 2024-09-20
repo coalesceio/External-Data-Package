@@ -15,6 +15,16 @@ does not permit copying or modification for any other purpose.
 {% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
 {% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
 
+
+{% set folderLoc = [] %}
+{% set parts = config.fileLocation.split("/") %}
+{% set fileLoc = parts[0] | upper %}
+{% set num = parts | length %}
+{% for i in range(1,num) %}
+{% set folderLoc= folderLoc.append(parts[i]) %}
+{% endfor %}
+{% set folderLoc=folderLoc | join('/') %}
+
 {# Figure out Partition by Clause#}
 
         {% set nsVariables = namespace(partitionBySQL="") %}
@@ -54,8 +64,8 @@ does not permit copying or modification for any other purpose.
 
  {% for source in sources %}
     {% for dep in source.dependencies if dep.node %}
-        
-        COPY INTO @{{ ref_no_link(node.location.name, config.fileLocation) | trim | upper ~ "/" ~ node.name }}{% if config.singleFile %}.{{ config.fileType | lower }}{% endif %}
+                            
+        COPY INTO @{{ ref_no_link(node.location.name, fileLoc) | trim | upper ~"/"~ folderLoc | upper ~ "/" ~ node.name }}{% if config.singleFile %}.{{ config.fileType | lower }}{% endif %}
         FROM( SELECT 
              {%- for col in sources[0].columns %}
              {%if config.fileType in  ('JSON')%}
@@ -66,9 +76,9 @@ does not permit copying or modification for any other purpose.
                   {%endif%}
               {%else%}
                   {%if col.transform != ""%}
-	                   {{ col.transform }}
+	             {{ get_source_transform(col) }} AS "{{ col.name }}"
                   {%else%}
-                     {{ col.name }}
+                     {{ get_source_transform(col) }} AS "{{ col.name }}"
                   {%endif%}
               {%endif%}
             {%- if not loop.last -%}, {% endif %}

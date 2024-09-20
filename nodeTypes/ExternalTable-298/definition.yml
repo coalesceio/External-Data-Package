@@ -50,7 +50,6 @@ metadata:
         attributeName: fileFormatLoc
         type: textBox
         default: ""
-        isRequired: false
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
 
       - displayName: File Format Name

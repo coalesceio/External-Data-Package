@@ -10,8 +10,9 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node loads data from internal or external stages to target table using full load or reload option == #}
 
 
-{% if config.auto_refresh == false %}
+{% if config.autoRefresh == false %}
 
+{{ stage('Refresh External table') }}
 ALTER EXTERNAL TABLE IF EXISTS {{ ref_no_link(node.location.name, node.name) }} REFRESH
 
 {% else %}

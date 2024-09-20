@@ -1,9 +1,9 @@
 fileVersion: 1
 id: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-name: EXT_JSON
+name: EXT_JSONEX
 operation:
   config:
-    autoRefresh: true
+    autoRefresh: false
     cloudProvider: AWS
     compression: AUTO
     fieldDelim: ","
@@ -76,9 +76,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: EXT_JSON
+        name: EXT_JSONEX
         noLinkRefs: []
-  name: EXT_JSON
+  name: EXT_JSONEX
   overrideSQL: false
   schema: ""
   sqlType: "298"

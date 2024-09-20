@@ -1,0 +1,118 @@
+fileVersion: 1
+id: fb365cfd-74f4-460b-9ab2-f0c6331dffce
+name: EXPORT_STORE
+operation:
+  config:
+    compression: AUTO
+    compression1: AUTO
+    dateformat: AUTO
+    detailedOutput: false
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatName: ""
+    fileFormatType: File Format Name
+    fileLocation: <Enter Stage Name>
+    fileType: CSV
+    file_ext: ""
+    header: true
+    overwriteFiles: false
+    partitionConfig: false
+    partitionConfigExpressions: false
+    partitionbyConfig:
+      items:
+        - {}
+    partitionbyConfigExpressions:
+      items:
+        - {}
+    queryId: false
+    recDelim: |+
+
+    singleFile: false
+    sizeLimit: "16"
+    timeformat: AUTO
+    timestampformat: AUTO
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31688dda-4ede-4351-b6ec-bc0411805bb6
+          stepCounter: fb365cfd-74f4-460b-9ab2-f0c6331dffce
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: STORE_ID
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ec317d67-44c4-4030-ba36-ea11d169a0fb
+                stepCounter: 9b7e4f9a-3a9a-4ea7-9b4c-a0f9bb07e598
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7ceb5378-66d5-494e-a483-4cb81b2b0bff
+          stepCounter: fb365cfd-74f4-460b-9ab2-f0c6331dffce
+        config: {}
+        dataType: VARCHAR(100)
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 68d248b7-c580-4d6a-8e9f-22187d335fd1
+                stepCounter: 9b7e4f9a-3a9a-4ea7-9b4c-a0f9bb07e598
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e37249a7-8fcf-4a30-99b5-8798c7fccd90
+          stepCounter: fb365cfd-74f4-460b-9ab2-f0c6331dffce
+        config: {}
+        dataType: VARCHAR(255)
+        description: ""
+        name: STORE_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 87f792d7-535f-4444-8201-1b8d09ca7a17
+                stepCounter: 9b7e4f9a-3a9a-4ea7-9b4c-a0f9bb07e598
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d08d399d-b916-4ef8-9cb1-475c1c81f2c8
+          stepCounter: fb365cfd-74f4-460b-9ab2-f0c6331dffce
+        config: {}
+        dataType: VARCHAR(20)
+        description: ""
+        name: PHONE_NO
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f7856aef-fd9b-4558-8f79-28c563f3094c
+                stepCounter: 9b7e4f9a-3a9a-4ea7-9b4c-a0f9bb07e598
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: STORE
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'STORE') }} "STORE"
+        name: EXPORT_STORE
+        noLinkRefs: []
+  name: EXPORT_STORE
+  overrideSQL: false
+  schema: ""
+  sqlType: "302"
+  type: sql
+  version: 1
+type: Node

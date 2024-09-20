@@ -4,7 +4,7 @@ name: COPY_SP_AVRO12
 operation:
   config:
     awsSnsTopic: ""
-    cloudProvider: AWS
+    cloudProvider: Azure
     compression: ""
     dateformat: ""
     enforceLength: ""

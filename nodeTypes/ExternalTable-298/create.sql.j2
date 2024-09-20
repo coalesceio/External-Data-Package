@@ -27,6 +27,12 @@ select 1 = 0
 {% set dbStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
 {% set schStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
 {% set ns = namespace(counter=1) %}
+
+# File format locations
+
+{% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
+{% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+{% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
  
 {{ stage('Create External Table') }}
 
@@ -55,7 +61,7 @@ select 1 = 0
   {%endif%}
   
   {%- if desiredState.config.fileFormatType == 'File Format Name' %}
-          FILE_FORMAT = (FORMAT_NAME = '{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}')
+          FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}')
   {%else%}
   file_format = (type = {{ desiredState.config.fileType }}
   {% if desiredState.config.fileType == "CSV" %}

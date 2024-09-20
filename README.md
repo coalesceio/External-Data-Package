@@ -169,9 +169,9 @@ The Copy-Into node type the following configurations available:
 
 ![copy-into-file-format](https://github.com/user-attachments/assets/2a737c5f-3bb3-471a-9365-bf3251677415)
 
-* **File Format Definition - File Format Name**:
-  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+* **File Format Definition - File Format Name**:  
   * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
+  * * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
   * **File Type**:
     * CSV
     * JSON
@@ -550,7 +550,7 @@ The External table node type has four configuration groups:
 
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
 
-* **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
+* **Coalesce Stage Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
 
@@ -560,7 +560,8 @@ The External table node type has four configuration groups:
 
 
 * **File Format Definition - File Format Name**:
-  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+  * * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.Mandatory when File Format Name is chosen.
+  * * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
   * **File Type**:
     * CSV
     * JSON

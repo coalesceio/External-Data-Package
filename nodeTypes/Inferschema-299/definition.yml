@@ -4,7 +4,7 @@ isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
-  nodeMetadataSpec: |+
+  nodeMetadataSpec: |-
     capitalized: INFERSCHEMA
     short: 'INFER'
     tagColor: '#8AD19D'
@@ -16,7 +16,8 @@ metadata:
     config:
     - groupName: Source Data
       items:
-      - displayName: Stage Storage Location
+      
+      - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
         type: textBox
         default: 'Enter Storage Location name'
@@ -32,6 +33,13 @@ metadata:
         attributeName: fileNames
         type: textBox
         isRequired: true
+
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+        isRequired: FALSE
+       
       
       - displayName: File Format Name
         attributeName: fileFormatName
@@ -49,9 +57,5 @@ metadata:
           - Alter existing table
           - Drop existing table
         isRequired: true
-
-
-
-
 name: Inferschema
 type: NodeType

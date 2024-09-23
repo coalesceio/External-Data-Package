@@ -9,7 +9,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Name           : Copy Unload == #}
 {# == Node Type Description    : This node unloads data from table into CSV/PARQUET/JSON files == #}
 
-
+{# Source location#}
 
 {% set srcSchName = node.location.name %}
 {% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
@@ -18,12 +18,18 @@ does not permit copying or modification for any other purpose.
 
 {% set folderLoc = [] %}
 {% set parts = config.fileLocation.split("/") %}
-{% set fileLoc = parts[0] | upper %}
+{% set fileLoc = parts[0] %}
 {% set num = parts | length %}
 {% for i in range(1,num) %}
 {% set folderLoc= folderLoc.append(parts[i]) %}
 {% endfor %}
 {% set folderLoc=folderLoc | join('/') %}
+
+{# File format locations#}
+
+{% set fileFormatLocationName = config.fileFormatLoc %}
+{% set dbff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+{% set schff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
 {# Figure out Partition by Clause#}
 
@@ -65,7 +71,7 @@ does not permit copying or modification for any other purpose.
  {% for source in sources %}
     {% for dep in source.dependencies if dep.node %}
                             
-        COPY INTO @{{ ref_no_link(node.location.name, fileLoc) | trim | upper ~"/"~ folderLoc | upper ~ "/" ~ node.name }}{% if config.singleFile %}.{{ config.fileType | lower }}{% endif %}
+        COPY INTO @{{ ref_no_link(config.stageStorageLocationName, fileLoc) | trim | upper ~"/"~ folderLoc ~ "/" ~ node.name }}{% if config.singleFile %}.{{ config.fileType | lower }}{% endif %}
         FROM( SELECT 
              {%- for col in sources[0].columns %}
              {%if config.fileType in  ('JSON')%}
@@ -77,6 +83,7 @@ does not permit copying or modification for any other purpose.
               {%else%}
                   {%if col.transform != ""%}
 	             {{ get_source_transform(col) }} AS "{{ col.name }}"
+
                   {%else%}
                      {{ get_source_transform(col) }} AS "{{ col.name }}"
                   {%endif%}
@@ -87,7 +94,7 @@ does not permit copying or modification for any other purpose.
         )
         {{ nsVariables.partitionBySQL}}
          {%- if config.fileFormatType == 'File Format Name' %}
-          FILE_FORMAT = (FORMAT_NAME = '{{ db }}.{{ sch }}.{{ config.fileFormatName}}')
+          FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ config.fileFormatName}}')
          {%else%}
             FILE_FORMAT = ( TYPE = {{ config.fileType}}
              {% if config.compression != ""  and config.fileType in ('CSV','JSON') %}

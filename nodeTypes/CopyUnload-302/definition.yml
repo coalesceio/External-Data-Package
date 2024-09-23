@@ -5,7 +5,7 @@ metadata:
   defaultStorageLocation: null
   error: null
   nodeMetadataSpec: |
-    capitalized: Copy of Copy UNLOAD
+    capitalized: Copy UNLOAD
     short: 'EXPORT'
     tagColor: 'dodgerblue'
     isDisabled: false
@@ -24,7 +24,7 @@ metadata:
       - displayName: Stage
         attributeName: fileLocation
         type: textBox
-        default:  'stage_name/folder/'
+        default:  'Enter stage name-stage_name/folder_name/'
         isRequired: true
          
       - type: toggleButton
@@ -95,7 +95,6 @@ metadata:
         attributeName: fileFormatName
         type: textBox
         default: ""
-        isRequired: true
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
 
       - displayName: File Type

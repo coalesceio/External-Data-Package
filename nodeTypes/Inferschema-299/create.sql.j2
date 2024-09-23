@@ -19,6 +19,11 @@ does not permit copying or modification for any other purpose.
 {% set dbStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[0] %}
 {% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
 
+# File format locations
+
+{% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
+{% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+{% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
 {%- if ","  in desiredState.config.fileNames %} 
     {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
@@ -50,7 +55,7 @@ does not permit copying or modification for any other purpose.
                         INFER_SCHEMA(
                           LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
                           {{fileNameSQL }}
-                          FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
+                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}''
                         )
                       ))';
   
@@ -84,7 +89,7 @@ DECLARE
                         INFER_SCHEMA(
                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
                           {{fileNameSQL }}
-                          FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
+                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}''
                         )
                       )where COLUMN_NAME not in (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' 
                           AND TABLE_NAME = ''{{desiredState.node.name}}'')';
@@ -95,7 +100,7 @@ DECLARE
                         INFER_SCHEMA(
                           LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
                           {{fileNameSQL }}
-                          FILE_FORMAT=>''{{ dbStage }}.{{ schStage }}.{{ desiredState.config.fileFormatName}}''
+                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}''
                         )))';
 
 BEGIN

@@ -26,7 +26,7 @@ metadata:
       - displayName: Stage Name
         attributeName: stageName
         type: textBox
-        default: 'stage_name/folder/'
+        default: 'Enter stage name-stage_name/folder/'
         isRequired: true
 
       - displayName: File Name(s) ( Ex:a.csv,b.csv)
@@ -38,7 +38,7 @@ metadata:
         attributeName: fileFormatLoc
         type: textBox
         default: ""
-        isRequired: FALSE
+        isRequired: true
        
       
       - displayName: File Format Name
@@ -57,5 +57,16 @@ metadata:
           - Alter existing table
           - Drop existing table
         isRequired: true
+
+    systemColumns:
+
+      - displayName: 'DATA'
+        transform: 'This column is not part of inferred table'
+        dataType:  STRING
+        placement: beginning
+        attributeName: dummycolumn
+
+
+        
 name: Inferschema
 type: NodeType

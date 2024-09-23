@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: ""
     fileFormatName: ""
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: ""
     filePattern: "'.*.*[.]json'"
     fileType: CSV

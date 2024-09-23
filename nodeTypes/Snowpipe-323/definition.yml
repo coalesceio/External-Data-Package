@@ -99,6 +99,13 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+      
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+        isRequired: false
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
 
       - displayName: File Format Name
         attributeName: fileFormatName
@@ -106,14 +113,7 @@ metadata:
         default: ""
         isRequired: false
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
-
-      - displayName: Coalesce Storage Location of File Format 
-        attributeName: fileFormatLoc
-        type: textBox
-        default: ""
-        isRequired: false
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
-      
+     
       - displayName: File Type
         attributeName: fileType
         type: dropdownSelector

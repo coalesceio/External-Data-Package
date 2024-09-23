@@ -87,20 +87,18 @@ metadata:
         - File Format Name
         - File Format Values
 
-      - displayName: File Format Name
-        attributeName: fileFormatName
-        type: textBox
-        default: ""
-        isRequired: false
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
-      
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
         default: ""
-        isRequired: false
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
-      
+
+      - displayName: File Format Name
+        attributeName: fileFormatName
+        type: textBox
+        default: ""
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+       
       - displayName: File Type
         attributeName: fileType
         type: dropdownSelector

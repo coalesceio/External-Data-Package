@@ -15,12 +15,18 @@ metadata:
     config:
     - groupName: File Location
       items:
+      - displayName: Coalesce Storage Location of Stage
+        attributeName: stageStorageLocationName
+        type: textBox
+        default: 'Enter Storage Location name'
+        isRequired: true
+        
       - displayName: Stage
         attributeName: fileLocation
         type: textBox
-        default: <Enter Stage Name>
+        default:  'Enter stage name-stage_name/folder_name/'
         isRequired: true
-
+         
       - type: toggleButton
         attributeName: partitionConfig
         displayName: Partition by(Optional)
@@ -70,6 +76,7 @@ metadata:
 
     - groupName: File Format
       items:
+          
       - displayName: File Format Definition
         attributeName: fileFormatType
         type: dropdownSelector
@@ -77,11 +84,17 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox
         default: ""
-        isRequired: false
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
 
       - displayName: File Type

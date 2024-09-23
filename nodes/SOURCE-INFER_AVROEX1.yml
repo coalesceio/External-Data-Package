@@ -1,0 +1,55 @@
+fileVersion: 1
+id: 1509b7d8-1310-428c-9052-5ab4efb27e42
+name: INFER_AVROEX1
+operation:
+  config:
+    fileFormatLoc: SOURCE
+    fileFormatName: avrofileformat
+    fileNames: twitter_samp.avro
+    redeploymentBehavior: Create or Replace
+    stageName: STAGE_LOCAL
+    stageStorageLocationName: SOURCE
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: be21fc39-f88c-490a-882f-891f438e0d48
+          stepCounter: 1509b7d8-1310-428c-9052-5ab4efb27e42
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        dummycolumn: true
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: This column is not part of target iceberg table
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_AVROEX1
+        noLinkRefs: []
+  name: INFER_AVROEX1
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

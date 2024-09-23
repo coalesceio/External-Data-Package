@@ -45,9 +45,10 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
-* **Stage Storage Location (Required)**: A storage location in Coalesce where the stage is located.
+* **Coalesce Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
 * **File Names (Required)**: Use commas to seperate multiple files. File whose metatdata is to be inferred.
+* **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
 * **File Format Name (Required)***: Name of the file format object that describes the data contained in the staged files.It is expected in the same location as Stage.
 * **Redeployment Behavior**:
   * **CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area.
@@ -171,7 +172,7 @@ The Copy-Into node type the following configurations available:
 
 * **File Format Definition - File Format Name**:  
   * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
-  * * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
   * **File Type**:
     * CSV
     * JSON
@@ -348,7 +349,7 @@ The Snowpipe node type the following configurations available:
 
 ![snowpipe-file-location](https://github.com/user-attachments/assets/70189562-bb34-49ba-9735-db63f34b271c)
 
-* **Coalesce Stage Storage Location of stage(Required)**: A storage location in Coalesce where the stage is located.
+* **Coalesce Storage Location of stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
 * **File Names**: Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`.
 * **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
@@ -358,8 +359,8 @@ The Snowpipe node type the following configurations available:
 ![Snowpipe-file-format](https://github.com/user-attachments/assets/ae640901-16ce-4ed2-8e6c-efae278d3942)
 
 * **File Format Definition - File Format Name**:
-  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
   * **Coalesce Storage Location of File Format**: File format location in snowflake that is mapped as storage location in Coalesce
+  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
   * **File Type**:
     * CSV
     * JSON
@@ -560,8 +561,8 @@ The External table node type has four configuration groups:
 
 
 * **File Format Definition - File Format Name**:
-  * * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.Mandatory when File Format Name is chosen.
-  * * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
+  * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.Mandatory when File Format Name is chosen.
+  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
   * **File Type**:
     * CSV
     * JSON
@@ -664,6 +665,7 @@ The Copy Unload node type has four configuration groups:
 
 ![copy-unload-file](https://github.com/coalesceio/External-Data-Package/assets/169126315/02698cc6-1d16-4e0c-b0fa-c8d614a6e2ed)
 
+* **Coalesce Stage Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage (Required)**: Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded.
 * **Partition by (Optional)**: Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)
 * **Allow Expressions in partition by clause**:A regular expression pattern string, enclosed in single quotes, for example: ('date=' || to_varchar(dt, 'YYYY-MM-DD') || '/hour=' || to_varchar(date_part(hour, ts))- Concatenates labels and column values to output meaningful filenames
@@ -672,6 +674,7 @@ The Copy Unload node type has four configuration groups:
 
 ![FileFormat](https://github.com/coalesceio/External-Data-Package/assets/169126315/53434835-c071-4132-b1f0-d0c41810216f)
 * **File Format Definition - File Format Name**:
+  * **Coalesce Storage Location of File Format**: File format location in snowflake that is mapped as storage location in Coalesce
   * **File Format Name**: Specifies an existing named file format in Snowflake to use for unloading data into the table.
   * **File Type**:
     * CSV

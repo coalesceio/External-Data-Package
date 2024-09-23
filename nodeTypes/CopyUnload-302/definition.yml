@@ -90,7 +90,7 @@ metadata:
         type: textBox
         default: ""
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
-          
+
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox

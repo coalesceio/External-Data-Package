@@ -249,6 +249,7 @@ The set of columns which has source data and file metadata information.
 ### Key points to use CopyInto node
 * CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
+* The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
 
 ### CopyInto Deployment
 
@@ -264,7 +265,7 @@ The parameter name is `loadType` and the default value is ``.
 }
 ```
 
-When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.
+When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.As a alternate option we can use TruncateBefore option in node config
 
 #### CopyInto Initial Deployment
 When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:

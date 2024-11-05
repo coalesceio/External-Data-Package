@@ -53,7 +53,7 @@ does not permit copying or modification for any other purpose.
 	    {%endif%}
     {%- endfor %}
 									
-{%- if parameters.loadType == 'Reload' -%}
+{%- if parameters.loadType == 'Reload' or config.truncateBefore == true %}
 
    {{ stage('Truncate Target Table') }}
     TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ node.name }}"
@@ -195,7 +195,7 @@ does not permit copying or modification for any other purpose.
         {%if  config.extlocation and ns.countercol>1 and config.fileType not in ('CSV') %}
              MATCH_BY_COLUMN_NAME = CASE_SENSITIVE        
         {%endif%}
-        {%- if parameters.loadType == 'Reload' -%}
+        {%- if parameters.loadType == 'Reload' or config.truncateBefore == true -%}
 		     FORCE=TRUE
 		    {%endif%}
  

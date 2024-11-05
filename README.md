@@ -61,9 +61,9 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * Add a InferSchema node, for example `INFER_JSON`.
 * Deploy the node. On deployment a table of the same name as the InferSchema node is created with columns inferred on parsing the file. For example, `InferSchema node:INFER_JSON,Inferred table:INFER_JSON`.
 * Add the inferred table to the browser using Add Sources tab.
-* Now we can add a Copy-Into Snowpipe or External table node on top of the inferred table to load staged files.
+* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
 * If the structure of the file is changed, you can redeploy the InferSchema node with "Alter existing table" redeployment behaviour. The already inferred table is altered.
-* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto Copy-Into Snowpipe or External table node added on top of it.
+* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto,Snowpipe or External table node added on top of it.
 > 🚧 Inferred table and Copy-into nodes/External table cannot be deployed together
 >
 > Infer Schema node, inferred table and Copy-into nodes/External table cannot be deployed together. First deploy the Infer Schema node. Then add the inferred table in browser, add Copy-into node on top of the table and then deploy the same.
@@ -144,12 +144,15 @@ The Copy-Into node type the following configurations available:
     
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
-![CopyInto-general options](https://github.com/user-attachments/assets/fa520f20-f609-40ed-8df0-0cf64885ea93)
+![image](https://github.com/user-attachments/assets/be80c374-76b1-4834-b951-2ef6a49265e7)
 
 * **Create As**: Select from the options to create as Table or Transient Table
     * Transient Table
     * Table
-
+* **TruncateBefore**: True / False toggle that determines whether or not a table is to be truncated before reloading
+     * True - Table is truncated and Copy-Into statement is executed to reload the data into target table
+     * False - Data is loaded directly into target table and no truncate action takes place.
+      
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 
 ![CopyInto-File location](https://github.com/user-attachments/assets/3f95f8d0-3c23-4a46-8242-fb81989c523b)
@@ -251,7 +254,7 @@ The set of columns which has source data and file metadata information.
 
 #### CopyInto Deployment Parameters
 
-The CopyInto-Snowpipe includes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
+The CopyInto node typeincludes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
 
 The parameter name is `loadType` and the default value is ``.
 
@@ -290,7 +293,7 @@ When the materialization type of Copy-Into node is changed from table to transie
 
 ### CopyInto Undeployment
 
-If the CopyInto-Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+If the CopyInto node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 * **Drop table/transient table**: Target table in Snowflake is dropped
 
@@ -913,9 +916,9 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 
 ### CopyInto
 
-* [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324/)
-* [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324/)
-* [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/CopyInto-324/)
+* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-324/definition.yml)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-324/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/CopyInto-324/run.sql.j2)
 
 ### Snowpipe
 

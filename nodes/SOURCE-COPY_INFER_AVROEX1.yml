@@ -1,35 +1,36 @@
 fileVersion: 1
-id: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-name: COPY_JSON
+id: d7c3c70b-2409-4388-926b-3d7ce3322c28
+name: COPY_INFER_AVROEX1
 operation:
   config:
-    compression: AUTO
+    compression: ""
     dateformat: ""
     enforceLength: ""
     errornumber: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
-    fieldDelim: "|"
+    fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: ""
-    fileFormatName: ""
-    fileFormatType: File Format Values
-    fileNames: ""
-    filePattern: "'.*.*[.]json'"
-    fileType: CSV
+    fileFormatLoc: SOURCE
+    fileFormatName: avrofileformat
+    fileFormatType: File Format Name
+    fileNames: "'twitter_samp.avro'"
+    filePattern: ""
+    fileType: AVRO
     forceLoad: ""
     intextstage: true
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""
-    recDelim: \n
+    recDelim: |+
+
     replaceinvalidcharacters: false
     returnFailedOnly: ""
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: spstagesample/
-    stageStorageLocationName: TARGET
+    stageName: STAGE_LOCAL
+    stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
     timeformat: ""
@@ -41,17 +42,59 @@ operation:
   description: ""
   isMultisource: false
   locationName: SOURCE
-  materializationType: table
+  materializationType: transient table
   metadata:
     appliedNodeTests: []
     columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0748e55-289a-4671-ba4c-840933dfa797
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: username
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3036ca1b-365b-4334-abdc-ea4a6f637013
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: tweet
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e4a81df-b090-403c-82c5-77568b0a9967
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: timestamp
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0df749c7-1e64-42d9-9a7e-ce8cf999a35a
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: b40435a9-de8d-4161-b40a-54ace5f910bf
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -67,8 +110,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 99339a33-1c00-4bee-ab3d-c38d589d60ce
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: c630441b-6f6e-4675-82b2-2b63b90076cf
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -84,8 +127,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cf1a74e0-5882-43c4-badc-368e93b610c4
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 5be7dbc6-c049-4469-b51f-716af415a446
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -101,8 +144,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d5222b77-c310-4108-add8-de1c110f2ee9
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 6225bf77-8581-4977-b1dc-ade7718cadda
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
         dataType: NUMBER
         defaultValue: ""
@@ -118,8 +161,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8cbfb37a-6b63-44c6-ab03-c625233d9eeb
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 746172c6-6b6b-41dd-aecf-75f1b59dfecf
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -135,8 +178,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3d38f629-ec61-4604-9609-35aa11b70bc6
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: f90dc6c6-7ae9-4e84-b171-82cf3bf02b45
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -153,12 +196,14 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies: []
+        dependencies:
+          - locationName: TARGET
+            nodeName: INFER_AVROEX1
         join:
-          joinCondition: ""
-        name: COPY_JSON
+          joinCondition: FROM {{ ref('TARGET', 'INFER_AVROEX1') }} "INFER_AVROEX1"
+        name: COPY_INFER_AVROEX1
         noLinkRefs: []
-  name: COPY_JSON
+  name: COPY_INFER_AVROEX1
   overrideSQL: false
   schema: ""
   sqlType: "324"

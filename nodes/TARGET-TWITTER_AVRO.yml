@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 1509b7d8-1310-428c-9052-5ab4efb27e42
-name: INFER_AVROEX1
+name: TWITTER_AVRO
 operation:
   config:
     fileFormatLoc: SOURCE
@@ -13,7 +13,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -44,9 +44,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: INFER_AVROEX1
+        name: TWITTER_AVRO
         noLinkRefs: []
-  name: INFER_AVROEX1
+  name: TWITTER_AVRO
   overrideSQL: false
   schema: ""
   sqlType: "299"

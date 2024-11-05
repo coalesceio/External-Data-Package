@@ -21,8 +21,13 @@ metadata:
         options:
         - table
         - transient table
-        isRequired: true
-     
+        isRequired: true 
+      
+      - displayName: Truncate Before
+        attributeName: truncateBefore
+        type: toggleButton
+        default: false
+
     - groupName: Source Data
       items:
 

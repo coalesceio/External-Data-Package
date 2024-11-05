@@ -8,6 +8,11 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Version        : 1  == #}
 {# == Node Type Name           : CopyInto with Full Load Option == #}
 {# == Node Type Description    : This node loads data from internal or external stages to target table using full load or reload option == #}
+{#Release date:20240531 Version:1.0.0#}
+{#Release date:20240822  Version:1.1.1 Released By:AS  Description: Materialization type transient table added #}
+{#Release date:20241025  Version:1.1.4 Released By:AS  Description: Unified Storage and file format inputs #}
+{#Release date:20241105  Version:1.1.5 Released By:AS  Description: Truncate option added in config #}
+
 
 # Storage Location-database and schema
 
@@ -53,7 +58,7 @@ does not permit copying or modification for any other purpose.
 	    {%endif%}
     {%- endfor %}
 									
-{%- if parameters.loadType == 'Reload' -%}
+{%- if parameters.loadType == 'Reload' or config.truncateBefore == true %}
 
    {{ stage('Truncate Target Table') }}
     TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ node.name }}"
@@ -195,7 +200,7 @@ does not permit copying or modification for any other purpose.
         {%if  config.extlocation and ns.countercol>1 and config.fileType not in ('CSV') %}
              MATCH_BY_COLUMN_NAME = CASE_SENSITIVE        
         {%endif%}
-        {%- if parameters.loadType == 'Reload' -%}
+        {%- if parameters.loadType == 'Reload' or config.truncateBefore == true -%}
 		     FORCE=TRUE
 		    {%endif%}
  

@@ -11,8 +11,8 @@ operation:
     extlocation: false
     fieldDelim: "|"
     fieldEnclosed: \042
-    fileFormatLoc: ""
-    fileFormatName: ""
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: ""
     filePattern: "'.*.*[.]json'"
@@ -35,6 +35,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
+    truncateBefore: false
     truncateColumns: ""
   database: ""
   deployEnabled: true

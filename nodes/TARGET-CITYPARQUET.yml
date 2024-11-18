@@ -1,0 +1,55 @@
+fileVersion: 1
+id: 1af3a606-255e-4051-a27a-11129214c4af
+name: CITYPARQUET
+operation:
+  config:
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileNames: ""
+    redeploymentBehavior: Create or Replace
+    stageName: Enter stage name-stage_name/folder/
+    stageStorageLocationName: Enter Storage Location name
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: da7f183e-b784-4789-b4c0-dfb96c8ddbb4
+          stepCounter: 1af3a606-255e-4051-a27a-11129214c4af
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        dummycolumn: true
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: This column is not part of inferred table
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: CITYPARQUET
+        noLinkRefs: []
+  name: CITYPARQUET
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

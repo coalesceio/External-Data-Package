@@ -1,0 +1,45 @@
+fileVersion: 1
+id: 6b5975d4-866a-4bf9-9ffe-c120918e8cba
+name: API_NODEUPDT1
+operation:
+  config:
+    api: COALESCE_API_TOKEN
+    extIntegration: COALESCE_INT
+    nodeconfig:
+      items:
+        - nodedet: |-
+            PARSE_JSON('{
+                    "columns": [
+                        {"name": "continent", "datatype": "TEXT","transformation":""},
+                        {"name": "country", "datatype": "VARIANT","transformation":""}
+                    ]
+                }')
+          nodename: CITYPARQUET
+          wksID: "168"
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: API_NODEUPDT1
+        noLinkRefs: []
+  name: API_NODEUPDT1
+  overrideSQL: false
+  schema: ""
+  sqlType: "373"
+  type: sql
+  version: 1
+type: Node

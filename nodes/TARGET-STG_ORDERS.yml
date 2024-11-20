@@ -1,14 +1,13 @@
 fileVersion: 1
-id: 6b5975d4-866a-4bf9-9ffe-c120918e8cba
-name: API_NODEUPDT1
+id: b5bfb54b-6833-45ff-89a8-f757a45d81cb
+name: STG_ORDERS
 operation:
   config:
-    api: COALESCE_API_TOKEN
-    extIntegration: COALESCE_INT
-    nodeconfig:
-      items:
-        - nodename: TWITTER_AVRO
-          wksID: "315"
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
   database: ""
   deployEnabled: true
   description: ""
@@ -24,15 +23,17 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies: []
+        dependencies:
+          - locationName: SOURCE
+            nodeName: ORDERS
         join:
-          joinCondition: ""
-        name: API_NODEUPDT1
+          joinCondition: FROM {{ ref('SOURCE', 'ORDERS') }} "ORDERS"
+        name: STG_ORDERS
         noLinkRefs: []
-  name: API_NODEUPDT1
+  name: STG_ORDERS
   overrideSQL: false
   schema: ""
-  sqlType: "374"
+  sqlType: Stage
   type: sql
   version: 1
 type: Node

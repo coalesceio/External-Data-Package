@@ -48,5 +48,5 @@ metadata:
           isRequired: false
      
         isRequired: false
-name: Copy of API-NODEUPDATE
+name: API-NODEUPDATE_v1
 type: NodeType

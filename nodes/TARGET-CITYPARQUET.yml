@@ -3,12 +3,12 @@ id: 1af3a606-255e-4051-a27a-11129214c4af
 name: CITYPARQUET
 operation:
   config:
-    fileFormatLoc: ""
-    fileFormatName: ""
-    fileNames: ""
-    redeploymentBehavior: Create or Replace
-    stageName: Enter stage name-stage_name/folder/
-    stageStorageLocationName: Enter Storage Location name
+    fileFormatLoc: spstagesample/
+    fileFormatName: spstagesample/
+    fileNames: spstagesample/
+    redeploymentBehavior: Drop existing table
+    stageName: spstagesample/
+    stageStorageLocationName: spstagesample/
   database: ""
   deployEnabled: true
   description: ""
@@ -17,26 +17,12 @@ operation:
   materializationType: table
   metadata:
     appliedNodeTests: []
-    columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: da7f183e-b784-4789-b4c0-dfb96c8ddbb4
-          stepCounter: 1af3a606-255e-4051-a27a-11129214c4af
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        dummycolumn: true
-        name: DATA
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: This column is not part of inferred table
+    columns: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:

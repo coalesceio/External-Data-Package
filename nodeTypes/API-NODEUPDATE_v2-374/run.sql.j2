@@ -13,10 +13,10 @@ does not permit copying or modification for any other purpose.
 {% for item in config.nodeconfig.get('items') %}
     {% set wks_id = item.wksID %}
     {% set nodename = item.nodename %}
-	{% set nodedet = item.nodedet %}
+	{% set storageLocation = item.storageLocation %}
 
     {# Create a temporary dictionary for the current item #}
-    {% set col_dict = {'wkid': wks_id, 'nodename': nodename, 'nodedet': nodedet} %}
+    {% set col_dict = {'wkid': wks_id, 'nodename': nodename, 'storageLocation': storageLocation} %}
     
     {# Append the dictionary to the list in the namespace #}
     {% set ns.wksdet = ns.wksdet + [col_dict] %}
@@ -24,5 +24,5 @@ does not permit copying or modification for any other purpose.
  
  {% for item in ns.wksdet %}
 {{ stage('Run Stored Procedure') }}
-CALL {{ ref_no_link(node.location.name, 'UPDATENODE_' + node.name | upper) | trim }} ({{item.wkid}},'{{item.nodename}}');
+CALL {{ ref_no_link(node.location.name, 'UPDATENODE_' + node.name | upper) | trim }} ({{item.wkid}},{{item.storageLocation +'.'+item.nodename}});
 {%endfor%}

@@ -53,37 +53,34 @@ def nodeFrame(wsID,nodeName):
     "content-type": "application/json",
     "authorization": f"{token}" }
 
+
     nodes_response = requests.get(nodes_url, headers=headers)
     j_nodes = json.loads(nodes_response.text)
-
+    nodeNameOnly = nodeName.split('.')[2]
     for node in j_nodes["data"]: 
-    
     # Find node(s) we are interested in
-        if node["name"] in nodeName:
-        
+        if node["name"] in nodeNameOnly:
+            # Initialize Snowflake session
+            session = Session.builder.getOrCreate()
+            # Execute the DESCRIBE TABLE query
+            query = f"DESCRIBE TABLE {nodeName}"
+            result = session.sql(query).collect()        
             # Get Node details
             get_node_url = node_url + node["id"]
             node_response = requests.get(get_node_url, headers=headers)
             j_node = json.loads(node_response.text)
-            for col in j_node["metadata"]["columns"]:
+            for col in result:
                 column_uuid = uuid.uuid4()
-                columnID = str(column_uuid)
-        
-                json_string = json.dumps(col)
-                json_object= json.loads(json_string)
-                
+                columnID = str(column_uuid)  
                 column = {
-                    'columnID': col["columnID"],
-                    'dataType': col["dataType"],
-                    'description': col["description"],
-                    'name': col["name"],
-                    'nullable': col["nullable"]}
-            j_node["metadata"]["columns"].append(column)
-
+                    'columnID': columnID,
+                    'dataType': col['type'],
+                    'description': str(col['comment']) if col['comment'] is not None else "",
+                    'defaultValue': str(col['default']) if col['default'] is not None else "",
+                    'name': col['name'],
+                    'nullable': col['null?'].lower() == 'yes'}
+                j_node["metadata"]["columns"].append(column)
     write_response = requests.put(get_node_url, headers=headers, data=json.dumps(j_node))
-
-    #return dataframe_test.columns
-
 $$;
 
 {%endif%}

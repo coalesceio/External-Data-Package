@@ -18,7 +18,10 @@ operation:
     appliedNodeTests: []
     columns: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:

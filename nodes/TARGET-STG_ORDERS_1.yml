@@ -16,7 +16,117 @@ operation:
   materializationType: table
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c2bb8546-cd19-47ef-bca6-619cd9839a07
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERKEY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 55d83ff8-c7c4-4dbe-923d-6da79904eec1
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_CUSTKEY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8788be22-3810-49cc-8d27-d9115d13a148
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(1)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERSTATUS
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: af213605-030c-4ebe-a14c-63c11e98e82a
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(12,2)
+        defaultValue: ""
+        description: ""
+        name: O_TOTALPRICE
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ced6944-239c-4e50-8fc6-38a430867293
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: O_ORDERDATE
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e36354f-7309-4f75-b494-75b915458650
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(15)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERPRIORITY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42d8a9e2-0a9b-4767-b39d-5b0766ffecd5
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(15)
+        defaultValue: ""
+        description: ""
+        name: O_CLERK
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 371ca7b3-6bfe-48ff-825c-e226df94f7a3
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_SHIPPRIORITY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 49586ff1-aaa3-47f6-a0b5-a22c3cbf3bab
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(79)
+        defaultValue: ""
+        description: ""
+        name: O_COMMENT
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30d6ec25-578a-4c43-b3d9-87e00d0d748d
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: TIMESTAMP_LTZ(9)
+        defaultValue: ""
+        description: ""
+        name: O_LOAD_TIMESTAMP
+        nullable: false
+        sourceColumnReferences: []
     cteString: ""
     description: ""
     destinationName: ""

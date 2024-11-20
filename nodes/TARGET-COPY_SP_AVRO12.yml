@@ -41,9 +41,78 @@ operation:
   materializationType: table
   metadata:
     appliedNodeTests: []
-    columns: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb223c79-0dc0-467f-8b88-7e5334539c1e
+          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 90eeceb7-4be7-4898-b84c-c1ca698ffd42
+          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8dec4c0c-57db-49b5-83b5-aedae8c6fc9b
+          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 861b99b1-d0de-465a-a560-e9dfd34f1e3e
+          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 95e1ca84-57c3-4ec2-b885-c35384a3c56c
+          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b2c525d0-50ce-4fcd-97d4-9db49ced9568
+          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: false
+        sourceColumnReferences: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:

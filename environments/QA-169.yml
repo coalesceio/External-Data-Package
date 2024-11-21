@@ -2,10 +2,10 @@ fileVersion: 1
 id: "169"
 mappingDefinitions:
   SOURCE:
-    database: DE_UDN_DB
-    schema: RM_DEV
+    database: POONAMM_DEV
+    schema: SOURCE_DATA
   TARGET:
-    database: ANANDHIS_DEV
-    schema: TARGET_QA
+    database: POONAMM_DEV
+    schema: EDW_QA
 name: QA
 type: Environment

@@ -6,6 +6,6 @@ mappingDefinitions:
     schema: SOURCE_DATA
   TARGET:
     database: ANANDHIS_DEV
-    schema: TARGET_QA
+    schema: TARGET
 name: DEV
 type: Environment

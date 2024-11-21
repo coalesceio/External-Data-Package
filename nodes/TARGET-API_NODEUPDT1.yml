@@ -1,16 +1,20 @@
 fileVersion: 1
-id: 1509b7d8-1310-428c-9052-5ab4efb27e42
-name: TWITTER_AVRO
+id: 6b5975d4-866a-4bf9-9ffe-c120918e8cba
+name: API_NODEUPDT1
 operation:
   config:
-    fileFormatLoc: SOURCE
-    fileFormatName: avrofileformat
-    fileNames: twitter_samp.avro
-    redeploymentBehavior: Create or Replace
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
+    api: COALESCE_API_TOKEN
+    extIntegration: COALESCE_INT
+    nodeconfig:
+      items:
+        - nodedet: null
+          nodename: COPY_SP_AVRO12
+          wksID: "315"
+        - nodedet: null
+          nodename: STG_ORDERS_1
+          wksID: "315"
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: false
   locationName: TARGET
@@ -27,12 +31,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: TWITTER_AVRO
+        name: API_NODEUPDT1
         noLinkRefs: []
-  name: TWITTER_AVRO
+  name: API_NODEUPDT1
   overrideSQL: false
   schema: ""
-  sqlType: "299"
+  sqlType: "372"
   type: sql
   version: 1
 type: Node

@@ -1,14 +1,14 @@
 fileVersion: 1
-id: 1509b7d8-1310-428c-9052-5ab4efb27e42
-name: TWITTER_AVRO
+id: 1af3a606-255e-4051-a27a-11129214c4af
+name: CITYPARQUET
 operation:
   config:
-    fileFormatLoc: SOURCE
-    fileFormatName: avrofileformat
-    fileNames: twitter_samp.avro
-    redeploymentBehavior: Create or Replace
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
+    fileFormatLoc: spstagesample/
+    fileFormatName: spstagesample/
+    fileNames: spstagesample/
+    redeploymentBehavior: Drop existing table
+    stageName: spstagesample/
+    stageStorageLocationName: spstagesample/
   database: ""
   deployEnabled: true
   description: ""
@@ -19,7 +19,10 @@ operation:
     appliedNodeTests: []
     columns: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:
@@ -27,9 +30,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: TWITTER_AVRO
+        name: CITYPARQUET
         noLinkRefs: []
-  name: TWITTER_AVRO
+  name: CITYPARQUET
   overrideSQL: false
   schema: ""
   sqlType: "299"

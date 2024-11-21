@@ -1,0 +1,241 @@
+fileVersion: 1
+id: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+name: CITYPARQUET
+operation:
+  config:
+    fileFormatLoc: SOURCE
+    fileFormatName: PARQUETFILEFORMAT
+    fileNames: cities.parquet
+    redeploymentBehavior: Create or Replace
+    stageName: csv_file_stage/tutorials/dataloading
+    stageStorageLocationName: SOURCE
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a129983-dc77-4b19-ab7e-75cd5c866ef6
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: This column is not part of inferred table
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb9b8ad4-11f6-4d38-8186-d0cb7d18a1cc
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 02e9ba0d-4a43-4aee-8ed1-59a09a9efb45
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b717058f-6e83-4297-bafd-cf8bdcf4d568
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a36204c-3cca-48d4-a6b6-58233a6303fe
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 43263a38-b5e0-47bd-87e2-50063e1f593d
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2fdead68-4b0f-4e95-8e7b-601d1d0374c0
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6c121c1-bf5d-4214-b0a7-dd6975cd1b89
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b95bad7c-bc4a-4607-b05a-9f39753eee57
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8cac68db-0ca7-457b-a5b6-ae67b8419e0d
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0a4ceba-a517-457e-97e6-375688f62f9a
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbf19ce0-a378-4caa-9c9e-0cc7d833adff
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f70d57b4-d104-4807-b36d-2042a3107ce9
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 162750ec-a4d9-4145-9b65-a51b7b3ce771
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6e64405e-21a6-4170-84bc-e56df65e79b1
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b951644-b4c1-4f6b-8fe5-af813608c8a2
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country_test
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 480d1679-d656-403a-b4b7-705b5f953a67
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: TEXT
+        description: Generated from python
+        isBusinessKey: false
+        name: continent
+        nullable: true
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0e588f3-4df0-402f-880f-a325a66cc166
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARIANT
+        description: Generated from python
+        isBusinessKey: false
+        name: country
+        nullable: true
+        sourceColumnReferences: []
+    cteString: ""
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs: []
+    materializationOption: ""
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: CITYPARQUET
+        noLinkRefs: []
+  name: CITYPARQUET
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

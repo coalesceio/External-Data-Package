@@ -53,7 +53,7 @@ operation:
         dataType: VARIANT
         defaultValue: ""
         description: ""
-        name: SRC1
+        name: SRC11
         nullable: true
         sourceColumnReferences:
           - columnReferences: []

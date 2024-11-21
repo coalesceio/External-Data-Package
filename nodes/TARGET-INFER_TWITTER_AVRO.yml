@@ -1,0 +1,181 @@
+fileVersion: 1
+id: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+name: INFER_TWITTER_AVRO
+operation:
+  config:
+    fileFormatLoc: SOURCE
+    fileFormatName: avrofileformat
+    fileNames: twitter_samp.avro
+    redeploymentBehavior: Create or Replace
+    stageName: STAGE_LOCAL
+    stageStorageLocationName: SOURCE
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8fbf246d-d81d-4c07-8e55-119100bf6300
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        dummycolumn: true
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: This column is not part of target iceberg table
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f711c0b-1a15-4f4c-854c-90d9022d5d7f
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: username
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8b36db37-ab76-4f01-8331-295562318305
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6655e956-b653-41ba-b506-065f2cc315eb
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: tweet
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d8a4f188-0d9c-44fd-a55f-09352e180062
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc5e3bf2-b4c1-4684-a1dc-377137b38931
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: timestamp
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 277b1c0a-c1ea-459e-8553-3625ed1bef9f
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 60ba45ae-bc51-4807-adc9-c74450188595
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1e384e50-67e9-4e56-bbe8-f87b70f99767
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f016315-3e80-43ea-989f-ce4ebb367b6b
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 722603c0-c919-4a00-898a-740e492cd249
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61392408-feb2-4141-bcd9-e3cc3b574309
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f898144b-6e47-4e4d-ab2d-44b542a23d38
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc2a7a1f-322f-44b1-b195-0453077f728a
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 10324591-e21a-436f-a2f8-195f74428285
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cbb5d218-4e9e-4945-a8a0-713702532875
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 43c8088e-71ce-4e9a-93bf-f512d77ac144
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 671d3b6a-c475-4671-a5ff-fe9472e968fe
+          stepCounter: 632e0a5d-c268-4546-ba61-1e0b2bbbfa4c
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 75a03985-fea3-49e7-92c8-d1a8b235f51a
+                stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_TWITTER_AVRO
+        noLinkRefs: []
+  name: INFER_TWITTER_AVRO
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

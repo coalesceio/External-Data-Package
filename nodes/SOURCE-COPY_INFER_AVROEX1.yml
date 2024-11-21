@@ -36,6 +36,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
+    truncateBefore: false
     truncateColumns: ""
   database: ""
   deployEnabled: true

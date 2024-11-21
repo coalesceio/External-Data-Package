@@ -110,8 +110,6 @@ select 1 = 0
                 SET COMMENT = '{{ desiredState.node.description | escape }}'
             {% endif %}
 
-
-
             {# Drop Columns #}
             {% set nsVariables = namespace(colchanges=0) %}
             {% for dropCurCol in currentState.columns %}

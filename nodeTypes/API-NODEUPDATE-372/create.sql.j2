@@ -6,8 +6,8 @@ Coalesce permits you to copy and modify this script for the purposes of using wi
 does not permit copying or modification for any other purpose.  
 #}
 {# == Node Type Version        : 1  == #}
-{# == Node Type Name           : API == #}
-{# == Node Type Description    : This node creates target table to load data from API URL == #}
+{# == Node Type Name           : API-NODEUPDATE == #}
+{# == Node Type Description    : This node creates a snowflake procedure to update the external nodes/Iceberg table nodes, by synchronizing them with the list of columns from the corresponding table in Snowflake. == #}
 
 
 {% if desiredState == currentState %}
@@ -21,7 +21,8 @@ select 1 = 0
 
 {{ stage('Create Python Procedure ') }}
 
-CREATE OR REPLACE PROCEDURE {{ ref_no_link(desiredState.node.location.name, 'UPDATENODE_' + desiredState.node.name | upper) | trim }}(wsID varchar,nodeName varchar,nodeDetails VARIANT)
+
+CREATE OR REPLACE PROCEDURE {{ ref_no_link(desiredState.node.location.name, 'UPDATENODE_' + desiredState.node.name | upper) | trim }}(wsID varchar,nodeName varchar)
 RETURNS STRING
 language python
 runtime_version=3.8
@@ -42,7 +43,7 @@ from snowflake.snowpark import Session
 from snowflake.snowpark.functions import sql_expr
 from snowflake.snowpark.functions import lit 
 
-def nodeFrame(wsID,nodeName,nodeDetails):
+def nodeFrame(wsID,nodeName):
     token = _snowflake.get_generic_secret_string('token')
     nodes_url = "https://app.coalescesoftware.io/api/v1/workspaces/" + wsID + "/nodes?detail=false"
     node_url = "https://app.coalescesoftware.io/api/v1/workspaces/" + wsID + "/nodes/"
@@ -50,45 +51,36 @@ def nodeFrame(wsID,nodeName,nodeDetails):
     headers = {
     "accept": "application/json",
     "content-type": "application/json",
-    "authorization": "Bearer" + token }
+    "authorization": f"{token}" }
+
 
     nodes_response = requests.get(nodes_url, headers=headers)
     j_nodes = json.loads(nodes_response.text)
+    nodeNameOnly = nodeName.split('.')[2]
     for node in j_nodes["data"]: 
-    
     # Find node(s) we are interested in
-        if node["name"] in nodeName:
-        
+        if node["name"] in nodeNameOnly:
+            # Initialize Snowflake session
+            session = Session.builder.getOrCreate()
+            # Execute the DESCRIBE TABLE query
+            query = f"DESCRIBE TABLE {nodeName}"
+            result = session.sql(query).collect()        
             # Get Node details
             get_node_url = node_url + node["id"]
             node_response = requests.get(get_node_url, headers=headers)
             j_node = json.loads(node_response.text)
-
-            nodeDetails_list = nodeDetails["columns"]
-            
-            for col in nodeDetails_list:
+            for col in result:
                 column_uuid = uuid.uuid4()
-                columnID = str(column_uuid)
-        
-                json_string = json.dumps(col)
-                json_object= json.loads(json_string)
-                
+                columnID = str(column_uuid)  
                 column = {
                     'columnID': columnID,
-                    'dataType': json_object["datatype"],
-                    'description': 'Generated from python',
-                    'isBusinessKey': False,
-                    'name': json_object["name"],
-                    'nullable': True}
-                j_node["metadata"]["columns"].append(column)  
-
-    #dataframe_test = snowpark_session.table(nodeName).filter(col("language") == 'python')
-
-        
+                    'dataType': col['type'],
+                    'description': str(col['comment']) if col['comment'] is not None else "",
+                    'defaultValue': str(col['default']) if col['default'] is not None else "",
+                    'name': col['name'],
+                    'nullable': col['null?'].lower() == 'yes'}
+                j_node["metadata"]["columns"].append(column)
     write_response = requests.put(get_node_url, headers=headers, data=json.dumps(j_node))
-
-    #return dataframe_test.columns
-
 $$;
 
 {%endif%}

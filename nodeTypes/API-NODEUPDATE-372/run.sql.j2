@@ -7,25 +7,22 @@ does not permit copying or modification for any other purpose.
 #}
 {# == Node Type Version        : 1  == #}
 {# == Node Type Name           : API == #}
-{# == Node Type Description    : This node creates target table to load data from API URL == #}
+{# == Node Type Description    : This node calls snowflake procedure to  update the external nodes/Iceberg table nodes, by synchronizing them with the list of columns from the corresponding table in Snowflake.  == #}
 
 {% set ns = namespace(wksdet=[])%}
 {% for item in config.nodeconfig.get('items') %}
     {% set wks_id = item.wksID %}
     {% set nodename = item.nodename %}
-	{% set nodedet = item.nodedet %}
+	{% set storageLocation = item.storageLocation %}
 
     {# Create a temporary dictionary for the current item #}
-    {% set col_dict = {'wkid': wks_id, 'nodename': nodename, 'nodedet': nodedet} %}
+    {% set col_dict = {'wkid': wks_id, 'nodename': nodename, 'storageLocation': storageLocation} %}
     
     {# Append the dictionary to the list in the namespace #}
     {% set ns.wksdet = ns.wksdet + [col_dict] %}
   {% endfor %}
  
-
-{% for item in ns.wksdet %}
+ {% for item in ns.wksdet %}
 {{ stage('Run Stored Procedure') }}
-    
-CALL {{ ref_no_link(node.location.name, 'UPDATENODE_' + node.name | upper) | trim }} ({{item.wkid}},'{{item.nodename}}',{{item.nodedet}})
+CALL {{ ref_no_link(node.location.name, 'UPDATENODE_' + node.name | upper) | trim }} ({{item.wkid}},'{{item.storageLocation +'.'+item.nodename}}');
 {%endfor%}
-

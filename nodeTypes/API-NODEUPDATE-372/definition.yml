@@ -43,8 +43,8 @@ metadata:
            isRequired: false
 
         - type: textBox
-          displayName: Node details
-          attributeName: nodedet
+          displayName: Storage Location (E.g DBName.SchemaName)
+          attributeName: storageLocation
           isRequired: false
      
         isRequired: false

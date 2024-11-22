@@ -69,6 +69,10 @@ def nodeFrame(wsID,nodeName):
             get_node_url = node_url + node["id"]
             node_response = requests.get(get_node_url, headers=headers)
             j_node = json.loads(node_response.text)
+            # Delete existing columns
+            for col in j_node["metadata"]["columns"]: 
+                j_node["metadata"]["columns"].remove(col)
+			# Add Columns from Snowflake Table	
             for col in result:
                 column_uuid = uuid.uuid4()
                 columnID = str(column_uuid)  

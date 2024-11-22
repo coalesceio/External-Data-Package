@@ -19,39 +19,6 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: dec01561-8066-497d-942e-73408907a40b
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: O_ORDERKEY
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6f9ed6f1-951a-4712-bf6b-8f2781e710a7
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: O_CUSTKEY
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 82fa46a7-6388-4f46-b75e-756b63c4ef2f
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: VARCHAR(1)
-        defaultValue: ""
-        description: ""
-        name: O_ORDERSTATUS
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: 7dba1838-ca6c-498e-8bb2-dd060381dc77
           stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
         config: {}
@@ -59,39 +26,6 @@ operation:
         defaultValue: ""
         description: ""
         name: O_TOTALPRICE
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 705a820b-ca2a-44af-a9cd-fdeec33d2c7e
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: DATE
-        defaultValue: ""
-        description: ""
-        name: O_ORDERDATE
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3c950921-5d4c-49cc-9445-2cfb1aa8804b
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: VARCHAR(15)
-        defaultValue: ""
-        description: ""
-        name: O_ORDERPRIORITY
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: b64142bf-e038-4444-9015-0b530ca00aa0
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: VARCHAR(15)
-        defaultValue: ""
-        description: ""
-        name: O_CLERK
         nullable: false
         sourceColumnReferences: []
       - appliedColumnTests: {}
@@ -107,7 +41,51 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 206b7d1c-9cee-4fb9-8e91-3768557c9639
+          columnCounter: 9e017a03-1773-40d0-a4ac-4db7318515e7
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERKEY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec96f11f-bed6-475c-bb40-9ec83e1e91d3
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(1)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERSTATUS
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dab3614c-2560-4902-9962-46a71fc1b617
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: O_ORDERDATE
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: da6e28c3-72df-4d83-95e9-530d5e39a480
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(15)
+        defaultValue: ""
+        description: ""
+        name: O_CLERK
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b94bb2ed-0096-4e05-bfb3-77256c1edd9b
           stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
         config: {}
         dataType: VARCHAR(79)
@@ -118,7 +96,106 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 6d7ad685-2320-4039-b944-66985955452c
+          columnCounter: 4c321ef4-483a-40fc-ad7a-e9660363d5ad
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERKEY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f06b89cf-ef17-4d1a-9932-90cb057b2085
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_CUSTKEY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30e75760-68cf-40e0-add4-58bf5bcc16e3
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(1)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERSTATUS
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5801d6e3-1012-4f90-b752-d20670c8e21f
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(12,2)
+        defaultValue: ""
+        description: ""
+        name: O_TOTALPRICE
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a861732-e858-4fe6-8f51-ef5aa3acce03
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: O_ORDERDATE
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 632c1624-9a10-4918-8cdb-aa8ecd0cb8f4
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(15)
+        defaultValue: ""
+        description: ""
+        name: O_ORDERPRIORITY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a284379b-ed29-47ee-8b86-e577706e2ec9
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(15)
+        defaultValue: ""
+        description: ""
+        name: O_CLERK
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4ae6b4a-c824-4ad0-bf43-a9efa8505b80
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_SHIPPRIORITY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5b43f72e-a484-40ad-a278-dd6c76bb6767
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(79)
+        defaultValue: ""
+        description: ""
+        name: O_COMMENT
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b8375a7b-cc21-4ff2-87e6-39c311e805ec
           stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
         config: {}
         dataType: TIMESTAMP_LTZ(9)

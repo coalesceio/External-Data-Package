@@ -58,7 +58,7 @@ def nodeFrame(wsID,nodeName):
     nodeNameOnly = nodeName.split('.')[2]
     for node in j_nodes["data"]: 
     # Find node(s) we are interested in
-        if node["name"] in nodeNameOnly:
+        if node["name"] == nodeNameOnly:
             # Initialize Snowflake session
             session = Session.builder.getOrCreate()
             # Execute the DESCRIBE TABLE query
@@ -71,7 +71,8 @@ def nodeFrame(wsID,nodeName):
             # Delete existing columns
             for col in j_node["metadata"]["columns"]: 
                 j_node["metadata"]["columns"].remove(col)
-			# Add Columns from Snowflake Table	
+                write_response = requests.put(get_node_url, headers=headers, data=json.dumps(j_node))
+            # Add Columns from Snowflake Table
             for col in result:
                 column_uuid = uuid.uuid4()
                 columnID = str(column_uuid)  

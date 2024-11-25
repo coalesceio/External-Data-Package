@@ -48,18 +48,7 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 03af7fb4-11d4-4bfd-ac00-0b1ca4d1fa71
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: FILE_LAST_MODIFIED
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0ae13f14-3230-4f5f-82aa-2f5db4ea1747
+          columnCounter: c3151723-0077-485d-bddd-ddbb4e07c23b
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: NUMBER(38,0)
@@ -70,7 +59,18 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 30a0aab0-46c9-4e49-8aac-ecc867017a46
+          columnCounter: 651833dd-ecd8-4f65-baf4-28ba4ac21cbb
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d685c57-ec9f-44bb-924b-cf5408ece02d
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: VARIANT
@@ -81,18 +81,7 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 501c43a3-43f2-4ea7-885f-71f520143bbe
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: FILE_LAST_MODIFIED
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: c19e2a3b-d2fc-42a0-9372-f3c4806f39ab
+          columnCounter: 57accb15-4b4f-4847-a22e-b02a77c97f33
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: TIMESTAMP_NTZ(9)
@@ -103,18 +92,7 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d3a07d41-cacf-4370-9cdf-a92dcaf0e803
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: FILE_ROW_NUMBER
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 123990c2-578a-491a-965d-4d291b9fe5b7
+          columnCounter: 89de92f7-58f7-453a-aae3-d82f0c84ca24
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: TIMESTAMP_NTZ(9)

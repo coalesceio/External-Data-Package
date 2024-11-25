@@ -19,24 +19,35 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 6f95e77a-c0a3-4fa0-aeb3-a75ab17bd637
-          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
-        config: {}
-        dataType: VARCHAR(79)
-        defaultValue: ""
-        description: ""
-        name: O_COMMENT
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 835d7a17-0717-431f-a634-4fa2d7655600
+          columnCounter: 061b6cf6-1511-4ba1-8801-f81cd967156c
           stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: O_SHIPPRIORITY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0a959782-bc0d-4013-9d9f-b24164b5dde2
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: O_SHIPPRIORITY
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39cea7a8-97ab-4708-b31d-9edcb7fa8eb6
+          stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
+        config: {}
+        dataType: VARCHAR(79)
+        defaultValue: ""
+        description: ""
+        name: O_COMMENT
         nullable: false
         sourceColumnReferences: []
     cteString: ""

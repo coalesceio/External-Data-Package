@@ -1,20 +1,23 @@
 fileVersion: 1
-id: 394c0945-1dbb-4df6-a5a0-2065602c4f7f
-name: API_NODEUPDT
+id: 189b769b-f21b-4b88-bad7-e00ba95385cc
+name: API_NODE_DEMO_1
 operation:
   config:
     api: COALESCE_API_TOKEN
     extIntegration: COALESCE_INT
     nodeconfig:
       items:
-        - nodename: CITYPARQUET
-          storageLocation: null
-          wksID: "168"
+        - nodename: COPY_JSON
+          storageLocation: POONAMM_DEV.EDW_QA
+          wksID: "315"
+        - nodename: STG_ORDERS_1
+          storageLocation: POONAMM_DEV.EDW_QA
+          wksID: "315"
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -28,9 +31,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_NODEUPDT
+        name: API_NODE_DEMO_1
         noLinkRefs: []
-  name: API_NODEUPDT
+  name: API_NODE_DEMO_1
   overrideSQL: false
   schema: ""
   sqlType: "372"

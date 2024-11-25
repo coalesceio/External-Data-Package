@@ -41,115 +41,93 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 0df749c7-1e64-42d9-9a7e-ce8cf999a35a
+          columnCounter: 03af7fb4-11d4-4bfd-ac00-0b1ca4d1fa71
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ae13f14-3230-4f5f-82aa-2f5db4ea1747
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30a0aab0-46c9-4e49-8aac-ecc867017a46
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: VARIANT
         defaultValue: ""
         description: ""
         name: SRC
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: $1
-        sysJSON: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 99339a33-1c00-4bee-ab3d-c38d589d60ce
+          columnCounter: 501c43a3-43f2-4ea7-885f-71f520143bbe
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: current_timestamp()::timestamp_ntz
-        sysLdTs: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: cf1a74e0-5882-43c4-badc-368e93b610c4
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: FILENAME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: METADATA$FILENAME
-        sysFlNm: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d5222b77-c310-4108-add8-de1c110f2ee9
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: NUMBER
-        defaultValue: ""
-        description: ""
-        name: FILE_ROW_NUMBER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: METADATA$FILE_ROW_NUMBER
-        sysFlRwNm: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8cbfb37a-6b63-44c6-ab03-c625233d9eeb
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: METADATA$FILE_LAST_MODIFIED
-        sysFlLtMd: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3d38f629-ec61-4604-9609-35aa11b70bc6
+          columnCounter: c19e2a3b-d2fc-42a0-9372-f3c4806f39ab
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3a07d41-cacf-4370-9cdf-a92dcaf0e803
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 123990c2-578a-491a-965d-4d291b9fe5b7
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: METADATA$START_SCAN_TIME
-        sysFlScTm: true
+        nullable: false
+        sourceColumnReferences: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:

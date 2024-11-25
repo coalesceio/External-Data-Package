@@ -44,112 +44,13 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 09ab9b15-7d83-4bb3-b014-e92297033845
+          columnCounter: 8a6f98b4-f121-402a-8bac-d84ff33b4800
           stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(255)
         defaultValue: ""
         description: ""
-        name: FILE_ROW_NUMBER
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 74a3dc4d-060f-4cb3-be9d-105bfc023909
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: VARIANT
-        defaultValue: ""
-        description: ""
-        name: SRC
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 284152dd-7c65-4005-96f5-ba517e0ee75a
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: b85c4d4c-aea4-4890-898d-3f111ff2c020
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: FILE_LAST_MODIFIED
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0eb51934-6a80-4bab-81c0-5565744a9595
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: VARIANT
-        defaultValue: ""
-        description: ""
-        name: SRC
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 707ab4c2-51bc-4d75-8835-4d01bc7d90be
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: d5c60dc2-3704-41c3-9325-6ed857c7ef58
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: f317d75d-0f45-415c-8efa-503f4697acdb
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: FILE_ROW_NUMBER
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8773374a-fc59-4735-b153-c773b1b8ea3e
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: FILE_LAST_MODIFIED
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 41cb4f8f-7279-4e92-8af8-b2201b0d8344
-          stepCounter: 15c17394-c093-4947-830b-d6dde42f4caf
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: SCAN_TIME
+        name: DATA
         nullable: false
         sourceColumnReferences: []
     cteString: ""

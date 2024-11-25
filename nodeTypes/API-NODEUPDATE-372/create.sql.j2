@@ -53,7 +53,6 @@ def nodeFrame(wsID,nodeName):
     "content-type": "application/json",
     "authorization": f"{token}" }
 
-
     nodes_response = requests.get(nodes_url, headers=headers)
     j_nodes = json.loads(nodes_response.text)
     nodeNameOnly = nodeName.split('.')[2]

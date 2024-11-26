@@ -58,25 +58,13 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 
 ### InferSchema Usage
 
-#### Option1-With deployment
-* Add a InferSchema node, for example `INFER_JSON`.
-* Deploy the node. On deployment a table of the same name as the InferSchema node is created with columns inferred on parsing the file. For example, `InferSchema node:INFER_JSON,Inferred table:INFER_JSON`.
-* Add the inferred table to the browser using Add Sources tab.
-* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
-* If the structure of the file is changed, you can redeploy the InferSchema node with "Alter existing table" redeployment behaviour. The already inferred table is altered.
-* Next, you can re-sync the columns of the inferred table and redeploy the CopyInto,Snowpipe or External table node added on top of it.
-> 🚧 Inferred table and Copy-into nodes/External table cannot be deployed together
->
-> Infer Schema node, inferred table and Copy-into nodes/External table cannot be deployed together. First deploy the Infer Schema node. Then add the inferred table in browser, add Copy-into node on top of the table and then deploy the same.
-
-#### Option2-Without deployment
+#### Option1-Using API-NODEUPDATE
 * Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
-* Add the inferred table to the browser using Add Sources tab.
+* Use [API-NODEUPDATE](#API-NODEUPDATE) node to update the columns of the infer node created in the above step.
 * Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
 * Once we get the required metadata columns in our downstream node(Copy-Into,Snowpipe or External table),bulk edit the source in the node to be blank.Also delete the from clause in the Join tab.These information are not required for Copy-Into,Snowpipe or External table to  load data from files.
-* Delete the inferred table/source table for the downstream nodes mentioned step2.
-* Delete the inferschema node ,we created in step1 as we have derived all the columns required for the downstream nodes and the data for the same are derived from files.
-* Eventually Inferschema nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
+* Delete the API-NODEUPDATE node ,we created in step2 as we have updated the columns required for the downstream nodes and the data for the same are derived from files.
+* Eventually API-NODEUPDATE nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
 
 
 ### InferSchema Deployment

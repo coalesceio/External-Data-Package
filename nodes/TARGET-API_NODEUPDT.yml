@@ -8,13 +8,13 @@ operation:
     nodeconfig:
       items:
         - nodename: CITYPARQUET
-          storageLocation: null
-          wksID: "168"
+          storageLocation: ANANDHIS_DEV.TARGET
+          wksID: "315"
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

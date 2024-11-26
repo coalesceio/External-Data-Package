@@ -8,6 +8,7 @@ The Coalesce External Data Package includes:
 * [External Table](#external-tables)
 * [CopyUnload](#CopyUnload)
 * [API](#API)
+* [API-NODEUPDATE](#API-NODEUPDATE)
 * [JDBC LOAD](#jdbc-load)
 * [Parse Excel](#parse-excel)
 * [Parse Json](#parse-json)
@@ -752,7 +753,8 @@ The API Node Configuration type has two configuration groups:
 * **Headers**: headers are used to provide additional context and information about the request
 * **Payload**: when making HTTP requests to a URI, the request may include a payload (also known as a body)
 * ***Note:***: Payload applicable only to Put & Post API method calls
-  
+
+<h2 id="API">API-NODEUPDATE</h2>
 <h2 id="JDBC LOAD">JDBC LOAD</h2>
 
 The Coalesce JDBC Load Node allows to connect, interact, and retrieve data from various database management systems into Snowflake

@@ -19,7 +19,7 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 9d141915-4226-4909-b5c3-57b8a4f6c085
+          columnCounter: 6312db4d-9e12-4efc-a6b5-1e5b53655c26
           stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
         config: {}
         dataType: NUMBER(38,0)
@@ -30,7 +30,7 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 7c9e4bea-7c6c-4f2f-8f8f-405667c85606
+          columnCounter: e2ebf64e-53a3-4c3c-bcf3-ebef64520efc
           stepCounter: c9dde654-38fa-45fb-b080-4b3271d35086
         config: {}
         dataType: VARCHAR(79)

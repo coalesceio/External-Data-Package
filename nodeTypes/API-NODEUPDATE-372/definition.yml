@@ -21,11 +21,13 @@ metadata:
         attributeName: extIntegration
         type: textBox
         default: "COALESCE_API_INTEGRATION"
-
+        isRequired: true
+        
       - displayName: Snowlake secret for Coalesce API token 
         attributeName: api
         type: textBox
         default: "COALESCE_API_TOKEN"
+        isRequired: true
 
       - type: tabular
         displayName: 'Workspace-Node details'
@@ -35,18 +37,18 @@ metadata:
         - type: textBox
           displayName: Workspace ID
           attributeName: wksID
-          isRequired: false
+          isRequired: true
         
         -  type: textBox
            displayName: Node name
            attributeName: nodename
-           isRequired: false
+           isRequired: true
 
         - type: textBox
           displayName: Storage Location (E.g DBName.SchemaName)
           attributeName: storageLocation
-          isRequired: false
+          isRequired: true
      
-        isRequired: false
+        isRequired: true
 name: API-NODEUPDATE
 type: NodeType

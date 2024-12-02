@@ -18,7 +18,13 @@ operation:
     filePattern: "'.*.*[.]json'"
     fileType: CSV
     forceLoad: ""
+    ifileFormatLoc: null
+    ifileFormatName: null
+    ifileNames: null
+    inferschema: false
     intextstage: true
+    istageName: null
+    istageStorageLocationName: null
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""

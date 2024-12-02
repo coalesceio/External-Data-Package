@@ -18,6 +18,7 @@ operation:
     filePattern: ""
     fileType: AVRO
     forceLoad: ""
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     onError: ""
@@ -36,7 +37,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
+    truncateBefore: true
     truncateColumns: ""
   database: ""
   deployEnabled: true
@@ -94,52 +95,20 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b40435a9-de8d-4161-b40a-54ace5f910bf
-          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
-        config: {}
-        dataType: VARIANT
-        defaultValue: ""
-        description: ""
-        name: SRC
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: $1
-        sysJSON: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: c630441b-6f6e-4675-82b2-2b63b90076cf
-          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
-        config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: current_timestamp()::timestamp_ntz
-        sysLdTs: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: 5be7dbc6-c049-4469-b51f-716af415a446
           stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: FILENAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILENAME
-        sysFlNm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -148,15 +117,17 @@ operation:
           columnCounter: 6225bf77-8581-4977-b1dc-ade7718cadda
           stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: FILE_ROW_NUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILE_ROW_NUMBER
-        sysFlRwNm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -165,15 +136,36 @@ operation:
           columnCounter: 746172c6-6b6b-41dd-aecf-75f1b59dfecf
           stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILE_LAST_MODIFIED
-        sysFlLtMd: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c630441b-6f6e-4675-82b2-2b63b90076cf
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -182,15 +174,17 @@ operation:
           columnCounter: f90dc6c6-7ae9-4e84-b171-82cf3bf02b45
           stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$START_SCAN_TIME
-        sysFlScTm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

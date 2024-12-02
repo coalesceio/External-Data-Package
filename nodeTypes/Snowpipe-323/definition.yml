@@ -23,7 +23,41 @@ metadata:
         - transient table
         isRequired: true
 
+      - displayName: InferSchema
+        attributeName: inferschema
+        type: toggleButton
+        default: false
+
+    - groupName: InferSchema Data
+      enableIf: "{% if config.inferschema %} true {% else %} false {% endif %}"
+      items:
+      
+      - displayName: Coalesce Storage Location of Stage
+        attributeName: istageStorageLocationName
+        type: textBox
+        default: 'Enter Storage Location name'
+
+      - displayName: Stage Name
+        attributeName: istageName
+        type: textBox
+        default: 'Enter stage name-stage_name/folder/'
+
+      - displayName: File Name(s) ( Ex:a.csv,b.csv)
+        attributeName: ifileNames
+        type: textBox
+        
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: ifileFormatLoc
+        type: textBox
+        default: ""
+      
+      - displayName: File Format Name
+        attributeName: ifileFormatName
+        type: textBox
+        default: ""
+
     - groupName: Snowpipe Options
+      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
 
       - displayName: Enable Snowpipe
@@ -65,6 +99,7 @@ metadata:
 
         
     - groupName: File Location
+      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
       - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
@@ -91,6 +126,7 @@ metadata:
       
 
     - groupName: File Format
+      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
       - displayName: File Format Definition
         attributeName: fileFormatType
@@ -217,6 +253,7 @@ metadata:
         isRequired: false
 
     - groupName: Copy Options
+      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
 
       - displayName: On Error Behavior

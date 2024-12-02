@@ -54,20 +54,111 @@ select 1 = 0
         {% endif %}
 
         {% if currentState == undefined or currentState.storageLocations|length == 0 %}
-            {{ stage('Create '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
-            CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
-            (
-                {% for col in desiredState.columns %}
-                    "{{ col.name }}" {{ col.dataType }}
-                    {%- if not col.nullable %} NOT NULL
-                        {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
-                    {% endif %}
-                    {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
-                    {%- if not loop.last -%}, {% endif %}
-                {% endfor %}
-            )
-            {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description | escape }}'{% endif %}
+            					  
+			{%if desiredState.config.inferschema == true %}
+					       {% set srcSchName = desiredState.node.location.name %}
+                           {% set db = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[0]%}
+                           {% set sch = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[1]%}
 
+                           {% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
+                           {% set dbStage =  ref_no_link(desiredState.config.istageStorageLocationName, desiredState.node.name).split('.')[0] %}
+                           {% set schStage =  ref_no_link(desiredState.config.istageStorageLocationName, desiredState.node.name).split('.')[1]%}
+
+                            # File format locations
+
+                           {% set fileFormatLocationName = desiredState.config.ifileFormatLoc %}
+                           {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+                           {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+
+                           {%- if ","  in desiredState.config.fileNames %} 
+                               {% set formatted_variable = desiredState.config.ifileNames.split(',') | map('string') | join("'',''") %}
+                               {% set final_variable = "'" + formatted_variable + "'" %}
+                               {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
+                           {%- elif  desiredState.config.ifileNames  -%}
+                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.ifileNames+"'," %}
+                           {% endif %}
+                    
+                    {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
+
+           -- Anonymous stored procedure block
+              DECLARE
+           -- Variables
+              col_name VARCHAR;
+              col_type VARCHAR;
+              create_sql VARCHAR;
+              final_sql VARCHAR;
+  
+            -- Cursor to loop through each row in GROUP_LOAD table
+                res RESULTSET;
+                 select_statement := 'CREATE OR REPLACE {{desiredState.node.materializationType}} {{db}}.{{sch}}."{{desiredState.node.name}}"
+                       USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
+                      FROM TABLE(
+                        INFER_SCHEMA(
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          {{fileNameSQL }}
+                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}''
+                        )
+                      ))';
+  
+            BEGIN
+          
+              EXECUTE IMMEDIATE :select_statement ;
+	
+	        -- Add metadata columns
+            -- Column: FILENAME
+             alter_sql := '
+              ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+              ADD COLUMN FILENAME STRING';
+             EXECUTE IMMEDIATE :alter_sql;
+
+            -- Column: FILE_ROW_NUMBER
+             alter_sql := '
+             ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+             ADD COLUMN FILE_ROW_NUMBER NUMBER';
+             EXECUTE IMMEDIATE :alter_sql;
+
+            -- Column: FILE_LAST_MODIFIED
+             alter_sql := '
+             ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+             ADD COLUMN FILE_LAST_MODIFIED TIMESTAMP_NTZ';
+             EXECUTE IMMEDIATE :alter_sql;
+
+            -- Column: LOAD_TIMESTAMP
+              alter_sql := '
+              ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+              ADD COLUMN LOAD_TIMESTAMP TIMESTAMP_NTZ';
+              EXECUTE IMMEDIATE :alter_sql;
+
+            -- Column: SCAN_TIME
+               alter_sql := '
+               ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+               ADD COLUMN SCAN_TIME TIMESTAMP_NTZ';
+               EXECUTE IMMEDIATE :alter_sql;
+
+            -- Return a success message
+              RETURN '{{desiredState.node.name}} table created successfully.';
+            END;
+
+
+					  				  
+	    	{%else%}
+					  
+					        {{ stage('Create '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
+                               CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
+                               (
+                                 {% for col in desiredState.columns %}
+                                    "{{ col.name }}" {{ col.dataType }}
+                                 {%- if not col.nullable %} NOT NULL
+                                 {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
+                                 {% endif %}
+                                 {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+                                 {%- if not loop.last -%}, {% endif %}
+                                 {% endfor %}
+                                 )
+                                {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description | escape }}'{% endif %}
+
+		  
+					 {%endif%}
         {% elif currentState != undefined and currentState.node.materializationType == desiredState.node.materializationType %}
 
             {# Change Node Name or Change Storage Location #}

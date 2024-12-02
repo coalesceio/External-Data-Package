@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
-name: COPY_INFER_EMP12
+id: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+name: COPY_CITYPARQUET
 operation:
   config:
     compression: ""
@@ -11,15 +11,20 @@ operation:
     extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: TARGET
-    fileFormatName: MYAVROFILEFORMAT
+    fileFormatLoc: SOURCE
+    fileFormatName: PARQUETFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'twitter.avro'"
+    fileNames: "'cities.parquet'"
     filePattern: ""
-    fileType: AVRO
+    fileType: PARQUET
     forceLoad: ""
+    ifileFormatLoc: ""
+    ifileFormatName: ""
+    ifileNames: ""
     inferschema: false
     intextstage: true
+    istageName: Enter stage name-stage_name/folder/
+    istageStorageLocationName: Enter Storage Location name
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""
@@ -30,8 +35,8 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: spstagesample/
-    stageStorageLocationName: TARGET
+    stageName: csv_file_stage/tutorials/dataloading/
+    stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
     timeformat: ""
@@ -43,60 +48,63 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
-  materializationType: transient table
+  locationName: SOURCE
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 1e29e17f-5cae-44ce-9063-664bbd186bac
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: 848d9665-8408-404f-aef9-659d0c8c90c5
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: username
-        nullable: false
+        dataType: TEXT
+        description: Generated from python
+        name: continent
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: ""
+              - columnCounter: 480d1679-d656-403a-b4b7-705b5f953a67
+                stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+            transform: substr($1:continent::TEXT,1,3)
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 9f3b8089-0413-4b25-956a-b57929f65841
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: b05042a3-3d22-48c6-9209-6757fd478585
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: tweet
-        nullable: false
+        dataType: VARIANT
+        description: Generated from python
+        name: country
+        nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: bf1d82e7-b1c9-484f-9e66-aaa124ce60b2
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: timestamp
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
+              - columnCounter: e0e588f3-4df0-402f-880f-a325a66cc166
+                stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
             transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fc5e0584-7d1b-4187-9107-e230f7f93e3d
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: 256de5cf-6118-44b5-869d-ef03aec68bf7
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: $1
+        sysJSON: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74fd5b37-70af-433a-bd26-79d687f972e9
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -112,8 +120,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 79f8cd98-588c-4c96-9ab8-b3a1557ee2cd
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: 2e305afb-309f-4736-bc92-4e1c4ffb3591
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -129,8 +137,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ace3f363-d58b-423a-9687-581ac6ce38aa
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: NUMBER
         defaultValue: ""
@@ -146,8 +154,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8c445a7d-ac20-46a8-923c-8e99989d38d8
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: d9df3445-4510-49fe-ae56-47e9c4a4c2f1
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -163,8 +171,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ea992bea-3a76-4e19-b857-6cedbaac498d
-          stepCounter: 52a1cb76-9431-4bdd-978c-678e8f5a7d7e
+          columnCounter: a526132f-981d-4fad-94e8-db9dbfb695c6
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -181,12 +189,14 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies: []
+        dependencies:
+          - locationName: SOURCE
+            nodeName: CITYPARQUET
         join:
-          joinCondition: ""
-        name: COPY_INFER_EMP12
+          joinCondition: FROM {{ ref('SOURCE', 'CITYPARQUET') }} "CITYPARQUET"
+        name: COPY_CITYPARQUET
         noLinkRefs: []
-  name: COPY_INFER_EMP12
+  name: COPY_CITYPARQUET
   overrideSQL: false
   schema: ""
   sqlType: "324"

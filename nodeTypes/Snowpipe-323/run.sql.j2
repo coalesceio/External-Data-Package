@@ -60,7 +60,8 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
                       {%else%}
                         ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}" 
                         {% set ns.counter = ns.counter + 1 %}       
-                      {%endif%}       
+                      {%endif%}
+                     
 	           {% else %}
 	                  {{ get_source_transform(col) }} AS "{{ col.name }}"
 	           {%endif%}

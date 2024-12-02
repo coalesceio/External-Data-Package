@@ -12,6 +12,7 @@ metadata:
     plural: INFERSCHEMA
 
     deployStrategy: advanced
+    isColumnResyncEnabled: true
 
     config:
     - groupName: Source Data

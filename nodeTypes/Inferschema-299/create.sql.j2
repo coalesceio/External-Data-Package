@@ -8,6 +8,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Version        : 1  == #}
 {# == Node Type Name           : Inferschema == #}
 {# == Node Type Description    : This node infers schema of the file in internal or external stage and dynamically creates the target table == #}
+{#Release date:20241203  Version:1.1.6 Released By:AS  Description: Materialization type added and Re-Sync buttton enabled#}
 
 {% if (currentState == undefined and desiredState != undefined) or (currentState != undefined and desiredState != undefined ) %}
 
@@ -49,7 +50,7 @@ does not permit copying or modification for any other purpose.
   
   -- Cursor to loop through each row in GROUP_LOAD table
   res RESULTSET;
-  select_statement := 'CREATE OR REPLACE TABLE {{db}}.{{sch}}.{{desiredState.node.name}}
+  select_statement := 'CREATE OR REPLACE {{desiredState.node.materializationType}} {{db}}.{{sch}}.{{desiredState.node.name}}
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(

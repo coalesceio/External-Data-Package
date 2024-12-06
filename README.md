@@ -20,11 +20,12 @@ The Coalesce InferSchema UDN is a versatile node infers schema of the file in in
 
 [InferSchema](https://docs.snowflake.com/en/sql-reference/functions/infer_schema) in Snowflake automatically detects the file metadata schema in a set of staged data files that contain semi-structured data and retrieves the column definitions.
 
-### InferSchema Prerequisites
+### Key points InferSchema 
 
 * A sample file in the internal or external stage.
 * An existing fileformat to parse the file
 * The file format is also expected to be in the same location as stage
+* The mapping grid after creating the inferred node can be Re-Synced with the exact structure of the table/transient table using the Re-Sync Columns button in the mapping grid
 
 ### InferSchema Node Configuration
 
@@ -46,6 +47,9 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
+* **Create As**: Select from the options to create as Table or Transient Table
+    * Transient Table
+    * Table
 * **Coalesce Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
 * **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
 * **File Names (Required)**: Use commas to seperate multiple files. File whose metatdata is to be inferred.
@@ -66,6 +70,10 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * Delete the API-NODEUPDATE node ,we created in step2 as we have updated the columns required for the downstream nodes and the data for the same are derived from files.
 * Eventually API-NODEUPDATE nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
 
+#### Option2-Using Re-Sync Columns button
+* Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
+* Use Re-Sync Columns button in the mapping grid to update the columns of the infer node created in the above step.
+* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
 
 ### InferSchema Deployment
 

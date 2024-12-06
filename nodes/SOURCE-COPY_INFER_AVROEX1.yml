@@ -111,23 +111,6 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c630441b-6f6e-4675-82b2-2b63b90076cf
-          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
-        config: {}
-        dataType: TIMESTAMP_NTZ
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: current_timestamp()::timestamp_ntz
-        sysLdTs: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: 5be7dbc6-c049-4469-b51f-716af415a446
           stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
         config: {}
@@ -174,6 +157,23 @@ operation:
           - columnReferences: []
             transform: METADATA$FILE_LAST_MODIFIED
         sysFlLtMd: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c630441b-6f6e-4675-82b2-2b63b90076cf
+          stepCounter: d7c3c70b-2409-4388-926b-3d7ce3322c28
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: current_timestamp()::timestamp_ntz
+        sysLdTs: true
       - acceptedValues:
           strictMatch: true
           values: []

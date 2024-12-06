@@ -270,6 +270,17 @@ The set of columns which has source data and file metadata information.
 * CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
 * The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
 
+### Use CopyInto node with InferSchema option
+* Set Infer Schema toggle to true
+* Hit Create button to Infer Schema
+* Click on Re-Sync Columns button
+* If all looks good, set Infer Schema button to false
+* Hit Create button to execute create table based on inferred schema
+* This is mainly a test to make sure create will work
+* Hit Run button to execute DML
+  
+If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table.
+
 ### CopyInto Deployment
 
 #### CopyInto Deployment Parameters

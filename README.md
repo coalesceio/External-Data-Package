@@ -141,14 +141,21 @@ The Copy-Into node type the following configurations available:
     
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
-![image](https://github.com/user-attachments/assets/be80c374-76b1-4834-b951-2ef6a49265e7)
+**InferSchema-True**
+![CopyInto](https://github.com/user-attachments/assets/a537faac-bb91-4a00-b055-4612934d95b9)
+
+**InferSchema-False**
+![Copy-Into](https://github.com/user-attachments/assets/60b01ca8-2b99-46ec-8e5c-1491266f2333)
 
 * **Create As**: Select from the options to create as Table or Transient Table
     * Transient Table
     * Table
-* **TruncateBefore**: True / False toggle that determines whether or not a table is to be truncated before reloading
+* **TruncateBefore(Disabled when Inferschema is true)**: True / False toggle that determines whether or not a table is to be truncated before reloading
      * True - Table is truncated and Copy-Into statement is executed to reload the data into target table
      * False - Data is loaded directly into target table and no truncate action takes place.
+ * **InferSchema**: True / False toggle that determines whether or not to infer the columns of file before loading
+     * True -The node is created with the inferred columns
+     * False -No infer table step is executed
       
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 

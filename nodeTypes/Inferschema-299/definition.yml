@@ -12,10 +12,18 @@ metadata:
     plural: INFERSCHEMA
 
     deployStrategy: advanced
+    isColumnResyncEnabled: true
 
     config:
     - groupName: Source Data
       items:
+
+      - type: materializationSelector
+        default: table
+        options:
+        - table
+        - transient table
+        isRequired: true 
       
       - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName

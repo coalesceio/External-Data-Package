@@ -1,44 +1,49 @@
 fileVersion: 1
-id: a9ba8d88-da1f-476f-a959-c307e857f9af
-name: COPY_SP_AVRO13
+id: bc69c940-2a94-4518-826f-481d72524a86
+name: COPY_ORDER_DETAILS
 operation:
   config:
-    awsSnsTopic: ""
-    cloudProvider: AWS
     compression: ""
     dateformat: ""
     enforceLength: ""
     errornumber: ""
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE
-    fileFormatName: AVROFILEFORMAT
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'twitter_samp.avro'"
-    filePattern: " '.*tweet.*[.]avro'"
-    fileType: AVRO
-    flagLoadHistorical: false
-    flagSnowpipe: Enable Snowpipe
+    fileNames: "'order_details.json'"
+    filePattern: ""
+    fileType: JSON
+    forceLoad: ""
     inferschema: false
-    integration: ""
+    intextstage: true
+    loadUncertainFiles: ""
     onError: ""
+    purgeBehavior: ""
     recDelim: |+
 
     replaceinvalidcharacters: false
-    skipBlankLines: true
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
     skipHeader: "1"
-    stageName: spstagesample
+    stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
+    storageintegration: ""
     stripouterarray: false
     timeformat: ""
     timestampformat: ""
     trimSpace: false
+    truncateBefore: false
     truncateColumns: ""
   database: ""
   deployEnabled: true
-  description: ""
+  description: Order details table
   isMultisource: false
-  locationName: TARGET
+  locationName: SOURCE
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -48,14 +53,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e24e3320-ecc8-4ba0-b621-ec05e35f674a
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: 537de73f-4625-4bf2-9ac9-72e8d0465e93
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(11,10)
         defaultValue: ""
         description: ""
-        name: username
-        nullable: false
+        name: Discount
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -67,14 +72,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8e0d16fb-12f5-44c2-a0e3-c82ff32cb0c4
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: cf5673e4-5cab-4fa0-b4e3-30d540a063ab
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
-        name: tweet
-        nullable: false
+        name: OrderID
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -86,14 +91,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 555db09b-ca11-4a47-9fe9-93dd73ede350
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: 00b11d0b-7e9c-4608-a227-6c48f0aafbd6
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: NUMBER(2,0)
         defaultValue: ""
         description: ""
-        name: timestamp
-        nullable: false
+        name: OrderLine
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -105,8 +110,65 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 286a8755-a13b-4e84-a00b-dddd438cb22a
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: e78f897f-bf3d-4334-b221-5cc7ab4643e8
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: ProductID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f83f262e-1ea9-4620-b7bc-611b3653c4b1
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: Quantity
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9032e215-3f1c-4e7c-abf7-0b9b550c0363
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
+        config: {}
+        dataType: NUMBER(5,2)
+        defaultValue: ""
+        description: ""
+        name: UnitPrice
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00b24f7e-f2ef-446f-a161-1079d2af097d
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -124,8 +186,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3b7bc6e0-153c-4db7-ad8d-493480210b71
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: 3c8b156a-b96f-4dbf-bf8a-02181458e1fc
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -143,8 +205,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1fa8066a-f338-4625-bdda-ad8fd3c0c6c8
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: f46c3865-8247-4f1e-95b0-85b8eb74c5ed
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -162,8 +224,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: aee6731a-e68c-4998-a818-eb86e6a3534d
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: 6c555aca-972e-4d34-846d-4583f67fcba3
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -181,8 +243,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: dc8f109c-a817-4b0d-84ff-58c86b3b8ed6
-          stepCounter: a9ba8d88-da1f-476f-a959-c307e857f9af
+          columnCounter: a371098a-b843-40ed-9b49-f393454382c2
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -204,12 +266,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_SP_AVRO13
+        name: COPY_ORDER_DETAILS
         noLinkRefs: []
-  name: COPY_SP_AVRO13
+  name: COPY_ORDER_DETAILS
   overrideSQL: false
   schema: ""
-  sqlType: "323"
+  sqlType: "324"
   type: sql
   version: 1
 type: Node

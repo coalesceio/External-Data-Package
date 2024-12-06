@@ -24,6 +24,7 @@ operation:
     purgeBehavior: ""
     recDelim: |+
 
+    redeploymentBehavior: Create or Replace
     replaceinvalidcharacters: false
     returnFailedOnly: ""
     sizeLimit: ""
@@ -113,15 +114,17 @@ operation:
           columnCounter: 722603c0-c919-4a00-898a-740e492cd249
           stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: LOAD_TIMESTAMP
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: current_timestamp()::timestamp_ntz
-        sysLdTs: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -130,15 +133,17 @@ operation:
           columnCounter: f898144b-6e47-4e4d-ab2d-44b542a23d38
           stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: FILENAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILENAME
-        sysFlNm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -147,15 +152,17 @@ operation:
           columnCounter: 10324591-e21a-436f-a2f8-195f74428285
           stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: FILE_ROW_NUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILE_ROW_NUMBER
-        sysFlRwNm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -164,15 +171,17 @@ operation:
           columnCounter: 43c8088e-71ce-4e9a-93bf-f512d77ac144
           stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILE_LAST_MODIFIED
-        sysFlLtMd: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -181,15 +190,17 @@ operation:
           columnCounter: 75a03985-fea3-49e7-92c8-d1a8b235f51a
           stepCounter: 1e231871-8852-446e-9058-83e0f3045ec5
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$START_SCAN_TIME
-        sysFlScTm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -204,7 +215,7 @@ operation:
   name: TWITTER_AVRO
   overrideSQL: false
   schema: ""
-  sqlType: "324"
+  sqlType: "299"
   type: sql
   version: 1
 type: Node

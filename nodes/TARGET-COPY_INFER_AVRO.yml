@@ -1,14 +1,49 @@
 fileVersion: 1
-id: 1509b7d8-1310-428c-9052-5ab4efb27e42
-name: TWITTER_AVRO
+id: adc51882-f154-4847-9f6c-ed74a6914e56
+name: COPY_INFER_AVRO
 operation:
   config:
-    fileFormatLoc: SOURCE
-    fileFormatName: avrofileformat
-    fileNames: twitter_samp.avro
-    redeploymentBehavior: Create or Replace
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
+    compression: ""
+    dateformat: ""
+    enforceLength: ""
+    errornumber: ""
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: TARGET
+    fileFormatName: MYAVROFILEFORMAT
+    fileFormatType: File Format Name
+    fileNames: "'twitter.avro'"
+    filePattern: ""
+    fileType: AVRO
+    forceLoad: ""
+    ifileFormatLoc: SOURCE
+    ifileFormatName: avrofileformat
+    ifileNames: twitter_samp.avro
+    inferschema: true
+    intextstage: true
+    istageName: STAGE_LOCAL
+    istageStorageLocationName: SOURCE
+    loadUncertainFiles: ""
+    onError: ""
+    purgeBehavior: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: false
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
+    skipHeader: "1"
+    stageName: spstagesample/
+    stageStorageLocationName: TARGET
+    storageintegration: ""
+    stripouterarray: false
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    truncateBefore: false
+    truncateColumns: ""
   database: ""
   deployEnabled: true
   description: ""
@@ -23,8 +58,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: dd77a1ce-bb57-4405-81b4-a3c85d170769
-          stepCounter: 1509b7d8-1310-428c-9052-5ab4efb27e42
+          columnCounter: cfab3c61-8e2a-469a-aa79-ff1ff6f05535
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -42,8 +77,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cfe2b699-35d3-4c3e-8676-a88d72b43296
-          stepCounter: 1509b7d8-1310-428c-9052-5ab4efb27e42
+          columnCounter: b5cb2719-c20a-4a58-9347-852f59a8ab3f
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -61,8 +96,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 105bf6f9-ebea-4f1c-b3a7-35b29db45420
-          stepCounter: 1509b7d8-1310-428c-9052-5ab4efb27e42
+          columnCounter: e7cd401d-37bd-4d86-9cb2-baa065fb5fed
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -84,12 +119,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: TWITTER_AVRO
+        name: COPY_INFER_AVRO
         noLinkRefs: []
-  name: TWITTER_AVRO
+  name: COPY_INFER_AVRO
   overrideSQL: false
   schema: ""
-  sqlType: "299"
+  sqlType: "324"
   type: sql
   version: 1
 type: Node

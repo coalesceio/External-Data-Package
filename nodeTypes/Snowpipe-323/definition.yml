@@ -12,6 +12,7 @@ metadata:
     plural: Copy Into
 
     deployStrategy: advanced
+    isColumnResyncEnabled: true
 
     config:
     - groupName: General Options
@@ -23,7 +24,13 @@ metadata:
         - transient table
         isRequired: true
 
+      - displayName: InferSchema
+        attributeName: inferschema
+        type: toggleButton
+        default: false
+
     - groupName: Snowpipe Options
+      enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
       items:
 
       - displayName: Enable Snowpipe
@@ -82,13 +89,13 @@ metadata:
         attributeName: fileNames
         type: textBox
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe != 'Enable Snowpipe' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagSnowpipe != 'Enable Snowpipe' or config.inferschema == true %} true {% else %} false {% endif %}"
 
       - displayName: File Pattern (Optional - Ex:'.*hea.*[.]csv')
         attributeName: filePattern
         type: textBox
         isRequired: false
-      
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"  
 
     - groupName: File Format
       items:
@@ -99,20 +106,21 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
         default: ""
         isRequired: false
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
+        enableIf: "{% if config.fileFormatType == 'File Format Name' or config.inferschema == true %} true {% else %} false {% endif %}"  
 
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox
         default: ""
         isRequired: false
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileFormatType == 'File Format Name' or config.inferschema == true %} true {% else %} false {% endif %}"
      
       - displayName: File Type
         attributeName: fileType
@@ -126,7 +134,7 @@ metadata:
         - "ORC"
         - "XML"
         isRequired: false
-        
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
 
       - displayName: Compression
         attributeName: compression
@@ -217,6 +225,7 @@ metadata:
         isRequired: false
 
     - groupName: Copy Options
+      enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
       items:
 
       - displayName: On Error Behavior

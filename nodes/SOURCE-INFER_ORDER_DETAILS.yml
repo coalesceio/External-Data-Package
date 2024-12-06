@@ -1,0 +1,152 @@
+fileVersion: 1
+id: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+name: INFER_ORDER_DETAILS
+operation:
+  config:
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
+    fileNames: order_details.json
+    redeploymentBehavior: Create or Replace
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: df1dbbdf-f233-486e-8116-57513e658040
+          stepCounter: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+        config: {}
+        dataType: NUMBER(11,10)
+        defaultValue: ""
+        description: ""
+        name: Discount
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 070ada49-5b30-45a7-90f2-a1f5bcdef6c0
+          stepCounter: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: OrderID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e91ce6b7-aa02-4cf1-9914-7d5bd7e305e2
+          stepCounter: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: OrderLine
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2986498-112d-4020-97a1-eaf574125873
+          stepCounter: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: ProductID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aa30d23f-b3b1-4f17-81d9-5b2ab240b89f
+          stepCounter: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: Quantity
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5aca1180-7a89-4827-aa83-fcf4793c91ed
+          stepCounter: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
+        config: {}
+        dataType: NUMBER(5,2)
+        defaultValue: ""
+        description: ""
+        name: UnitPrice
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_ORDER_DETAILS
+        noLinkRefs: []
+  name: INFER_ORDER_DETAILS
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

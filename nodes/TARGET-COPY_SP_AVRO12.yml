@@ -19,6 +19,7 @@ operation:
     fileType: JSON
     flagLoadHistorical: false
     flagSnowpipe: Enable Snowpipe
+    inferschema: false
     integration: ""
     onError: SKIP_FILE
     recDelim: |+

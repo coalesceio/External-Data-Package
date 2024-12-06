@@ -34,6 +34,72 @@ select 1 = 0
 {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
 {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
  
+           {%if desiredState.config.inferschema == true %}
+					       {% set srcSchName = desiredState.node.location.name %}
+                           {% set db = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[0]%}
+                           {% set sch = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[1]%}
+
+                           {% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
+                           {% set dbStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[0] %}
+                           {% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
+
+                            # File format locations
+
+                           {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
+                           {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+                           {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+
+                           {%- if ","  in desiredState.config.fileNames %} 
+                               {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
+                               {% set final_variable = "'" + formatted_variable + "'" %}
+                               {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
+                           {%- elif  desiredState.config.fileNames  -%}
+                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
+                           {% endif %}
+                    
+                    {{ stage('Create inferred external table' , true, "sql", "create") }}
+
+                       -- Anonymous stored procedure block
+                          DECLARE
+                       -- Variables
+                         col_name VARCHAR;
+                         col_type VARCHAR;
+                         create_sql VARCHAR;
+                         final_sql VARCHAR;
+                         alter_sql VARCHAR;
+  
+                       -- Cursor to loop through each row in GROUP_LOAD table
+                          res RESULTSET;
+                          select_statement := 'CREATE OR REPLACE EXTERNAL TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+                          USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
+                           FROM TABLE(
+                           INFER_SCHEMA(
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          {{fileNameSQL }}
+                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{desiredState.config.fileFormatName}}''
+                        )
+                      ))LOCATION=@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}
+                      FILE_FORMAT={{ dbff }}.{{ schff }}.{{desiredState.config.fileFormatName}}
+                      AUTO_REFRESH=false';
+  
+                       BEGIN
+          
+                       EXECUTE IMMEDIATE :select_statement ;
+	
+	                    -- Add metadata columns
+                      -- Column: FILENAME
+                      alter_sql := '
+                      ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
+                      ADD COLUMN FILENAME STRING AS METADATA$FILENAME';
+                      
+                      EXECUTE IMMEDIATE :alter_sql;
+
+                     -- Return a success message
+                     RETURN '{{desiredState.node.name}} table created successfully.';
+            END;
+					  				  
+	    	{%else%}
+			
 {{ stage('Create External Table') }}
 
  CREATE OR REPLACE EXTERNAL TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
@@ -41,7 +107,7 @@ select 1 = 0
 
     {% for col in desiredState.sources[0].columns if (col.name | upper != "VALUE" ) %}
       {% if loop.first %}({% endif %} 
-      {%if col.name != "FILENAME" %}
+      {%if (col.name != "FILENAME") and (col.name != "FILE_ROW_NUMBER") and (col.name !="FILE_LAST_MODIFIED") and (col.name != "SCAN_TIME") and (col.name != "LOAD_TIMESTAMP")%}
           {% if desiredState.config.fileType == "CSV" %}
 		       "{{ col.name }}" {{ col.dataType }} AS (value:c{{ loop.index }}::{{ col.dataType }})
            {%else%}
@@ -49,6 +115,14 @@ select 1 = 0
           {%endif%}
 		  {%elif col.name == "FILENAME" %}
 		      "{{ col.name }}" {{ col.dataType }} AS METADATA$FILENAME
+      {%elif col.name == "FILE_ROW_NUMBER" %}
+           "{{ col.name }}" {{ col.dataType }} AS METADATA$FILE_ROW_NUMBER
+      {%elif col.name =="FILE_LAST_MODIFIED"%} 
+           "{{col.name}}" {{ col.dataType }} AS METADATA$FILE_LAST_MODIFIED   
+      {%elif col.name =="SCAN_TIME"%} 
+           "{{col.name}}" {{ col.dataType }} AS METADATA$START_SCAN_TIME     
+      {%elif col.name =="LOAD_TIMESTAMP"%} 
+           "{{col.name}}" {{ col.dataType }} AS current_timestamp()
 		  {%endif%}
       {%- if col.description | length > 0 %} COMMENT '{{ col.description }}'{% endif %}
       {%- if not loop.last -%}, {% else %}){% endif %}
@@ -83,4 +157,5 @@ select 1 = 0
   
   {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description }}'{% endif %}
 
+{%endif%}
 {%endif%}

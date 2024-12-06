@@ -28,34 +28,6 @@ metadata:
         type: toggleButton
         default: false
 
-    - groupName: InferSchema Data
-      enableIf: "{% if config.inferschema %} true {% else %} false {% endif %}"
-      items:
-      
-      - displayName: Coalesce Storage Location of Stage
-        attributeName: istageStorageLocationName
-        type: textBox
-        default: 'Enter Storage Location name'
-
-      - displayName: Stage Name
-        attributeName: istageName
-        type: textBox
-        default: 'Enter stage name-stage_name/folder/'
-
-      - displayName: File Name(s) ( Ex:a.csv,b.csv)
-        attributeName: ifileNames
-        type: textBox
-        
-      - displayName: Coalesce Storage Location of File Format 
-        attributeName: ifileFormatLoc
-        type: textBox
-        default: ""
-      
-      - displayName: File Format Name
-        attributeName: ifileFormatName
-        type: textBox
-        default: ""
-
     - groupName: Snowpipe Options
       enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
@@ -99,7 +71,6 @@ metadata:
 
         
     - groupName: File Location
-      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
       - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
@@ -117,16 +88,15 @@ metadata:
         attributeName: fileNames
         type: textBox
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe != 'Enable Snowpipe' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagSnowpipe != 'Enable Snowpipe' or config.inferschema == true %} true {% else %} false {% endif %}"
 
       - displayName: File Pattern (Optional - Ex:'.*hea.*[.]csv')
         attributeName: filePattern
         type: textBox
         isRequired: false
-      
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"  
 
     - groupName: File Format
-      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
       - displayName: File Format Definition
         attributeName: fileFormatType
@@ -135,20 +105,21 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
         default: ""
         isRequired: false
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
+        enableIf: "{% if config.fileFormatType == 'File Format Name' or config.inferschema == true %} true {% else %} false {% endif %}"  
 
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox
         default: ""
         isRequired: false
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileFormatType == 'File Format Name' or config.inferschema == true %} true {% else %} false {% endif %}"
      
       - displayName: File Type
         attributeName: fileType
@@ -162,7 +133,7 @@ metadata:
         - "ORC"
         - "XML"
         isRequired: false
-        
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
 
       - displayName: Compression
         attributeName: compression

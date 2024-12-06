@@ -61,21 +61,21 @@ select 1 = 0
                            {% set sch = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[1]%}
 
                            {% set stageStorageLocationName = desiredState.config.stageStorageLocationName %}
-                           {% set dbStage =  ref_no_link(desiredState.config.istageStorageLocationName, desiredState.node.name).split('.')[0] %}
-                           {% set schStage =  ref_no_link(desiredState.config.istageStorageLocationName, desiredState.node.name).split('.')[1]%}
+                           {% set dbStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[0] %}
+                           {% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
 
                             # File format locations
 
-                           {% set fileFormatLocationName = desiredState.config.ifileFormatLoc %}
+                           {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
                            {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
                            {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
                            {%- if ","  in desiredState.config.fileNames %} 
-                               {% set formatted_variable = desiredState.config.ifileNames.split(',') | map('string') | join("'',''") %}
+                               {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
                                {% set final_variable = "'" + formatted_variable + "'" %}
                                {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
-                           {%- elif  desiredState.config.ifileNames  -%}
-                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.ifileNames+"'," %}
+                           {%- elif  desiredState.config.fileNames  -%}
+                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
                            {% endif %}
                     
                     {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
@@ -87,6 +87,7 @@ select 1 = 0
               col_type VARCHAR;
               create_sql VARCHAR;
               final_sql VARCHAR;
+              alter_sql VARCHAR;
   
             -- Cursor to loop through each row in GROUP_LOAD table
                 res RESULTSET;

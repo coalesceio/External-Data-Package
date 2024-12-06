@@ -34,71 +34,43 @@ metadata:
         type: toggleButton
         default: false
 
-    - groupName: InferSchema Data
-      enableIf: "{% if config.inferschema %} true {% else %} false {% endif %}"
-      items:
-      
-      - displayName: Coalesce Storage Location of Stage
-        attributeName: istageStorageLocationName
-        type: textBox
-        default: 'Enter Storage Location name'
-
-      - displayName: Stage Name
-        attributeName: istageName
-        type: textBox
-        default: 'Enter stage name-stage_name/folder/'
-
-      - displayName: File Name(s) ( Ex:a.csv,b.csv)
-        attributeName: ifileNames
-        type: textBox
-        
-      - displayName: Coalesce Storage Location of File Format 
-        attributeName: ifileFormatLoc
-        type: textBox
-        default: ""
-      
-      - displayName: File Format Name
-        attributeName: ifileFormatName
-        type: textBox
-        default: ""
 
     - groupName: Source Data
-      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
 
       - displayName: Internal or External Stage
         attributeName: intextstage
         type: toggleButton
         isRequired: false 
-        enableIf: "{% if config.extlocation %} false {% else %} true {% endif %}"    	
+        enableIf: "{% if config.extlocation or config.inferschema %} false {% else %} true {% endif %}"    	
     	
       - displayName: External location
         attributeName: extlocation
         type: toggleButton
         isRequired: false  
-        enableIf: "{% if config.intextstage %} false {% else %} true {% endif %}"
+        enableIf: "{% if config.intextstage or config.inferschema %} false {% else %} true {% endif %}"
     	  
       - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName
         type: textBox
         default: 'Enter Storage Location name'
-        enableIf: "{% if config.intextstage %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.intextstage or config.inferschema %} true {% else %} false {% endif %}"
         isRequired: true
 
       - displayName: Stage Name
         attributeName: stageName
         type: textBox
         default: 'Enter stage name-stage_name/folder_name/'
-        enableIf: "{% if config.intextstage %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.intextstage or config.inferschema%} true {% else %} false {% endif %}"
         isRequired: true
 
-      - displayName: File Name(s) (Optional - Ex:'a.csv','b.csv' )
+      - displayName: File Name(s) (Ex:'a.csv','b.csv' )
         attributeName: fileNames
         type: textBox
-        enableIf: "{% if config.intextstage %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.intextstage or config.inferschema %} true {% else %} false {% endif %}"
         isRequired: false
 
-      - displayName: File Pattern (Optional - Ex:'.*hea.*[.]csv')
+      - displayName: File Pattern (Ex:'.*hea.*[.]csv')
         attributeName: filePattern
         type: textBox
         enableIf: "{% if config.intextstage %} true {% else %} false {% endif %}"
@@ -118,7 +90,6 @@ metadata:
         isRequired: false
 
     - groupName: File Format
-      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       items:
       - displayName: File Format Definition
         attributeName: fileFormatType
@@ -127,18 +98,20 @@ metadata:
         options:
         - File Format Name
         - File Format Values
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
+        
 
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
         default: ""
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"  
+        enableIf: "{% if config.fileFormatType == 'File Format Name' or config.inferschema %} true {% else %} false {% endif %}"  
 
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox
         default: ""
-        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileFormatType == 'File Format Name' or config.inferschema %} true {% else %} false {% endif %}"
        
       - displayName: File Type
         attributeName: fileType
@@ -152,7 +125,7 @@ metadata:
         - "ORC"
         - "XML"
         isRequired: false
-        ##enableIf: "{% if config.fileFormatType != 'File Format Name' %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
 
       - displayName: Compression
         attributeName: compression

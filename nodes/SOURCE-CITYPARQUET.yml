@@ -14,7 +14,7 @@ operation:
   description: ""
   isMultisource: false
   locationName: SOURCE
-  materializationType: transient table
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:

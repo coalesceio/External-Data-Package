@@ -14,11 +14,12 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: ""
+    fileNames: "''twitter_samp.avro'"
     filePattern: " '.*con.*[.]json'"
     fileType: JSON
     flagLoadHistorical: false
     flagSnowpipe: Enable Snowpipe
+    inferschema: true
     integration: ""
     onError: ""
     recDelim: |+
@@ -26,8 +27,8 @@ operation:
     replaceinvalidcharacters: false
     skipBlankLines: true
     skipHeader: "1"
-    stageName: csv_file_stage/tutorials/dataloading/
-    stageStorageLocationName: TARGET
+    stageName: STAGE_LOCAL
+    stageStorageLocationName: SOURCE
     stripouterarray: false
     timeformat: ""
     timestampformat: ""

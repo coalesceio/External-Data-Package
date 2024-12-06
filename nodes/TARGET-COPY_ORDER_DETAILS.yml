@@ -43,7 +43,7 @@ operation:
   deployEnabled: true
   description: Order details table
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

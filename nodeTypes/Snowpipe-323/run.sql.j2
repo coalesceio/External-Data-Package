@@ -61,7 +61,14 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
                         ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}" 
                         {% set ns.counter = ns.counter + 1 %}       
                       {%endif%}
-                     
+              {%elif col.sysFlNm == true and col.transform == "" %}
+                    METADATA$FILENAME AS "{{col.name}}"
+                {%elif col.sysFlRwNm == true and col.transform == "" %}
+                    METADATA$FILE_ROW_NUMBER AS "{{col.name}}"
+                {%elif col.sysFlLtMd == true and col.transform == "" %}
+                    METADATA$FILE_LAST_MODIFIED AS "{{col.name}}"
+               {%elif col.sysFlScTm == true and col.transform == "" %}
+                   METADATA$START_SCAN_TIME   AS "{{col.name}}"          
 	           {% else %}
 	                  {{ get_source_transform(col) }} AS "{{ col.name }}"
 	           {%endif%}

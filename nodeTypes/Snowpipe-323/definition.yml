@@ -12,6 +12,7 @@ metadata:
     plural: Copy Into
 
     deployStrategy: advanced
+    isColumnResyncEnabled: true
 
     config:
     - groupName: General Options
@@ -29,7 +30,7 @@ metadata:
         default: false
 
     - groupName: Snowpipe Options
-      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
+      enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
       items:
 
       - displayName: Enable Snowpipe
@@ -224,7 +225,7 @@ metadata:
         isRequired: false
 
     - groupName: Copy Options
-      enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
+      enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
       items:
 
       - displayName: On Error Behavior

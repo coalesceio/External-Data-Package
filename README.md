@@ -142,9 +142,11 @@ The Copy-Into node type the following configurations available:
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
 **InferSchema-True**
+
 ![CopyInto](https://github.com/user-attachments/assets/a537faac-bb91-4a00-b055-4612934d95b9)
 
 **InferSchema-False**
+
 ![Copy-Into](https://github.com/user-attachments/assets/60b01ca8-2b99-46ec-8e5c-1491266f2333)
 
 * **Create As**: Select from the options to create as Table or Transient Table
@@ -159,13 +161,19 @@ The Copy-Into node type the following configurations available:
       
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 
+**InferSchema-true**
+
+![CopyInto-options](https://github.com/user-attachments/assets/872b6af7-2c6d-4789-9180-f57df56898da)
+
+**InferSchema-false**
+
 ![CopyInto-File location](https://github.com/user-attachments/assets/3f95f8d0-3c23-4a46-8242-fb81989c523b)
 
 * **Internal or External Stage**
   * **Coalesce Storage Location of Stage**: A storage location in Coalesce where the stage is located.
   * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged
-  * **File Name(s)(Optional - Ex:'a.csv','b.csv')**: Specifies a list of one or more files names (separated by commas) to be loaded
-  * **File Pattern (Optional - Ex:'.*hea.*[.]csv')**: A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.
+  * **File Name(s)(Ex:'a.csv','b.csv')**: Specifies a list of one or more files names (separated by commas) to be loaded
+  * **File Pattern (Ex:'.*hea.*[.]csv')**: A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.
 
 ![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
 
@@ -174,6 +182,13 @@ The Copy-Into node type the following configurations available:
   * **Storage Integration**: Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
+
+**InferSchema-true**
+
+![Copy-Into format](https://github.com/user-attachments/assets/9e4e8f7e-29be-4209-a08b-cb19fadccf05)
+
+
+**InferSchema-false**
 
 ![copy-into-file-format](https://github.com/user-attachments/assets/2a737c5f-3bb3-471a-9365-bf3251677415)
 

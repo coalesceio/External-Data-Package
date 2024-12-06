@@ -50,13 +50,13 @@ does not permit copying or modification for any other purpose.
   
   -- Cursor to loop through each row in GROUP_LOAD table
   res RESULTSET;
-  select_statement := 'CREATE OR REPLACE {{desiredState.node.materializationType}} {{db}}.{{sch}}.{{desiredState.node.name}}
+  select_statement := 'CREATE OR REPLACE {{desiredState.node.materializationType}} {{db}}.{{sch}}."{{desiredState.node.name}}"
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(
-                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}."{{ desiredState.config.stageName }}"'',
                           {{fileNameSQL }}
-                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}''
+                          FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."{{ desiredState.config.fileFormatName}}"''
                         )
                       ))';
   

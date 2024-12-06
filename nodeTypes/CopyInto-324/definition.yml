@@ -28,6 +28,7 @@ metadata:
         attributeName: truncateBefore
         type: toggleButton
         default: false
+        enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
 
       - displayName: InferSchema
         attributeName: inferschema

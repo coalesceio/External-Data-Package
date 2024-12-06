@@ -1,0 +1,55 @@
+fileVersion: 1
+id: 6a5c837e-9fc9-4c7e-bda3-97f6614a8ac1
+name: INFER_HEALTH
+operation:
+  config:
+    fileFormatLoc: TARGET
+    fileFormatName: CSVFILEFORMAT
+    fileNames: health_pipe.csv
+    redeploymentBehavior: Create or Replace
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9203dd3c-9701-4490-982f-c16cb7827ebb
+          stepCounter: 6a5c837e-9fc9-4c7e-bda3-97f6614a8ac1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        dummycolumn: true
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: This column is not part of inferred table
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_HEALTH
+        noLinkRefs: []
+  name: INFER_HEALTH
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

@@ -348,7 +348,13 @@ The Snowpipe node type the following configurations available:
 * [File Format](#snowpipe-file-format)
 * [Copy Options](#snowpipe-copy-options)
 
-![Snowpipe-config](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/14cfeadf-2996-4665-80a1-ecd528691326)
+**InferSchema-true**
+![image](https://github.com/user-attachments/assets/fec7326a-71aa-49b4-a71c-f91174f47777)
+
+
+**InferSchema-false**
+![image](https://github.com/user-attachments/assets/8b2ed94f-9497-4bc3-82f9-ce883205536d)
+
 
 <h3 id="snowpipe-node-properties">Snowpipe Node Properties</h3>
 
@@ -361,11 +367,12 @@ The Snowpipe node type the following configurations available:
   * 
 <h3 id="snowpipe-general-options"> General Options </h3>
 
-![CopyInto-general options](https://github.com/user-attachments/assets/fa520f20-f609-40ed-8df0-0cf64885ea93)
-
 * **Create As**: Dropdown that helps us to create a table or Transiet table to load data from external stage.  
   * Table 
-  * Transient Table 
+  * Transient Table
+* **InferSchema**: True / False toggle that determines whether or not to infer the columns of file before loading
+     * True -The node is created with the inferred columns
+     * False -No infer table step is executed
 
 <h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>
 
@@ -381,6 +388,10 @@ The Snowpipe node type the following configurations available:
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
 
+**InferSchema-true**
+![image](https://github.com/user-attachments/assets/ae16545e-4a01-47f6-bf1b-66f3385f21d1)
+
+**InferSchema-false**
 ![snowpipe-file-location](https://github.com/user-attachments/assets/70189562-bb34-49ba-9735-db63f34b271c)
 
 * **Coalesce Storage Location of stage(Required)**: A storage location in Coalesce where the stage is located.
@@ -390,6 +401,10 @@ The Snowpipe node type the following configurations available:
   
 <h3 id="snowpipe-file-format"> Snowpipe File Format </h3>
 
+**InferSchema-true**
+![image](https://github.com/user-attachments/assets/acb50407-40ff-4bd1-aeb5-e855b9b4da3f)
+
+**InferSchema-false**
 ![Snowpipe-file-format](https://github.com/user-attachments/assets/ae640901-16ce-4ed2-8e6c-efae278d3942)
 
 * **File Format Definition - File Format Name**:
@@ -479,10 +494,18 @@ The set of columns which has source data and file metadata information.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
-### Key points to use CopyInto node
+### Key points to use Snowpipe node
 * Snowpipe node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * Snowpipe node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Snowpipe node on top of it.
 
+### Use Snowpipe node with InferSchema option
+* Set Infer Schema toggle to true
+* Hit Create button to Infer Schema
+* Click on Re-Sync Columns button
+* If all looks good, set Infer Schema button to false
+* Hit Create button to execute create table based on inferred schema and pipe to ingest data
+
+If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table and snowpipe
 
 ### Snowpipe Deployment
 

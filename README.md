@@ -2,10 +2,10 @@
 
 The Coalesce External Data Package includes:
 
-* [Inferschema](#inferschema)
 * [CopyInto](#CopyInto)
 * [Snowpipe](#Snowpipe)
 * [External Table](#external-tables)
+* [Inferschema](#inferschema)
 * [CopyUnload](#CopyUnload)
 * [API](#API)
 * [API-NODEUPDATE](#API-NODEUPDATE)
@@ -13,110 +13,6 @@ The Coalesce External Data Package includes:
 * [Parse Excel](#parse-excel)
 * [Parse Json](#parse-json)
 * [Code](#code)
-
-<h2 id="inferschema"> InferSchema </h2>
-
-The Coalesce InferSchema UDN is a versatile node infers schema of the file in internal or external stage and dynamically creates the target table of the same name as inferschema node.
-
-[InferSchema](https://docs.snowflake.com/en/sql-reference/functions/infer_schema) in Snowflake automatically detects the file metadata schema in a set of staged data files that contain semi-structured data and retrieves the column definitions.
-
-### Key points InferSchema 
-
-* A sample file in the internal or external stage.
-* An existing fileformat to parse the file
-* The file format is also expected to be in the same location as stage
-* The mapping grid after creating the inferred node can be Re-Synced with the exact structure of the table/transient table using the Re-Sync Columns button in the mapping grid
-
-### InferSchema Node Configuration
-
-The InferSchema node type has two configuration groups:
-
-* [InferSchema Node Properties](#inferschema-node-properties)
-* [InferSchema Source Data](#inferschema-source-data)
-
-Go to the node and select the **Config tab** to see the Node Properties, Dynamic Table Options and General Options.
-
-<h4 id="inferschema-node-properties"> InferSchema Node Properties </h4>
-
-* **Storage Location**: Storage Location where the WORK will be created.
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
-  
-<h4 id="inferschema-source-data"> InferSchema Source Data </h4>
-
-* **Create As**: Select from the options to create as Table or Transient Table
-    * Transient Table
-    * Table
-* **Coalesce Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
-* **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
-* **File Names (Required)**: Use commas to seperate multiple files. File whose metatdata is to be inferred.
-* **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
-* **File Format Name (Required)***: Name of the file format object that describes the data contained in the staged files.It is expected in the same location as Stage.
-* **Redeployment Behavior**:
-  * **CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area.
-  * **ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table.
-* **DROP EXISTING TABLE**: Drops the table inferred.
-
-### InferSchema Usage
-
-#### Option1-Using API-NODEUPDATE
-* Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
-* Use [API-NODEUPDATE](#API-NODEUPDATE) node to update the columns of the infer node created in the above step.
-* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
-* Once we get the required metadata columns in our downstream node(Copy-Into,Snowpipe or External table),bulk edit the source in the node to be blank.Also delete the from clause in the Join tab.These information are not required for Copy-Into,Snowpipe or External table to  load data from files.
-* Delete the API-NODEUPDATE node ,we created in step2 as we have updated the columns required for the downstream nodes and the data for the same are derived from files.
-* Eventually API-NODEUPDATE nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
-
-#### Option2-Using Re-Sync Columns button
-* Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
-* Use Re-Sync Columns button in the mapping grid to update the columns of the infer node created in the above step.
-* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
-
-### InferSchema Deployment
-
-#### InferSchema Initial Deployment
-
-When deployed for the first time into an environment the InferSchema node will execute the stage:
-
-* Stage executed: **Infer and Create target table**
-
-#### InferSchema Redeployment
-
-**Redeployment Behavior: Create or Replace**
-
-| Redeployment Behavior | Stage Executed |
-|---|---|
-| Create or Replace | Infer and Create target table
-
-If any of the Source Data options like Stage storage location, Stage name or filename are modified.
-Then you can redeploy the Infer Schema node with redeployment behaviour “Create or Replace”.
-
-> 📘 Info
-> 
-> You can go back to the browser and Re-sync columns of Inferred table, re-execute Copy-Into and redeploy
-
-**Redeployment Behavior: Alter Existing Table**
-
-| Redeployment Behavior | Stage Executed |
-|---|---|
-|Alter existing table| Infer and Alter target table
-
-If all Source Data options remain same and only there are changes in the existing file structure, you can redeploy the Infer Schema node with redeployment behaviour “Alter existing table”.
-
-**Redeployment Behavior: Drop Existing Table**
-
-| Redeployment Behavior | Stage Executed |
-|---|---|
-|Drop existing table |Drop inferred table
-
-If you want to drop the inferred table you can redeploy the Infer Schema node with redeployment behaviour “Drop existing table”.
-  
-### InferSchema Undeployment
-
-If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
   
 <h2 id="CopyInto"> CopyInto </h2>
 
@@ -693,6 +589,110 @@ The following stages are executed:
 If the External table node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 * **Drop External Table**
+
+<h2 id="inferschema"> InferSchema </h2>
+
+The Coalesce InferSchema UDN is a versatile node infers schema of the file in internal or external stage and dynamically creates the target table of the same name as inferschema node.
+
+[InferSchema](https://docs.snowflake.com/en/sql-reference/functions/infer_schema) in Snowflake automatically detects the file metadata schema in a set of staged data files that contain semi-structured data and retrieves the column definitions.
+
+### Key points InferSchema 
+
+* A sample file in the internal or external stage.
+* An existing fileformat to parse the file
+* The file format is also expected to be in the same location as stage
+* The mapping grid after creating the inferred node can be Re-Synced with the exact structure of the table/transient table using the Re-Sync Columns button in the mapping grid
+
+### InferSchema Node Configuration
+
+The InferSchema node type has two configuration groups:
+
+* [InferSchema Node Properties](#inferschema-node-properties)
+* [InferSchema Source Data](#inferschema-source-data)
+
+Go to the node and select the **Config tab** to see the Node Properties, Dynamic Table Options and General Options.
+
+<h4 id="inferschema-node-properties"> InferSchema Node Properties </h4>
+
+* **Storage Location**: Storage Location where the WORK will be created.
+* **Node Type**: Name of template used to create node objects.
+* **Description**: A description of the node's purpose.
+* **Deploy Enabled**:
+  * If TRUE the node will be deployed / redeployed when changes are detected.
+  * If FALSE the node will not be deployed or will be dropped during redeployment.
+  
+<h4 id="inferschema-source-data"> InferSchema Source Data </h4>
+
+* **Create As**: Select from the options to create as Table or Transient Table
+    * Transient Table
+    * Table
+* **Coalesce Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
+* **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
+* **File Names (Required)**: Use commas to seperate multiple files. File whose metatdata is to be inferred.
+* **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
+* **File Format Name (Required)***: Name of the file format object that describes the data contained in the staged files.It is expected in the same location as Stage.
+* **Redeployment Behavior**:
+  * **CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area.
+  * **ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table.
+* **DROP EXISTING TABLE**: Drops the table inferred.
+
+### InferSchema Usage
+
+#### Option1-Using API-NODEUPDATE
+* Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
+* Use [API-NODEUPDATE](#API-NODEUPDATE) node to update the columns of the infer node created in the above step.
+* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
+* Once we get the required metadata columns in our downstream node(Copy-Into,Snowpipe or External table),bulk edit the source in the node to be blank.Also delete the from clause in the Join tab.These information are not required for Copy-Into,Snowpipe or External table to  load data from files.
+* Delete the API-NODEUPDATE node ,we created in step2 as we have updated the columns required for the downstream nodes and the data for the same are derived from files.
+* Eventually API-NODEUPDATE nodes are not required to be deployed.It is sufficient to deploy the Copy-into,Snowpipe or External table nodes which holds the data from staged files
+
+#### Option2-Using Re-Sync Columns button
+* Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
+* Use Re-Sync Columns button in the mapping grid to update the columns of the infer node created in the above step.
+* Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
+
+### InferSchema Deployment
+
+#### InferSchema Initial Deployment
+
+When deployed for the first time into an environment the InferSchema node will execute the stage:
+
+* Stage executed: **Infer and Create target table**
+
+#### InferSchema Redeployment
+
+**Redeployment Behavior: Create or Replace**
+
+| Redeployment Behavior | Stage Executed |
+|---|---|
+| Create or Replace | Infer and Create target table
+
+If any of the Source Data options like Stage storage location, Stage name or filename are modified.
+Then you can redeploy the Infer Schema node with redeployment behaviour “Create or Replace”.
+
+> 📘 Info
+> 
+> You can go back to the browser and Re-sync columns of Inferred table, re-execute Copy-Into and redeploy
+
+**Redeployment Behavior: Alter Existing Table**
+
+| Redeployment Behavior | Stage Executed |
+|---|---|
+|Alter existing table| Infer and Alter target table
+
+If all Source Data options remain same and only there are changes in the existing file structure, you can redeploy the Infer Schema node with redeployment behaviour “Alter existing table”.
+
+**Redeployment Behavior: Drop Existing Table**
+
+| Redeployment Behavior | Stage Executed |
+|---|---|
+|Drop existing table |Drop inferred table
+
+If you want to drop the inferred table you can redeploy the Infer Schema node with redeployment behaviour “Drop existing table”.
+  
+### InferSchema Undeployment
+
+If the InferSchema node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then no action takes place.
 
 <h2 id="CopyUnload">CopyUnload </h2>
 

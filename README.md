@@ -63,11 +63,14 @@ There are four configs within the **Node Properties** group.
 
 ![CopyInto-File location](https://github.com/user-attachments/assets/3f95f8d0-3c23-4a46-8242-fb81989c523b)
 
-* **Internal or External Stage**
-  * **Coalesce Storage Location of Stage**: A storage location in Coalesce where the stage is located.
-  * **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged
-  * **File Name(s)(Ex:'a.csv','b.csv')**: Specifies a list of one or more files names (separated by commas) to be loaded
-  * **File Pattern (Ex:'.*hea.*[.]csv')**: A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.
+##### Internal or External Stage
+
+| **Setting** | **Description** |
+|---------|-------------|
+| **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
+| **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
+| **File Name(s)(Ex:'a.csv','b.csv')** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. |
 
 ![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
 

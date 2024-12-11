@@ -28,12 +28,14 @@ The Copy-Into node type the following configurations available:
 
 <h3 id="copy-into-node-properties">CopyInto - Node Properties</h3>
 
-* **Storage Location**: Storage Location where the target table will be created.
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
     
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
@@ -45,15 +47,11 @@ The Copy-Into node type the following configurations available:
 
 ![Copy-Into](https://github.com/user-attachments/assets/60b01ca8-2b99-46ec-8e5c-1491266f2333)
 
-* **Create As**: Select from the options to create as Table or Transient Table
-    * Transient Table
-    * Table
-* **TruncateBefore(Disabled when Inferschema is true)**: True / False toggle that determines whether or not a table is to be truncated before reloading
-     * True - Table is truncated and Copy-Into statement is executed to reload the data into target table
-     * False - Data is loaded directly into target table and no truncate action takes place.
- * **InferSchema**: True / False toggle that determines whether or not to infer the columns of file before loading
-     * True -The node is created with the inferred columns
-     * False -No infer table step is executed
+| **Option** | **Description** |
+|------------|----------------|
+| **Create As** | Select from the options to create as Table or Transient Table<br/>- **Transirnt table**<br/>  -**Table** |
+| **TruncateBefore(Disabled when Inferschema is true)** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
+| **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
       
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 

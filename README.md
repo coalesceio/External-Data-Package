@@ -74,9 +74,12 @@ There are four configs within the **Node Properties** group.
 
 ![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
 
-* **External location**
-  * **External URI**: Enter the URI of the External location
-  * **Storage Integration**: Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity
+##### External location
+| **Setting** | **Description** |
+|---------|-------------|
+| **External URI** | Enter the URI of the External location|
+| **Storage Integration** | Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity|
+
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 
@@ -89,51 +92,33 @@ There are four configs within the **Node Properties** group.
 
 ![copy-into-file-format](https://github.com/user-attachments/assets/2a737c5f-3bb3-471a-9365-bf3251677415)
 
-* **File Format Definition - File Format Name**:  
-  * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
-  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
-  * **File Type**:
-    * CSV
-    * JSON
-    * ORC
-    * AVRO
-    * PARQUET
-    * XML
-* **File Format Definition - File Format Values**: 
-  * **File Format Values** -Provides file format options for the File Type chosen.
-  * **File Type**: Each file type has different configurations available.
-    * **CSV**
-    * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
-    * **Record delimiter**:Characters that separate records in an input file
-    * **Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file
-    * **Field optionally enclosed by**:Character used to enclose strings
-    * **Number of header lines to skip**:Number of lines at the start of the file to skip.
-    * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
-    * **Trim Space**: Boolean that specifies whether to remove white space from fields.
-    * **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **Date format**:String that defines the format of date values in the data files to be loaded. 
-    * **Time format**: String that defines the format of time values in the data files to be loaded
-    * **Timestamp format**:String that defines the format of timestamp values in the data files to be loaded.
-    * **JSON**
-      * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
-      * **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
-      * **Date format**:String that defines the format of date values in the data files to be loaded. 
-      * **Time format**:String that defines the format of time values in the data files to be loaded
-      * **Timestamp format**: String that defines the format of timestamp values in the data files to be loaded.
-    * **ORC**
-      * **Trim Space** - Specifies whether to remove white space from fields
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **AVRO**
-      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **PARQUET**
-      * **Trim Space** - Boolean that specifies whether to remove white space from fields.
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **XML**
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+##### File Format Definition - File Format Name
 
+| **Setting** | **Description** |
+|---------|-------------|
+|* **File Format Name**|Specifies an existing named file format to use for loading data into the table|
+|* **File Type**| CSV </br> JSON </br> ORC </br> AVRO </br> PARQUET </br> XML |
+
+##### File Format Definition - File Format Values
+
+| **Setting** | **Description** |
+|---------|-------------|
+|**File Format Values**|Provides file format options for the File Type chosen|
+|**File Type**|Each file type has different configurations available|
+|**CSV**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**:Characters that separate records in an input file
+</br>**Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**:Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip**Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
+</br>**Trim Space**: Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**:String that defines the format of date values in the data files to be loaded. 
+</br>**Time format**: String that defines the format of time values in the data files to be loaded</br>**Timestamp format**:String that defines the format of timestamp values in the data files to be loaded|
+|**JSON**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
+</br>**Date format**:String that defines the format of date values in the data files to be loaded</br>**Time format**:String that defines the format of time values in the data files to be loaded
+</br>**Timestamp format**: String that defines the format of timestamp values in the data files to be loaded|
+|**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+
+  
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
 * **On Error Behavior**:String (constant) that specifies the error handling for the load operation.

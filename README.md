@@ -105,8 +105,8 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 |**File Format Values**|Provides file format options for the File Type chosen|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**:Characters that separate records in an input file</br>**Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**:Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip**Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files</br>**Trim Space**: Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**:String that defines the format of date values in the data files to be loaded. </br>**Time format**: String that defines the format of time values in the data files to be loaded</br>**Timestamp format**:String that defines the format of timestamp values in the data files to be loaded|
-|**JSON**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**:String that defines the format of date values in the data files to be loaded</br>**Time format**:String that defines the format of time values in the data files to be loaded</br>**Timestamp format**: String that defines the format of timestamp values in the data files to be loaded|
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**:Character used to enclose strings</br>**Number of header lines to skip*:Number of lines at the start of the file to skip**Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files</br>**Trim Space**- Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**:String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
+|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
 |**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 |**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 |**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
@@ -117,16 +117,16 @@ There are four configs within the **Node Properties** group.
 
 | **Setting** | **Description** |
 |---------|-------------|
-|**On Error Behavior**|String (constant) that specifies the error handling for the load operation|
+|**On Error Behavior**|-String (constant) that specifies the error handling for the load operation|
 |                     |* CONTINUE</br>* SKIP_FILE</br>* SKIP_FILE_num</br>* SKIP_FILE_num%</br>* ABORT_STATEMENT|
-|**Specify the number of errors that can be skipped**|Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped.|
-|**Size Limit**|Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
-|**Purge Behavior**|Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully|
-|**Return Failed Only**|Boolean that specifies whether to return only files that have failed to load in the statement result|
-|**Force**|Boolean that specifies to load all files, regardless of whether they’ve been loaded previously and have not changed since they were loaded|
-|**Load Uncertain Files**|Boolean that specifies to load files for which the load status is unknown. The COPY command skips these files by default|
-|**Enforce Length**|Boolean that specifies whether to truncate text strings that exceed the target column length|
-|**Truncate Columns**|Boolean that specifies whether to truncate text strings that exceed the target column length|
+|**Specify the number of errors that can be skipped**|-Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped.|
+|**Size Limit**|-Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
+|**Purge Behavior**|-Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully|
+|**Return Failed Only**|-Boolean that specifies whether to return only files that have failed to load in the statement result|
+|**Force**|-Boolean that specifies to load all files, regardless of whether they’ve been loaded previously and have not changed since they were loaded|
+|**Load Uncertain Files**|-Boolean that specifies to load files for which the load status is unknown. The COPY command skips these files by default|
+|**Enforce Length**|-Boolean that specifies whether to truncate text strings that exceed the target column length|
+|**Truncate Columns**|-Boolean that specifies whether to truncate text strings that exceed the target column length|
 
 ### CopyInto - System Columns
 

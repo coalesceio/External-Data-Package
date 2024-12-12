@@ -344,6 +344,8 @@ The set of columns which has source data and file metadata information.
 * Click on Re-Sync Columns button
 * If all looks good, set Infer Schema button to false
 * Hit Create button to execute create table based on inferred schema and pipe to ingest data
+  
+![image](https://github.com/user-attachments/assets/7b8a2161-6457-483b-9c66-1e27af0c72f3)
 
 If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table and snowpipe
 

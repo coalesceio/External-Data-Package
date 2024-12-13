@@ -461,16 +461,26 @@ There are four configs within the **Node Properties** group.
 
 <h4 id="external-tables-file-location"> External Tables Node File Location </h4>
 
+**InferSchema-true**
+![image](https://github.com/user-attachments/assets/e3d02f1f-55f4-4c79-9f8c-2f8776874e6d)
+
+**InferSchema-false**
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
+
 
 | **Settings** | **Description** |
 |--------------|-----------------|
 |**Coalesce Stage Storage Location of Stage(Required)**|A storage location in Coalesce where the stage is located|
 |**Stage Name (Required)**|Internal or External stage where the files containing data to be loaded are staged|
+| **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when InferSchema toggle is true. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
 |**File Pattern**|A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
 
 <h4 id="external-tables-ile-format">External Tables  File Format</h4>
 
+**InferSchema-true**
+![image](https://github.com/user-attachments/assets/14fac636-3968-4ae7-9cdf-6ba0bcb079c0)
+
+**InferSchema-false**
 ![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
 
 ##### File Format Definition - File Format Name

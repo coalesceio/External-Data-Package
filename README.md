@@ -498,7 +498,7 @@ The set of columns which has source data and file metadata information.
 * **VALUE** - The data from the file is loaded into this variant column
 * **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
 
-### Key points to use CopyInto node
+### Key points to use External table node
 * External table node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * External node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add External node on top of it.
 
@@ -550,27 +550,26 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 
 <h4 id="inferschema-node-properties"> InferSchema Node Properties </h4>
 
-* **Storage Location**: Storage Location where the WORK will be created.
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
-* **Create As**: Select from the options to create as Table or Transient Table
-    * Transient Table
-    * Table
-* **Coalesce Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
-* **Stage Name (Required)***: Internal or External stage where the files containing data to be loaded are staged.
-* **File Names (Required)**: Use commas to seperate multiple files. File whose metatdata is to be inferred.
-* **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.
-* **File Format Name (Required)***: Name of the file format object that describes the data contained in the staged files.It is expected in the same location as Stage.
-* **Redeployment Behavior**:
-  * **CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area.
-  * **ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table.
-* **DROP EXISTING TABLE**: Drops the table inferred.
+| **Settings** | **Description** |
+|-------------|-----------------|
+|**Create As**|Select from the options to create as Table or Transient Table</br>* Transient Table</br>* Table|
+|**Coalesce Storage Location of Stage(Required)**|A storage location in Coalesce where the stage is located|
+|**Stage Name (Required)**|Internal or External stage where the files containing data to be loaded are staged|
+|**File Names (Required)**|Use commas to seperate multiple files. File whose metatdata is to be inferred|
+|**Coalesce Storage Location of File Format**|Location in Coalesce pointing to the database and schema,the file format resides|
+|**File Format Name (Required)**|Name of the file format object that describes the data contained in the staged files.It is expected in the same location as Stage|
+|**Redeployment Behavior**|**CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area</br>**ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table</br>**DROP EXISTING TABLE**: Drops the table inferred|
 
 ### InferSchema Usage
 
@@ -586,6 +585,8 @@ Go to the node and select the **Config tab** to see the Node Properties, Dynamic
 * Add a InferSchema node, for example `INFER_JSON` and hit create.'Infer and Create table' stage runs and creates a table with the same name as InferSchema node.
 * Use Re-Sync Columns button in the mapping grid to update the columns of the infer node created in the above step.
 * Now we can add a Copy-Into,Snowpipe or External table node on top of the inferred table to load staged files.
+
+  ![image](https://github.com/user-attachments/assets/e3f1c823-942e-49ef-9c56-5338f3973f97)
 
 ### InferSchema Deployment
 

@@ -28,6 +28,19 @@ select 1 = 0
 {% set schStage = desiredState.storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
 {% set ns = namespace(counter=1) %}
 
+# Partition by clause
+{%- set nsVariables = namespace(partValues="") %} 
+{%if desiredState.config.partclause == true%}
+       {% set column = desiredState.config.partitionclause.get('items') | map(attribute='partname.name')| list%}
+	 
+	      {% for r in column %}
+			   {% set nsVariables.partValues = nsVariables.partValues + '"'+r+'"' %}
+         {%- if not loop.last -%} {% set nsVariables.partValues = nsVariables.partValues +','%} {% endif %}
+        {% endfor %}      
+    {% set nsVariables.partValues = 'PARTITION BY(' + nsVariables.partValues + ')' %}        
+{%endif%}
+
+
 # File format locations
 
 {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
@@ -78,9 +91,11 @@ select 1 = 0
                           {{fileNameSQL }}
                           FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{desiredState.config.fileFormatName}}''
                         )
-                      ))LOCATION=@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}
+                      )) 
+                      LOCATION=@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}
                       FILE_FORMAT={{ dbff }}.{{ schff }}.{{desiredState.config.fileFormatName}}
-                      AUTO_REFRESH=false';
+                      AUTO_REFRESH=false
+                      ';
   
                        BEGIN
           
@@ -107,7 +122,7 @@ select 1 = 0
 
     {% for col in desiredState.sources[0].columns if (col.name | upper != "VALUE" ) %}
       {% if loop.first %}({% endif %} 
-      {%if (col.name != "FILENAME") and (col.name != "FILE_ROW_NUMBER") and (col.name !="FILE_LAST_MODIFIED") and (col.name != "SCAN_TIME") and (col.name != "LOAD_TIMESTAMP")%}
+      {%if (col.name != "FILENAME") and (col.name != "FILE_ROW_NUMBER") and (col.name !="FILE_LAST_MODIFIED") and (col.name != "SCAN_TIME") and (col.name != "LOAD_TIMESTAMP")and col.transform == ""%}
           {% if desiredState.config.fileType == "CSV" %}
 		       "{{ col.name }}" {{ col.dataType }} AS (value:c{{ loop.index }}::{{ col.dataType }})
            {%else%}
@@ -123,12 +138,14 @@ select 1 = 0
            "{{col.name}}" {{ col.dataType }} AS METADATA$START_SCAN_TIME     
       {%elif col.name =="LOAD_TIMESTAMP"%} 
            "{{col.name}}" {{ col.dataType }} AS current_timestamp()
+      {%elif col.transform !=""%}
+            "{{col.name}}" {{ col.dataType }} AS {{ get_source_transform(col) }}
 		  {%endif%}
       {%- if col.description | length > 0 %} COMMENT '{{ col.description }}'{% endif %}
       {%- if not loop.last -%}, {% else %}){% endif %}
     {% endfor %}
  
-  
+  {{nsVariables.partValues}}
   location = @{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}
   {% if desiredState.config.filePattern %}
   pattern='{{ desiredState.config.filePattern }}'

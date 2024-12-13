@@ -15,13 +15,33 @@ metadata:
     isColumnResyncEnabled: true
 
     config:
-    - groupName: File Location
-      items: 
+    - groupName: General Options
+      items:
       
       - displayName: InferSchema
         attributeName: inferschema
         type: toggleButton
         default: false
+      
+      - type: toggleButton
+        displayName: Partition by 
+        attributeName: partclause
+            
+      - type: tabular
+        displayName: Partition by
+        attributeName: partitionclause
+        enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+        isRequired: false
+        columns:
+
+        -  type: columnDropdownSelector
+           displayName: Partition by
+           attributeName: partname
+           isRequired: false
+           enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+
+    - groupName: File Location
+      items:
 
       - displayName: Coalesce Storage Location of Stage
         attributeName: stageStorageLocationName

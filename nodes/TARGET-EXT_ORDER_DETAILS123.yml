@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-name: EXT_INFER_AVROEX1
+id: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+name: EXT_ORDER_DETAILS123
 operation:
   config:
     autoRefresh: false
@@ -8,18 +8,20 @@ operation:
     compression: AUTO
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE
-    fileFormatName: avrofileformat
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'twitter_samp.avro'"
-    filePattern: .*[.]avro
-    fileType: AVRO
+    fileNames: "'order_details.json'"
+    filePattern: .*order.*[.]json
+    fileType: JSON
     inferschema: false
     integration: ""
     partclause: true
     partitionclause:
       items:
-        - partname: null
+        - partname:
+            columnCounter: 5e6fb24d-e4c9-4955-b521-621ffc187f1a
+            stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
     recDelim: |+
 
     replaceinvalidcharacters: false
@@ -45,8 +47,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d52eeb89-cbee-43da-b038-48688a11c728
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+          columnCounter: fc491b03-9584-4492-9e0d-214981e0d590
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -61,70 +63,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 107516c9-45f1-4600-a99f-d899e83c9be2
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+          columnCounter: c8813f96-b709-4d71-bb35-2b4d740ea85a
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(11,10)
         defaultValue: ""
         description: ""
-        name: username
-        nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a5d592df-8a43-466d-9be3-2c9164fe17f1
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: tweet
-        nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 137e4e61-07d9-4c00-918e-56c9c0ee52a2
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: timestamp
-        nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 176e2041-f2c8-4c87-95f4-6eadc5ff409b
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILE
+        name: Discount
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -137,8 +82,103 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8b471528-6364-4ba4-bb6c-5f299b713013
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+          columnCounter: 65974768-d29e-4c55-addf-1a678a61a1b2
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: OrderID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a246be69-6ae0-40f8-a531-54c1e7b8c714
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: OrderLine
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c627dbe5-15c5-4afd-a622-8f06b0c93894
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: ProductID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b18713f7-27d0-477f-b543-5921968cd723
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: Quantity
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a59ef3c-fc31-4264-af1d-abee3f73a645
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: NUMBER(5,2)
+        defaultValue: ""
+        description: ""
+        name: UnitPrice
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ac99007b-2a22-4e45-a90b-6388758f004c
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -151,20 +191,38 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e6fb24d-e4c9-4955-b521-621ffc187f1a
+          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+        config: {}
+        dataType: VARCHAR(400)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Product
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: split_part(metadata$filename,'/',1)
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies:
-          - locationName: TARGET
-            nodeName: INFER_AVROEX1
+        dependencies: []
         join:
-          joinCondition: FROM {{ ref('TARGET', 'INFER_AVROEX1') }} "INFER_AVROEX1"
-        name: EXT_INFER_AVROEX1
+          joinCondition: ""
+        name: EXT_ORDER_DETAILS123
         noLinkRefs: []
-  name: EXT_INFER_AVROEX1
+  name: EXT_ORDER_DETAILS123
   overrideSQL: false
   schema: ""
   sqlType: "298"

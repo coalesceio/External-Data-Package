@@ -70,7 +70,7 @@ There are four configs within the **Node Properties** group.
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
 | **File Name(s)(Ex:'a.csv','b.csv')** | Specifies a list of one or more files names (separated by commas) to be loaded |
-| **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. |
+| **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
 ![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
 
@@ -79,7 +79,6 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 | **External URI** | Enter the URI of the External location|
 | **Storage Integration** | Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity|
-
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 
@@ -111,7 +110,6 @@ There are four configs within the **Node Properties** group.
 |**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 |**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 |**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
-
   
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
@@ -295,7 +293,7 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 |**File Format Values**|Provides file format options for the File Type chosen|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**:Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip </br> **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**:String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**- Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip </br> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**- String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
 |**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
 |**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 |**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
@@ -478,7 +476,7 @@ There are four configs within the **Node Properties** group.
 |--------------|-----------------|
 |**File Format Values**|-Provides file format options for the File Type chosen|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**:Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip </br> **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**:String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**- Character used to enclose strings</br>**Number of header lines to skip**- Number of lines at the start of the file to skip </br> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**- String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
 |**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
 |**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 |**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
@@ -648,61 +646,52 @@ The Copy Unload node type has four configuration groups:
 
 <h4 id="copy-unload-node-properties"> Copy Unload Node Properties</h4>
 
-* **Storage Location**: Storage Location is the location(i.e. Database and Schema) of your source table. 
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="copy-unload-file-location"> Copy Unload Node File Location </h4>
 
 ![copy-unload-file](https://github.com/coalesceio/External-Data-Package/assets/169126315/02698cc6-1d16-4e0c-b0fa-c8d614a6e2ed)
 
-* **Coalesce Stage Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
-* **Stage (Required)**: Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded.
-* **Partition by (Optional)**: Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)
-* **Allow Expressions in partition by clause**:A regular expression pattern string, enclosed in single quotes, for example: ('date=' || to_varchar(dt, 'YYYY-MM-DD') || '/hour=' || to_varchar(date_part(hour, ts))- Concatenates labels and column values to output meaningful filenames
+|**Coalesce Stage Storage Location of Stage(Required)**| A storage location in Coalesce where the stage is located|
+|**Stage (Required)**| Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded|
+|**Partition by (Optional)**| Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)|
+|**Allow Expressions in partition by clause**| A regular expression pattern string, enclosed in single quotes, for example: ('date=' || to_varchar(dt, 'YYYY-MM-DD') || '/hour=' || to_varchar(date_part(hour, ts))- Concatenates labels and column values to output meaningful filenames|
 
 <h4 id="copy-unload-file-format">Copy Unload  File Format</h4>
 
 ![FileFormat](https://github.com/coalesceio/External-Data-Package/assets/169126315/53434835-c071-4132-b1f0-d0c41810216f)
-* **File Format Definition - File Format Name**:
-  * **Coalesce Storage Location of File Format**: File format location in snowflake that is mapped as storage location in Coalesce
-  * **File Format Name**: Specifies an existing named file format in Snowflake to use for unloading data into the table.
-  * **File Type**:
-    * CSV
-    * JSON
-    * PARQUET
-* **File Format Definition - File Format Values**: 
-  * **File Format Values** -Provides different file format options for the File Type chosen to unload.
-  * **File Type**: Each file type has different configurations available.
-    * **CSV**
-        * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded.
-        * **Record delimiter**: Characters that separate records in an unloaded file
-        * **Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an unloaded file
-        * **Field optionally enclosed by**: Character used to enclose strings. (Default is \042)
-        * **File Extension**: String that specifies the extension for files unloaded to a stage. Accepts any extension.
-        * **Date Format**: String that defines the format of date values in the unloaded data files.(Default is AUTO)
-        * **Time Format**: String that defines the format of time values in the unloaded data files.(Default is AUTO)
-        * **Timestamp Format**: String that defines the format of timestamp values in the unloaded data files.(Default is AUTO)
-    * **JSON**
-        * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded.
-        * **File extension** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-     * **PARQUET**
-        * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded.
+
+##### File Format Definition - File Format Name
+
+|**Coalesce Storage Location of File Format**| File format location in snowflake that is mapped as storage location in Coalesce|
+|**File Format Name**|Specifies an existing named file format in Snowflake to use for unloading data into the table|
+|**File Type**|* CSV </br> * JSON </br> * PARQUET|
+
+##### File Format Definition - File Format Values
+
+|**File Format Values**|-Provides different file format options for the File Type chosen to unload|
+|**File Type**|Each file type has different configurations available|
+|**CSV**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded</br>**Record delimiter**: Characters that separate records in an unloaded file</br>**Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an unloaded file</br>**Field optionally enclosed by**: Character used to enclose strings. (Default is \042)</br>**File Extension**: String that specifies the extension for files unloaded to a stage. Accepts any extension</br>**Date Format**: String that defines the format of date values in the unloaded data files.(Default is AUTO)</br>**Time Format**: String that defines the format of time values in the unloaded data files.(Default is AUTO)</br>**Timestamp Format**: String that defines the format of timestamp values in the unloaded data files.(Default is AUTO)|
+|**JSON**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded</br>**File extension** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**PARQUET**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded|
 
 <h4 id="copy-unload-copy-options"> Copy Unload Copy Options</h4>
 
 ![CopyOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/4a1d32ec-a898-40ba-93e7-94194bcae02d)
 
-* **Overwrite Flag**: Toogle overwrites existing files with matching names, if any, in the location where files are unloaded
-* **Header**: 
-* **Single File Flag**: Toggle generates a single file when true, else generates multiple files if partition by enabled
-* **Max File Size (MB)**: Number (> 0) that specifies the upper size limit (in bytes) of each file to be generated in parallel per thread. Note that the actual file size and number of files unloaded are determined by the total amount of data and number of nodes available for parallel processing.
-* **Include Query ID**:  When true provides unique identifier for unloaded files by including a universally unique identifier (UUID) in the filenames of unloaded data files 
-
-* **Detailed Output**: When true includes a row for each file unloaded to the specified stage. Columns show the path and name for each file, its size, and the number of rows that were unloaded to the file.
+|**Overwrite Flag**|Toogle overwrites existing files with matching names, if any, in the location where files are unloaded|
+|**Header**|| 
+|**Single File Flag**|Toggle generates a single file when true, else generates multiple files if partition by enabled|
+|**Max File Size (MB)**|Number (> 0) that specifies the upper size limit (in bytes) of each file to be generated in parallel per thread. Note that the actual file size and number of files unloaded are determined by the total amount of data and number of nodes available for parallel processing|
+|**Include Query ID**|When true provides unique identifier for unloaded files by including a universally unique identifier (UUID) in the filenames of unloaded data files| 
+|**Detailed Output**|When true includes a row for each file unloaded to the specified stage. Columns show the path and name for each file, its size, and the number of rows that were unloaded to the file|
 
   ### Copy Unload Deployment
 
@@ -722,26 +711,25 @@ The API Node Configuration type has two configuration groups:
 
 <h4 id="api-node-properties"> API Node Properties</h4>
 
-* **Storage Location**: Storage Location is the location of the destination where retrieved data of API calls are stored 
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="api-node-options"> API Node Options </h4>
 
 ![Options](https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530)
-* **Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
-* **Method(Required)**: HTTP Request methods Get,Put,Post
-  * **Get**: API Call to retrieve data
-  * **Put**: API Call to update existing data
-  * **Post**: API Call to create new data
-  
-* **URI(Required)**: Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API
-* **Headers**: headers are used to provide additional context and information about the request
-* **Payload**: when making HTTP requests to a URI, the request may include a payload (also known as a body)
-* **Note:**: Payload applicable only to Put & Post API method calls
+
+|**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**|EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
+|**Method(Required)**|HTTP Request methods Get,Put,Post</br>**Get**: API Call to retrieve data</br>**Put**: API Call to update existing data</br>**Post**: API Call to create new data|  
+|**URI(Required)**|Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API|
+|**Headers**|headers are used to provide additional context and information about the request|
+|**Payload**|when making HTTP requests to a URI, the request may include a payload (also known as a body)|
+|**Note:**|Payload applicable only to Put & Post API method calls|
 
 <h2 id="API">API-NODEUPDATE</h2>
 
@@ -754,23 +742,20 @@ The API-NODEUPDATE Node Configuration type has two configuration groups:
 
 <h4 id="api-nodeup-properties"> API-NODEUPDATE Node Properties</h4>
 
-* **Storage Location**: Storage Location is the location of the destination where retrieved data of API calls are stored 
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="api-nodeup-options"> API-NODEUPDATE Node Options </h4>
 
-![API-OPtions](https://github.com/user-attachments/assets/fc366fc0-bae2-4f16-aa89-dde5b701bb1c)
+![API-Options](https://github.com/user-attachments/assets/fc366fc0-bae2-4f16-aa89-dde5b701bb1c)
 
-* **Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
-* **Snowlake secret for Coalesce API token (Required)**:  SNOWFLAKE SECRET to allow access to Coalesce API
-* **Workspace-Node details**: Information on the list of nodes for which columns need to be updated.
-  * **Workspace ID**: This is the id of workspace where node belongs
-  * **Node name**: Name of the node whose columns needs to be updated
-  * **Storage Location (E.g DBName.SchemaName):**: Enter storage location of the table, with database name and schema
+|**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**| EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
+|**Snowlake secret for Coalesce API token (Required)**|SNOWFLAKE SECRET to allow access to Coalesce API|
+|**Workspace-Node details**|Information on the list of nodes for which columns need to be updated</br>**Workspace ID**: This is the id of workspace where node belongs</br>**Node name**: Name of the node whose columns needs to be updated</br>**Storage Location (E.g DBName.SchemaName):**: Enter storage location of the table, with database name and schema|
 
 <h2 id="JDBC LOAD">JDBC LOAD</h2>
 
@@ -785,25 +770,26 @@ The JDBC Load Node Configuration type has two configuration groups:
 
 <h4 id="JDBC-load-node-properties"> JDBC Node Properties</h4>
 
-* **Storage Location**: Storage Location is the location of the destination where retrieved from external database are stored 
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="JDBC-load-options"> JDBC Load Options </h4>
 
 ![JDBC_load_options](https://github.com/coalesceio/External-Data-Package/assets/169126315/5af13d5b-576a-44ce-ae5b-d02d7501cc7f)
-* **JDBC Driver(Required)**: Required to establish the connection to external databse
-* **JAR file external stage location(Required)**: Location of the external stage where JAR file is located 
-* **JAR file name(Required)**: Name of JAR file located in external stage
-* **EXTERNAL ACCESS INTEGRATION(Required)**: EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure 
-* **External database credentials**: Username, Password of the external Database in the form snowflake secret object
-* **JDBC URL(Required)**: URL of the database with port number (ex: "sqlserver-tests.database.windows.net:1433" )
-* **SQL(Required)**: SQL query to retrieve the required data
-* **Truncate Before**: 
-
+|**JDBC Driver(Required)**|Required to establish the connection to external database|
+|**JAR file external stage location(Required)**|Location of the external stage where JAR file is located|
+|**JAR file name(Required)**|Name of JAR file located in external stage|
+|**EXTERNAL ACCESS INTEGRATION(Required)**|EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
+|**External database credentials**|Username, Password of the external Database in the form snowflake secret object|
+|**JDBC URL(Required)**|URL of the database with port number (ex: "sqlserver-tests.database.windows.net:1433" )|
+|**SQL(Required)**|SQL query to retrieve the required data|
+|**Truncate Before**|When enabled,the table is truncated before data load| 
 
 <h2 id="parse-excel">Parse Excel </h2>
 
@@ -819,26 +805,29 @@ The Parse Excel node type has three configuration groups:
 
 <h4 id="parse-excel-node-properties"> Parse Excel Node Properties</h4>
 
-* **Storage Location**: Storage Location is the location of the destination where source table is parsed. 
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="parse-excel-stored-procedure-options"> Parse Excel Stored Procedure Options </h4>
 
 ![StoredProcedureOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/ad7e21b6-1ea2-43c9-875a-5a1ce34c9828)
-* **Stored Procedure Storage Location(Required)**: Location in Snowflake to be provided where Stored Procedure will be loaded by script
-* ***Note***: Stored Procedure location and Storage Location (i.e. destination) must be in same Schema
+
+|**Stored Procedure Storage Location(Required)**|Location in Snowflake to be provided where Stored Procedure will be loaded by script|
+|**Note**|Stored Procedure location and Storage Location (i.e. destination) must be in same Schema|
 
 <h4 id="parse-excel-file-processing-options">Excel File Processing Options</h4>
 
 ![ExcelFileProcessingOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/f612a1cb-f5fe-420f-9a38-d040f0151e6a)
 
-* **Source File Storage Location(REQUIRED)**: Storage location name in Coalesce which points to the database and schema  where stage is located (source file has to be located under stages)
-* **Source File Stage(REQUIRED)**: Stage name in Snowflake where source file is located
-* **Source File Name(REQUIRED)**: Excel filename to be parsed
+|**Source File Storage Location(REQUIRED)**|Storage location name in Coalesce which points to the database and schema  where stage is located (source file has to be located under stages)|
+|**Source File Stage(REQUIRED)**|Stage name in Snowflake where source file is located|
+|**Source File Name(REQUIRED)**|Excel filename to be parsed|
 
 ### Initial Deployment
 
@@ -879,27 +868,29 @@ The Parse Excel node type has three configuration groups:
 
 <h4 id="parse-json-node-properties"> Parse json Node Properties</h4>
 
-* **Storage Location**: Storage Location is the location of the destination where source table is parsed to. 
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="parse-json-UDTF-procedure-options"> Parse JSON UDTF Procedure Options </h4>
 
 ![UDTFProcedureOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/c319c9f4-6654-4c9b-9416-5a979279055f)
-* **User Defined Table Function Location (Required)**: Location in Snowflake to be provided where UDTF will be loaded by script
-* ***Note***: UDTF location and Storage Location (i.e. destination) must be in same Schema
+|**User Defined Table Function Location (Required)**|Location in Snowflake to be provided where UDTF will be loaded by script|
+|**Note**| UDTF location and Storage Location (i.e. destination) must be in same Schema|
 
 <h4 id="parse-json-json-file-processing-options">Parse JSON JSON File Processing Options</h4>
 
 ![JSONFileProcessingOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/b32ac841-6e29-4442-8474-8385cd9a0e97)
 
-* **Source File Storage Location(REQUIRED)**: Schema name in Snowflake where source file is located (source file has to be located under stages)
-* **Source File Stage(REQUIRED)**: Stage name in Snowflake where source file is located
-* **Source File Name(REQUIRED)**: Json filename to be parsed
-* **JSON Array Name(REQUIRED)**: Array name of the json
+|**Source File Storage Location(REQUIRED)**|Schema name in Snowflake where source file is located (source file has to be located under stages)|
+|**Source File Stage(REQUIRED)**|Stage name in Snowflake where source file is located|
+|**Source File Name(REQUIRED)**|Json filename to be parsed|
+|**JSON Array Name(REQUIRED)**|Array name of the json|
 
 ### Initial Deployment
 

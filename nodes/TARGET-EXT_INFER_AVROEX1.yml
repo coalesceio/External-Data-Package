@@ -6,14 +6,18 @@ operation:
     autoRefresh: false
     cloudProvider: AWS
     compression: AUTO
+    cpartexpression: split_part(metadata$filename,'/',2)
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: avrofileformat
     fileFormatType: File Format Name
+    fileNames: "'twitter_samp.avro'"
     filePattern: .*[.]avro
     fileType: AVRO
+    inferschema: true
     integration: ""
+    partclause: true
     recDelim: |+
 
     replaceinvalidcharacters: false
@@ -50,50 +54,7 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 33cf3574-3a7e-4f62-82cf-606b49e3439c
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: username
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4e2e3e96-7673-47da-86c3-7f6247ce7f58
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: tweet
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4a46407e-df67-4e67-83ae-c17af5af8ad7
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: NUMBER(38,0)
-        description: ""
-        name: timestamp
-        nullable: false
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: ""
-      - METADATA$FILENAME: true
-        acceptedValues:
+      - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
@@ -101,14 +62,74 @@ operation:
           columnCounter: 8b471528-6364-4ba4-bb6c-5f299b713013
           stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: FILENAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: METADATA$FILENAME
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f11c0f3a-3e47-43a6-b4e9-356ec89eb2aa
+          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: username
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d846bfb4-cfcb-41d8-a52d-ebdb8b0323b0
+          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: tweet
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f243166-8a3a-420e-b143-0d486b935d52
+          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: timestamp
+        nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

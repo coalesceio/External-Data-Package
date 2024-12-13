@@ -96,7 +96,7 @@ There are four configs within the **Node Properties** group.
 | **Setting** | **Description** |
 |---------|-------------|
 |* **File Format Name**|Specifies an existing named file format to use for loading data into the table|
-|* **File Type**| CSV </br> JSON </br> ORC </br> AVRO </br> PARQUET </br> XML |
+|* **File Type**| CSV <br/> JSON <br/> ORC <br/> AVRO <br/> PARQUET <br/> XML |
 
 ##### File Format Definition - File Format Values
 
@@ -104,11 +104,11 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 |**File Format Values**|Provides file format options for the File Type chosen|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**- Character used to enclose strings</br>**Number of header lines to skip**- Number of lines at the start of the file to skip </br> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**- String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
-|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character </br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ] </br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
-|**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
-|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Record delimiter**-Characters that separate records in an input file<br/>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file<br/>**Field optionally enclosed by**- Character used to enclose strings<br/>**Number of header lines to skip**- Number of lines at the start of the file to skip <br/> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files <br/> **Trim Space**- Boolean that specifies whether to remove white space from fields <br/> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Date format**- String that defines the format of date values in the data files to be loaded. <br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
+|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character <br/>**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ] <br/>**Date format**- String that defines the format of date values in the data files to be loaded<br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
+|**ORC**|**Trim Space** - Specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 |**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
   
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
@@ -116,7 +116,7 @@ There are four configs within the **Node Properties** group.
 | **Setting** | **Description** |
 |---------|-------------|
 |**On Error Behavior**|-String (constant) that specifies the error handling for the load operation|
-|                     |* CONTINUE</br>* SKIP_FILE</br>* SKIP_FILE_num</br>* SKIP_FILE_num%</br>* ABORT_STATEMENT|
+|                     |* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT|
 |**Specify the number of errors that can be skipped**|-Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped.|
 |**Size Limit**|-Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
 |**Purge Behavior**|-Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully|
@@ -246,8 +246,8 @@ There are four configs within the **Node Properties** group.
 
 | **Setting** | **Description** |
 |-------------|-----------------|
-| **Create As** | Dropdown that helps us to create a table or Transiet table to load data from external stage. </br> * Table </br>* Transient Table|
-|**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading</br> * True -The node is created with the inferred columns</br>* False -No infer table step is executed|
+| **Create As** | Dropdown that helps us to create a table or Transiet table to load data from external stage. <br/> * Table <br/>* Transient Table|
+|**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading<br/> * True -The node is created with the inferred columns<br/>* False -No infer table step is executed|
 
 <h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>
 
@@ -255,7 +255,7 @@ There are four configs within the **Node Properties** group.
 
 | **Setting** | **Description** |
 |-------------|-----------------|
-|**Enable Snowpipe**| Drop down that helps us to create a pipe to auto ingest files from external stage or validate the Copy-Into statement.</br>* Enable Snowpipe - Load data auto ingesting files from AWS, Azure, or GCP. Choose your</br>**Cloud Provider.** * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.</br>* Azure - Integration. Specifies the existing notification integration used to access the storage queue.</br>* GCP -  Integration. Specifies the existing notification integration used to access the storage queue.</br>* Test Copy Statement - To validate the Copy-into statement before we use it to create PIPE|
+|**Enable Snowpipe**| Drop down that helps us to create a pipe to auto ingest files from external stage or validate the Copy-Into statement.<br/>* Enable Snowpipe - Load data auto ingesting files from AWS, Azure, or GCP. Choose your<br/>**Cloud Provider.** * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.<br/>* Azure - Integration. Specifies the existing notification integration used to access the storage queue.<br/>* GCP -  Integration. Specifies the existing notification integration used to access the storage queue.<br/>* Test Copy Statement - To validate the Copy-into statement before we use it to create PIPE|
 |**Load historical data**|Loads the historic data into the target table by executing a COPY_INTO statement|
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
@@ -286,7 +286,7 @@ There are four configs within the **Node Properties** group.
 | **Setting** | **Description** |
 |---------|-------------|
 |* **File Format Name**|Specifies an existing named file format to use for loading data into the table|
-|* **File Type**| CSV </br> JSON </br> ORC </br> AVRO </br> PARQUET </br> XML |
+|* **File Type**| CSV <br/> JSON <br/> ORC <br/> AVRO <br/> PARQUET <br/> XML |
 
 ##### File Format Definition - File Format Values
 
@@ -294,11 +294,11 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 |**File Format Values**|Provides file format options for the File Type chosen|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**- Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip </br> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**- String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
-|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
-|**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
-|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Record delimiter**-Characters that separate records in an input file<br/>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file<br/>**Field optionally enclosed by**- Character used to enclose strings<br/>**Number of header lines to skip**:Number of lines at the start of the file to skip <br/> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files <br/> **Trim Space**- Boolean that specifies whether to remove white space from fields <br/> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Date format**- String that defines the format of date values in the data files to be loaded. <br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
+|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].<br/>**Date format**- String that defines the format of date values in the data files to be loaded<br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
+|**ORC**|**Trim Space** - Specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 |**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 
 <h3 id="snowpipe-copy-options"> Snowpipe Copy Options </h3>
@@ -306,7 +306,7 @@ There are four configs within the **Node Properties** group.
 If you toggle Enable Snowpipe under Snowpipe Options to *ON*, these configuration options are available.
 | **Setting** | **Description** |
 |---------|-------------|
-|**On Error Behavior**|String (constant) that specifies the error handling for the load operation</br>* CONTINUE</br>* SKIP_FILE</br>* SKIP_FILE_num </br>* Specify the number of errors that can be skipped.</br>* SKIP_FILE_num%</br>* Specify the number of errors that can be skipped|
+|**On Error Behavior**|String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num <br/>* Specify the number of errors that can be skipped.<br/>* SKIP_FILE_num%<br/>* Specify the number of errors that can be skipped|
 |**Enforce Length**|Boolean that specifies whether to truncate text strings that exceed the target column length|
 |**Truncate Columns**|Boolean that specifies whether to truncate text strings that exceed the target column length|
 
@@ -314,7 +314,7 @@ If you toggle Enable Snowpipe under Snowpipe Options to *OFF*, these configurati
 
 | **Setting** | **Description** |
 |---------|-------------|
-|**On Error Behavior** | String (constant) that specifies the error handling for the load operation</br>* CONTINUE</br>* SKIP_FILE</br>* SKIP_FILE_num</br>* SKIP_FILE_num%</br>* ABORT_STATEMENT|
+|**On Error Behavior** | String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT|
 |**Specify the number of errors that can be skipped** | Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped|
 |**Size Limit**| Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
 |**Purge Behavior**| Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully |
@@ -395,10 +395,10 @@ When deployed for the first time into an environment the Snowpipe node will exec
 
 | Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed |
 |--|--|---|--|--|
-| Initial Deployment | Enable Snowpipe |true| ``|Create Table </br></br> Historical full load using CopyInto </br></br> Create Pipe </br></br> Alter Pipe 
-| Initial Deployment | Enable Snowpipe |true| Reload|Create table </br></br> Truncate Target table </br></br> Historical full load using CopyInto </br></br> Create Pipe </br></br> Alter Pipe
-| Initial Deployment | Enable Snowpipe |false| Reload or Empty|Create table </br></br> Truncate Target table </br></br> Create Pipe
-| Initial Deployment | Test Copy Statement |false| Reload or Empty|Create table </br></br> Test Copy Statement-No pipe creation
+| Initial Deployment | Enable Snowpipe |true| ``|Create Table <br/><br/> Historical full load using CopyInto <br/><br/> Create Pipe <br/><br/> Alter Pipe 
+| Initial Deployment | Enable Snowpipe |true| Reload|Create table <br/><br/> Truncate Target table <br/><br/> Historical full load using CopyInto <br/><br/> Create Pipe <br/><br/> Alter Pipe
+| Initial Deployment | Enable Snowpipe |false| Reload or Empty|Create table <br/><br/> Truncate Target table <br/><br/> Create Pipe
+| Initial Deployment | Test Copy Statement |false| Reload or Empty|Create table <br/><br/> Test Copy Statement-No pipe creation
 
 ### Snowpipe Redeployment
 
@@ -457,7 +457,7 @@ There are four configs within the **Node Properties** group.
 
 | **Settings** | **Description** |
 |--------------|-----------------|
-|**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading</br> * True -The node is created with the inferred columns</br>* False -No infer table step is executed|
+|**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading<br/> * True -The node is created with the inferred columns<br/>* False -No infer table step is executed|
 |**Partition by**|A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME.By default the partitioning is done by FILENAME column|
 |**Partition by Expression(Partition by toggle true)**|A partition by expression based on METADATA$FILENAME to partition External table|
 
@@ -495,7 +495,7 @@ There are four configs within the **Node Properties** group.
 |--------------|-----------------|
 |**Coalesce Storage Location of File Format**|Location in Coalesce pointing to the database and schema,the file format resides.Mandatory when File Format Name is chosen|
 |**File Format Name**|Specifies an existing named file format to use for loading data into the table|
-|**File Type**|* CSV</br>* JSON</br>* ORC</br>* AVRO</br>* PARQUET|
+|**File Type**|* CSV<br/>* JSON<br/>* ORC<br/>* AVRO<br/>* PARQUET|
 
 ##### File Format Definition - File Format Values
 
@@ -503,18 +503,18 @@ There are four configs within the **Node Properties** group.
 |--------------|-----------------|
 |**File Format Values**|-Provides file format options for the File Type chosen|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**- Character used to enclose strings</br>**Number of header lines to skip**- Number of lines at the start of the file to skip </br> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**- String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
-|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
-|**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
-|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Record delimiter**-Characters that separate records in an input file<br/>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file<br/>**Field optionally enclosed by**- Character used to enclose strings<br/>**Number of header lines to skip**- Number of lines at the start of the file to skip <br/> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files <br/> **Trim Space**- Boolean that specifies whether to remove white space from fields <br/> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Date format**- String that defines the format of date values in the data files to be loaded. <br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
+|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].<br/>**Date format**- String that defines the format of date values in the data files to be loaded<br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
+|**ORC**|**Trim Space** - Specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
 |**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 
 <h4 id="external-tables-additional-options"> External Tables Additional Options</h4>
 
 | **Settings** | **Description** |
 |--------------|-----------------|
-|**Auto refresh**|-True/False toggle that specifies whether Snowflake should enable triggering automatic refreshes of the external table metadata when new or updated data files are available in the named external stage</br> * False - Auto refresh does not take place</br>* True - Auto refresh takes place. Setting this to true, give you the option to choose a Cloud Provider from AWS, Azure, and GCP.</br> * AWS - AWS SNS Topic, Enabled only when Cloud Provider is AWS and auto refresh is true.Required only when configuring AUTO_REFRESH for Amazon S3 stages using Amazon Simple Notification Service (SNS).</br> * GCP - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue</br> * Azure - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue|
+|**Auto refresh**|-True/False toggle that specifies whether Snowflake should enable triggering automatic refreshes of the external table metadata when new or updated data files are available in the named external stage<br/> * False - Auto refresh does not take place<br/>* True - Auto refresh takes place. Setting this to true, give you the option to choose a Cloud Provider from AWS, Azure, and GCP.<br/> * AWS - AWS SNS Topic, Enabled only when Cloud Provider is AWS and auto refresh is true.Required only when configuring AUTO_REFRESH for Amazon S3 stages using Amazon Simple Notification Service (SNS).<br/> * GCP - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue<br/> * Azure - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue|
 
 ### System Columns
 The set of columns which has source data and file metadata information.
@@ -598,13 +598,13 @@ There are four configs within the **Node Properties** group.
 
 | **Settings** | **Description** |
 |-------------|-----------------|
-|**Create As**|Select from the options to create as Table or Transient Table</br>* Transient Table</br>* Table|
+|**Create As**|Select from the options to create as Table or Transient Table<br/>* Transient Table<br/>* Table|
 |**Coalesce Storage Location of Stage(Required)**|A storage location in Coalesce where the stage is located|
 |**Stage Name (Required)**|Internal or External stage where the files containing data to be loaded are staged|
 |**File Names (Required)**|Use commas to seperate multiple files. File whose metatdata is to be inferred|
 |**Coalesce Storage Location of File Format**|Location in Coalesce pointing to the database and schema,the file format resides|
 |**File Format Name (Required)**|Name of the file format object that describes the data contained in the staged files.It is expected in the same location as Stage|
-|**Redeployment Behavior**|**CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area</br>**ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table</br>**DROP EXISTING TABLE**: Drops the table inferred|
+|**Redeployment Behavior**|**CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area<br/>**ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table<br/>**DROP EXISTING TABLE**: Drops the table inferred|
 
 ### InferSchema Usage
 
@@ -709,14 +709,14 @@ There are four configs within the **Node Properties** group.
 
 |**Coalesce Storage Location of File Format**| File format location in snowflake that is mapped as storage location in Coalesce|
 |**File Format Name**|Specifies an existing named file format in Snowflake to use for unloading data into the table|
-|**File Type**|* CSV </br> * JSON </br> * PARQUET|
+|**File Type**|* CSV <br/> * JSON <br/> * PARQUET|
 
 ##### File Format Definition - File Format Values
 
 |**File Format Values**|-Provides different file format options for the File Type chosen to unload|
 |**File Type**|Each file type has different configurations available|
-|**CSV**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded</br>**Record delimiter**: Characters that separate records in an unloaded file</br>**Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an unloaded file</br>**Field optionally enclosed by**: Character used to enclose strings. (Default is \042)</br>**File Extension**: String that specifies the extension for files unloaded to a stage. Accepts any extension</br>**Date Format**: String that defines the format of date values in the unloaded data files.(Default is AUTO)</br>**Time Format**: String that defines the format of time values in the unloaded data files.(Default is AUTO)</br>**Timestamp Format**: String that defines the format of timestamp values in the unloaded data files.(Default is AUTO)|
-|**JSON**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded</br>**File extension** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**CSV**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded<br/>**Record delimiter**: Characters that separate records in an unloaded file<br/>**Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an unloaded file<br/>**Field optionally enclosed by**: Character used to enclose strings. (Default is \042)<br/>**File Extension**: String that specifies the extension for files unloaded to a stage. Accepts any extension<br/>**Date Format**: String that defines the format of date values in the unloaded data files.(Default is AUTO)<br/>**Time Format**: String that defines the format of time values in the unloaded data files.(Default is AUTO)<br/>**Timestamp Format**: String that defines the format of timestamp values in the unloaded data files.(Default is AUTO)|
+|**JSON**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded<br/>**File extension** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 |**PARQUET**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded|
 
 <h4 id="copy-unload-copy-options"> Copy Unload Copy Options</h4>
@@ -762,7 +762,7 @@ There are four configs within the **Node Properties** group.
 ![Options](https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530)
 
 |**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**|EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
-|**Method(Required)**|HTTP Request methods Get,Put,Post</br>**Get**: API Call to retrieve data</br>**Put**: API Call to update existing data</br>**Post**: API Call to create new data|  
+|**Method(Required)**|HTTP Request methods Get,Put,Post<br/>**Get**: API Call to retrieve data<br/>**Put**: API Call to update existing data<br/>**Post**: API Call to create new data|  
 |**URI(Required)**|Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API|
 |**Headers**|headers are used to provide additional context and information about the request|
 |**Payload**|when making HTTP requests to a URI, the request may include a payload (also known as a body)|
@@ -792,7 +792,7 @@ The API-NODEUPDATE Node Configuration type has two configuration groups:
 
 |**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**| EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
 |**Snowlake secret for Coalesce API token (Required)**|SNOWFLAKE SECRET to allow access to Coalesce API|
-|**Workspace-Node details**|Information on the list of nodes for which columns need to be updated</br>**Workspace ID**: This is the id of workspace where node belongs</br>**Node name**: Name of the node whose columns needs to be updated</br>**Storage Location (E.g DBName.SchemaName):**: Enter storage location of the table, with database name and schema|
+|**Workspace-Node details**|Information on the list of nodes for which columns need to be updated<br/>**Workspace ID**: This is the id of workspace where node belongs<br/>**Node name**: Name of the node whose columns needs to be updated<br/>**Storage Location (E.g DBName.SchemaName):**: Enter storage location of the table, with database name and schema|
 
 <h2 id="JDBC LOAD">JDBC LOAD</h2>
 

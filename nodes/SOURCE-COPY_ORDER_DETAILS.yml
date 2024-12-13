@@ -37,7 +37,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
+    truncateBefore: true
     truncateColumns: ""
   database: ""
   deployEnabled: true
@@ -257,6 +257,27 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1193234-01e1-4dfb-bfc8-7403b262c225
+          stepCounter: bc69c940-2a94-4518-826f-481d72524a86
+        config: {}
+        dataType: string
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: Dis
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |2
+                    substr($1:Discount::NUMBER(11, 10),1,5) 
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

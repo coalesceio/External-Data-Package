@@ -15,7 +15,7 @@ operation:
     fileNames: "'twitter_samp.avro'"
     filePattern: .*[.]avro
     fileType: AVRO
-    inferschema: true
+    inferschema: false
     integration: ""
     partclause: true
     recDelim: |+
@@ -130,6 +130,26 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b7c5955-0bee-4ca5-8828-0c8c1751ae8f
+          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: filerownum
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: METADATA$FILE_ROW_NUMBER
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

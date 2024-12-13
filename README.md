@@ -441,67 +441,55 @@ The External table node type has four configuration groups:
 
 <h4 id="external-tables-node-properties"> External Tables Node Properties</h4>
 
-* **Storage Location**: Storage Location where the WORK will be created.
-* **Node Type**: Name of template used to create node objects.
-* **Description**: A description of the node's purpose.
-* **Deploy Enabled**:
-  * If TRUE the node will be deployed / redeployed when changes are detected.
-  * If FALSE the node will not be deployed or will be dropped during redeployment.
+There are four configs within the **Node Properties** group.
+
+| **Property** | **Description** |
+|-------------|-----------------|
+| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Node Type** | Name of template used to create node objects |
+| **Description** | A description of the node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="external-tables-file-location"> External Tables Node File Location </h4>
 
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
 
-* **Coalesce Stage Storage Location of Stage(Required)**: A storage location in Coalesce where the stage is located.
-* **Stage Name (Required)**: Internal or External stage where the files containing data to be loaded are staged.
-* **File Pattern**:A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`.
+| **Settings** | **Description** |
+|--------------|-----------------|
+|**Coalesce Stage Storage Location of Stage(Required)**|A storage location in Coalesce where the stage is located|
+|**Stage Name (Required)**|Internal or External stage where the files containing data to be loaded are staged|
+|**File Pattern**|A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
 
 <h4 id="external-tables-ile-format">External Tables  File Format</h4>
 
 ![fileformat](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/82945bb5-ba5d-46dd-b66d-3d6c10ff77d9)
 
+##### File Format Definition - File Format Name
+  
+| **Settings** | **Description** |
+|--------------|-----------------|
+|**Coalesce Storage Location of File Format**|Location in Coalesce pointing to the database and schema,the file format resides.Mandatory when File Format Name is chosen|
+|**File Format Name**|Specifies an existing named file format to use for loading data into the table|
+|**File Type**|* CSV</br>* JSON</br>* ORC</br>* AVRO</br>* PARQUET|
 
-* **File Format Definition - File Format Name**:
-  * **Coalesce Storage Location of File Format**:Location in Coalesce pointing to the database and schema,the file format resides.Mandatory when File Format Name is chosen.
-  * **File Format Name**: Specifies an existing named file format to use for loading data into the table.
-  * **File Type**:
-    * CSV
-    * JSON
-    * ORC
-    * AVRO
-    * PARQUET
-* **File Format Definition - File Format Values**: 
-  * **File Format Values** -Provides file format options for the File Type chosen.
-  * **File Type**: Each file type has different configurations available.
-    * **CSV**
-    * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
-    * **Record delimiter**: Characters that separate records in an input file
-    * **Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an input file
-    * **Field optionally enclosed by**: Character used to enclose strings
-    * **Number of header lines to skip**: Number of lines at the start of the file to skip.
-    * **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files.
-    * **Trim Space**: Boolean that specifies whether to remove white space from fields.
-    * **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **JSON**
-      * **Compression**: String (constant) that specifies the current compression algorithm for the data files to be loaded.
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-      * **Strip Outer Array**:Boolean that instructs the JSON parser to remove outer brackets [ ].
-      * **Date format**:String that defines the format of date values in the data files to be loaded. 
-    * **ORC**
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **AVRO**
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-    * **PARQUET**
-      * **Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+##### File Format Definition - File Format Values
+
+| **Settings** | **Description** |
+|--------------|-----------------|
+|**File Format Values**|-Provides file format options for the File Type chosen|
+|**File Type**|Each file type has different configurations available|
+|**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Record delimiter**-Characters that separate records in an input file</br>**Field delimiter**:One or more singlebyte or multibyte characters that separate fields in an input file</br>**Field optionally enclosed by**:Character used to enclose strings</br>**Number of header lines to skip**:Number of lines at the start of the file to skip </br> **Skip blank lines**:Boolean that specifies to skip any blank lines encountered in the data files </br> **Trim Space**- Boolean that specifies whether to remove white space from fields </br> **Replace invalid characters**: Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Date format**:String that defines the format of date values in the data files to be loaded. </br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**-String that defines the format of timestamp values in the data files to be loaded|
+|**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.</br>**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].</br>**Date format**- String that defines the format of date values in the data files to be loaded</br>**Time format**- String that defines the format of time values in the data files to be loaded</br>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
+|**ORC**|**Trim Space** - Specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields</br>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 
 <h4 id="external-tables-additional-options"> External Tables Additional Options</h4>
 
-* **Auto refresh**:True/False toggle that specifies whether Snowflake should enable triggering automatic refreshes of the external table metadata when new or updated data files are available in the named external stage.
-  * False - Auto refresh does not take place
-  * True - Auto refresh takes place. Setting this to true, give you the option to choose a Cloud Provider from AWS, Azure, and GCP.\
-    * AWS - AWS SNS Topic, Enabled only when Cloud Provider is AWS and auto refresh is true.Required only when configuring AUTO_REFRESH for Amazon S3 stages using Amazon Simple Notification Service (SNS).
-    * GCP - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue.
-    * Azure - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue.
+| **Settings** | **Description** |
+|--------------|-----------------|
+|**Auto refresh**|-True/False toggle that specifies whether Snowflake should enable triggering automatic refreshes of the external table metadata when new or updated data files are available in the named external stage</br> * False - Auto refresh does not take place</br>* True - Auto refresh takes place. Setting this to true, give you the option to choose a Cloud Provider from AWS, Azure, and GCP.</br> * AWS - AWS SNS Topic, Enabled only when Cloud Provider is AWS and auto refresh is true.Required only when configuring AUTO_REFRESH for Amazon S3 stages using Amazon Simple Notification Service (SNS).</br> * GCP - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue</br> * Azure - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue|
 
 
 ### System Columns

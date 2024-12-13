@@ -26,18 +26,6 @@ metadata:
       - type: toggleButton
         displayName: Partition by 
         attributeName: partclause
-            
-      - type: tabular
-        displayName: Partition by
-        attributeName: partitionclause
-        enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
-        isRequired: false
-        columns:
-
-      
-      - type: toggleButton
-        displayName: Partition by 
-        attributeName: partclause
         default: false
         enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
       
@@ -239,34 +227,10 @@ metadata:
       dataType: VARIANT
       placement: beginning
 
-    - displayName: LOAD_TIMESTAMP
-      transform: 'current_timestamp()'
-      dataType: TIMESTAMP_LTZ
-      placement: end
-      attributeName: sysLdTs
-
     - displayName: FILENAME
       transform: 'METADATA$FILENAME'
       dataType: STRING
       placement: end
       attributeName: sysFlNm
-
-    - displayName: FILE_ROW_NUMBER
-      transform: 'METADATA$FILE_ROW_NUMBER'
-      dataType: NUMBER
-      placement: end
-      attributeName: sysFlRwNm
-
-    - displayName: FILE_LAST_MODIFIED
-      transform: 'METADATA$FILE_LAST_MODIFIED'
-      dataType: TIMESTAMP_NTZ
-      placement: end
-      attributeName: sysFlLtMd
-
-    - displayName: SCAN_TIME
-      transform: 'METADATA$START_SCAN_TIME'
-      dataType: TIMESTAMP_LTZ(9)
-      placement: end
-      attributeName: sysFlScTm
 name: External Table
 type: NodeType

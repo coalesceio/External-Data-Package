@@ -137,7 +137,8 @@ The set of columns which has source data and file metadata information.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
-### Key points to use CopyInto node
+### Key points to use CopyInto Node
+
 * CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
 * The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
@@ -151,7 +152,7 @@ The set of columns which has source data and file metadata information.
 * This is mainly a test to make sure create will work
 * Hit Run button to execute DML
 
-  ![image](https://github.com/user-attachments/assets/de3c4ce2-370e-43d0-a010-fc6131cd8669)
+![image](https://github.com/user-attachments/assets/de3c4ce2-370e-43d0-a010-fc6131cd8669)
 
 If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table.
 
@@ -372,7 +373,7 @@ The parameter name is targetIntegrationOrAwsSNSTopic and the default value is DE
 
 When set to DEV ENVIRONMENT the value entered in the Snowpipe Options config AWS SNS TOpic/Integration is used for ingesting files from Cloud providers.
 
-```
+```json
 {
     "targetIntegrationOrAwsSNSTopic": "DEV ENVIRONMENT"
 }
@@ -382,7 +383,7 @@ When set to any value other than DEV ENVIRONMENT the node will use the specified
 
 For example, the Snowpipe node will use the specific value for auto ingestion.
 
-```
+```json
 {
     "targetIntegrationOrAwsSNSTopic": "arn:aws:sqs:us-east-1:832620633027:sf-snowpipe-AIDA4DXAOTPB7IF437EPD-lZe8ciYpPqGgC9KwWLmiIQ"
 }
@@ -394,10 +395,10 @@ When deployed for the first time into an environment the Snowpipe node will exec
 
 | Deployment Behavior  | Enable Snowpipe | Historical Load | Load Type | Stages Executed |
 |--|--|---|--|--|
-| Initial Deployment | Enable Snowpipe |true| ``|Create Table <br></br> Historical full load using CopyInto <br></br> Create Pipe <br></br> Alter Pipe 
-| Initial Deployment | Enable Snowpipe |true| Reload|Create table <br></br> Truncate Target table <br></br> Historical full load using CopyInto <br></br> Create Pipe <br></br> Alter Pipe
-| Initial Deployment | Enable Snowpipe |false| Reload or Empty|Create table <br></br> Truncate Target table <br></br> Create Pipe
-| Initial Deployment | Test Copy Statement |false| Reload or Empty|Create table <br></br> Test Copy Statement-No pipe creation
+| Initial Deployment | Enable Snowpipe |true| ``|Create Table </br></br> Historical full load using CopyInto </br></br> Create Pipe </br></br> Alter Pipe 
+| Initial Deployment | Enable Snowpipe |true| Reload|Create table </br></br> Truncate Target table </br></br> Historical full load using CopyInto </br></br> Create Pipe </br></br> Alter Pipe
+| Initial Deployment | Enable Snowpipe |false| Reload or Empty|Create table </br></br> Truncate Target table </br></br> Create Pipe
+| Initial Deployment | Test Copy Statement |false| Reload or Empty|Create table </br></br> Test Copy Statement-No pipe creation
 
 ### Snowpipe Redeployment
 

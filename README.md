@@ -433,6 +433,7 @@ An [external table](https://docs.snowflake.com/en/sql-reference/sql/create-exter
 The External table node type has four configuration groups:
 
 * [Node Properties](#external-tables-node-properties)
+* [General Operations](#external-tables-general-options)
 * [File Location](#external-tables-file-location)
 * [File Format](#external-tables-ile-format)
 * [Additional Options](#external-tables-additional-options)
@@ -448,7 +449,7 @@ There are four configs within the **Node Properties** group.
 | **Description** | A description of the node's purpose |
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
-<h4 id="external-tables-file-location"> General Options </h4>
+<h4 id="external-tables-general-options"> General Options </h4>
 
 ![image](https://github.com/user-attachments/assets/c5873765-d4a3-4d12-b509-e6626d506c3d)
 

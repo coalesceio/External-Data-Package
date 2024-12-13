@@ -448,6 +448,17 @@ There are four configs within the **Node Properties** group.
 | **Description** | A description of the node's purpose |
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
+<h4 id="external-tables-file-location"> General Options </h4>
+
+![image](https://github.com/user-attachments/assets/c5873765-d4a3-4d12-b509-e6626d506c3d)
+
+
+| **Settings** | **Description** |
+|--------------|-----------------|
+|**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading</br> * True -The node is created with the inferred columns</br>* False -No infer table step is executed|
+|**Partition by**|A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME.By default the partitioning is done by FILENAME column|
+|**Partition by Expression(Partition by toggle true)**|A partition by expression based on METADATA$FILENAME to partition External table|
+
 <h4 id="external-tables-file-location"> External Tables Node File Location </h4>
 
 ![Filelocation](https://github.com/prj2001-udn/External-Data-Package/assets/169126315/48b7a0dd-301c-4077-857c-e37fd234bbf8)
@@ -488,7 +499,6 @@ There are four configs within the **Node Properties** group.
 | **Settings** | **Description** |
 |--------------|-----------------|
 |**Auto refresh**|-True/False toggle that specifies whether Snowflake should enable triggering automatic refreshes of the external table metadata when new or updated data files are available in the named external stage</br> * False - Auto refresh does not take place</br>* True - Auto refresh takes place. Setting this to true, give you the option to choose a Cloud Provider from AWS, Azure, and GCP.</br> * AWS - AWS SNS Topic, Enabled only when Cloud Provider is AWS and auto refresh is true.Required only when configuring AUTO_REFRESH for Amazon S3 stages using Amazon Simple Notification Service (SNS).</br> * GCP - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue</br> * Azure - Integration. Enabled when Cloud Provider is GCP/Azure. Specifies the existing notification integration used to access the storage queue|
-
 
 ### System Columns
 The set of columns which has source data and file metadata information.

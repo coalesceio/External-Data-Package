@@ -525,6 +525,17 @@ The set of columns which has source data and file metadata information.
 * External table node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * External node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add External node on top of it.
 
+### Use External table with InferSchema option
+* Set Infer Schema toggle to true
+* Hit Create button to Infer Schema
+* Click on Re-Sync Columns button
+* If all looks good, set Infer Schema button to false
+* Hit Create button to execute create table based on inferred schema and pipe to ingest data
+
+![image](https://github.com/user-attachments/assets/b04d2d66-eaa6-4f06-8282-e3b6bd4cac09)
+
+If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table and snowpipe
+
 ### External table Deployment
 
 ### Initial Deployment

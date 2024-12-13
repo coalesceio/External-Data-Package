@@ -34,11 +34,23 @@ metadata:
         isRequired: false
         columns:
 
-        -  type: columnDropdownSelector
-           displayName: Partition by
-           attributeName: partname
-           isRequired: false
-           enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+      
+      - type: toggleButton
+        displayName: Partition by 
+        attributeName: partclause
+        default: false
+        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
+      
+      - type: label
+        displayName: A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME
+        enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+
+      - type: textBox
+        displayName: Partition by Expression
+        attributeName: cpartexpression
+        default: "Ex:split_part(metadata$filename,'/',2)"
+        isRequired: false
+        enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
 
     - groupName: File Location
       items:

@@ -6,6 +6,7 @@ operation:
     autoRefresh: false
     cloudProvider: AWS
     compression: AUTO
+    cpartexpression: split_part(metadata$filename,'/',2)
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
@@ -14,12 +15,9 @@ operation:
     fileNames: "'twitter_samp.avro'"
     filePattern: .*[.]avro
     fileType: AVRO
-    inferschema: false
+    inferschema: true
     integration: ""
     partclause: true
-    partitionclause:
-      items:
-        - partname: null
     recDelim: |+
 
     replaceinvalidcharacters: false
@@ -61,7 +59,26 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 107516c9-45f1-4600-a99f-d899e83c9be2
+          columnCounter: 8b471528-6364-4ba4-bb6c-5f299b713013
+          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f11c0f3a-3e47-43a6-b4e9-356ec89eb2aa
           stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
         config: {}
         dataType: VARCHAR(16777216)
@@ -80,7 +97,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a5d592df-8a43-466d-9be3-2c9164fe17f1
+          columnCounter: d846bfb4-cfcb-41d8-a52d-ebdb8b0323b0
           stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
         config: {}
         dataType: VARCHAR(16777216)
@@ -99,7 +116,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 137e4e61-07d9-4c00-918e-56c9c0ee52a2
+          columnCounter: 8f243166-8a3a-420e-b143-0d486b935d52
           stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
         config: {}
         dataType: NUMBER(38,0)
@@ -107,44 +124,6 @@ operation:
         description: ""
         name: timestamp
         nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 176e2041-f2c8-4c87-95f4-6eadc5ff409b
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8b471528-6364-4ba4-bb6c-5f299b713013
-          stepCounter: 0feb457b-bd4d-4f70-9a07-9aa55cf6ac17
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
-        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []

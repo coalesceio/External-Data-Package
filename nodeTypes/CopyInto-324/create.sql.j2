@@ -70,12 +70,23 @@ select 1 = 0
                            {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
                            {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
-                           {%- if ","  in desiredState.config.fileNames %} 
+                        {#Subfolder path #}
+                        {%set subf = ""%}
+                        {% set subfolder_value = desiredState.config.subfolder | default('') %}
+                        {%if desiredState.config.subfolder == "" %}
+                            {%set subf = "" %}
+                        {%elif desiredState.config.subfolder == None%}
+                            {%set subf = "" %}
+                        {%else%}
+                          {%set subf = "/"+ subfolder_value %}
+                        {%endif%}
+
+                {%- if ","  in desiredState.config.fileNames %} 
                                {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
-                               {% set final_variable = "'" + formatted_variable + "'" %}
-                               {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
+                               {% set final_variable = "''" + formatted_variable + "''" %}
+                               {% set fileNameSQL = " "+"FILES =>"+""+final_variable + "," %} 
                            {%- elif  desiredState.config.fileNames  -%}
-                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
+                               {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
                            {% endif %}
                     
                     {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
@@ -95,7 +106,7 @@ select 1 = 0
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(
-                          LOCATION=>''@{{ dbStage }}.{{ schStage }}."{{ desiredState.config.stageName }}"'',
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}."{{ desiredState.config.stageName }}"{{subf}}'',
                           {{fileNameSQL }}
                           FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."{{ desiredState.config.fileFormatName}}"''
                         )

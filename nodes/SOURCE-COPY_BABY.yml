@@ -1,6 +1,6 @@
 fileVersion: 1
-id: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-name: COPY_CITYPARQUET
+id: 6e98cc56-7caf-4417-b077-950ced0d60ca
+name: COPY_BABY
 operation:
   config:
     compression: ""
@@ -12,19 +12,14 @@ operation:
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: PARQUETFILEFORMAT
+    fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: cities.parquet
+    fileNames: baby.csv
     filePattern: ""
-    fileType: PARQUET
+    fileType: CSV
     forceLoad: ""
-    ifileFormatLoc: ""
-    ifileFormatName: ""
-    ifileNames: ""
     inferschema: false
-    intextstage: true
-    istageName: Enter stage name-stage_name/folder/
-    istageStorageLocationName: Enter Storage Location name
+    intextstage: false
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""
@@ -35,15 +30,15 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: CSV_FILE_STAGE
+    stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
-    subfolder: tutorials/dataloading
+    subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: true
+    truncateBefore: false
     truncateColumns: ""
   database: ""
   deployEnabled: true
@@ -54,32 +49,18 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: b05042a3-3d22-48c6-9209-6757fd478585
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: VARIANT
-        description: Generated from python
-        name: country
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: e0e588f3-4df0-402f-880f-a325a66cc166
-                stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
-            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 848d9665-8408-404f-aef9-659d0c8c90c5
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 2fc9b8f4-6793-4d01-bc93-51fe211a513e
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
-        name: continent
+        name: c1
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -92,8 +73,84 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2e305afb-309f-4736-bc92-4e1c4ffb3591
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 4017c145-4d1f-455e-b189-687632fbeb6c
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: c2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 009c884b-f9c5-4ab0-8a56-ccb37924d9a8
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: c3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e482df34-e9c0-481b-b669-3666ab0ae3d5
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: c4
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9bc8e49c-c156-46a8-93a5-d393d386d022
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: c5
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14e0d856-0e91-416f-bb8e-73f6348096d2
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -111,8 +168,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 7b5627db-fd9d-4ed5-8fa9-d888d709aaf2
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -130,8 +187,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d9df3445-4510-49fe-ae56-47e9c4a4c2f1
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: fed1a5e0-8c73-4ceb-b67a-a88b3dee7c55
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -149,8 +206,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 74fd5b37-70af-433a-bd26-79d687f972e9
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 1898e61c-d022-4d03-b56e-887407cae92e
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -168,8 +225,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a526132f-981d-4fad-94e8-db9dbfb695c6
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 67210a77-feee-45f9-9c62-0021d09a3005
+          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -188,14 +245,12 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies:
-          - locationName: SOURCE
-            nodeName: CITYPARQUET
+        dependencies: []
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'CITYPARQUET') }} "CITYPARQUET"
-        name: COPY_CITYPARQUET
+          joinCondition: ""
+        name: COPY_BABY
         noLinkRefs: []
-  name: COPY_CITYPARQUET
+  name: COPY_BABY
   overrideSQL: false
   schema: ""
   sqlType: "324"

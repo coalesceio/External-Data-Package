@@ -1,6 +1,6 @@
 fileVersion: 1
-id: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-name: COPY_CITYPARQUET
+id: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
+name: COPY_HEALTH_MULTI
 operation:
   config:
     compression: ""
@@ -12,19 +12,14 @@ operation:
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: PARQUETFILEFORMAT
+    fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: cities.parquet
+    fileNames: health.csv,health_pipe.csv
     filePattern: ""
-    fileType: PARQUET
+    fileType: CSV
     forceLoad: ""
-    ifileFormatLoc: ""
-    ifileFormatName: ""
-    ifileNames: ""
     inferschema: false
     intextstage: true
-    istageName: Enter stage name-stage_name/folder/
-    istageStorageLocationName: Enter Storage Location name
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""
@@ -35,15 +30,15 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: CSV_FILE_STAGE
+    stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
-    subfolder: tutorials/dataloading
+    subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: true
+    truncateBefore: false
     truncateColumns: ""
   database: ""
   deployEnabled: true
@@ -54,32 +49,18 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: b05042a3-3d22-48c6-9209-6757fd478585
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: VARIANT
-        description: Generated from python
-        name: country
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: e0e588f3-4df0-402f-880f-a325a66cc166
-                stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
-            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 848d9665-8408-404f-aef9-659d0c8c90c5
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: bdb999b7-357a-49ef-b2a1-2b8382570f0f
+          stepCounter: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: continent
+        name: c1
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -92,8 +73,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2e305afb-309f-4736-bc92-4e1c4ffb3591
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 566597ad-5329-40d7-9176-01e757514a5c
+          stepCounter: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -111,8 +92,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 252cec58-8b2f-471b-8da9-fd612170437a
+          stepCounter: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -130,8 +111,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d9df3445-4510-49fe-ae56-47e9c4a4c2f1
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: fc81ebf7-08a1-4768-8201-4745c3340d04
+          stepCounter: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -149,8 +130,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 74fd5b37-70af-433a-bd26-79d687f972e9
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: f11323b1-ae44-48a3-85f6-6d980819bbb7
+          stepCounter: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -168,8 +149,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a526132f-981d-4fad-94e8-db9dbfb695c6
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 7e229dd5-09c5-4043-8727-22c52cffbc5c
+          stepCounter: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -188,14 +169,12 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies:
-          - locationName: SOURCE
-            nodeName: CITYPARQUET
+        dependencies: []
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'CITYPARQUET') }} "CITYPARQUET"
-        name: COPY_CITYPARQUET
+          joinCondition: ""
+        name: COPY_HEALTH_MULTI
         noLinkRefs: []
-  name: COPY_CITYPARQUET
+  name: COPY_HEALTH_MULTI
   overrideSQL: false
   schema: ""
   sqlType: "324"

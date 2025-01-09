@@ -30,7 +30,7 @@ operation:
     trimSpace: true
   database: ""
   deployEnabled: true
-  description: ""
+  description: infer avro
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -83,7 +83,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
-        description: ""
+        description: username
         name: username
         nullable: false
         primaryKey: false

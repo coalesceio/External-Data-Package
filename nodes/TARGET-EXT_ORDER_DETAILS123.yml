@@ -6,6 +6,7 @@ operation:
     autoRefresh: false
     cloudProvider: AWS
     compression: AUTO
+    cpartexpression: split_part(metadata$filename,'/',2)
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: TARGET
@@ -63,7 +64,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c8813f96-b709-4d71-bb35-2b4d740ea85a
+          columnCounter: bc85f593-f429-418e-b714-dc13512c70e9
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: NUMBER(11,10)
@@ -82,7 +83,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 65974768-d29e-4c55-addf-1a678a61a1b2
+          columnCounter: f2cc902d-6e56-44b9-ad02-f1d8581bdfe2
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: NUMBER(4,0)
@@ -101,7 +102,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a246be69-6ae0-40f8-a531-54c1e7b8c714
+          columnCounter: 4530cd77-e7b8-4429-8240-7b29108f60ff
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: NUMBER(2,0)
@@ -120,7 +121,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c627dbe5-15c5-4afd-a622-8f06b0c93894
+          columnCounter: d2c45f10-9a5f-4906-858b-b714b5ded6f7
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: NUMBER(2,0)
@@ -139,7 +140,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b18713f7-27d0-477f-b543-5921968cd723
+          columnCounter: eccf14e8-c7c4-4a55-8d9b-94effdd88ceb
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: NUMBER(3,0)
@@ -158,7 +159,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1a59ef3c-fc31-4264-af1d-abee3f73a645
+          columnCounter: ab58ea4c-5527-4fe9-82a2-ad49f17f69a9
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: NUMBER(5,2)
@@ -177,7 +178,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ac99007b-2a22-4e45-a90b-6388758f004c
+          columnCounter: 14cca9df-4498-480e-a51b-3d393d285cb2
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
         dataType: VARCHAR(16777216)
@@ -196,20 +197,20 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5e6fb24d-e4c9-4955-b521-621ffc187f1a
+          columnCounter: a7abe76f-7c42-4954-bec3-3f6693bd3a9f
           stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
         config: {}
-        dataType: VARCHAR(400)
+        dataType: STRING
         defaultValue: ""
         description: ""
         keyColumnType: None
-        name: Product
+        name: file
         nullable: true
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: split_part(metadata$filename,'/',1)
+            transform: substr(metadata$filename,1,10)
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []

@@ -155,7 +155,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9f7bb011-2b93-4812-800f-9815c8b5c0de
+          columnCounter: aeade63e-1ede-4c59-9bc7-f764cfb25384
           stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: VARCHAR(16777216)
@@ -174,7 +174,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8ee589a5-7883-4d9b-a073-bd3618193a61
+          columnCounter: 90430912-761c-41cf-951a-2436c2c3afa9
           stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: VARIANT

@@ -121,7 +121,7 @@ does not permit copying or modification for any other purpose.
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
 
-           FROM '@"{{ dbStage }}"."{{ schStage }}"."{{ config.stageName }}"{{subf}}') 
+           FROM '@"{{ dbStage }}"."{{ schStage }}".{{ config.stageName }}{{subf}}') 
            {{fileNameSQL}}
            {{ filePatternSQL }}
 

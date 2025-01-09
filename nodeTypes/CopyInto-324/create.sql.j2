@@ -106,9 +106,9 @@ select 1 = 0
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(
-                          LOCATION=>''@{{ dbStage }}.{{ schStage }}."{{ desiredState.config.stageName }}"{{subf}}'',
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}{{subf}}'',
                           {{fileNameSQL }}
-                          FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."{{ desiredState.config.fileFormatName}}"''
+                          FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}".{{ desiredState.config.fileFormatName}}''
                         )
                       ))';
   

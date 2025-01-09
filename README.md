@@ -49,7 +49,7 @@ There are four configs within the **Node Properties** group.
 
 | **Option** | **Description** |
 |------------|----------------|
-| **Create As** | Select from the options to create as Table or Transient Table<br/>- **Transirnt table**<br/>  -**Table** |
+| **Create As** | Select from the options to create as Table or Transient Table<br/>- **Transient table**<br/>  -**Table** |
 | **TruncateBefore(Disabled when Inferschema is true)** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
       
@@ -248,7 +248,7 @@ There are four configs within the **Node Properties** group.
 
 | **Setting** | **Description** |
 |-------------|-----------------|
-| **Create As** | Dropdown that helps us to create a table or Transiet table to load data from external stage. <br/> * Table <br/>* Transient Table|
+| **Create As** | Dropdown that helps us to create a table or Transient table to load data from external stage. <br/> * Table <br/>* Transient Table|
 |**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading<br/> * True -The node is created with the inferred columns<br/>* False -No infer table step is executed|
 
 <h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>

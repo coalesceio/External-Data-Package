@@ -57,11 +57,11 @@ There are four configs within the **Node Properties** group.
 
 **InferSchema-true**
 
-![CopyInto-options](https://github.com/user-attachments/assets/872b6af7-2c6d-4789-9180-f57df56898da)
+![image](https://github.com/user-attachments/assets/2f549fe3-648f-4132-bcdf-2ab92f6554bd)
 
 **InferSchema-false**
 
-![CopyInto-File location](https://github.com/user-attachments/assets/3f95f8d0-3c23-4a46-8242-fb81989c523b)
+![image](https://github.com/user-attachments/assets/c1071dff-da18-45fc-9e43-1dd5cdd03329)
 
 ##### Internal or External Stage
 

@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSVFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: health.csv,health_pipe.csv
     filePattern: ""
     fileType: CSV

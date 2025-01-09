@@ -65,10 +65,10 @@ metadata:
         enableIf: "{% if config.intextstage or config.inferschema%} true {% else %} false {% endif %}"
         isRequired: true
 
-      - displayName: Path or subfolder
+      - displayName: Path or subfolder 
         attributeName: subfolder
         type: textBox
-        default: 'Enter folder name in stage if applicable'
+        default: 'Enter folder name in stage if applicable-folder/subfolder'
         enableIf: "{% if config.intextstage or config.inferschema%} true {% else %} false {% endif %}"
         isRequired: false
 
@@ -219,6 +219,12 @@ metadata:
         attributeName: timestampformat
         type: textBox
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      - displayName: Using vectorised scanner
+        attributeName: usevectscan
+        type: toggleButton
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET')) %} true {% else %} false {% endif %}"
         isRequired: false
 
     - groupName: Copy Options

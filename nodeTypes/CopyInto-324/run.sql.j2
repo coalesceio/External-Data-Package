@@ -64,7 +64,7 @@ does not permit copying or modification for any other purpose.
 {%elif config.subfolder == None%}
     {%set subf = "" %}
 {%else%}
-    {%set subf = "/"+ subfolder_value %}
+    {%set subf = "/"+ subfolder_value +"/"%}
 {%endif%}
 
 # Checking on number of columns
@@ -160,7 +160,7 @@ does not permit copying or modification for any other purpose.
               FIELD_DELIMITER = '{{ config.fieldDelim}}'
             {%endif%}
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
-               FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+            FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
           {%endif%}
           {% if config.skipBlankLines and config.fileType in ('CSV')%}
              SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
@@ -191,6 +191,9 @@ does not permit copying or modification for any other purpose.
               TIMESTAMP_FORMAT = '{{config.timestampformat}}'
 	         {% elif config.timestampformat == "AUTO" %}
 	         TIMESTAMP_FORMAT = AUTO
+           {%endif%}
+           {%if config.usevectscan == true %}
+               USE_VECTORIZED_SCANNER = TRUE 
            {%endif%})
         {%endif%}
 

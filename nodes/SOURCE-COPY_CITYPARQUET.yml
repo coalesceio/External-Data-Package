@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: PARQUETFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: cities.parquet
     filePattern: ""
     fileType: PARQUET
@@ -45,6 +45,7 @@ operation:
     trimSpace: false
     truncateBefore: true
     truncateColumns: ""
+    usevectscan: true
   database: ""
   deployEnabled: true
   description: ""

@@ -1,6 +1,6 @@
 fileVersion: 1
-id: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-name: COPY_CITYPARQUET
+id: 9231db09-26dc-4422-b919-5a16bd73bc4d
+name: COPY_HEALTH_MULTI_PAT
 operation:
   config:
     compression: ""
@@ -12,19 +12,15 @@ operation:
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: PARQUETFILEFORMAT
+    fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Values
-    fileNames: cities.parquet
-    filePattern: ""
-    fileType: PARQUET
+    fileNames: ""
+    filePattern: |
+      '.*hea.*[.]csv'
+    fileType: CSV
     forceLoad: ""
-    ifileFormatLoc: ""
-    ifileFormatName: ""
-    ifileNames: ""
     inferschema: false
     intextstage: true
-    istageName: Enter stage name-stage_name/folder/
-    istageStorageLocationName: Enter Storage Location name
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""
@@ -35,17 +31,16 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: CSV_FILE_STAGE
+    stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
-    subfolder: tutorials/dataloading
+    subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
     truncateBefore: true
     truncateColumns: ""
-    usevectscan: true
   database: ""
   deployEnabled: true
   description: ""
@@ -60,8 +55,27 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2e305afb-309f-4736-bc92-4e1c4ffb3591
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 6a23d1e8-a645-4819-9a39-dcc72df79c6a
+          stepCounter: 9231db09-26dc-4422-b919-5a16bd73bc4d
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: c1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 83f392c9-2802-4ccf-b8a8-c89fa57df30f
+          stepCounter: 9231db09-26dc-4422-b919-5a16bd73bc4d
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -79,8 +93,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: e5af5382-06c5-43ce-abff-ba28aaadff9a
+          stepCounter: 9231db09-26dc-4422-b919-5a16bd73bc4d
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -98,8 +112,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d9df3445-4510-49fe-ae56-47e9c4a4c2f1
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 19f4ed94-ecba-4180-bad9-09ce8ea21e18
+          stepCounter: 9231db09-26dc-4422-b919-5a16bd73bc4d
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -117,8 +131,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 74fd5b37-70af-433a-bd26-79d687f972e9
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 2377a4d9-ca30-444a-8004-7fca1cd36ed1
+          stepCounter: 9231db09-26dc-4422-b919-5a16bd73bc4d
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -136,51 +150,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a526132f-981d-4fad-94e8-db9dbfb695c6
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 271efd41-e4e7-41bb-b303-a22fd3fc1be7
+          stepCounter: 9231db09-26dc-4422-b919-5a16bd73bc4d
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9f7bb011-2b93-4812-800f-9815c8b5c0de
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: continent
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8ee589a5-7883-4d9b-a073-bd3618193a61
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: VARIANT
-        defaultValue: ""
-        description: ""
-        name: country
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -194,14 +170,12 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies:
-          - locationName: SOURCE
-            nodeName: CITYPARQUET
+        dependencies: []
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'CITYPARQUET') }} "CITYPARQUET"
-        name: COPY_CITYPARQUET
+          joinCondition: ""
+        name: COPY_HEALTH_MULTI_PAT
         noLinkRefs: []
-  name: COPY_CITYPARQUET
+  name: COPY_HEALTH_MULTI_PAT
   overrideSQL: false
   schema: ""
   sqlType: "324"

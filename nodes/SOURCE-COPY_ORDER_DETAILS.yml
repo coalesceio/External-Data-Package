@@ -34,6 +34,7 @@ operation:
     stageStorageLocationName: TARGET
     storageintegration: ""
     stripouterarray: false
+    subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false

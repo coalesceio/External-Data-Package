@@ -14,7 +14,7 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: MYAVROFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'twitter.avro'"
+    fileNames: twitter.avro
     filePattern: ""
     fileType: AVRO
     forceLoad: ""
@@ -30,10 +30,11 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: spstagesample/
+    stageName: spstagesample
     stageStorageLocationName: TARGET
     storageintegration: ""
     stripouterarray: false
+    subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false

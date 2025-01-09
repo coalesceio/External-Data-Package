@@ -81,7 +81,7 @@ metadata:
       - displayName: File Pattern (Ex:'.*hea.*[.]csv')
         attributeName: filePattern
         type: textBox
-        enableIf: "{% if config.intextstage %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.intextstage and config.inferschema == false%} true {% else %} false {% endif %}"
         isRequired: false
 
       - displayName: External URI

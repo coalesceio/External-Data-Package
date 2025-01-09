@@ -44,11 +44,28 @@ does not permit copying or modification for any other purpose.
 
 # File name
 
-{%- if config.fileNames | length > 0 %} 
-    {% set fileNameSQL = 'FILES = (' + config.fileNames + ')' %} 
+{%if config.fileNames | length > 0 and ',' in config.fileNames  %}
+    {% set formatted_variable = config.fileNames.split(',') | map('string') | join("','") %}
+    {% set final_variable = "'" + formatted_variable + "'" %}
+    {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
+
+{%- elif config.fileNames | length > 0 %} 
+    {% set fileNameSQL = 'FILES = (' + "'"+config.fileNames + "'"+')' %}                               
 {%- else -%}
     {% set fileNameSQL = "" %} 
 {% endif %}
+
+{#Subfolder path #}
+
+{%set subf = ""%}
+{% set subfolder_value = config.subfolder | default('') %}
+{%if config.subfolder == "" %}
+    {%set subf = "" %}
+{%elif config.subfolder == None%}
+    {%set subf = "" %}
+{%else%}
+    {%set subf = "/"+ subfolder_value +"/"%}
+{%endif%}
 
 # Checking on number of columns
 
@@ -104,7 +121,7 @@ does not permit copying or modification for any other purpose.
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
 
-           FROM '@{{ dbStage }}.{{ schStage }}.{{ config.stageName }}') 
+           FROM '@"{{ dbStage }}"."{{ schStage }}".{{ config.stageName }}{{subf}}') 
            {{fileNameSQL}}
            {{ filePatternSQL }}
 
@@ -128,7 +145,7 @@ does not permit copying or modification for any other purpose.
 
           {%- if config.fileFormatType == 'File Format Name' %}
             
-              FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ config.fileFormatName}}')
+              FILE_FORMAT = (FORMAT_NAME = '"{{ dbff }}"."{{ schff }}"."{{ config.fileFormatName}}"')
      
             
       {%else%}
@@ -143,7 +160,7 @@ does not permit copying or modification for any other purpose.
               FIELD_DELIMITER = '{{ config.fieldDelim}}'
             {%endif%}
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
-               FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+            FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
           {%endif%}
           {% if config.skipBlankLines and config.fileType in ('CSV')%}
              SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
@@ -174,6 +191,9 @@ does not permit copying or modification for any other purpose.
               TIMESTAMP_FORMAT = '{{config.timestampformat}}'
 	         {% elif config.timestampformat == "AUTO" %}
 	         TIMESTAMP_FORMAT = AUTO
+           {%endif%}
+           {%if config.usevectscan == true %}
+               USE_VECTORIZED_SCANNER = TRUE 
            {%endif%})
         {%endif%}
 

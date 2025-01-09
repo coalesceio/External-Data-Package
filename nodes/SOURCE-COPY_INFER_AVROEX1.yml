@@ -12,9 +12,9 @@ operation:
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: avrofileformat
+    fileFormatName: AVROFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'twitter_samp.avro'"
+    fileNames: twitter_samp.avro
     filePattern: ""
     fileType: AVRO
     forceLoad: ""
@@ -34,6 +34,7 @@ operation:
     stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
+    subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false

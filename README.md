@@ -69,7 +69,8 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:'a.csv','b.csv')** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
 ![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
@@ -107,8 +108,8 @@ There are four configs within the **Node Properties** group.
 |**CSV**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Record delimiter**-Characters that separate records in an input file<br/>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file<br/>**Field optionally enclosed by**- Character used to enclose strings<br/>**Number of header lines to skip**- Number of lines at the start of the file to skip <br/> **Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files <br/> **Trim Space**- Boolean that specifies whether to remove white space from fields <br/> **Replace invalid characters**- Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Date format**- String that defines the format of date values in the data files to be loaded. <br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
 |**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character <br/>**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ] <br/>**Date format**- String that defines the format of date values in the data files to be loaded<br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
 |**ORC**|**Trim Space** - Specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
-|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+|**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
+|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character<br/>**Using vectorised scanner** - Boolean that specifies whether to use a vectorized scanner for loading Parquet files|
 |**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
   
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
@@ -142,6 +143,7 @@ The set of columns which has source data and file metadata information.
 * CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
 * The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
+*The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
 
 ### Use CopyInto node with InferSchema option
 * Set Infer Schema toggle to true

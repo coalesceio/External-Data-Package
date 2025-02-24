@@ -10,12 +10,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates a snowflake procedure to update the external nodes/Iceberg table nodes, by synchronizing them with the list of columns from the corresponding table in Snowflake. == #}
 
 
-{% if desiredState == currentState %}
-
-{{ stage('Nothing to do.') }}
-select 1 = 0
-
-{% elif desiredState %}  
+{% if desiredState %}  
 	 
 	{%if currentState == undefined or (currentState != undefined and desiredState!=currentState) %}
 

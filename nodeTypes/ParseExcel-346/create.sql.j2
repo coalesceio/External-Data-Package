@@ -10,12 +10,8 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node loads data from an excel file in internal or exteranl location. == #}
 
 # Create table first
-{% if desiredState == currentState %}
 
-{{ stage('Nothing to do.') }}
-select 1 = 0
-
-{% elif desiredState %}
+{% if desiredState %}
 
 
 	   {% if currentState == undefined %}
@@ -244,19 +240,11 @@ select 1 = 0
         {{ stage('Drop table', true, "sql", "drop") }}
          DROP TABLE IF EXISTS {{ fullyQualifiedTargetObjectName }}
 	  
-{%else%}
-
-{{ stage('Nothing to do.') }}
-select 1 = 0
 	  
 {%endif%}
 
-{% if desiredState == currentState %}
 
-{{ stage('Nothing to do.') }}
-select 1 = 0
-
-{% elif desiredState %}  
+{% if desiredState %}  
 	 
 	{%if currentState == undefined or (currentState != undefined and desiredState!=currentState) %}
 

@@ -1,0 +1,71 @@
+fileVersion: 1
+id: df639fd5-0401-4c2c-98c2-71884b0376ec
+name: API_JSON
+operation:
+  config:
+    extIntegration: COALESCE_API_INTEGRATION
+    headers: ""
+    method: get
+    payload: ""
+    uri: https://jsonplaceholder.typicode.com/todos
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98cfb90a-317d-4e7a-a9dd-628d14a648ca
+          stepCounter: df639fd5-0401-4c2c-98c2-71884b0376ec
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: URI
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        uri: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca24aa6f-0d6b-4488-b9fc-b12cf36c241c
+          stepCounter: df639fd5-0401-4c2c-98c2-71884b0376ec
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: RESPONSE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        value: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: API_JSON
+        noLinkRefs: []
+  name: API_JSON
+  overrideSQL: false
+  schema: ""
+  sqlType: "303"
+  type: sql
+  version: 1
+type: Node

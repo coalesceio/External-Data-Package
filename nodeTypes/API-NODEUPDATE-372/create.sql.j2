@@ -14,7 +14,7 @@ does not permit copying or modification for any other purpose.
 	 
 	{%if currentState == undefined or (currentState != undefined and desiredState!=currentState) %}
 
-{{ stage('Create Python Procedure ') }}
+      {{ stage('Create Python Procedure ') }}
 
 
 CREATE OR REPLACE PROCEDURE {{ ref_no_link(desiredState.node.location.name, 'UPDATENODE_' + desiredState.node.name | upper) | trim }}(wsID varchar,nodeName varchar,flag varchar)

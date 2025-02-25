@@ -19,6 +19,7 @@ operation:
     fileType: JSON
     flagLoadHistorical: false
     flagSnowpipe: Enable Snowpipe
+    inferschema: true
     integration: "{{desiredState.parameters.targetIntegration}}"
     onError: ""
     recDelim: |+
@@ -26,7 +27,7 @@ operation:
     replaceinvalidcharacters: false
     skipBlankLines: true
     skipHeader: "1"
-    stageName: spstagesample/
+    stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: true
     timeformat: ""

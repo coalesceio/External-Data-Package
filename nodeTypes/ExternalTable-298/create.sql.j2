@@ -11,12 +11,8 @@ does not permit copying or modification for any other purpose.
 {#Release date:20241025  Version:1.1.4 Released By:AS  Description: Unified Storage and file format inputs #}
 {#Release date:20241213  Version:1.1.8 Released By:AS  Description: InferSchema option,Re-Sync button enabled and partition by clause added #}
 
-{% if desiredState == currentState %}
 
-{{ stage('Nothing to do.') }}
-select 1 = 0
-
-{% elif desiredState == undefined %}
+{% if desiredState == undefined %}
 
   {{ stage('Drop External Table') }}
   DROP EXTERNAL TABLE {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}

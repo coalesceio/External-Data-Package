@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 4c3562a8-70e0-43ae-9833-c4652ebf171c
-name: COPY_NODE
+id: 26ce5f62-45d5-4db7-9be9-5e84087b663f
+name: COPY_NODE1
 operation:
   config:
     compression: ""
@@ -13,12 +13,12 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: ""
     fileFormatName: ""
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: ""
     filePattern: ""
-    fileType: PARQUET
+    fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: false
     loadUncertainFiles: ""
     onError: ""
@@ -55,8 +55,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7e694022-2253-40e8-a619-e2ba38bbdfa2
-          stepCounter: 4c3562a8-70e0-43ae-9833-c4652ebf171c
+          columnCounter: ccaa6377-f46e-4c2e-8ec4-aeb4b0ff24e7
+          stepCounter: 26ce5f62-45d5-4db7-9be9-5e84087b663f
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -72,8 +72,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4764c86f-e46d-4c92-b604-7de497ea6dfe
-          stepCounter: 4c3562a8-70e0-43ae-9833-c4652ebf171c
+          columnCounter: 6851a82c-fe84-49da-ae70-f403c1d996b2
+          stepCounter: 26ce5f62-45d5-4db7-9be9-5e84087b663f
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -89,8 +89,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d45da5b-725c-48c5-bc98-1e2710525323
-          stepCounter: 4c3562a8-70e0-43ae-9833-c4652ebf171c
+          columnCounter: 084066de-06cb-4f43-bc7f-4147642f5dd8
+          stepCounter: 26ce5f62-45d5-4db7-9be9-5e84087b663f
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -106,8 +106,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cbdf2fa4-50f4-42e5-831e-84e051833560
-          stepCounter: 4c3562a8-70e0-43ae-9833-c4652ebf171c
+          columnCounter: 006700f6-ebc6-43aa-bd9d-2960b6ea5605
+          stepCounter: 26ce5f62-45d5-4db7-9be9-5e84087b663f
         config: {}
         dataType: NUMBER
         defaultValue: ""
@@ -123,8 +123,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4df98c34-cf1c-4d79-a5e3-bd78ab4bbbab
-          stepCounter: 4c3562a8-70e0-43ae-9833-c4652ebf171c
+          columnCounter: a55b89b7-b9d4-4d75-8447-e96194ff065e
+          stepCounter: 26ce5f62-45d5-4db7-9be9-5e84087b663f
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -140,8 +140,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c7a88d5c-91bd-4e87-920e-dfb200e08eb0
-          stepCounter: 4c3562a8-70e0-43ae-9833-c4652ebf171c
+          columnCounter: a109cc5c-4c1f-4a44-a49e-e649216a7d60
+          stepCounter: 26ce5f62-45d5-4db7-9be9-5e84087b663f
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -161,9 +161,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_NODE
+        name: COPY_NODE1
         noLinkRefs: []
-  name: COPY_NODE
+  name: COPY_NODE1
   overrideSQL: false
   schema: ""
   sqlType: "324"

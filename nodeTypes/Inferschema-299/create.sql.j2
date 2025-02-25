@@ -10,7 +10,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node infers schema of the file in internal or external stage and dynamically creates the target table == #}
 {#Release date:20241203  Version:1.1.6 Released By:AS  Description: Materialization type added and Re-Sync buttton enabled#}
 
-{% if (currentState == undefined and desiredState != undefined) or (currentState != undefined and desiredState != undefined ) %}
+{% if (currentState == undefined and desiredState != undefined) or (currentState != undefined and desiredState != undefined and desiredState != currentState ) %}
 
 {% set srcSchName = desiredState.node.location.name %}
 {% set db = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[0]%}
@@ -143,10 +143,5 @@ END;
 
 
 {%endif%}
-
-{% else %}
-
-{{ stage('Nothing to do.') }}
-select 1 = 0
 
 {% endif %}

@@ -198,6 +198,10 @@ When the materialization type of Copy-Into node is changed from table to transie
 
 * **Drop table/transient table**
 * **Create transient table/table**
+* 
+### Redeployment with no changes 
+
+If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
 
 ### CopyInto Undeployment
 
@@ -416,6 +420,10 @@ The following stages are executed:
 * **Create Pipe**: Pipe is recreated if enable snowpipe option is true
 * **Alter Pipe**:Pipe is refreshed if 'Load Historical' toggle is on.
 
+### Redeployment with no changes 
+
+If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+
 ### Snowpipe Undeployment
 
 If the Snowpipe node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
@@ -557,6 +565,10 @@ The following stages are executed:
 
 * **Create External Table**
   
+### Redeployment with no changes 
+
+If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+
 ### Undeployment
 
 If the External table node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
@@ -663,6 +675,10 @@ If all Source Data options remain same and only there are changes in the existin
 |Drop existing table |Drop inferred table
 
 If you want to drop the inferred table you can redeploy the Infer Schema node with redeployment behaviour “Drop existing table”.
+
+### Redeployment with no changes 
+
+If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
   
 ### InferSchema Undeployment
 
@@ -885,7 +901,11 @@ The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description** -  Alter table statement is executed to perform the alter operation.
 * **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the specified target environment  
-  
+
+### Redeployment with no changes 
+
+If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+
 ### Undeployment
 
 If the Parse Excel node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
@@ -948,7 +968,11 @@ The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description** -  Alter table statement is executed to perform the alter operation.
 * **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the specified target environment  
-  
+
+ ### Redeployment with no changes 
+
+If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+
 ### Undeployment
 
 If the Parse Json node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.

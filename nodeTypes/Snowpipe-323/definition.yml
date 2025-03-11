@@ -32,7 +32,7 @@ metadata:
     - groupName: Snowpipe Options
       enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
       items:
-
+      
       - displayName: Enable Snowpipe
         attributeName: flagSnowpipe
         type: dropdownSelector
@@ -51,6 +51,16 @@ metadata:
         - "GCP"
         enableIf: "{% if config.flagSnowpipe == 'Enable Snowpipe' %} true {% else %} false {% endif %}"
 
+      - type: label
+        attributeName: note2
+        displayName: 
+                       "NOTE:
+                       \n
+                       Ensure the parameter targetIntegrationOrAwsSNSTopic is added in Workspace and 
+                       deployment environment if the snowpipe is enabled
+                       Refer documentation for more information"
+        enableIf: "{%- if parameters == {} or config.flagSnowpipe == 'Enable Snowpipe'  -%} true {%- else -%} false {%- endif -%}"
+
       - displayName: AWS SNS Topic
         attributeName: awsSnsTopic
         type: textBox
@@ -63,6 +73,16 @@ metadata:
         type: textBox
         isRequired: false
         enableIf: "{% if config.flagSnowpipe == 'Enable Snowpipe' and config.cloudProvider != 'AWS' %} true {% else %} false {% endif %}"
+
+      - type: label
+        attributeName: note1
+        displayName: 
+                       "NOTE:
+                       \n
+                       Ensure the parameter loadType is added in Workspace and 
+                       deployment environment if you intend to reload data from source files
+                       Refer documentation for more info"
+        enableIf: "{%- if parameters == {} and config.flagLoadHistorical == true  -%} true {%- else -%} false {%- endif -%}"
 
       - displayName: Load Historical Data
         attributeName: flagLoadHistorical

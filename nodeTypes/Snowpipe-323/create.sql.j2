@@ -9,16 +9,33 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Name           : SnowPipe == #}
 {# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
 
+{%if desiredState and currentState != desiredState%}
+     {%if desiredState.parameters == {} or desiredState.parameters.targetIntegrationOrAwsSNSTopic == ''%}
 
-# Create table first
+         {{stage('WARNING')}}
+         
+         /*
+
+         1.Add parameter loadType in Workspace and 
+          deployment environment if you intend to reload data from source files
+         
+          2.Add parameter targetIntegrationOrAwsSNSTopic in Workspace and 
+          deployment environment if the snowpipe is enabled for successful execution of node.
+         The default value for the parameter is 'DEV ENVIRONMENT'.
+
+         Refer to documentation for more information */
+
+      {%endif%}
+  {%endif%}
+
+
+{# Create table first #}
 
 {% if desiredState %}
 
     
     {% if desiredState.node.materializationType == 'table' or desiredState.node.materializationType == 'transient table'  %}
         
-        
-
         {% if currentState != undefined and currentState.node.materializationType != desiredState.node.materializationType %}
 
                 {# Change in materialization type #}

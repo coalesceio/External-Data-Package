@@ -19,7 +19,7 @@ operation:
     fileType: PARQUET
     flagLoadHistorical: false
     flagSnowpipe: Enable Snowpipe
-    inferschema: true
+    inferschema: false
     integration: ""
     onError: ""
     recDelim: |+

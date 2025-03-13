@@ -17,10 +17,10 @@ operation:
     fileNames: ""
     filePattern: " '.*con.*[.]json'"
     fileType: JSON
-    flagLoadHistorical: false
+    flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
     inferschema: false
-    integration: ""
+    integration: azure_int
     onError: SKIP_FILE
     recDelim: |+
 

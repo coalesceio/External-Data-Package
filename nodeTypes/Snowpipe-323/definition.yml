@@ -59,7 +59,7 @@ metadata:
                        Ensure the parameter targetIntegrationOrAwsSNSTopic is added in Workspace and 
                        deployment environment if the snowpipe is enabled
                        Refer documentation for more information"
-        enableIf: "{%- if parameters == {} or config.flagSnowpipe == 'Enable Snowpipe'  -%} true {%- else -%} false {%- endif -%}"
+        enableIf: "{%- if (parameters == {} or  'targetIntegrationOrAwsSNSTopic' not in parameters) and config.flagSnowpipe == 'Enable Snowpipe'  -%} true {%- else -%} false {%- endif -%}"
 
       - displayName: AWS SNS Topic
         attributeName: awsSnsTopic
@@ -82,7 +82,7 @@ metadata:
                        Ensure the parameter loadType is added in Workspace and 
                        deployment environment if you intend to reload data from source files
                        Refer documentation for more info"
-        enableIf: "{%- if parameters == {} and config.flagLoadHistorical == true  -%} true {%- else -%} false {%- endif -%}"
+        enableIf: "{%- if (parameters == {} or 'loadType' not in parameters) and config.flagLoadHistorical == true  -%} true {%- else -%} false {%- endif -%}"
 
       - displayName: Load Historical Data
         attributeName: flagLoadHistorical

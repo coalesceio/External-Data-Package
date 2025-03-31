@@ -111,8 +111,9 @@ does not permit copying or modification for any other purpose.
            {%else%}
            "{{ col.name }}" {{ col.dataType }} AS (value:{{ col.name }}::{{ col.dataType }})
           {%endif%}
-		  {%elif col.name == "FILENAME" and desiredState.config.cpartexpression !="" %}
-		      "{{ col.name }}" {{ col.dataType }} AS {{desiredState.config.cpartexpression}}
+		  {%elif col.name == "FILENAME" and desiredState.config.cpartexpression !="" and desiredState.config.partclause == true%}
+		      "{{ col.name }}" {{ col.dataType }} AS METADATA$FILENAME,
+          "PART_EXP" {{ col.dataType }} AS {{desiredState.config.cpartexpression}}
       {%elif col.name == "FILENAME"  %}
 		      "{{ col.name }}" {{ col.dataType }} AS METADATA$FILENAME
       {%elif col.name == "FILE_ROW_NUMBER" %}
@@ -130,7 +131,7 @@ does not permit copying or modification for any other purpose.
       {%- if not loop.last -%}, {% else %}){% endif %}
     {% endfor %}
   {%if desiredState.config.partclause == true%}
-       partition by ("FILENAME")
+       partition by ("PART_EXP")
   {%endif%}
   location = @{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}
   {% if desiredState.config.filePattern %}

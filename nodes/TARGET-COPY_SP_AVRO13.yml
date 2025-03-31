@@ -17,7 +17,7 @@ operation:
     fileNames: "'twitter_samp.avro'"
     filePattern: " '.*tweet.*[.]avro'"
     fileType: AVRO
-    flagLoadHistorical: false
+    flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""

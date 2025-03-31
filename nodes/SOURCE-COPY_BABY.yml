@@ -38,7 +38,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
+    truncateBefore: true
     truncateColumns: ""
   database: ""
   deployEnabled: true
@@ -54,13 +54,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2fc9b8f4-6793-4d01-bc93-51fe211a513e
+          columnCounter: e38e57dd-cd40-4dc3-a120-f6a91cf6eb59
           stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
-        name: c1
+        name: Year
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -73,13 +73,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4017c145-4d1f-455e-b189-687632fbeb6c
+          columnCounter: 700225ae-75b4-4b6a-8698-2c5b1a9f8fb1
           stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: c2
+        name: FirstName
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -92,13 +92,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 009c884b-f9c5-4ab0-8a56-ccb37924d9a8
+          columnCounter: 89aa854b-14b6-4aa3-95e7-ac0dc1e008fd
           stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: c3
+        name: County
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -111,13 +111,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e482df34-e9c0-481b-b669-3666ab0ae3d5
+          columnCounter: 7c4d616d-d21c-4119-8361-7e15f0291999
           stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: BOOLEAN
         defaultValue: ""
         description: ""
-        name: c4
+        name: Sex
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -130,13 +130,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9bc8e49c-c156-46a8-93a5-d393d386d022
+          columnCounter: c4da2971-36a1-4634-b76e-e7ad368a3737
           stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
         config: {}
         dataType: NUMBER(2,0)
         defaultValue: ""
         description: ""
-        name: c5
+        name: Count
         nullable: true
         primaryKey: false
         sourceColumnReferences:

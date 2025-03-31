@@ -34,9 +34,9 @@ metadata:
         enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
 
       - type: textBox
-        displayName: Partition by Expression
+        displayName: Partition by Expression(Ex:split_part(metadata$filename,'/',2))
         attributeName: cpartexpression
-        default: "Ex:split_part(metadata$filename,'/',2)"
+        default: ""
         isRequired: false
         enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
 

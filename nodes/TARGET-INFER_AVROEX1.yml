@@ -3,7 +3,6 @@ id: cb85f014-ce1c-4ff6-9573-aaf772891ca2
 name: INFER_AVROEX1
 operation:
   database: ""
-  dataset: ""
   deployEnabled: true
   description: ""
   locationName: TARGET
@@ -66,12 +65,9 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
-    join:
-      joinCondition: FROM {{ ref('TARGET', 'INFER_AVROEX1') }}
   name: INFER_AVROEX1
   schema: ""
   sqlType: Source
-  table: INFER_AVROEX1
   type: sourceInput
   version: 1
 type: Node

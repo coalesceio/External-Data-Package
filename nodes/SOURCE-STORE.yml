@@ -3,7 +3,6 @@ id: 45ebec36-9dac-4a16-8d03-71161c24e3be
 name: STORE
 operation:
   database: ""
-  dataset: ""
   deployEnabled: true
   description: ""
   locationName: SOURCE
@@ -85,12 +84,9 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
-    join:
-      joinCondition: FROM {{ ref('SOURCE', 'STORE') }}
   name: STORE
   schema: ""
   sqlType: Source
-  table: STORE
   type: sourceInput
   version: 1
 type: Node

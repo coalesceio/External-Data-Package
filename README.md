@@ -837,6 +837,9 @@ There are four configs within the **Node Properties** group.
 <h4 id="JDBC-load-options"> JDBC Load Options </h4>
 
 ![JDBC_load_options](https://github.com/coalesceio/External-Data-Package/assets/169126315/5af13d5b-576a-44ce-ae5b-d02d7501cc7f)
+
+| Name | Description|
+|--|--|
 |**JDBC Driver(Required)**|Required to establish the connection to external database|
 |**JAR file external stage location(Required)**|Location of the external stage where JAR file is located|
 |**JAR file name(Required)**|Name of JAR file located in external stage|

@@ -787,6 +787,8 @@ There are four configs within the **Node Properties** group.
 
 ![Options](https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**|EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
 |**Method(Required)**|HTTP Request methods Get,Put,Post<br/>**Get**: API Call to retrieve data<br/>**Put**: API Call to update existing data<br/>**Post**: API Call to create new data|  
 |**URI(Required)**|Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API|
@@ -816,6 +818,8 @@ The API-NODEUPDATE Node Configuration type has two configuration groups:
 
 ![API-Options](https://github.com/user-attachments/assets/fc366fc0-bae2-4f16-aa89-dde5b701bb1c)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**| EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
 |**Snowlake secret for Coalesce API token (Required)**|SNOWFLAKE SECRET to allow access to Coalesce API|
 |**Workspace-Node details**|Information on the list of nodes for which columns need to be updated<br/>**Workspace ID**: This is the id of workspace where node belongs<br/>**Node name**: Name of the node whose columns needs to be updated<br/>**Storage Location (E.g DBName.SchemaName):**: Enter storage location of the table, with database name and schema|
@@ -884,6 +888,8 @@ There are four configs within the **Node Properties** group.
 
 ![StoredProcedureOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/ad7e21b6-1ea2-43c9-875a-5a1ce34c9828)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Stored Procedure Storage Location(Required)**|Location in Snowflake to be provided where Stored Procedure will be loaded by script|
 |**Note**|Stored Procedure location and Storage Location (i.e. destination) must be in same Schema|
 
@@ -891,6 +897,8 @@ There are four configs within the **Node Properties** group.
 
 ![ExcelFileProcessingOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/f612a1cb-f5fe-420f-9a38-d040f0151e6a)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Source File Storage Location(REQUIRED)**|Storage location name in Coalesce which points to the database and schema  where stage is located (source file has to be located under stages)|
 |**Source File Stage(REQUIRED)**|Stage name in Snowflake where source file is located|
 |**Source File Name(REQUIRED)**|Excel filename to be parsed|
@@ -950,6 +958,9 @@ There are four configs within the **Node Properties** group.
 <h4 id="parse-json-UDTF-procedure-options"> Parse JSON UDTF Procedure Options </h4>
 
 ![UDTFProcedureOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/c319c9f4-6654-4c9b-9416-5a979279055f)
+
+| **Setting** | **Description** |
+|---------|-------------|
 |**User Defined Table Function Location (Required)**|Location in Snowflake to be provided where UDTF will be loaded by script|
 |**Note**| UDTF location and Storage Location (i.e. destination) must be in same Schema|
 
@@ -957,6 +968,8 @@ There are four configs within the **Node Properties** group.
 
 ![JSONFileProcessingOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/b32ac841-6e29-4442-8474-8385cd9a0e97)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Source File Storage Location(REQUIRED)**|Schema name in Snowflake where source file is located (source file has to be located under stages)|
 |**Source File Stage(REQUIRED)**|Stage name in Snowflake where source file is located|
 |**Source File Name(REQUIRED)**|Json filename to be parsed|

@@ -86,25 +86,6 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1fd40d4e-3073-484b-8bad-f471fc6502bd
-          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: timestamp
-        nullable: false
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: 31625930-8303-47ad-8092-69d1c6e2feab
           stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}

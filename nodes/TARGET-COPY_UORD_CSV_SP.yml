@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 51202df9-7ffe-4724-90dc-66856b4b090f
-name: COPY_CSV_SP
+name: COPY_UORD_CSV_SP
 operation:
   config:
     awsSnsTopic: ""
@@ -604,9 +604,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_CSV_SP
+        name: COPY_UORD_CSV_SP
         noLinkRefs: []
-  name: COPY_CSV_SP
+  name: COPY_UORD_CSV_SP
   overrideSQL: false
   schema: ""
   sqlType: "323"

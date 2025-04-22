@@ -165,7 +165,7 @@ operation:
           columnCounter: 4b359634-a499-43ad-8fb3-2f426427d7a1
           stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: STRING
         defaultValue: ""
         description: ""
         name: FILENAME

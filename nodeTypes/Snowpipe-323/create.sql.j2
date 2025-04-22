@@ -662,10 +662,6 @@ does not permit copying or modification for any other purpose.
 
          {%else%}
 
-             {%if  desiredState.config.flagSnowpipe != 'Test Copy Statement' %}
-              {{ stage('Test Copy Statement-No Pipe creation') }}
-              select 1 = 0
-             {%endif%}
 
         {%endif%}
              

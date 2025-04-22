@@ -750,7 +750,7 @@ There are four configs within the **Node Properties** group.
 | **Setting** | **Description** |
 |---------|-------------|
 |**Overwrite Flag**|Toogle overwrites existing files with matching names, if any, in the location where files are unloaded|
-|**Header**|| 
+|**Header**|Toggle to be enabled if the file created requires a header| 
 |**Single File Flag**|Toggle generates a single file when true, else generates multiple files if partition by enabled|
 |**Max File Size (MB)**|Number (> 0) that specifies the upper size limit (in bytes) of each file to be generated in parallel per thread. Note that the actual file size and number of files unloaded are determined by the total amount of data and number of nodes available for parallel processing|
 |**Include Query ID**|When true provides unique identifier for unloaded files by including a universally unique identifier (UUID) in the filenames of unloaded data files| 

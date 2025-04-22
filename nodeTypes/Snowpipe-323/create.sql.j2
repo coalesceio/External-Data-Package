@@ -531,7 +531,7 @@ does not permit copying or modification for any other purpose.
                       
                 {%- if desiredState.config.flagSnowpipe == 'Enable Snowpipe' -%}
 
-	                   {{ stage('Create Pipe', true, "sql", "alter") }}
+	                   {{ stage('Create Pipe', true, "sql", "create") }}
 
                   CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE  
                  {%- if desiredState.parameters.targetIntegrationOrAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' %}
@@ -653,7 +653,7 @@ does not permit copying or modification for any other purpose.
    
                   {%if desiredState.config.flagLoadHistorical == true%}
 
-                    {{ stage('Alter Pipe',true, "sql", "alter") }}
+                    {{ stage('Alter Pipe',true, "sql", "create") }}
            
                      ALTER PIPE {{ fqPipeName }} REFRESH;
                   {%endif%}

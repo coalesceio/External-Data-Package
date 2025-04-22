@@ -428,7 +428,7 @@ does not permit copying or modification for any other purpose.
                    {%- endfor %}
                    )
                  FROM (SELECT
-
+                   
                  {%- for col in desiredState.sources[0].columns %}
 	               {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                       {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
@@ -552,7 +552,7 @@ does not permit copying or modification for any other purpose.
                        {%- endfor %}
                        )
                       FROM (SELECT
-
+                      {% set ns = namespace(counter=1) %}
                       {%- for col in desiredState.sources[0].columns %}
 	                    {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                          {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}

@@ -10,7 +10,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
 
 {%if desiredState and currentState != desiredState%}
-     {%if desiredState.parameters == {} or desiredState.parameters.targetIntegrationOrAwsSNSTopic == ''%}
+     {%if (desiredState.parameters == {} or 'targetIntegrationOrAwsSNSTopic' not in desiredState.parameters or desiredState.parameters.targetIntegrationOrAwsSNSTopic == '') and (desiredState.config.flagSnowpipe == 'Enable Snowpipe')%}
 
          {{stage('WARNING')}}   
          /*
@@ -74,7 +74,7 @@ does not permit copying or modification for any other purpose.
                            {% set dbStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[0] %}
                            {% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
 
-                            # File format locations
+                           {# File format locations #}
 
                            {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
                            {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
@@ -178,8 +178,8 @@ does not permit copying or modification for any other purpose.
             
             {# Desired Namespace Variables #}
             {% set nsVariables = namespace(
-			colchanges=0,
-			storageLocationTest=true) %}
+			         colchanges=0,
+			         storageLocationTest=true) %}
            
            {# Test  #}
             {% set nsVariables.storageLocationTest = true %}
@@ -193,7 +193,7 @@ does not permit copying or modification for any other purpose.
                     {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currenttargetlocation) | map(attribute='schema') | first %}
                   {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
                 
-                  ## Desired mappings
+                  {# Desired mappings#}
                   {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', desiredtargetlocation) | map(attribute='database') | first %}
                   {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', desiredtargetlocation) | map(attribute='schema') | first %}
             
@@ -411,13 +411,13 @@ does not permit copying or modification for any other purpose.
 
                         {%- if desiredState.parameters.loadType == 'Reload' -%}
 
-                            {{ stage('Truncate Target Table', true, "sql", "alter") }}
+                            {{ stage('Truncate Target Table', true, "sql", "create") }}
                             TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}"
 
-                            {{ stage('Historical Reload-Using Copy-into', true, "sql", "alter") }}
+                            {{ stage('Historical Reload-Using Copy-into', true, "sql", "create") }}
                        {%else %}
  
-                            {{ stage('Historical Full Load-Using Copy-into', true, "sql", "alter") }}
+                            {{ stage('Historical Full Load-Using Copy-into', true, "sql", "create") }}
  
                         {%endif%}
 
@@ -428,7 +428,7 @@ does not permit copying or modification for any other purpose.
                    {%- endfor %}
                    )
                  FROM (SELECT
-
+                   
                  {%- for col in desiredState.sources[0].columns %}
 	               {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                       {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
@@ -437,6 +437,8 @@ does not permit copying or modification for any other purpose.
                         ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}" 
                         {% set ns.counter = ns.counter + 1 %}       
                       {%endif%}
+                  {%elif col.sysLdTs == true and col.transform == ""%}
+                      current_timestamp()::timestamp_ntz AS "{{col.name}}"
                   {%elif col.sysFlNm == true and col.transform == "" %}
                     METADATA$FILENAME AS "{{col.name}}"
                   {%elif col.sysFlRwNm == true and col.transform == "" %}
@@ -531,7 +533,7 @@ does not permit copying or modification for any other purpose.
                       
                 {%- if desiredState.config.flagSnowpipe == 'Enable Snowpipe' -%}
 
-	                   {{ stage('Create Pipe', true, "sql", "alter") }}
+	                   {{ stage('Create Pipe', true, "sql", "create") }}
 
                   CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE  
                  {%- if desiredState.parameters.targetIntegrationOrAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' %}
@@ -552,7 +554,7 @@ does not permit copying or modification for any other purpose.
                        {%- endfor %}
                        )
                       FROM (SELECT
-
+                      {% set ns = namespace(counter=1) %}
                       {%- for col in desiredState.sources[0].columns %}
 	                    {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                          {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
@@ -653,17 +655,13 @@ does not permit copying or modification for any other purpose.
    
                   {%if desiredState.config.flagLoadHistorical == true%}
 
-                    {{ stage('Alter Pipe',true, "sql", "alter") }}
+                    {{ stage('Alter Pipe',true, "sql", "create") }}
            
                      ALTER PIPE {{ fqPipeName }} REFRESH;
                   {%endif%}
 
          {%else%}
 
-             {%if  desiredState.config.flagSnowpipe != 'Test Copy Statement' %}
-              {{ stage('Test Copy Statement-No Pipe creation') }}
-              select 1 = 0
-             {%endif%}
 
         {%endif%}
              

@@ -61,6 +61,8 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
                         ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}" 
                         {% set ns.counter = ns.counter + 1 %}       
                       {%endif%}
+              {%elif col.sysLdTs == true and col.transform == ""%}
+                    current_timestamp()::timestamp_ntz AS "{{col.name}}"
               {%elif col.sysFlNm == true and col.transform == "" %}
                     METADATA$FILENAME AS "{{col.name}}"
                 {%elif col.sysFlRwNm == true and col.transform == "" %}

@@ -81,7 +81,7 @@ metadata:
                        \n
                        Ensure the parameter loadType is added in Workspace and 
                        deployment environment if you intend to reload data from source files
-                       Refer documentation for more info"
+                       Refer documentation for more information"
         enableIf: "{%- if (parameters == {} or 'loadType' not in parameters) and config.flagLoadHistorical == true  -%} true {%- else -%} false {%- endif -%}"
 
       - displayName: Load Historical Data

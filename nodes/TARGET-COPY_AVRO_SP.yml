@@ -1,6 +1,6 @@
 fileVersion: 1
-id: f0a25b75-1dd4-4430-9dbf-4d4494713632
-name: COPY_NODE
+id: d83e922e-af27-48a2-9103-818f0c96e549
+name: COPY_AVRO_SP
 operation:
   config:
     awsSnsTopic: ""
@@ -11,13 +11,13 @@ operation:
     errornumber: ""
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: ""
-    fileFormatName: ""
+    fileFormatLoc: SOURCE
+    fileFormatName: AVROFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: ""
-    filePattern: ""
-    fileType: CSV
-    flagLoadHistorical: false
+    fileNames: "'twitter.avro'"
+    filePattern: " '.*twi.*[.]avro'"
+    fileType: AVRO
+    flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""
@@ -27,8 +27,8 @@ operation:
     replaceinvalidcharacters: false
     skipBlankLines: true
     skipHeader: "1"
-    stageName: stage_name/foldername/
-    stageStorageLocationName: Enter Storage Location name
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
     stripouterarray: false
     timeformat: ""
     timestampformat: ""
@@ -38,7 +38,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -48,103 +48,134 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ffee80ff-41d0-43bb-9730-d55cc3f18177
-          stepCounter: f0a25b75-1dd4-4430-9dbf-4d4494713632
+          columnCounter: c33fde5c-a79e-4b23-856f-bf5f4f9df2aa
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}
-        dataType: VARIANT
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: SRC
-        nullable: true
+        name: username
+        nullable: false
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: $1
-        sysJSON: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2646f1f8-3f6d-4e17-a5e1-935274f2175f
-          stepCounter: f0a25b75-1dd4-4430-9dbf-4d4494713632
+          columnCounter: 54229d9a-382f-4296-9a35-8275b013bf9b
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: LOAD_TIMESTAMP
-        nullable: true
+        name: tweet
+        nullable: false
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: current_timestamp()::timestamp_ntz
-        sysLdTs: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b502b771-1417-41b7-a76d-5528c80a4c95
-          stepCounter: f0a25b75-1dd4-4430-9dbf-4d4494713632
+          columnCounter: 31625930-8303-47ad-8092-69d1c6e2feab
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: FILENAME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILENAME
-        sysFlNm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 958b1d9c-82ff-4996-a583-d73db84d77a8
-          stepCounter: f0a25b75-1dd4-4430-9dbf-4d4494713632
+          columnCounter: 145c371c-1150-4d8d-9ed0-6c7d50c3eee5
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}
-        dataType: NUMBER
+        dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: FILE_ROW_NUMBER
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILE_ROW_NUMBER
-        sysFlRwNm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 49dfdde4-3dbd-4f8b-b8b8-1a25c3049503
-          stepCounter: f0a25b75-1dd4-4430-9dbf-4d4494713632
+          columnCounter: 69e6a079-2f2b-46f3-9025-ce3dc0e86fb4
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$FILE_LAST_MODIFIED
-        sysFlLtMd: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 61fea780-b1e4-4fb6-a786-56cbe2ab3d6e
-          stepCounter: f0a25b75-1dd4-4430-9dbf-4d4494713632
+          columnCounter: 8b5f43aa-762a-4c54-95d3-77bc80cd310e
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
         config: {}
-        dataType: TIMESTAMP_NTZ
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5c49ca9d-7f49-4c30-ba58-81bbcb3d9ff0
+          stepCounter: d83e922e-af27-48a2-9103-818f0c96e549
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: METADATA$START_SCAN_TIME
-        sysFlScTm: true
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -154,9 +185,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_NODE
+        name: COPY_AVRO_SP
         noLinkRefs: []
-  name: COPY_NODE
+  name: COPY_AVRO_SP
   overrideSQL: false
   schema: ""
   sqlType: "323"

@@ -727,12 +727,16 @@ There are four configs within the **Node Properties** group.
 
 ##### File Format Definition - File Format Name
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Coalesce Storage Location of File Format**| File format location in snowflake that is mapped as storage location in Coalesce|
 |**File Format Name**|Specifies an existing named file format in Snowflake to use for unloading data into the table|
 |**File Type**|* CSV <br/> * JSON <br/> * PARQUET|
 
 ##### File Format Definition - File Format Values
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**File Format Values**|-Provides different file format options for the File Type chosen to unload|
 |**File Type**|Each file type has different configurations available|
 |**CSV**|**Compression**: String (constant) that specifies the current compression algorithm for the data files to be unloaded<br/>**Record delimiter**: Characters that separate records in an unloaded file<br/>**Field delimiter**: One or more singlebyte or multibyte characters that separate fields in an unloaded file<br/>**Field optionally enclosed by**: Character used to enclose strings. (Default is \042)<br/>**File Extension**: String that specifies the extension for files unloaded to a stage. Accepts any extension<br/>**Date Format**: String that defines the format of date values in the unloaded data files.(Default is AUTO)<br/>**Time Format**: String that defines the format of time values in the unloaded data files.(Default is AUTO)<br/>**Timestamp Format**: String that defines the format of timestamp values in the unloaded data files.(Default is AUTO)|
@@ -743,6 +747,8 @@ There are four configs within the **Node Properties** group.
 
 ![CopyOptions](https://github.com/coalesceio/External-Data-Package/assets/169126315/4a1d32ec-a898-40ba-93e7-94194bcae02d)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Overwrite Flag**|Toogle overwrites existing files with matching names, if any, in the location where files are unloaded|
 |**Header**|| 
 |**Single File Flag**|Toggle generates a single file when true, else generates multiple files if partition by enabled|

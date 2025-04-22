@@ -411,7 +411,7 @@ does not permit copying or modification for any other purpose.
 
                         {%- if desiredState.parameters.loadType == 'Reload' -%}
 
-                            {{ stage('Truncate Target Table', true, "sql", "alter") }}
+                            {{ stage('Truncate Target Table', true, "sql", "create") }}
                             TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}"
 
                             {{ stage('Historical Reload-Using Copy-into', true, "sql", "create") }}

@@ -414,10 +414,10 @@ does not permit copying or modification for any other purpose.
                             {{ stage('Truncate Target Table', true, "sql", "alter") }}
                             TRUNCATE TABLE IF EXISTS "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}"
 
-                            {{ stage('Historical Reload-Using Copy-into', true, "sql", "alter") }}
+                            {{ stage('Historical Reload-Using Copy-into', true, "sql", "create") }}
                        {%else %}
  
-                            {{ stage('Historical Full Load-Using Copy-into', true, "sql", "alter") }}
+                            {{ stage('Historical Full Load-Using Copy-into', true, "sql", "create") }}
  
                         {%endif%}
 

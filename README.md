@@ -714,6 +714,8 @@ There are four configs within the **Node Properties** group.
 
 ![copy-unload-file](https://github.com/coalesceio/External-Data-Package/assets/169126315/02698cc6-1d16-4e0c-b0fa-c8d614a6e2ed)
 
+| **Setting** | **Description** |
+|---------|-------------|
 |**Coalesce Stage Storage Location of Stage(Required)**| A storage location in Coalesce where the stage is located|
 |**Stage (Required)**| Location in Snowflake(internal stage) or external stage or external location where the data files are unloaded|
 |**Partition by (Optional)**| Unload operation splits the table rows based on the partition expression and determines the number of files to create based on the number of unique values in a particular column (only sinlge column name expected)|

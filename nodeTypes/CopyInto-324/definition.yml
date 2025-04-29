@@ -143,11 +143,10 @@ metadata:
         - "ORC"
         - "XML"
         isRequired: false
-        enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"
 
       - displayName: Compression
         attributeName: compression
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('ORC') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('ORC') or config.inferschema == true) %} true {% else %} false {% endif %}"
         type: dropdownSelector
         options:
         - "AUTO"
@@ -164,52 +163,58 @@ metadata:
       - displayName: Record delimiter
         attributeName: recDelim
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) or ( config.inferschema == true and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
         default: "\n"
         isRequired: false
 
       - displayName: Field delimiter
         attributeName: fieldDelim
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') )  or ( config.inferschema == true and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
         default: ","
         isRequired: false
 
       - displayName: Field optionally enclosed by
         attributeName: fieldEnclosed
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))  or ( config.inferschema == true and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
         default: "\\042"
         isRequired: false
 
       - displayName: Number of header lines to skip
         attributeName: skipHeader
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
         default: "1"
         isRequired: false
 
+      - displayName: Parse header
+        attributeName: parsehdr
+        enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV'))  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        isRequired: false  
+
       - displayName: Skip blank lines
         attributeName: skipBlankLines
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))  or ( config.inferschema == true and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false
 
       - displayName: Trim space
         attributeName: trimSpace
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML')and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))  or ( config.inferschema) %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false
 
       - displayName: Replace invalid characters
         attributeName: replaceinvalidcharacters
-        enableIf: "{% if (config.fileFormatType != 'File Format Name') and config.inferschema == false %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name') or config.inferschema == true %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false    
 
       - displayName: Strip Outer Array
         attributeName: stripouterarray
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  or ( config.inferschema == true and config.fileType in ('JSON')) %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false   
 
@@ -217,25 +222,25 @@ metadata:
       - displayName: Date format
         attributeName: dateformat
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV'))  or ( config.inferschema == true and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
         isRequired: false
 
       - displayName: Time format
         attributeName: timeformat
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') )  or ( config.inferschema == true and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
         isRequired: false
 
       - displayName: Timestamp format
         attributeName: timestampformat
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV'))  or ( config.inferschema == true and config.fileType in ('JSON','CSV')) %} true {% else %} false {% endif %}"
         isRequired: false
       
       - displayName: Using vectorised scanner
         attributeName: usevectscan
         type: toggleButton
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') and config.inferschema == false) %} true {% else %} false {% endif %}"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )  or ( config.inferschema == true and config.fileType in ('PARQUET')) %} true {% else %} false {% endif %}"
         isRequired: false
 
     - groupName: Copy Options

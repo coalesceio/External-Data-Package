@@ -67,6 +67,15 @@ does not permit copying or modification for any other purpose.
                            {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
                            {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
 
+                            # File format sql
+
+                            {%set fileformatsql = "'CREATE OR REPLACE FILE FORMAT " +"\""+dbff+"\".\""+schff+"\".\"TEMP_"+desiredState.config.fileType+"\""%}
+
+                            {%set fileformatsql = fileformatsql + "\n"+ "TYPE" + " =''"+ desiredState.config.fileType+"''"%}
+
+                            {{stage('print')}}
+                            {{fieformatsql }}
+                           
                         {#Subfolder path #}
                         {%set subf = ""%}
                         {% set subfolder_value = desiredState.config.subfolder | default('') %}

@@ -36,7 +36,28 @@ There are four configs within the **Node Properties** group.
 | **Node Type** | Name of template used to create node objects |
 | **Description** | A description of the node's purpose |
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
-    
+
+    ### Key points to use CopyInto Node
+
+* CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
+* CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
+* The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
+*The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
+
+### Use CopyInto node with InferSchema option
+* Set Infer Schema toggle to true
+* Hit Create button to Infer Schema
+* To choose the file format configs,[refer link](#file-format-config-inferschema)
+* Click on Re-Sync Columns button
+* If all looks good, set Infer Schema button to false
+* Hit Create button to execute create table based on inferred schema
+* This is mainly a test to make sure create will work
+* Hit Run button to execute DML
+
+![image](https://github.com/user-attachments/assets/de3c4ce2-370e-43d0-a010-fc6131cd8669)
+
+If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table.
+
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
 **InferSchema-True**
@@ -145,26 +166,6 @@ The set of columns which has source data and file metadata information.
 * **FILE_ROW_NUMBER** - Row number for each record in the staged data file.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
-
-### Key points to use CopyInto Node
-
-* CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
-* CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
-* The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
-*The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
-
-### Use CopyInto node with InferSchema option
-* Set Infer Schema toggle to true
-* Hit Create button to Infer Schema
-* Click on Re-Sync Columns button
-* If all looks good, set Infer Schema button to false
-* Hit Create button to execute create table based on inferred schema
-* This is mainly a test to make sure create will work
-* Hit Run button to execute DML
-
-![image](https://github.com/user-attachments/assets/de3c4ce2-370e-43d0-a010-fc6131cd8669)
-
-If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table.
 
 ### CopyInto Deployment
 

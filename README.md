@@ -92,6 +92,13 @@ There are four configs within the **Node Properties** group.
 
 ![copy-into-file-format](https://github.com/user-attachments/assets/2a737c5f-3bb3-471a-9365-bf3251677415)
 
+##### File format config-Inferschema
+
+* It is not mandatory to create a file format in snowflake to infer the structure of the file
+* If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
+* If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
+* If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
+  
 ##### File Format Definition - File Format Name
 
 | **Setting** | **Description** |
@@ -286,6 +293,13 @@ There are four configs within the **Node Properties** group.
 
 **InferSchema-false**
 ![Snowpipe-file-format](https://github.com/user-attachments/assets/ae640901-16ce-4ed2-8e6c-efae278d3942)
+
+##### File format config-Inferschema
+
+* It is not mandatory to create a file format in snowflake to infer the structure of the file
+* If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
+* If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
+* If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
 
 ##### File Format Definition - File Format Name
 

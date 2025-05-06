@@ -13,12 +13,12 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_COMMA_QUOTED
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: Parkwork.CSV
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: true
     loadUncertainFiles: ""
     onError: ""

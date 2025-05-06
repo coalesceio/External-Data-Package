@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 7f11f16b-7962-4540-83bb-67f33e1ca2a3
-name: COPY_BABY1
+name: COPY_PARK1
 operation:
   config:
     compression: ""
@@ -2319,9 +2319,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_BABY1
+        name: COPY_PARK1
         noLinkRefs: []
-  name: COPY_BABY1
+  name: COPY_PARK1
   overrideSQL: false
   schema: ""
   sqlType: "324"

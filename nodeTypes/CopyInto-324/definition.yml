@@ -191,11 +191,12 @@ metadata:
         attributeName: parsehdr
         enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV') and config.fileFormatType != 'File Format Name'   %} true {% else %} false {% endif %}"
         type: toggleButton
+        default: true
         isRequired: false  
 
       - displayName: Skip blank lines
         attributeName: skipBlankLines
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false
 
@@ -209,6 +210,7 @@ metadata:
         attributeName: replaceinvalidcharacters
         enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
         type: toggleButton
+        default: true
         isRequired: false    
 
       - displayName: Strip Outer Array
@@ -217,7 +219,6 @@ metadata:
         type: toggleButton
         isRequired: false   
 
-        
       - displayName: Date format
         attributeName: dateformat
         type: textBox

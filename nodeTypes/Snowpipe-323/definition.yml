@@ -109,7 +109,6 @@ metadata:
         attributeName: subfolder
         type: textBox
         default: 'Enter folder name in stage if applicable-folder/subfolder'
-        enableIf: "{% if config.intextstage or config.inferschema%} true {% else %} false {% endif %}"
         isRequired: false
 
       - displayName: File Name(s) (Optional - Ex:'a.csv','b.csv' )
@@ -212,7 +211,7 @@ metadata:
 
       - displayName: Skip blank lines
         attributeName: skipBlankLines
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false
 

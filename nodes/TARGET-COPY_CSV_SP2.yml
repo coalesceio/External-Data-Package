@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSVFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: "'health_pipe.csv'"
     filePattern: "'.*hea.*[.]csv'"
     fileType: CSV
@@ -21,18 +21,20 @@ operation:
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""
-    onError: ""
+    onError: CONTINUE
+    parsehdr: true
     recDelim: |+
 
-    replaceinvalidcharacters: false
-    skipBlankLines: true
+    replaceinvalidcharacters: true
+    skipBlankLines: false
     skipHeader: "1"
-    stageName: SPSTAGESAMPLE
+    stageName: spstagesample
     stageStorageLocationName: TARGET
     stripouterarray: false
+    subfolder: null
     timeformat: ""
     timestampformat: ""
-    trimSpace: false
+    trimSpace: true
     truncateColumns: ""
   database: ""
   deployEnabled: true

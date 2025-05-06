@@ -13,12 +13,12 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: MY_JSON_FORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: order_details.json
     filePattern: ""
     fileType: JSON
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     onError: ""

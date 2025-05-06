@@ -516,7 +516,7 @@ does not permit copying or modification for any other purpose.
       {%elif desiredState.config.subfolder == None%}
         {%set subf = "" %}
       {%else%}
-        {%set subf = "/"+ subfolder_value %}
+        {%set subf = "/"+ subfolder_value+"/"%}
       {%endif%}     
         
    {%if currentState == undefined or (currentState != undefined and desiredState!=currentState) %} 
@@ -703,6 +703,7 @@ does not permit copying or modification for any other purpose.
                       {%- endfor %}
           
                       FROM '@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}{{subf}}') 
+                       
                        {{ filePatternSQL }}
       
                      {%- if desiredState.config.fileFormatType == 'File Format Name' %}

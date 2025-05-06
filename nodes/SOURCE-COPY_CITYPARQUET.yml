@@ -3,7 +3,7 @@ id: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
 name: COPY_CITYPARQUET
 operation:
   config:
-    compression: ""
+    compression: NONE
     dateformat: ""
     enforceLength: ""
     errornumber: ""
@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: PARQUETFILEFORMAT
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: cities.parquet
     filePattern: ""
     fileType: PARQUET
@@ -21,7 +21,7 @@ operation:
     ifileFormatLoc: ""
     ifileFormatName: ""
     ifileNames: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     istageName: Enter stage name-stage_name/folder/
     istageStorageLocationName: Enter Storage Location name
@@ -30,7 +30,7 @@ operation:
     purgeBehavior: ""
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     returnFailedOnly: ""
     sizeLimit: ""
     skipBlankLines: false
@@ -67,6 +67,25 @@ operation:
         defaultValue: ""
         description: ""
         name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
+          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -136,7 +155,7 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: aeade63e-1ede-4c59-9bc7-f764cfb25384
+          columnCounter: 8a1760d7-eef5-4823-b3f9-ef9cfc0ff10a
           stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: VARCHAR(16777216)
@@ -155,32 +174,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 90430912-761c-41cf-951a-2436c2c3afa9
+          columnCounter: 8a632b5e-f4d0-4f3e-8b8d-e324bc16b747
           stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
         config: {}
         dataType: VARIANT
         defaultValue: ""
         description: ""
         name: country
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: FILE_ROW_NUMBER
         nullable: true
         primaryKey: false
         sourceColumnReferences:

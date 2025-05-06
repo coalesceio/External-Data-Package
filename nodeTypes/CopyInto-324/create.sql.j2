@@ -86,7 +86,7 @@ does not permit copying or modification for any other purpose.
                                 {%set fileformatsql = fileformatsql + "\n"+ "FIELD_OPTIONALLY_ENCLOSED_BY"+ "=''"+ desiredState.config.fieldEnclosed+"''"%}
                             {%endif%}
                             {% if desiredState.config.skipBlankLines and desiredState.config.fileType in ('CSV')%}
-                                   {%set fileformatsql = fileformatsql + "\n"+ "SKIP_BLANK_LINES" + "=''"+ desiredState.config.skipBlankLines+"''"%}
+                                   {%set fileformatsql = fileformatsql + "\n"+ "SKIP_BLANK_LINES" + "=''"+(desiredState.config.skipBlankLines|string)+"''"%}
                             {%endif%}
                             {% if desiredState.config.parsehdr and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "PARSE_HEADER" + "="+ "TRUE"+""%}
@@ -99,6 +99,9 @@ does not permit copying or modification for any other purpose.
                             {%endif%}
                             {% if desiredState.config.stripouterarray == true and desiredState.config.fileType in ('JSON')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "STRIP_OUTER_ARRAY" + "="+ "TRUE" +""%}
+                            {%endif%}
+                            {%if  desiredState.config.usevectscan == true and  desiredState.config.fileType in ('PARQUET')%}
+                              {%set fileformatsql = fileformatsql + "\n"+ "USE_VECTORIZED_SCANNER" + "="+ "TRUE" +""%}
                             {%endif%}
 
                             {%set fileformatsql = fileformatsql + "'" %}

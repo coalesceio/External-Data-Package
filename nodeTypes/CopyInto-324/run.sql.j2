@@ -196,7 +196,10 @@ does not permit copying or modification for any other purpose.
            {%endif%}
            {%if config.usevectscan == true and config.fileType in ('PARQUET')%}
                USE_VECTORIZED_SCANNER = TRUE 
-           {%endif%})
+           {%endif%}
+           {% if config.fileType in ('CSV')%}
+              ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE
+          {%endif%})
         {%endif%}
 
         {% if config.onError != "" %}

@@ -4,7 +4,7 @@ name: COPY_PARKSAMP
 operation:
   config:
     compression: NONE
-    dateformat: ""
+    dateformat: YYYY-MM-DD
     enforceLength: ""
     errornumber: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
@@ -13,20 +13,18 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_COMMA_QUOTED
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: Parkwork.CSV
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     onError: ""
-    parsehdr: false
+    parsehdr: true
     purgeBehavior: ""
-    recDelim: |-
-
-      \n
+    recDelim: ""
     replaceinvalidcharacters: true
     returnFailedOnly: ""
     sizeLimit: ""
@@ -37,7 +35,7 @@ operation:
     storageintegration: ""
     stripouterarray: false
     subfolder: ""
-    timeformat: ""
+    timeformat: HH24:MI:SS
     timestampformat: ""
     trimSpace: false
     truncateBefore: false
@@ -52,2172 +50,6 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 606df4b8-2804-4464-b26a-699b93e58a25
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: STATE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f83089fa-2aa5-4629-bbd3-966d8621cbcb
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: STATENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: c5c8ebb1-85cf-44d7-b475-5504ca9cdebb
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(6,0)
-        defaultValue: ""
-        description: ""
-        name: ST_CASE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 66175299-7c44-4927-a012-1c573160cbb7
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: VEH_NO
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: af4425a4-b909-4f1f-8c07-58d52f322d90
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PVE_FORMS
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2872d56e-801c-4f7b-8971-f072b36ce902
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PNUMOCCS
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e5dea969-845a-4061-ab50-2d10523a80ba
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PNUMOCCSNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9500ac84-a445-4b49-b69e-389f270bf034
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PDAY
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 341f5949-3184-4f4d-a8f4-accbc4c482f1
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PDAYNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 39ebe65a-174e-4287-93d7-21c2cd5d3470
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PMONTH
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a8cabf08-6165-49a4-b885-4afaf9d6c7cc
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMONTHNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1f15be1f-b606-4121-834e-ca382d72da54
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PHOUR
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 91de1a10-bb2c-41ea-803a-de26108bd8e8
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PHOURNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0a975244-e031-455b-b8a4-424d74d83186
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PMINUTE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 470f7b29-1b85-45f0-ad98-892f453a074b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMINUTENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 33564621-996c-42dd-bbe7-ca407558bffe
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PHARM_EV
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 94a028c5-fd6e-455f-8914-427b0d2833cc
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PHARM_EVNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 64c9d971-8bad-4360-99db-730be5c9b031
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PMAN_COLL
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d4bbd6ff-1167-4fb5-a248-acf9f4fd792b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMAN_COLLNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3080f061-c6a2-491f-9575-801b19a093df
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PTYPE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 855ea2da-c649-4c34-9b52-b274f0d52906
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTYPENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6879f525-8a5a-4488-97f4-47e995b6a0ff
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PHIT_RUN
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e099d9da-85ed-4e31-a37e-903a1c37ed9c
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        name: PHIT_RUNNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 285f4a69-fff3-47a0-8407-2b02093d19f6
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PREG_STAT
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 895a7575-c5dd-4bb1-9062-dfdf16baf1f1
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PREG_STATNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e490d4c6-f99c-49c8-a00a-7f212f20fdd1
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: POWNER
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 80dd8a3b-e293-4666-a5b4-598f324df063
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: POWNERNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 685f9cc4-fbc4-403a-bf1d-47ee407df37b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PMAKE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e84060e6-5710-4fd9-ba00-75dd0409ff31
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMAKENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3ded55d2-477b-4d8c-8532-1a946e539095
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(3,0)
-        defaultValue: ""
-        description: ""
-        name: PMODEL
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e29cc157-7cd9-4edf-9963-378a649181ca
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMAK_MOD
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4364c114-2114-418c-a94a-b33d85fca02d
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PBODYTYP
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: dd0c5b6f-7e84-4d96-8be2-0cfa145494e8
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PBODYTYPNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0fb14c2a-82c3-484b-a46e-7b379fcf4d51
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: PMODYEAR
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: c9c8de78-ebe6-48e0-873f-129f9a0e137b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMODYEARNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 00d57b2d-c5ab-4c13-9e02-9c1f2bdf9678
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d3e88c2f-977a-4f13-ae54-0577489694ac
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVINNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9fbdae2e-66a4-4de6-928a-b3ed895dba89
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_1
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 738012af-6a12-420b-a8dd-f72204783862
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_2
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ceabe6ee-993f-4783-b2f9-55f134cda478
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_3
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3b7539d3-d822-462b-85d6-8abe9f8b87bc
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_4
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ddfc951b-4e62-4434-8483-4b903170c518
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_5
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: c003259c-ae75-40f2-b8db-80fd36c477a9
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_6
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3d4db3a1-b78f-49c5-9dbc-3f55e8c27730
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_7
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8c8f482a-1823-4127-a88b-ce6394d92077
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_8
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8f02be2e-9910-4b4c-9fb1-2edc9e750b1f
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_9
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 28d803f7-a55c-4a08-8d15-7a054dff8993
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_10
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3e4aa67c-a43d-4c46-a0c7-064734807b58
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_11
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5aec3ce0-026a-4664-8c53-c86f7694621d
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVIN_12
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f367f2b5-eec6-4d49-8bd3-0c047c39ed7a
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PTRAILER
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7f5959fb-7b1a-40a6-8f7b-c37a43f0cc66
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRAILERNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: cbd5b563-5dcf-44d6-bc9e-f5f28281bd00
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PMCARR_I1
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 97f3c6e7-f689-4405-9a42-5a0994c0b5b1
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMCARR_I1NAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 32c0c13f-ee47-4edc-a548-cef6b6651c7c
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMCARR_I2
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 6e2b926d-abf9-44f8-a801-004eff3627b8
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMCARR_I2NAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 314f57dd-733e-4cdd-bd69-a7bf2d95e211
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMCARR_ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 09070cac-526b-4788-ae05-b23f27abe075
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PMCARR_IDNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: b3e04442-8d33-4867-a394-7950e03ec844
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PV_CONFIG
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ba6f0f95-a9dd-4b8d-897e-ff3369fffd0f
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PV_CONFIGNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 42eb360e-25af-4987-9b79-e5bb016bc5a1
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PCARGTYP
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 87470f5d-a03c-46ed-9944-6aa07c957897
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PCARGTYPNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 24411d51-6fac-4e21-a096-4ae9189aa4c2
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_INV
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 00e28996-0657-4b09-a43a-87857f6f3e0a
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        name: PHAZ_INVNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ed53103f-9f0d-4c28-a058-1d1a9549ec54
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PHAZPLAC
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 09625a6c-6942-4d7c-8165-c8dcfc64da30
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PHAZPLACNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 893f58b1-8e4d-4b35-a064-f94e9195faca
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_ID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: b3607321-093e-4156-bdc8-4cae977d180a
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_IDNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4a1b3c0e-75cc-4cc3-b0e9-1f014d2fc643
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_CNO
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: baf57c3b-9282-4c2c-ac91-499b42c34e9e
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_CNONAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f66f8590-96a0-4094-9fad-7fea049d06f3
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_REL
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 43914e0e-0e3c-4434-8d2b-2808ff802df9
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PHAZ_RELNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: fc7bd400-74b8-4dc0-9358-dbd43a1ccc7e
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PBUS_USE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0e7e26e3-eb7e-4f69-aad5-05a3af9d1e60
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PBUS_USENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f4f07bc0-85a2-43a4-8b6f-d019c19cb534
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PSP_USE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 9ea3158c-b5f1-415a-9188-6185bd13f5ee
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PSP_USENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: dd9470ca-aa05-4645-9882-0afb20eddceb
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PEM_USE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 59939a55-19f7-4e51-986f-1297ec874dc2
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PEM_USENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 790bc648-57cb-46f2-bcbc-16207cf10934
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PUNDERIDE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: b1ff7583-d439-4ac6-9d44-a560bf58f1c5
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PUNDERIDENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 97456aa5-3afd-40d3-a018-badc487dc95b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PIMPACT1
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e16fa12f-d59a-46f1-96db-0612cb698397
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PIMPACT1NAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1d61b35a-79ce-490a-8071-bad843e98a3e
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PVEH_SEV
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: acfa1bf2-e154-4f79-ae07-4121a225e922
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVEH_SEVNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 38abd799-6fbe-40c2-8158-d2596c98539e
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PTOWED
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 257fe177-6803-4d9d-964a-17f716c25d3a
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTOWEDNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 721f2ce7-a4b8-438d-ae74-c6e87d0906ba
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PM_HARM
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e4c9107a-90aa-408a-aebd-1174c6834a5b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PM_HARMNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7c06f521-82e0-4a2e-8809-1ebcf6781a92
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PFIRE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: bdce5674-6781-490c-8af8-d5f2e45c938a
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PFIRENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 98339d12-e0d2-456a-acf8-be21b817f650
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(1,0)
-        defaultValue: ""
-        description: ""
-        name: PDEATHS
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 1677e922-7038-41fa-9a2e-69089de06de8
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR1VIN
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 895f7b3b-0f7f-439b-ad50-9efbe0e692cc
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR1VINNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 66620c4a-c463-4888-a087-8bb1b5e41b6e
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR2VIN
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2ef919d9-670b-4db6-a11f-eec89ff2203b
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR2VINNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8e6c2ebf-f666-44fe-b7c1-6f1a00c85334
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(12,0)
-        defaultValue: ""
-        description: ""
-        name: PTRLR3VIN
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a363c57f-84ca-4689-9392-7fa6ed72651f
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR3VINNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 3dcf13d6-fb51-425d-af57-abb4c5bbd546
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(5,0)
-        defaultValue: ""
-        description: ""
-        name: PVPICMAKE
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 95bc21fe-717e-47cd-9d52-7f49c9c717a9
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVPICMAKENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d367a7aa-801f-4b0f-ac20-4c1ab7305647
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(5,0)
-        defaultValue: ""
-        description: ""
-        name: PVPICMODEL
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 957458da-0bcc-46c5-8223-5ec98879929c
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVPICMODELNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 507f944b-9b1a-4e18-8fc6-0ba1af5b9a7d
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(3,0)
-        defaultValue: ""
-        description: ""
-        name: PVPICBODYCLASS
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5b662684-fe86-428d-86f0-b1563e3db50f
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PVPICBODYCLASSNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 917300e9-900e-4ede-9188-91750119625d
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(3,0)
-        defaultValue: ""
-        description: ""
-        name: PICFINALBODY
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 94e3c84b-a365-45cc-b245-4396bb9ccc05
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PICFINALBODYNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 679d3236-ae89-4212-839b-a26fc51b062d
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PGVWR_FROM
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 13ed4b7e-d8be-4d41-832d-953d0f2ed77c
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PGVWR_FROMNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 93032cfd-9221-4577-8a86-033af51bcbf2
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PGVWR_TO
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a62c86e6-f74b-49df-8060-76ae90a03b6e
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PGVWR_TONAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7e325b96-20cb-4808-ad96-65d7bad2c5c2
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PTRLR1GVWR
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 2bea6624-ba6e-4870-9567-5007d249428f
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR1GVWRNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7fb1b4e9-4037-4911-aebe-370b167559c5
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PTRLR2GVWR
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: b124b061-2312-401c-958a-e445cc80dc92
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR2GVWRNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7542916f-08a8-475c-8ac6-7960b0112439
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: PTRLR3GVWR
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: cbfcc379-ef10-4f64-8370-bdd0a69b9090
-          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PTRLR3GVWRNAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
@@ -2306,6 +138,2172 @@ operation:
         defaultValue: ""
         description: ""
         name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b382ca51-29a3-4560-a741-bc1b4cb5da18
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: STATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ed3b5e9e-9677-497e-89a6-f583797d613a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: STATENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d6c0c8a3-f921-45f7-8e1d-80cf43e43997
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(6,0)
+        defaultValue: ""
+        description: ""
+        name: ST_CASE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d97c8a4-5d8f-409a-9ec3-6b0009ca8d9f
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: VEH_NO
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: be0a07f0-392a-459c-9c0b-3f275deff3bf
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PVE_FORMS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5c659622-ab7c-4ed7-b758-895a719844ca
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PNUMOCCS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32c95a91-3c30-4bf2-8bc0-91b73007751d
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PNUMOCCSNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f93c8020-30b3-45c1-a5a1-78c9598fc6f2
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PDAY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ef679bc-e197-4db5-afeb-593820273a81
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PDAYNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6cdaf568-1357-4c30-b13b-d45358ff314e
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PMONTH
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00a3c0a9-e6b3-44ca-a558-06b79e9fe511
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMONTHNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 30bcac62-f5f7-49ec-b357-13f0d1148da0
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PHOUR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b10c9625-0e59-49e7-8cec-36cb73be11d8
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHOURNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 50b01558-86dd-4239-b752-d7588e2e5715
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PMINUTE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 552cf14a-910b-41d7-b2c8-49d219c6cacb
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMINUTENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 571be0eb-3b8f-406a-9808-d896780f6400
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PHARM_EV
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17811030-98b7-4d6a-9ba8-0e5670db7ce8
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHARM_EVNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f401959-a6f4-4857-b0e1-f82e48bd0ac3
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PMAN_COLL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: af159613-c61e-4512-9f76-7c2f003a6b83
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMAN_COLLNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42002840-bb3f-49a4-824a-f92b67392f12
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PTYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ab719ba-9844-4d13-9335-36db4d3e822f
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTYPENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 96457ccc-8bd8-4edd-8a08-fa408a0e5c46
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PHIT_RUN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1e47ab0-f1ff-466d-a36e-cd9e63e82109
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: PHIT_RUNNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d90cc8d4-d0f0-4599-9b29-dde2cf0cd8a9
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PREG_STAT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 65efffd4-23c7-4c82-8004-c7e77437a922
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PREG_STATNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d6cd329a-339c-4bb0-b3d5-fa6ed86e4b59
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: POWNER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4ac5049c-ea8d-45ba-901d-1d08b26c52f8
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: POWNERNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b4d3ebb3-d146-4cf9-a8fa-80a4f168cc76
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PMAKE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7976c5e5-c405-4c9e-beee-42928b018b23
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMAKENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9f266c96-1604-4bb8-ba3f-8c864cd7a6ec
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: PMODEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 149cd31b-5d9e-4b21-83f3-0b6a58b4fb1c
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMAK_MOD
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40027977-d33a-456f-b7bb-f647b47b29ca
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PBODYTYP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c2d43f2e-7eb0-49f7-8f14-fd8e1e5b53e9
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PBODYTYPNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9ff8482b-2374-4568-8023-b444898ebfd1
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: PMODYEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0507f376-e382-45a0-bf85-848181cb9633
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMODYEARNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cfceecaa-3ec5-4285-9e41-97a3a92200d2
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8929b024-e26d-4ece-aaa3-aca02a0e86cf
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVINNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccc27f41-adf8-42d6-80be-f61cd9725a50
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ebb89e4-d5cb-456e-a418-bc1f00358e33
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc70d70c-8508-4072-b51f-f1ec7b358e24
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 54558757-ca53-4b31-94bc-05a2e93d15ab
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_4
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fc3a4b44-8f9e-47d5-83d9-834d9408d5df
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_5
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1bd0c76c-2d3c-4e1b-a4b7-c2007b36b307
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_6
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a392b55b-6a6e-4899-88e8-73b34042e502
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_7
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e4218a4-0380-4d99-a03f-d2978f621cda
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_8
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27c668c7-c90d-4633-b6bd-b0e2945fe364
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_9
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 99b8a454-465f-45d8-bb91-38cf171bff4a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_10
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: db7e3fa6-eba7-4f37-9a4f-f4ea9f016e2d
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_11
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c62d5f3b-0056-4567-a008-3c4919874143
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVIN_12
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 636342ef-cb51-47d9-a0b1-27251358b33b
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PTRAILER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e8c2bc35-ec7c-4d3a-b8aa-685b8e7ab99f
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRAILERNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 46eb7a02-12d0-4f3e-997c-d3806f52ba17
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PMCARR_I1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 52fda2d6-3d89-4422-9103-6f8753bf35de
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMCARR_I1NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 301cffad-4ad1-4345-88e0-66855057dcf4
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMCARR_I2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c042e09-6ec2-4374-bbf5-acdf93661051
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMCARR_I2NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f8be4978-9397-44fa-8039-af51596329bc
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMCARR_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c85496c4-46fd-440c-8caa-a4a81b70a323
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PMCARR_IDNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d61504d2-7716-4710-a46b-fe434f58ead4
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PV_CONFIG
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e31b13f6-eb0e-4b19-9cc4-c2f3a97a2a37
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PV_CONFIGNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d0313566-640b-4bc7-9113-d0740e808bd2
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PCARGTYP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a246455-2ad1-4f05-b04f-42e437eafb3e
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PCARGTYPNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5576d164-90e6-4566-9972-661c3231a1d1
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_INV
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b27153c3-1bcd-4123-b770-1a489cfd9926
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: PHAZ_INVNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f7af5cf5-a5eb-4a1f-aa56-901ce0c3e0c4
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PHAZPLAC
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cba6b4bd-cfef-4df2-9cce-a46c40973e5c
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHAZPLACNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a547cbca-69b0-48dd-b153-fd57ef862850
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d0c2ef3-ee80-46e0-b61d-700414d148d8
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_IDNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc71214b-0837-4b1c-917e-f27cc650739f
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_CNO
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 095b5986-e592-4ac7-81ad-a4d20546a232
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_CNONAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b2effafd-8cf3-4ca0-b2c6-cef878945efe
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_REL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7e75217-a1c2-4239-83dc-8215a1b3bf4f
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PHAZ_RELNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 686f1780-960f-4abc-800e-ac3012563edd
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PBUS_USE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b2c66a2-6bfa-4138-85af-c3bc98a33a07
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PBUS_USENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 105ddab1-c0c3-4a41-a5cd-72d72f0adf43
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PSP_USE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 45bc82d8-0f7e-4328-8148-cfce68c4bc97
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PSP_USENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b2420e9-12cc-4883-9cda-7d70eb95fec8
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PEM_USE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 288614b5-1439-403b-972a-d0a23fa694c2
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PEM_USENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0fdb6ea5-b865-47a1-b0fe-f1e6c03f051a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PUNDERIDE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40cdd6e1-9501-4426-a070-4b8587dddb82
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PUNDERIDENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 874e0993-9464-45db-a497-cbe9070dfd61
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PIMPACT1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6bbd8fc0-54e8-4844-91a6-a63e83748020
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PIMPACT1NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ce74e38-4511-42e5-8bdc-e85ea774b0cc
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PVEH_SEV
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aa550d40-f6d6-42ec-bfe3-691c8b43d857
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVEH_SEVNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36b03616-f726-43bb-96a8-1794afc965d3
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PTOWED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b585633c-60fe-46af-bd81-8ed806191c42
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTOWEDNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2cc6c8dc-baf4-4d7e-9694-33c0ecb9b1bd
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PM_HARM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 586cd948-67b2-4136-b400-3fc20cf0288a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PM_HARMNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a9d12d9-7f08-44dc-b4b7-472ccd2bc49a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PFIRE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c18d909f-d463-4c9d-b130-0cbbcbf1eeb3
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PFIRENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e4451759-965c-4168-8365-899a915d7cb1
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: PDEATHS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1bdeb37-e43b-4ad4-b8a3-e287f2f625a5
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR1VIN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a19e5739-041d-4ae0-9fcb-b69dafa6c137
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR1VINNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4a8b6f2a-0738-4b26-bcb9-59714d01d772
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR2VIN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 909911a8-dc19-4c2c-9b3e-1a24c80088d9
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR2VINNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ed61165f-21b9-4360-8e99-bc57b37d7892
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(12,0)
+        defaultValue: ""
+        description: ""
+        name: PTRLR3VIN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: aa50b788-2a58-4c5a-b31a-6737b0251edd
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR3VINNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cd83972e-6cb2-4847-95bd-8fa2f51a6e0e
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: PVPICMAKE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31d5ad16-dd8b-470a-b64d-8e49563b12b4
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVPICMAKENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 663c8921-c4bc-43b1-aff9-042c31117dad
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: PVPICMODEL
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1b318a6-44cf-4ae2-bba9-507d0679bd16
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVPICMODELNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b4a400e-23f5-42be-8a69-0a195400276c
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: PVPICBODYCLASS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0b657da9-36c0-4259-a86b-3206cb387c5a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PVPICBODYCLASSNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0106013-0f26-4a82-8836-906a7a946f5b
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: PICFINALBODY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cbe20910-ea54-45d9-81f2-faeff370eb3f
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PICFINALBODYNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b9e66c75-2771-4141-a46e-096790644fef
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PGVWR_FROM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5d4601eb-ea20-4369-8b0b-00fc9be391c4
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PGVWR_FROMNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c4c907ac-d889-4aa8-a08f-6b842dbc80cc
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PGVWR_TO
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b10709c9-c46f-45b1-9b8e-81e70e81393a
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PGVWR_TONAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 039becff-8fa1-477c-8f0b-9fa57edb2f44
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PTRLR1GVWR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a934ff93-bd2d-46a8-8ff6-e19141ba1864
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR1GVWRNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b72f292d-9950-44ac-b530-e2ac42970f47
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PTRLR2GVWR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ef1db2b-ec24-4e3e-822d-b2ba4331ea67
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR2GVWRNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16646f29-4706-4ec9-8028-ef5abc11ace7
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PTRLR3GVWR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 375bfcb8-1907-43ef-a396-b730f4e3dbbc
+          stepCounter: c45c78bb-f054-4fc6-bb0f-3e13fad931c0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PTRLR3GVWRNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:

@@ -21,7 +21,7 @@ operation:
     ifileFormatLoc: SOURCE
     ifileFormatName: avrofileformat
     ifileNames: twitter_samp.avro
-    inferschema: true
+    inferschema: false
     intextstage: true
     istageName: STAGE_LOCAL
     istageStorageLocationName: SOURCE
@@ -105,6 +105,101 @@ operation:
         description: ""
         name: timestamp
         nullable: false
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 92b270e0-5c39-410c-94f7-4f8515bbccf8
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 785667cd-1756-4ae9-a14a-c2752df180d6
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ded70f62-a47e-4732-bdc2-1653a9910443
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b9b394c-8377-4a28-9db6-7a7b0d4d13aa
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ff3f7070-5e63-4866-be02-032cf06de197
+          stepCounter: adc51882-f154-4847-9f6c-ed74a6914e56
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []

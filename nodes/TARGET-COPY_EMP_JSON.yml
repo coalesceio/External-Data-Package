@@ -1,285 +1,109 @@
 fileVersion: 1
-id: 265978d9-9e2d-48f8-a350-b174849b62c6
-name: COPY_SP_PARQUET
+id: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+name: COPY_EMP_JSON
 operation:
   config:
-    awsSnsTopic: ""
-    cloudProvider: AWS
-    compression: NONE
+    compression: AUTO
     dateformat: ""
     enforceLength: ""
     errornumber: ""
-    fieldDelim: ","
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
+    fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: TARGET
-    fileFormatName: PARQUETFILEFORMAT
+    fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'employees.parquet'"
-    filePattern: ""
-    fileType: PARQUET
-    flagLoadHistorical: true
-    flagSnowpipe: Enable Snowpipe
+    fileNames: employees.json
+    filePattern: "'.*.*[.]json'"
+    fileType: JSON
+    forceLoad: ""
+    ifileFormatLoc: null
+    ifileFormatName: null
+    ifileNames: null
     inferschema: false
-    integration: ""
+    intextstage: true
+    istageName: null
+    istageStorageLocationName: null
+    loadUncertainFiles: ""
     onError: ""
-    recDelim: |+
-
-    replaceinvalidcharacters: true
-    skipBlankLines: true
+    purgeBehavior: ""
+    recDelim: \n
+    replaceinvalidcharacters: false
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
     skipHeader: "1"
-    stageName: SPSTAGESAMPLE
+    stageName: spstagesample
     stageStorageLocationName: TARGET
+    storageintegration: ""
     stripouterarray: false
     subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false
+    truncateBefore: false
     truncateColumns: ""
-    usevectscan: true
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: ca2f70ae-ab30-412a-9ed5-cfc99b3b1b53
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0f1f2f88-de4d-43fb-a25b-effac56d8971
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: a81d97b0-2ae0-423c-aca8-b8b3dc7066d1
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
         name: FILE_ROW_NUMBER
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 7fcc6a6d-3814-4d29-bc7d-f31cccf117e4
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 29f03181-ad0b-4f12-abe1-dce8d32f2ad1
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 40a2e508-8f24-4873-a616-2cb1a19651bc
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 7f977298-7eeb-47b7-b4b8-93ab99e5f345
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: LOAD_TIMESTAMP
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: 9561029c-d68f-4816-8a1e-fb25caea31df
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 474671ba-fb13-4d76-af00-015c8a11b2cd
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
+        nullable: false
+        sourceColumnReferences: []
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 74957bba-ab5e-4f05-9551-efb0793891e0
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: EmployeeID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 552052ba-e71b-4015-8fc4-6cecd0d2d2b8
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: LastName
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 27736bc9-d0b4-406e-95fe-c6fb666b7b05
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FirstName
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4e48c394-8b4e-4a95-ac56-56de4200fed4
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: Title
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 15704270-c04a-4726-9019-8c8a2d88ce03
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: TitleOfCourtesy
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d913cbb3-fa85-4926-b506-2201fc882d2b
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: BirthDate
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f8b73dac-8505-4be2-82b0-f1c42da0fc7c
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: HireDate
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8983d921-4fc1-4185-b885-4c2c1d439b35
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 829a7bea-e9c3-42d0-9bde-a43865781650
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -297,8 +121,27 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: eac747a3-9e50-471d-978b-f746e5b862f9
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 50b9c502-e4bb-4f9f-b986-31fdfccd0e84
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: BirthDate
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a9b92924-7bd5-4696-85c1-7ff1476ed2f5
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -316,46 +159,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 93a96501-3768-4c7d-85f2-1c9a7390f345
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: Region
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 38938549-ed02-48c2-8482-ddb835791d62
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: PostalCode
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ac86fa3d-d8df-462a-9952-4ffbcf8130c2
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: fdb511d6-ffea-4db8-84d5-4f6c393bedb0
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -373,8 +178,84 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b4ebc0bc-8ae4-483f-97cf-38b6a21b43b7
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 17fcde37-5e94-4a71-86ce-f751f23e49f2
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: EmployeeID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f38b9ac2-5edf-4cc4-9da1-387c8e4d79ef
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: Extension
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9a355dbb-8365-4fb6-b093-076e8db9fb70
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FirstName
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fce563f5-423d-407b-b004-f835d5610eab
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: HireDate
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab2d0057-889b-4a04-80f4-d320dbdf0ce6
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -392,13 +273,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: bdc3773e-5a20-44b2-803c-26098f257079
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: 9e0b0125-1437-4ca0-abc9-25a79024f95a
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Extension
+        name: LastName
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -411,10 +292,48 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4cb6de2d-d064-4560-980b-55f4d3aee2a3
-          stepCounter: 265978d9-9e2d-48f8-a350-b174849b62c6
+          columnCounter: c4d49b03-d1ab-4144-a690-04b41a4b10c8
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
-        dataType: NUMBER(38,0)
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: PostalCode
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a19fc148-d95a-439c-b863-9d4c4654a3aa
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Region
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cb71de4c-5ef0-4b55-b36c-331188df3291
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: NUMBER(1,0)
         defaultValue: ""
         description: ""
         name: ReportsTo
@@ -425,8 +344,68 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc67cbad-fa57-4c4b-bbec-d4d7830a1295
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Title
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5d879c68-38cd-4eb5-8c3e-c0fa707524e5
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: TitleOfCourtesy
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1bc04bd-ff9c-467f-86d1-693690be2392
+          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:
@@ -434,12 +413,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_SP_PARQUET
+        name: COPY_EMP_JSON
         noLinkRefs: []
-  name: COPY_SP_PARQUET
+  name: COPY_EMP_JSON
   overrideSQL: false
   schema: ""
-  sqlType: "323"
+  sqlType: "324"
   type: sql
   version: 1
 type: Node

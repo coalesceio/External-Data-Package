@@ -1,45 +1,52 @@
 fileVersion: 1
-id: 92b5e681-1480-444c-9d35-e53bc12aa8e9
-name: COPY_ORDDET_JSON_SP
+id: 127ada21-159c-4d71-96b3-b930451a66d1
+name: COPY_ORDERS_JSON
 operation:
   config:
-    awsSnsTopic: ""
-    cloudProvider: AWS
     compression: ""
     dateformat: ""
     enforceLength: ""
     errornumber: ""
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: TARGET
-    fileFormatName: JSONFILEFORMAT
-    fileFormatType: File Format Name
-    fileNames: "'order_details.json'"
+    fileFormatLoc: SOURCE
+    fileFormatName: MY_JSON_FORMAT
+    fileFormatType: File Format Values
+    fileNames: order_details.json
     filePattern: ""
     fileType: JSON
-    flagLoadHistorical: true
-    flagSnowpipe: Enable Snowpipe
+    forceLoad: ""
     inferschema: false
-    integration: ""
+    intextstage: true
+    loadUncertainFiles: ""
     onError: ""
+    parsehdr: false
+    purgeBehavior: ""
     recDelim: |+
 
-    replaceinvalidcharacters: false
-    skipBlankLines: true
+    replaceinvalidcharacters: true
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
     skipHeader: "1"
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
-    stripouterarray: false
-    subfolder: null
+    storageintegration: ""
+    stripouterarray: true
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false
+    truncateBefore: false
     truncateColumns: ""
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
+  locationName: SOURCE
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -49,8 +56,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1553dcda-37e9-4b0e-8ad2-bab7a0af96b1
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: e09661f8-3c3d-43b8-8bee-abf8e656fb22
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(11,10)
         defaultValue: ""
@@ -68,8 +75,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9953115b-94af-4f08-9a2e-d5ae4f1eecde
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: 603f5a3b-5671-4733-a719-5b657ebcec50
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(4,0)
         defaultValue: ""
@@ -87,8 +94,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 210b5114-e723-4186-b670-e9041358d91e
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: 87c052bb-c1b8-4b49-b7cf-264decfd4799
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(2,0)
         defaultValue: ""
@@ -106,8 +113,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 079133dc-d639-4388-a028-86209f843db7
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: 2d27ca3d-02e2-467c-8c49-ee4a9e7c30db
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(2,0)
         defaultValue: ""
@@ -125,8 +132,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 33b35d83-c49f-4c11-b537-56503d1bbcc8
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: 7f11cb6d-b15c-4327-921f-6d5cf75667ba
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(3,0)
         defaultValue: ""
@@ -144,8 +151,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 241d109c-540e-4942-aef3-489660d95f63
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: e2163ad0-a5af-4df3-931b-6f1ea30434c9
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(5,2)
         defaultValue: ""
@@ -163,10 +170,10 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4b359634-a499-43ad-8fb3-2f426427d7a1
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: aa65adc2-5f6b-40a2-884b-fec18afeedc9
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: FILENAME
@@ -182,8 +189,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 59c4ea2e-7848-48a7-beb7-2e2928046090
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: b0d1c384-8b05-4bcf-845a-400a1ef19102
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -201,8 +208,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3717cd90-2f70-4570-a238-d9b6946e9c71
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: fdbb6045-a636-4c93-9006-453934024a98
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -220,8 +227,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1492419b-56a7-4f25-b48d-ed9f7b91fe86
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: 5779b2e8-7f8d-4d3e-a349-638f1721ce15
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -239,8 +246,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8f0dff03-d85b-4884-8936-989256372d47
-          stepCounter: 92b5e681-1480-444c-9d35-e53bc12aa8e9
+          columnCounter: f16806d7-be79-43eb-9495-5ca02273a218
+          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -262,12 +269,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_ORDDET_JSON_SP
+        name: COPY_ORDERS_JSON
         noLinkRefs: []
-  name: COPY_ORDDET_JSON_SP
+  name: COPY_ORDERS_JSON
   overrideSQL: false
   schema: ""
-  sqlType: "323"
+  sqlType: "324"
   type: sql
   version: 1
 type: Node

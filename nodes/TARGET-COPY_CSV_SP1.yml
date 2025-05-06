@@ -30,6 +30,7 @@ operation:
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
+    subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false

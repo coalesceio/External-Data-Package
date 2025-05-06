@@ -14,7 +14,7 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: order_details.json'
+    fileNames: order_details.json
     filePattern: ""
     fileType: JSON
     forceLoad: ""
@@ -269,7 +269,6 @@ operation:
         dataType: string
         defaultValue: ""
         description: ""
-        keyColumnType: None
         name: Dis
         nullable: true
         sourceColumnReferences:
@@ -278,7 +277,6 @@ operation:
                 stepCounter: "0"
             transform: |2
                     substr($1:Discount::NUMBER(11, 10),1,5) 
-        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

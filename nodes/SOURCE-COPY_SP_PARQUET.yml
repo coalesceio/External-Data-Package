@@ -13,13 +13,13 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: TARGET
     fileFormatName: PARQUETFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: "'employees.parquet'"
     filePattern: ""
     fileType: PARQUET
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    inferschema: false
+    inferschema: true
     integration: ""
     onError: ""
     recDelim: |+

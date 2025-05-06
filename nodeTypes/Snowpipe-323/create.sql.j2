@@ -114,6 +114,9 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.stripouterarray == true and desiredState.config.fileType in ('JSON')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "STRIP_OUTER_ARRAY" + "="+ "TRUE" +""%}
                             {%endif%}
+                            {%if  desiredState.config.usevectscan == true and  desiredState.config.fileType in ('PARQUET')%}
+                              {%set fileformatsql = fileformatsql + "\n"+ "USE_VECTORIZED_SCANNER" + "="+ "TRUE" +""%}
+                            {%endif%}
 
                             {%set fileformatsql = fileformatsql + "'" %}
                           {%endif%}

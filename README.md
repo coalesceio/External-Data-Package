@@ -83,12 +83,12 @@ There are four configs within the **Node Properties** group.
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 
-**InferSchema-true**
+**File format definition-File format name**
 
 ![Copy-Into format](https://github.com/user-attachments/assets/9e4e8f7e-29be-4209-a08b-cb19fadccf05)
 
 
-**InferSchema-false**
+**File format definiton-File format values**
 
 ![copy-into-file-format](https://github.com/user-attachments/assets/2a737c5f-3bb3-471a-9365-bf3251677415)
 
@@ -98,6 +98,7 @@ There are four configs within the **Node Properties** group.
 * If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
+* The temporary file format created follows the naing convention ==>TEMP_{{file_type}}_((node name}}.Ensure that any predefined file formats created in snowflake does not have the same file format name.
   
 ##### File Format Definition - File Format Name
 
@@ -225,6 +226,24 @@ The Coalesce Snowpipe node is a node that performs two operations. It can be use
 
 This means you can load data from files in micro-batches, making it available to users within minutes, rather than manually executing COPY statements on a schedule to load larger batches.
 
+### Key points to use Snowpipe Node
+
+* Snowpipe node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
+* Snowpipe node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
+* The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
+*The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
+
+### Use Snowpipe node with InferSchema option
+* Set Infer Schema toggle to true
+* Hit Create button to Infer Schema
+* To choose the file format configs,[refer link](#file-format-config-inferschema)
+* Click on Re-Sync Columns button
+* If all looks good, set Infer Schema button to false
+* Hit Create button to execute create table based on inferred schema
+* This is mainly a test to make sure create will work
+* Hit Run button to execute DML
+
+
 ### Snowpipe Node Configuration
 
 The Snowpipe node type the following configurations available:
@@ -284,14 +303,17 @@ There are four configs within the **Node Properties** group.
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
 | **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
+| **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
   
 <h3 id="snowpipe-file-format"> Snowpipe File Format </h3>
 
-**InferSchema-true**
+**File format definition-File format name**
+
 ![image](https://github.com/user-attachments/assets/acb50407-40ff-4bd1-aeb5-e855b9b4da3f)
 
-**InferSchema-false**
+**File format definition-File format values**
+
 ![Snowpipe-file-format](https://github.com/user-attachments/assets/ae640901-16ce-4ed2-8e6c-efae278d3942)
 
 ##### File format config-Inferschema
@@ -300,6 +322,7 @@ There are four configs within the **Node Properties** group.
 * If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
+* The temporary file format created follows the naing convention ==>TEMP_{{file_type}}_((node name}}.Ensure that any predefined file formats created in snowflake does not have the same file format name.
 
 ##### File Format Definition - File Format Name
 
@@ -318,7 +341,7 @@ There are four configs within the **Node Properties** group.
 |**JSON**|**Compression**- String (constant) that specifies the current compression algorithm for the data files to be loaded<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.<br/>**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Strip Outer Array**- Boolean that instructs the JSON parser to remove outer brackets [ ].<br/>**Date format**- String that defines the format of date values in the data files to be loaded<br/>**Time format**- String that defines the format of time values in the data files to be loaded<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded|
 |**ORC**|**Trim Space** - Specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 |**AVRO**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
-|**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character.
+**PARQUET**|**Trim Space** - Boolean that specifies whether to remove white space from fields<br/>**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character<br/>**Using vectorised scanner** - Boolean that specifies whether to use a vectorized scanner for loading Parquet files|
 |**XML**|**Replace invalid characters** - Boolean that specifies whether to replace invalid UTF-8 characters with the Unicode replacement character|
 
 <h3 id="snowpipe-copy-options"> Snowpipe Copy Options </h3>

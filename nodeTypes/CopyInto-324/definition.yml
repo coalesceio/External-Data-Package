@@ -130,6 +130,13 @@ metadata:
         default: ""
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
        
+      - displayName: Parse header
+        attributeName: parsehdr1
+        enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false  
+
       - displayName: File Type
         attributeName: fileType
         type: dropdownSelector

@@ -99,9 +99,6 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.fieldEnclosed and desiredState.config.fileType in ('CSV')%}
                                 {%set fileformatsql = fileformatsql + "\n"+ "FIELD_OPTIONALLY_ENCLOSED_BY"+ "=''"+ desiredState.config.fieldEnclosed+"''"%}
                             {%endif%}
-                            {% if desiredState.config.skipBlankLines and desiredState.config.fileType in ('CSV')%}
-                                   {%set fileformatsql = fileformatsql + "\n"+ "SKIP_BLANK_LINES" + "=''"+"TRUE"+"''"%}
-                            {%endif%}
                             {% if desiredState.config.parsehdr and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "PARSE_HEADER" + "="+ "TRUE"+""%}
                             {%endif%}
@@ -208,7 +205,7 @@ does not permit copying or modification for any other purpose.
               FIELD_OPTIONALLY_ENCLOSED_BY='''||field_enclosed||'''
 			        BINARY_FORMAT ='''||bformat||'''
               COMPRESSION = '''||compression||'''
-			        PARSE_HEADER = TRUE
+			        PARSE_HEADER = {{desiredState.config.parsehdr1}}
               REPLACE_INVALID_CHARACTERS = TRUE
               ERROR_ON_COLUMN_COUNT_MISMATCH=FALSE';
                  

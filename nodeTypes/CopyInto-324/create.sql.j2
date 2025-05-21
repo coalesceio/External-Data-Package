@@ -53,6 +53,8 @@ does not permit copying or modification for any other purpose.
         {% if currentState == undefined or currentState.storageLocations|length == 0 %}
             					  
 			{%if desiredState.config.inferschema == true %}
+
+       
 					       {% set srcSchName = desiredState.node.location.name %}
                            {% set db = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[0]%}
                            {% set sch = ref_no_link(desiredState.node.location.name, desiredState.node.name).split('.')[1]%}
@@ -62,14 +64,19 @@ does not permit copying or modification for any other purpose.
                            {% set schStage =  ref_no_link(desiredState.config.stageStorageLocationName, desiredState.node.name).split('.')[1]%}
 
                             # File format locations
-
+                         {%-if desiredState.config.fileFormatType == 'File Format Name'-%}
                            {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
                            {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
                            {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
-
+                        {%else%}
+                            {% set fileFormatLocationName = desiredState.node.location.name %}
+                           {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+                           {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+                        {%endif%}
+                 
                             # File format sql
                          {%-if desiredState.config.fileFormatType == 'File Format Values'-%}
-                            {%set fileformatsql = "'CREATE OR REPLACE FILE FORMAT " +"\""+dbff+"\".\""+schff+"\".\"TEMP_"+desiredState.config.fileType+"_"+desiredState.node.name+"\""%}
+                            {%set fileformatsql = "'CREATE OR REPLACE TEMPORARY FILE FORMAT " +"\""+dbff+"\".\""+schff+"\".\"TEMP_"+desiredState.config.fileType+"_"+desiredState.node.name+"\""%}
 
                             {%set fileformatsql = fileformatsql + "\n"+ "TYPE" + " =''"+ desiredState.config.fileType+"''"%}
 
@@ -87,6 +94,9 @@ does not permit copying or modification for any other purpose.
                             {%endif%}
                             {% if desiredState.config.parsehdr and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "PARSE_HEADER" + "="+ "TRUE"+""%}
+                            {%endif%}
+                            {% if desiredState.config.encoding != "" %}
+                                {%set fileformatsql = fileformatsql + "\n"+ "ENCODING"+ "=''"+ desiredState.config.encoding+"''"%}
                             {%endif%}
                             {% if desiredState.config.replaceinvalidcharacters%}
                                  {%set fileformatsql = fileformatsql + "\n"+ "REPLACE_INVALID_CHARACTERS" + "="+ "TRUE" +""%}
@@ -139,6 +149,7 @@ does not permit copying or modification for any other purpose.
               field_enclosed VARCHAR;
 			  bformat VARCHAR;
 			  compression VARCHAR;
+              file_format_options VARIANT;
             {%-endif%}
   
                    
@@ -168,26 +179,39 @@ does not permit copying or modification for any other purpose.
   
             BEGIN
 
-            {%if desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV'-%}
+            {%if desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV'%}
+             
+             -- Step 1: Run DESCRIBE to set LAST_QUERY_ID()
+             EXECUTE IMMEDIATE 'DESCRIBE FILE FORMAT "{{dbff}}"."{{schff}}"."{{desiredState.config.fileFormatName}}"';
 
-                    --Fetch details of file format 
-			    SELECT RECORD_DELIMITER,FIELD_DELIMITER,BINARY_FORMAT, 
-                FIELD_OPTIONALLY_ENCLOSED_BY,COMPRESSION
-			    INTO record_del,field_del,bformat,field_enclosed,compression
-                FROM "{{dbff}}".INFORMATION_SCHEMA.FILE_FORMATS
-                WHERE FILE_FORMAT_CATALOG ='{{dbff}}' AND FILE_FORMAT_SCHEMA ='{{schff}}' AND FILE_FORMAT_NAME ='{{desiredState.config.fileFormatName}}';
+            -- Step 2: Form file format JSON string 
+            SELECT PARSE_JSON(
+               '{' || LISTAGG(
+                 '"' || "property" || '": "' || "property_value" || '"',
+                 ', '
+                ) || '}'
+               ) INTO file_format_options
+            FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
+            WHERE "property" IN (
+           'RECORD_DELIMITER',
+            'FIELD_DELIMITER',
+            'FIELD_OPTIONALLY_ENCLOSED_BY',
+            'TYPE',
+            'COMPRESSION',
+            'BINARY_FORMAT',
+            'PARSE_HEADER',
+            'ENCODING'
+            );
 
-
-                  --Create temporary file format for inferring table structure 
-                
-              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
+              --Create temporary file format for inferring table structure 
+              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "ANANDHIS_DEV"."SOURCE_DATA"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
-              RECORD_DELIMITER='''||record_del||'''
-              FIELD_DELIMITER='''||field_del||'''
-              FIELD_OPTIONALLY_ENCLOSED_BY='''||field_enclosed||'''
-			  BINARY_FORMAT ='''||bformat||'''
-              COMPRESSION = '''||compression||'''
-			  PARSE_HEADER = {{desiredState.config.parsehdr1}}
+              RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
+              FIELD_DELIMITER=''' || file_format_options:FIELD_DELIMITER || '''                                    
+			  FIELD_OPTIONALLY_ENCLOSED_BY='''||file_format_options:FIELD_OPTIONALLY_ENCLOSED_BY || '''
+			  BINARY_FORMAT =''' || file_format_options:BINARY_FORMAT || '''
+              COMPRESSION = ''' || file_format_options:COMPRESSION || '''
+			  PARSE_HEADER = TRUE
               REPLACE_INVALID_CHARACTERS = TRUE
               ERROR_ON_COLUMN_COUNT_MISMATCH=FALSE';
                  

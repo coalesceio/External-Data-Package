@@ -83,7 +83,7 @@ does not permit copying or modification for any other purpose.
 
                           {# File format sql#}
                          {%-if desiredState.config.fileFormatType == 'File Format Values'-%}
-                            {%set fileformatsql = "'CREATE OR REPLACE FILE FORMAT " +"\""+dbff+"\".\""+schff+"\".\"TEMP_"+desiredState.config.fileType+"_"+desiredState.node.name+"\""%}
+                            {%set fileformatsql = "'CREATE OR REPLACE TEMPORARY FILE FORMAT " +"\""+dbff+"\".\""+schff+"\".\"TEMP_"+desiredState.config.fileType+"_"+desiredState.node.name+"\""%}
 
                             {%set fileformatsql = fileformatsql + "\n"+ "TYPE" + " =''"+ desiredState.config.fileType+"''"%}
 
@@ -110,6 +110,9 @@ does not permit copying or modification for any other purpose.
                             {%endif%}
                             {% if desiredState.config.stripouterarray == true and desiredState.config.fileType in ('JSON')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "STRIP_OUTER_ARRAY" + "="+ "TRUE" +""%}
+                            {%endif%}
+                            {%if  desiredState.config.usevectscan == true and  desiredState.config.fileType in ('PARQUET')%}
+                              {%set fileformatsql = fileformatsql + "\n"+ "USE_VECTORIZED_SCANNER" + "="+ "TRUE" +""%}
                             {%endif%}
 
                             {%set fileformatsql = fileformatsql + "'" %}
@@ -195,7 +198,7 @@ does not permit copying or modification for any other purpose.
 
                   --Create temporary file format for inferring table structure 
                 
-              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
+              EXECUTE IMMEDIATE 'CREATE OR REPLACE TEMPORARY FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
               RECORD_DELIMITER='''||record_del||'''
               FIELD_DELIMITER='''||field_del||'''

@@ -3,11 +3,17 @@ id: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
 name: COPY_sample_iso8859_15
 operation:
   config:
+    binformat: HEX
+    bytemark: true
+    columnmismatch: false
     compression: NONE
     dateformat: ""
+    emptyfield: true
     encoding: ISO885915
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: ""
+    escapeval: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ;
@@ -19,9 +25,10 @@ operation:
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: true
     loadUncertainFiles: ""
+    nullchar: \N
     onError: ""
     parsehdr: true
     parsehdr1: true

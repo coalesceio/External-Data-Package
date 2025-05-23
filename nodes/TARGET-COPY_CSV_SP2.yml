@@ -4,11 +4,18 @@ name: COPY_CSV_SP2
 operation:
   config:
     awsSnsTopic: ""
+    binformat: HEX
+    bytemark: false
     cloudProvider: AWS
-    compression: ""
+    columnmismatch: false
+    compression: NONE
     dateformat: ""
+    emptyfield: false
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: null
+    escapeval: null
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
@@ -21,6 +28,8 @@ operation:
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""
+    mulline: false
+    nullchar: null
     onError: CONTINUE
     parsehdr: true
     recDelim: |+

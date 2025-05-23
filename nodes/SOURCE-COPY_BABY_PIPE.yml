@@ -17,7 +17,7 @@ operation:
     fileNames: "'baby.csv'"
     filePattern: "'.*bab.*[.]csv'"
     fileType: CSV
-    flagLoadHistorical: false
+    flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""

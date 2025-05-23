@@ -5,7 +5,7 @@ operation:
   config:
     awsSnsTopic: ""
     cloudProvider: AWS
-    compression: ""
+    compression: NONE
     dateformat: ""
     enforceLength: ""
     errornumber: ""
@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: "'order_details.json'"
     filePattern: ""
     fileType: JSON
@@ -24,16 +24,16 @@ operation:
     onError: ""
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     skipBlankLines: true
     skipHeader: "1"
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
-    stripouterarray: false
+    stripouterarray: true
     subfolder: null
     timeformat: ""
     timestampformat: ""
-    trimSpace: false
+    trimSpace: true
     truncateColumns: ""
   database: ""
   deployEnabled: true

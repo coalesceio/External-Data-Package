@@ -3,26 +3,35 @@ id: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
 name: COPY_HEALTH_MULTI
 operation:
   config:
+    binformat: HEX
+    bytemark: false
+    columnmismatch: false
     compression: NONE
     dateformat: ""
+    emptyfield: false
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: null
+    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSVFILEFORMAT
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: health.csv,health_pipe.csv
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: true
     loadUncertainFiles: ""
+    mulline: false
     onError: CONTINUE
     parsehdr: true
+    parsehdr1: false
     purgeBehavior: ""
     recDelim: |+
 
@@ -45,7 +54,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

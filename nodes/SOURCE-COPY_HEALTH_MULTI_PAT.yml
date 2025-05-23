@@ -3,10 +3,17 @@ id: 9231db09-26dc-4422-b919-5a16bd73bc4d
 name: COPY_HEALTH_MULTI_PAT
 operation:
   config:
+    binformat: null
+    bytemark: false
+    columnmismatch: false
     compression: ""
     dateformat: ""
+    emptyfield: false
+    encoding: null
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: null
+    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
@@ -22,6 +29,8 @@ operation:
     inferschema: false
     intextstage: true
     loadUncertainFiles: ""
+    mulline: false
+    nullchar: null
     onError: ""
     parsehdr: true
     purgeBehavior: ""

@@ -3,7 +3,7 @@ id: 127ada21-159c-4d71-96b3-b930451a66d1
 name: COPY_ORDERS_JSON
 operation:
   config:
-    compression: ""
+    compression: NONE
     dateformat: ""
     enforceLength: ""
     errornumber: ""
@@ -18,7 +18,7 @@ operation:
     filePattern: ""
     fileType: JSON
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: true
     loadUncertainFiles: ""
     onError: ""
@@ -46,7 +46,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

@@ -653,7 +653,7 @@ does not permit copying or modification for any other purpose.
 	                 {% elif desiredState.config.timestampformat == "AUTO" %}
 	                 TIMESTAMP_FORMAT = AUTO
                    {%endif%} 
-								   {%if  desiredState.config.usevectscan == true and config.fileType in ('PARQUET')%}
+								   {%if  desiredState.config.usevectscan == true and desiredState.config.fileType in ('PARQUET')%}
                       USE_VECTORIZED_SCANNER = TRUE 
                    {%endif%}
                    {%if desiredState.config.columnmismatch and desiredState.config.fileType in ('CSV')%}
@@ -674,7 +674,7 @@ does not permit copying or modification for any other purpose.
                   {% if desiredState.config.binformat != "" and  desiredState.config.fileType in ('CSV')%}
                      BINARY_FORMAT  = '{{desiredState.config.binformat}}'
                   {%endif%}
-                  {% if desiredState.config.nullchar != "" and  desiredState.config.fileType in ('CSV')%}
+                  {% if (desiredState.config.nullchar != "" and desiredState.config.nullchar is not none)and  desiredState.config.fileType in ('CSV')%}
                      NULL_IF = {{desiredState.config.nullchar}}
                   {%endif%}
                   {% if desiredState.config.mulline and  desiredState.config.fileType in ('CSV')%}
@@ -810,7 +810,7 @@ does not permit copying or modification for any other purpose.
 	                  {% elif desiredState.config.timestampformat == "AUTO" %}
 	                   TIMESTAMP_FORMAT = AUTO
                       {%endif%} 
-                    {%if  desiredState.config.usevectscan == true and config.fileType in ('PARQUET')%}
+                    {%if  desiredState.config.usevectscan == true and desiredState.config.fileType in ('PARQUET')%}
                       USE_VECTORIZED_SCANNER = TRUE 
                    {%endif%}
                    {%if desiredState.config.columnmismatch and desiredState.config.fileType in ('CSV')%}
@@ -831,7 +831,7 @@ does not permit copying or modification for any other purpose.
                   {% if desiredState.config.binformat != "" and  desiredState.config.fileType in ('CSV')%}
                      BINARY_FORMAT  = '{{desiredState.config.binformat}}'
                   {%endif%}
-                  {% if desiredState.config.nullchar != "" and  desiredState.config.fileType in ('CSV')%}
+                  {% if (desiredState.config.nullchar != "" and desiredState.config.nullchar is not none)and  desiredState.config.fileType in ('CSV')%}
                      NULL_IF = {{desiredState.config.nullchar}}
                   {%endif%}
                   {% if desiredState.config.mulline and  desiredState.config.fileType in ('CSV')%}

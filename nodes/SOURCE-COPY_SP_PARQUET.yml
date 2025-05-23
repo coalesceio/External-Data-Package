@@ -13,7 +13,7 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: TARGET
     fileFormatName: PARQUETFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: "'employees.parquet'"
     filePattern: ""
     fileType: PARQUET
@@ -21,10 +21,14 @@ operation:
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""
+    loadUncertainFiles: null
     onError: ""
+    purgeBehavior: null
     recDelim: |+
 
     replaceinvalidcharacters: true
+    returnFailedOnly: null
+    sizeLimit: null
     skipBlankLines: true
     skipHeader: "1"
     stageName: SPSTAGESAMPLE

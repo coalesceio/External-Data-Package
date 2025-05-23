@@ -133,6 +133,7 @@ metadata:
         - File Format Name
         - File Format Values
         
+
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
@@ -144,14 +145,14 @@ metadata:
         type: textBox
         default: ""
         enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
-
+       
       - displayName: Parse header
         attributeName: parsehdr1
         enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
         type: toggleButton
         default: true
         isRequired: false  
-       
+
       - displayName: File Type
         attributeName: fileType
         type: dropdownSelector
@@ -213,7 +214,53 @@ metadata:
         attributeName: parsehdr
         enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV') and config.fileFormatType != 'File Format Name'   %} true {% else %} false {% endif %}"
         type: toggleButton
+        default: true
         isRequired: false  
+      
+
+      - displayName: Encoding
+        attributeName: encoding
+        type: dropdownSelector
+        default: "UTF8"
+        options:
+        - "BIG5"
+        - "UTF8"
+        - "EUCJP"
+        - "EUCKR"
+        - "GB18030"
+        - "IBM420"
+        - "IBM424"
+        - "IBM949"
+        - "ISO2022CN"
+        - "ISO2022JP"
+        - "ISO2022KR"
+        - "ISO88591"
+        - "ISO88592"
+        - "ISO88595"
+        - "ISO88596"
+        - "ISO88597"
+        - "ISO88598"
+        - "ISO88599"
+        - "ISO885915"
+        - "KOI8R"
+        - "SHIFTJIS"
+        - "UTF16"
+        - "UTF16BE"
+        - "UTF16LE"
+        - "UTF32"
+        - "UTF32BE"
+        - "UTF32LE"
+        - "WINDOWS874"
+        - "WINDOWS949"
+        - "WINDOWS1250"
+        - "WINDOWS1251"
+        - "WINDOWS1252"
+        - "WINDOWS1253"
+        - "WINDOWS1254"
+        - "WINDOWS1255"
+        - "WINDOWS1256"
+        isRequired: false
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
 
       - displayName: Skip blank lines
         attributeName: skipBlankLines
@@ -231,15 +278,75 @@ metadata:
         attributeName: replaceinvalidcharacters
         enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
         type: toggleButton
+        default: true
         isRequired: false    
+      
+      - displayName: Nulls for empty field
+        attributeName: emptyfield
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false    
+
+      - displayName: Skip byte order mark
+        attributeName: bytemark
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false 
+      
+      - displayName: Parsing error for column mismatch
+        attributeName: columnmismatch
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: false
+        isRequired: false 
+       
+      - displayName: Multiple lines
+        attributeName: mulline
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') )  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+      
+      - displayName: Binary format
+        attributeName: binformat
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        default: "HEX"
+        options:
+        - "HEX"
+        - "BASE64"
+        - "UTF8"
+        isRequired: false
+
+      - displayName: Replace values with NULL
+        attributeName: nullchar
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')and config.inferschema == false) %} true {% else %} false {% endif %}"
+        default: ('\N')
+        isRequired: false   
+
+      - displayName: Escape optionally enclosed by
+        attributeName: escapeenclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\\\"
+        isRequired: false   
+
+      - displayName: Escape enclosed/unenclosed values
+        attributeName: escapeval
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false 
 
       - displayName: Strip Outer Array
         attributeName: stripouterarray
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
         type: toggleButton
+        default: true
         isRequired: false   
 
-        
       - displayName: Date format
         attributeName: dateformat
         type: textBox
@@ -276,12 +383,34 @@ metadata:
         - "SKIP_FILE"
         - "SKIP_FILE_<num>"
         - "SKIP_FILE_<num>%"
+        - "ABORT_STATEMENT"
         isRequired: false
 
       - displayName: Specify the number of errors that can be skipped
         attributeName: errornumber
         type: textBox
         enableIf: "{% if config.onError in('SKIP_FILE_<num>','SKIP_FILE_<num>%') or config.onError1 in('SKIP_FILE_<num>','SKIP_FILE_<num>%') %} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: Size Limit
+        attributeName: sizeLimit
+        type: textBox
+        isRequired: false
+
+      - displayName: Purge Behavior
+        attributeName: purgeBehavior
+        type: dropdownSelector
+        options:
+        - "TRUE"
+        - "FALSE"
+        isRequired: false
+        
+      - displayName: Return Failed Only
+        attributeName: returnFailedOnly
+        type: dropdownSelector
+        options:
+        - "TRUE"
+        - "FALSE"
         isRequired: false
 
       - displayName: Enforce Length
@@ -300,6 +429,22 @@ metadata:
         - "FALSE"
         isRequired: false
 
+      - displayName: Force
+        attributeName: forceLoad
+        type: dropdownSelector
+        options:
+        - "TRUE"
+        - "FALSE"
+        isRequired: false
+        enableIf: "{% if parameters.loadType != 'Reload'  %} true {% else %} false {% endif %}"
+
+      - displayName: Load Uncertain Files
+        attributeName: loadUncertainFiles
+        type: dropdownSelector
+        options:
+        - "TRUE"
+        - "FALSE"
+        isRequired: false
 
     systemColumns:
 

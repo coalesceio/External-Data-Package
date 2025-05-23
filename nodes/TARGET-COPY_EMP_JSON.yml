@@ -21,7 +21,7 @@ operation:
     ifileFormatLoc: null
     ifileFormatName: null
     ifileNames: null
-    inferschema: false
+    inferschema: true
     intextstage: true
     istageName: null
     istageStorageLocationName: null

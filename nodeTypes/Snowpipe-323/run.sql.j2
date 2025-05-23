@@ -98,29 +98,30 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
           {%- if config.fileFormatType == 'File Format Name' %}
           FILE_FORMAT = (FORMAT_NAME = '{{ dbff }}.{{ schff }}.{{ config.fileFormatName}}')
          {%else%}
-            FILE_FORMAT = ( TYPE = {{ config.fileType}}
+           FILE_FORMAT = ( TYPE = {{ config.fileType}}
              {% if config.compression != "" %}
-              COMPRESSION = {{config.compression }}
-             {%endif%}
-			 
+              COMPRESSION = {{ config.compression }}
+             {%endif%}			 
              {% if config.recDelim and config.fileType in ('CSV')%}
-              RECORD_DELIMITER = '{{config.recDelim}}'
+              RECORD_DELIMITER = '{{ config.recDelim}}'
              {%endif%}
-			 
             {% if config.fieldDelim and config.fileType in ('CSV')%}
-              FIELD_DELIMITER = '{{config.fieldDelim}}'
+              FIELD_DELIMITER = '{{ config.fieldDelim}}'
             {%endif%}
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
-               FIELD_OPTIONALLY_ENCLOSED_BY ='{{config.fieldEnclosed }}'
+            FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
           {%endif%}
+          {% if config.encoding != "" and config.fileType in ('CSV')%}
+                ENCODING ='{{config.encoding}}'
+          {%endif%}                        
           {% if config.skipBlankLines and config.fileType in ('CSV')%}
              SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
           {%endif%}
           {% if config.skipHeader and config.fileType in ('CSV')%}
              SKIP_HEADER = {{config.skipHeader}}
           {%endif%}
-          {% if config.trimSpace and config.fileType not in ('XML')%}
-              TRIM_SPACE = {{config.trimSpace }}
+          {% if config.trimSpace and config.fileType not in ('XML') %}
+              TRIM_SPACE = {{ config.trimSpace }}
           {%endif%}
           {% if config.replaceinvalidcharacters%}
               REPLACE_INVALID_CHARACTERS = {{config.replaceinvalidcharacters}}
@@ -128,7 +129,7 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
           {% if config.stripouterarray and config.fileType in ('JSON')%}
               STRIP_OUTER_ARRAY = {{config.stripouterarray}}
           {%endif%}
-          {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('JSON','CSV')%}
+            {% if config.dateformat != "AUTO" and config.dateformat != ""   and config.fileType in ('JSON','CSV')%}
               DATE_FORMAT = '{{config.dateformat}}'
 	       {% elif config.dateformat == "AUTO" %}
 	         DATE_FORMAT = AUTO
@@ -140,9 +141,36 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
            {%endif%}
            {% if config.timestampformat != "AUTO" and config.timestampformat != ""   and config.fileType in ('JSON','CSV')%}
               TIMESTAMP_FORMAT = '{{config.timestampformat}}'
-	       {% elif config.timestampformat == "AUTO" %}
+	         {% elif config.timestampformat == "AUTO" %}
 	         TIMESTAMP_FORMAT = AUTO
-           {%endif%} 
+           {%endif%}
+           {%if config.usevectscan == true and config.fileType in ('PARQUET')%}
+               USE_VECTORIZED_SCANNER = TRUE 
+           {%endif%}
+			     {%if config.columnmismatch and config.fileType in ('CSV')%}
+                ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE 
+            {%endif%}
+            {% if config.emptyfield and  config.fileType in ('CSV')%}
+             EMPTY_FIELD_AS_NULL = TRUE 
+            {%endif%}
+            {% if config.bytemark and  config.fileType in ('CSV')%}
+              SKIP_BYTE_ORDER_MARK = TRUE 
+            {%endif%}
+            {% if (config.escapeenclosed != "" and config.escapeenclosed is not none) and  config.fileType in ('CSV')%}
+                ESCAPE_UNENCLOSED_FIELD= '{{config.escapeenclosed}}'
+            {%endif%}
+            {% if (config.escapeval != "" and config.escapeval is not none )and  config.fileType in ('CSV')%}
+                ESCAPE = '{{config.escapeval}}'
+            {%endif%}
+             {% if config.binformat != "" and  config.fileType in ('CSV')%}
+                BINARY_FORMAT  = '{{config.binformat}}'
+            {%endif%}
+            {% if config.nullchar != "" and  config.fileType in ('CSV')%}
+                 NULL_IF = {{config.nullchar}}
+            {%endif%}
+            {% if config.mulline and  config.fileType in ('CSV')%}
+                MULTI_LINE = TRUE
+            {%endif%}
           )
         {%endif%}
 

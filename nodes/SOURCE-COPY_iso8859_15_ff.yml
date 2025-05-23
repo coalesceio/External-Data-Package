@@ -1,32 +1,38 @@
 fileVersion: 1
-id: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-name: COPY_CITYPARQUET
+id: b9520863-0d5e-415b-ab57-91b39ec5821a
+name: COPY_iso8859_15_ff
 operation:
   config:
-    compression: NONE
+    binformat: HEX
+    bytemark: true
+    columnmismatch: false
+    compression: ""
     dateformat: ""
+    emptyfield: true
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: \\
+    escapeval: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: PARQUETFILEFORMAT
-    fileFormatType: File Format Values
-    fileNames: cities.parquet
+    fileFormatName: CSV_ISO
+    fileFormatType: File Format Name
+    fileNames: sample_iso8859_15.csv
     filePattern: ""
-    fileType: PARQUET
+    fileType: CSV
     forceLoad: ""
-    ifileFormatLoc: ""
-    ifileFormatName: ""
-    ifileNames: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
-    istageName: Enter stage name-stage_name/folder/
-    istageStorageLocationName: Enter Storage Location name
     loadUncertainFiles: ""
+    mulline: true
+    nullchar: ('\N')
     onError: ""
+    parsehdr: true
+    parsehdr1: true
     purgeBehavior: ""
     recDelim: |+
 
@@ -35,17 +41,17 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: CSV_FILE_STAGE
+    stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     storageintegration: ""
-    stripouterarray: false
-    subfolder: tutorials/dataloading
+    stripouterarray: true
+    subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: true
+    truncateBefore: false
     truncateColumns: ""
-    usevectscan: true
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
@@ -60,8 +66,84 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2e305afb-309f-4736-bc92-4e1c4ffb3591
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 49255bf3-00e9-4f9c-a611-b351151c7f5b
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Name
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ada311a2-edf8-43d4-a473-eb38ac8c18fd
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: City
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 05ab9952-6019-405e-83c0-4bb81a88d665
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Amount
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7dbe8f70-5b00-40e7-8ca1-b5b43e0ef9e3
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Currency
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ec070c4f-66b0-46bf-b6d9-01d19181d864
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -79,8 +161,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ff88ecc5-c5b6-49c4-9f8a-93218e63944a
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: caaaa293-36ef-4029-9d85-38ccfa3bbb65
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -98,8 +180,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d9df3445-4510-49fe-ae56-47e9c4a4c2f1
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 88c6ec26-f78a-4f76-835a-4d537faddd2d
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -117,8 +199,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 74fd5b37-70af-433a-bd26-79d687f972e9
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: 98a347a8-a93c-478a-8ed3-8c1e014c8769
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -136,51 +218,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a526132f-981d-4fad-94e8-db9dbfb695c6
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
+          columnCounter: ec684db3-8a88-434d-a11e-cbce3ad8996d
+          stepCounter: b9520863-0d5e-415b-ab57-91b39ec5821a
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8a1760d7-eef5-4823-b3f9-ef9cfc0ff10a
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: continent
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8a632b5e-f4d0-4f3e-8b8d-e324bc16b747
-          stepCounter: f9ccb7e5-d773-4068-a2a3-3f689db7dfae
-        config: {}
-        dataType: VARIANT
-        defaultValue: ""
-        description: ""
-        name: country
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -194,14 +238,12 @@ operation:
       - aliases: {}
         customSQL:
           customSQL: ""
-        dependencies:
-          - locationName: SOURCE
-            nodeName: CITYPARQUET
+        dependencies: []
         join:
-          joinCondition: FROM {{ ref('SOURCE', 'CITYPARQUET') }} "CITYPARQUET"
-        name: COPY_CITYPARQUET
+          joinCondition: ""
+        name: COPY_iso8859_15_ff
         noLinkRefs: []
-  name: COPY_CITYPARQUET
+  name: COPY_iso8859_15_ff
   overrideSQL: false
   schema: ""
   sqlType: "324"

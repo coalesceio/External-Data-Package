@@ -151,10 +151,10 @@ does not permit copying or modification for any other purpose.
              {% if config.compression != "" %}
               COMPRESSION = {{ config.compression }}
              {%endif%}			 
-             {% if config.recDelim and config.fileType in ('CSV')%}
+             {% if config.recDelim !="" and config.fileType in ('CSV')%}
               RECORD_DELIMITER = '{{ config.recDelim}}'
              {%endif%}
-            {% if config.fieldDelim and config.fileType in ('CSV')%}
+            {% if config.fieldDelim !="" and config.fileType in ('CSV')%}
               FIELD_DELIMITER = '{{ config.fieldDelim}}'
             {%endif%}
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
@@ -205,16 +205,16 @@ does not permit copying or modification for any other purpose.
             {% if config.bytemark and  config.fileType in ('CSV')%}
               SKIP_BYTE_ORDER_MARK = TRUE 
             {%endif%}
-            {% if config.escapeenclosed != "" and  config.fileType in ('CSV')%}
+            {% if (config.escapeenclosed != "" and config.escapeenclosed is not none) and  config.fileType in ('CSV')%}
                 ESCAPE_UNENCLOSED_FIELD= '{{config.escapeenclosed}}'
             {%endif%}
-            {% if config.escapeval != "" and  config.fileType in ('CSV')%}
+            {% if (config.escapeval != "" and config.escapeval is not none) and  config.fileType in ('CSV')%}
                 ESCAPE = '{{config.escapeval}}'
             {%endif%}
              {% if config.binformat != "" and  config.fileType in ('CSV')%}
                 BINARY_FORMAT  = '{{config.binformat}}'
             {%endif%}
-            {% if config.nullchar != "" and  config.fileType in ('CSV')%}
+            {% if (config.nullchar != "" and config.nullchar is not none ) and  config.fileType in ('CSV')%}
                  NULL_IF = {{config.nullchar}}
             {%endif%}
             {% if config.mulline and  config.fileType in ('CSV')%}

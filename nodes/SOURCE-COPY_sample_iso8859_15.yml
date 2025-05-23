@@ -4,7 +4,7 @@ name: COPY_sample_iso8859_15
 operation:
   config:
     binformat: HEX
-    bytemark: true
+    bytemark: false
     columnmismatch: false
     compression: NONE
     dateformat: ""
@@ -28,8 +28,8 @@ operation:
     inferschema: false
     intextstage: true
     loadUncertainFiles: ""
-    mulline: true
-    nullchar: \N
+    mulline: false
+    nullchar: ('\N')
     onError: ""
     parsehdr: true
     parsehdr1: true

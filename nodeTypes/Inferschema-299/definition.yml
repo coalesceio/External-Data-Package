@@ -42,29 +42,211 @@ metadata:
         type: textBox
         isRequired: true
 
+      - displayName: File Format Definition
+        attributeName: fileFormatType
+        type: dropdownSelector
+        default: "File Format Name"
+        options:
+        - File Format Name
+        - File Format Values
+        
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
         default: ""
-        isRequired: true
-       
-      
+        enableIf: "{% if config.fileFormatType == 'File Format Name'%} true {% else %} false {% endif %}"  
+
       - displayName: File Format Name
         attributeName: fileFormatName
         type: textBox
         default: ""
-        isRequired: true
+        enableIf: "{% if config.fileFormatType == 'File Format Name' %} true {% else %} false {% endif %}"
+       
+      - displayName: Parse header
+        attributeName: parsehdr1
+        enableIf: "{% if config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false  
 
-
-      - displayName: Redeployment Behavior
-        attributeName: redeploymentBehavior
+      - displayName: File Type
+        attributeName: fileType
         type: dropdownSelector
-        default: Create or Replace
+        default: CSV
         options:
-          - Create or Replace
-          - Alter existing table
-          - Drop existing table
-        isRequired: true
+        - "CSV"
+        - "PARQUET"
+        - "JSON"
+        - "AVRO"
+        - "ORC"
+        - "XML"
+        isRequired: false
+
+      - displayName: Compression
+        attributeName: compression
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('ORC')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        options:
+        - "AUTO"
+        - "GZIP"
+        - "BZ2"
+        - "BROTLI"
+        - "ZSTD"
+        - "DEFLATE"
+        - "RAW_DEFLATE"
+        - "NONE"
+        isRequired: false
+        
+
+      - displayName: Record delimiter
+        attributeName: recDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\n"
+        isRequired: false
+
+      - displayName: Field delimiter
+        attributeName: fieldDelim
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        default: ","
+        isRequired: false
+
+      - displayName: Field optionally enclosed by
+        attributeName: fieldEnclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\042"
+        isRequired: false
+
+      - displayName: Parse header
+        attributeName: parsehdr
+        enableIf: "{% if config.fileType in ('CSV') and config.fileFormatType != 'File Format Name'   %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false  
+
+      - displayName: Encoding
+        attributeName: encoding
+        type: dropdownSelector
+        default: "UTF8"
+        options:
+        - "BIG5"
+        - "UTF8"
+        - "EUCJP"
+        - "EUCKR"
+        - "GB18030"
+        - "IBM420"
+        - "IBM424"
+        - "IBM949"
+        - "ISO2022CN"
+        - "ISO2022JP"
+        - "ISO2022KR"
+        - "ISO88591"
+        - "ISO88592"
+        - "ISO88595"
+        - "ISO88596"
+        - "ISO88597"
+        - "ISO88598"
+        - "ISO88599"
+        - "ISO885915"
+        - "KOI8R"
+        - "SHIFTJIS"
+        - "UTF16"
+        - "UTF16BE"
+        - "UTF16LE"
+        - "UTF32"
+        - "UTF32BE"
+        - "UTF32LE"
+        - "WINDOWS874"
+        - "WINDOWS949"
+        - "WINDOWS1250"
+        - "WINDOWS1251"
+        - "WINDOWS1252"
+        - "WINDOWS1253"
+        - "WINDOWS1254"
+        - "WINDOWS1255"
+        - "WINDOWS1256"
+        isRequired: false
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+
+      - displayName: Trim space
+        attributeName: trimSpace
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        isRequired: false
+
+      - displayName: Replace invalid characters
+        attributeName: replaceinvalidcharacters
+        enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false    
+      
+      - displayName: Nulls for empty field
+        attributeName: emptyfield
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false    
+
+      - displayName: Skip byte order mark
+        attributeName: bytemark
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false 
+      
+      - displayName: Parsing error for column mismatch
+        attributeName: columnmismatch
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: false
+        isRequired: false 
+       
+      - displayName: Multiple lines
+        attributeName: mulline
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') )  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+      
+      - displayName: Binary format
+        attributeName: binformat
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        type: dropdownSelector
+        default: "HEX"
+        options:
+        - "HEX"
+        - "BASE64"
+        - "UTF8"
+        isRequired: false
+
+      - displayName: Escape optionally enclosed by
+        attributeName: escapeenclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\\\"
+        isRequired: false   
+
+      - displayName: Escape enclosed/unenclosed values
+        attributeName: escapeval
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        isRequired: false 
+
+      - displayName: Strip Outer Array
+        attributeName: stripouterarray
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+      
+      - displayName: Using vectorised scanner
+        attributeName: usevectscan
+        type: toggleButton
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
+        isRequired: false
 
     systemColumns:
 

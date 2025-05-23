@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
-name: COPY_sample_iso8859_15
+id: 141afbaa-b618-45a3-aff5-14df2a4690e4
+name: COPY_sample_iso8859_15_1
 operation:
   config:
     binformat: HEX
@@ -12,8 +12,8 @@ operation:
     encoding: ISO885915
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: ""
-    escapeval: \\\\
+    escapeenclosed: \\
+    escapeval: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ;
@@ -29,7 +29,7 @@ operation:
     intextstage: true
     loadUncertainFiles: ""
     mulline: true
-    nullchar: \N
+    nullchar: ('\N')
     onError: ""
     parsehdr: true
     parsehdr1: true
@@ -44,12 +44,12 @@ operation:
     stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     storageintegration: ""
-    stripouterarray: false
+    stripouterarray: true
     subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: true
+    truncateBefore: false
     truncateColumns: ""
     usevectscan: false
   database: ""
@@ -66,8 +66,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 572e408f-7373-4f31-8d22-188ac868abca
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: 2af43b5b-0a82-44bd-a829-507db4dd902b
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -85,8 +85,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d391486f-4fbc-49e9-a854-f8ec406cd987
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: 452232f3-8f52-477c-a71f-3fa302ebafb2
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -104,8 +104,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4493197b-4fb2-4920-a67c-f2b89b1868f9
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: 8a423d41-259d-4d23-9671-ff6b1fb70aba
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -123,8 +123,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3b12254c-1fe9-4074-9cc0-c3719b55cce4
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: a88523e7-949b-48a1-9e23-a5089b9d4801
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -142,8 +142,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 948d79cd-7e96-48cb-ad56-363715b9464d
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: 9060e505-25b0-4d42-bc4e-0f1a24508f06
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -161,8 +161,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 958d33eb-cc8f-4ba7-b3da-60aaabbd510b
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: d4b077f4-d7b9-4af0-b8ec-db32fa7a5ff5
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -180,8 +180,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0b3a3262-d0b2-4e5e-9d39-aa0a88e46498
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: 5473113b-aa8b-4f76-a263-a504dca22b0d
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -199,8 +199,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c185b5e7-c9c2-489f-be58-09b1fce9defd
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: 8635526d-5048-4e40-8a58-06b7f6cec61b
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -218,8 +218,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: efa75d78-dec2-4ace-a837-631b2aedf6c9
-          stepCounter: 63fbc8b0-1e8f-4ea5-9548-fe141e946e72
+          columnCounter: eea58e80-1bdc-4170-9e53-090b0e2934cc
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -241,9 +241,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_sample_iso8859_15
+        name: COPY_sample_iso8859_15_1
         noLinkRefs: []
-  name: COPY_sample_iso8859_15
+  name: COPY_sample_iso8859_15_1
   overrideSQL: false
   schema: ""
   sqlType: "324"

@@ -285,6 +285,13 @@ metadata:
         type: toggleButton
         default: false
         isRequired: false 
+       
+      - displayName: Multiple lines
+        attributeName: mulline
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') )  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
       
       - displayName: Binary format
         attributeName: binformat
@@ -300,15 +307,15 @@ metadata:
       - displayName: Replace values with NULL
         attributeName: nullchar
         type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
-        default: "\\N"
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')and config.inferschema == false) %} true {% else %} false {% endif %}"
+        default: ('\N')
         isRequired: false   
 
       - displayName: Escape optionally enclosed by
         attributeName: escapeenclosed
         type: textBox
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
-        default: "\\"
+        default: "\\\\"
         isRequired: false   
 
       - displayName: Escape enclosed/unenclosed values
@@ -321,6 +328,7 @@ metadata:
         attributeName: stripouterarray
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
         type: toggleButton
+        default: true
         isRequired: false   
 
       - displayName: Date format

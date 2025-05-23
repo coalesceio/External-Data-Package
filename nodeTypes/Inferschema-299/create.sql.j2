@@ -81,10 +81,10 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.bytemark and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "SKIP_BYTE_ORDER_MARK" + "="+ "TRUE"+""%}
                             {%endif%}
-                            {% if desiredState.config.escapeenclosed != "" and  desiredState.config.fileType in ('CSV')%}
+                            {% if (desiredState.config.escapeenclosed != "" and desiredState.config.escapeenclosed is not none)and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE_UNENCLOSED_FIELD" + "=''\\\\"+ desiredState.config.escapeenclosed+"''"%}
                             {%endif%}
-                            {% if desiredState.config.escapeval != "" and  desiredState.config.fileType in ('CSV')%}
+                            {% if (desiredState.config.escapeval != "" and desiredState.config.escapeval is not none)and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE" + "=''"+ desiredState.config.escapeval +"''"%}
                             {%endif%}
                             {% if desiredState.config.binformat != "" and  desiredState.config.fileType in ('CSV')%}

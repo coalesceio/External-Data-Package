@@ -160,7 +160,7 @@ does not permit copying or modification for any other purpose.
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
             FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
           {%endif%}
-          {% if config.encoding != "" %}
+          {% if config.encoding != "" and config.fileType in ('CSV')%}
                 ENCODING ='{{config.encoding}}'
           {%endif%}                        
           {% if config.skipBlankLines and config.fileType in ('CSV')%}

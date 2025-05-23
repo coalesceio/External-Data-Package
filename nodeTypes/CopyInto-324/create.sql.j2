@@ -142,7 +142,7 @@ does not permit copying or modification for any other purpose.
                           {%set subf = "/"+ subfolder_value %}
                         {%endif%}
 
-                {%- if ","  in desiredState.config.fileNames %} 
+                           {%- if ","  in desiredState.config.fileNames %} 
                                {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
                                {% set final_variable = "''" + formatted_variable + "''" %}
                                {% set fileNameSQL = " "+"FILES =>"+""+final_variable + "," %} 
@@ -161,13 +161,7 @@ does not permit copying or modification for any other purpose.
               final_sql VARCHAR;
               alter_sql VARCHAR;
             {%if (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
-              field_del VARCHAR;
-              record_del VARCHAR;
-              field_enclosed VARCHAR;
-			  bformat VARCHAR;
-			  compression VARCHAR;
-              file_format_options VARIANT;
-              
+              file_format_options VARIANT;            
             {%-endif%}
   
                    
@@ -230,7 +224,7 @@ does not permit copying or modification for any other purpose.
               TRIM_SPACE = '|| file_format_options:TRIM_SPACE ||'
               EMPTY_FIELD_AS_NULL = '|| file_format_options:EMPTY_FIELD_AS_NULL ||'
               SKIP_BYTE_ORDER_MARK = '|| file_format_options:SKIP_BYTE_ORDER_MARK ||'
-              MULTI_LINE = '|| file_format_options:MULTI_LINE ||''
+              MULTI_LINE = TRUE'
               ;
 
             {%endif-%}

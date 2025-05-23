@@ -3,12 +3,33 @@ id: d70aaad7-6c88-4b8d-bea9-7020e4643a7f
 name: CITYPARQUET_TRANS
 operation:
   config:
+    binformat: HEX
+    bytemark: true
+    columnmismatch: false
+    compression: NONE
+    emptyfield: true
+    encoding: ISO885915
+    escapeenclosed: \\
+    escapeval: null
+    fieldDelim: ;
+    fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: PARQUETFILEFORMAT
+    fileFormatType: File Format Values
     fileNames: cities.parquet
+    fileType: PARQUET
+    mulline: true
+    parsehdr: true
+    parsehdr1: true
+    recDelim: null
     redeploymentBehavior: Create or Replace
+    replaceinvalidcharacters: true
     stageName: csv_file_stage/tutorials/dataloading
     stageStorageLocationName: SOURCE
+    stripouterarray: false
+    subfolder: null
+    trimSpace: true
+    usevectscan: true
   database: ""
   deployEnabled: true
   description: ""

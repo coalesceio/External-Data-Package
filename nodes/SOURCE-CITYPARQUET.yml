@@ -3,12 +3,33 @@ id: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
 name: CITYPARQUET
 operation:
   config:
+    binformat: null
+    bytemark: false
+    columnmismatch: false
+    compression: NONE
+    emptyfield: false
+    encoding: null
+    escapeenclosed: null
+    escapeval: null
+    fieldDelim: null
+    fieldEnclosed: null
     fileFormatLoc: SOURCE
     fileFormatName: PARQUETFILEFORMAT
+    fileFormatType: File Format Name
     fileNames: cities.parquet
+    fileType: PARQUET
+    mulline: false
+    parsehdr: false
+    parsehdr1: false
+    recDelim: null
     redeploymentBehavior: Create or Replace
-    stageName: csv_file_stage/tutorials/dataloading
+    replaceinvalidcharacters: false
+    stageName: csv_file_stage
     stageStorageLocationName: SOURCE
+    stripouterarray: false
+    subfolder: tutorials/dataloading
+    trimSpace: false
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
@@ -20,17 +41,6 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 480d1679-d656-403a-b4b7-705b5f953a67
-          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
-        config: {}
-        dataType: TEXT
-        description: Generated from python
-        isBusinessKey: false
-        name: continent
-        nullable: true
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
           columnCounter: e0e588f3-4df0-402f-880f-a325a66cc166
           stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
         config: {}
@@ -40,6 +50,25 @@ operation:
         name: country
         nullable: true
         sourceColumnReferences: []
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 480d1679-d656-403a-b4b7-705b5f953a67
+          stepCounter: 4d945c5a-8cc8-48c5-9727-221cc6a6c9f1
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: continent
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     description: ""
     destinationName: ""

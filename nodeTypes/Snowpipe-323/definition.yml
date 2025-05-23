@@ -383,34 +383,12 @@ metadata:
         - "SKIP_FILE"
         - "SKIP_FILE_<num>"
         - "SKIP_FILE_<num>%"
-        - "ABORT_STATEMENT"
         isRequired: false
 
       - displayName: Specify the number of errors that can be skipped
         attributeName: errornumber
         type: textBox
         enableIf: "{% if config.onError in('SKIP_FILE_<num>','SKIP_FILE_<num>%') or config.onError1 in('SKIP_FILE_<num>','SKIP_FILE_<num>%') %} true {% else %} false {% endif %}"
-        isRequired: false
-
-      - displayName: Size Limit
-        attributeName: sizeLimit
-        type: textBox
-        isRequired: false
-
-      - displayName: Purge Behavior
-        attributeName: purgeBehavior
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-        
-      - displayName: Return Failed Only
-        attributeName: returnFailedOnly
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
         isRequired: false
 
       - displayName: Enforce Length
@@ -423,23 +401,6 @@ metadata:
 
       - displayName: Truncate Columns
         attributeName: truncateColumns
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-
-      - displayName: Force
-        attributeName: forceLoad
-        type: dropdownSelector
-        options:
-        - "TRUE"
-        - "FALSE"
-        isRequired: false
-        enableIf: "{% if parameters.loadType != 'Reload'  %} true {% else %} false {% endif %}"
-
-      - displayName: Load Uncertain Files
-        attributeName: loadUncertainFiles
         type: dropdownSelector
         options:
         - "TRUE"

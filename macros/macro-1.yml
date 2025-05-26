@@ -1,0 +1,12 @@
+fileVersion: 1
+id: "1"
+macroString: |
+  {#------------------------------------------------------------------------------------------------------#}
+  {#-- Global variables of external data package                                                        --#}
+  {#--                                                                                                  --#}
+  {#-- The following variables can be customized to for python based procedures used in this package    --#}
+  {#------------------------------------------------------------------------------------------------------#}
+  
+  {%set python_SP = namespace(runtime_version="3.9")%}
+name: macro
+type: Macro

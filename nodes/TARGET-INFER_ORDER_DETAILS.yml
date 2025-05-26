@@ -3,12 +3,33 @@ id: a612a7cd-c18e-4c32-b267-fe33b31f4d6e
 name: INFER_ORDER_DETAILS
 operation:
   config:
+    binformat: HEX
+    bytemark: false
+    columnmismatch: false
+    compression: NONE
+    emptyfield: false
+    encoding: null
+    escapeenclosed: null
+    escapeval: null
+    fieldDelim: null
+    fieldEnclosed: null
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
+    fileFormatType: File Format Values
     fileNames: order_details.json
+    fileType: JSON
+    mulline: false
+    parsehdr: false
+    parsehdr1: false
+    recDelim: null
     redeploymentBehavior: Create or Replace
+    replaceinvalidcharacters: false
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
+    stripouterarray: true
+    subfolder: null
+    trimSpace: false
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""

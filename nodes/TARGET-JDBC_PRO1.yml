@@ -1,20 +1,22 @@
 fileVersion: 1
-id: d70aaad7-6c88-4b8d-bea9-7020e4643a7f
-name: CITYPARQUET_TRANS
+id: 00be7986-f025-44f4-9265-14aff4b73d18
+name: JDBC_PRO1
 operation:
   config:
-    fileFormatLoc: SOURCE
-    fileFormatName: PARQUETFILEFORMAT
-    fileNames: cities.parquet
-    redeploymentBehavior: Create or Replace
-    stageName: csv_file_stage/tutorials/dataloading
-    stageStorageLocationName: SOURCE
+    acc_int: sales_jdbc
+    jar_loc: SPSTAGESAMPLE
+    jar_name: mssql-jdbc-12.6.2.jre11.jar
+    jdbc_driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    jdbc_url: jdbc:sqlserver://coalesce-source.database.windows.net:1433;database=coalesce_source
+    secret: sales
+    sql: SELECT * FROM saleslt.product
+    truncateBefore: true
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
-  materializationType: transient table
+  locationName: TARGET
+  materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
@@ -23,39 +25,35 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5a3013ab-3f2d-449f-823c-3c416e5d62df
-          stepCounter: d70aaad7-6c88-4b8d-bea9-7020e4643a7f
+          columnCounter: be122fbd-70dc-482c-890f-0ec8d1542d27
+          stepCounter: 00be7986-f025-44f4-9265-14aff4b73d18
         config: {}
-        dataType: VARCHAR(16777216)
+        data: true
+        dataType: VARIANT
         defaultValue: ""
         description: ""
-        name: continent
+        name: DATA
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-        transform: ""
-        uniqueKey: false
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 534d73a4-e34d-44e9-97c0-7351e19f8efa
-          stepCounter: d70aaad7-6c88-4b8d-bea9-7020e4643a7f
+          columnCounter: 18efc032-3a2a-41eb-af67-2a713b5fdeaf
+          stepCounter: 00be7986-f025-44f4-9265-14aff4b73d18
         config: {}
-        dataType: VARIANT
+        dataType: TIMESTAMP
         defaultValue: ""
         description: ""
-        name: country
+        isSystemCreateDate: true
+        name: SYSTEM_LOAD_TIMESTAMP
         nullable: true
-        primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -65,12 +63,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: CITYPARQUET_TRANS
+        name: JDBC_PRO1
         noLinkRefs: []
-  name: CITYPARQUET_TRANS
+  name: JDBC_PRO1
   overrideSQL: false
   schema: ""
-  sqlType: "299"
+  sqlType: "327"
   type: sql
   version: 1
 type: Node

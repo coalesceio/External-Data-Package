@@ -20,7 +20,7 @@ does not permit copying or modification for any other purpose.
 CREATE OR REPLACE PROCEDURE {{ ref_no_link(desiredState.node.location.name, 'UPDATENODE_' + desiredState.node.name | upper) | trim }}(wsID varchar,nodeName varchar,flag varchar)
 RETURNS STRING
 language python
-runtime_version=3.8
+runtime_version='{{python_SP.runtime_version}}'
 handler = 'nodeFrame'
 external_access_integrations=({{desiredState.config.extIntegration}})
 packages = ('snowflake-snowpark-python','requests','pandas')

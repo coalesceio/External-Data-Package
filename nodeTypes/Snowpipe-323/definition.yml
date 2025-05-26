@@ -123,7 +123,7 @@ metadata:
         isRequired: false
         enableIf: "{% if config.inferschema %} false {% else %} true {% endif %}"  
 
-    - groupName: File Format
+    - groupName: File Format Options
       items:
       - displayName: File Format Definition
         attributeName: fileFormatType
@@ -262,6 +262,41 @@ metadata:
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
 
+      - displayName: Strip Outer Array
+        attributeName: stripouterarray
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+
+      - displayName: Date format
+        attributeName: dateformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') and config.inferschema == false)   %} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: Time format
+        attributeName: timeformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') ) and config.inferschema == false%} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: Timestamp format
+        attributeName: timestampformat
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV'))  and config.inferschema == false%} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      - displayName: Using vectorised scanner
+        attributeName: usevectscan
+        type: toggleButton
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
+        isRequired: false
+
+    - groupName: Extended CSV File Format Options
+      enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')%} true {% else %} false {% endif %}"
+      items:
+
       - displayName: Skip blank lines
         attributeName: skipBlankLines
         enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
@@ -339,37 +374,6 @@ metadata:
         type: textBox
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
         isRequired: false 
-
-      - displayName: Strip Outer Array
-        attributeName: stripouterarray
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
-        type: toggleButton
-        default: true
-        isRequired: false   
-
-      - displayName: Date format
-        attributeName: dateformat
-        type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') and config.inferschema == false)   %} true {% else %} false {% endif %}"
-        isRequired: false
-
-      - displayName: Time format
-        attributeName: timeformat
-        type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV') ) and config.inferschema == false%} true {% else %} false {% endif %}"
-        isRequired: false
-
-      - displayName: Timestamp format
-        attributeName: timestampformat
-        type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV'))  and config.inferschema == false%} true {% else %} false {% endif %}"
-        isRequired: false
-      
-      - displayName: Using vectorised scanner
-        attributeName: usevectscan
-        type: toggleButton
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
-        isRequired: false
 
     - groupName: Copy Options
       enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"

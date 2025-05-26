@@ -47,7 +47,20 @@ metadata:
         attributeName: fileNames
         type: textBox
         isRequired: true
+      
+      - displayName: Redeployment Behavior
+        attributeName: redeploymentBehavior
+        type: dropdownSelector
+        default: Create or Replace
+        options:
+          - Create or Replace
+          - Alter existing table
+          - Drop existing table
+        isRequired: true
 
+    - groupName: File Format Options
+      items:
+      
       - displayName: File Format Definition
         attributeName: fileFormatType
         type: dropdownSelector
@@ -56,6 +69,7 @@ metadata:
         - File Format Name
         - File Format Values
         
+
       - displayName: Coalesce Storage Location of File Format 
         attributeName: fileFormatLoc
         type: textBox
@@ -70,7 +84,7 @@ metadata:
        
       - displayName: Parse header
         attributeName: parsehdr1
-        enableIf: "{% if config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
+        enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
         type: toggleButton
         default: true
         isRequired: false  
@@ -131,6 +145,7 @@ metadata:
         type: toggleButton
         default: true
         isRequired: false  
+      
 
       - displayName: Encoding
         attributeName: encoding
@@ -175,6 +190,29 @@ metadata:
         - "WINDOWS1256"
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+      
+      - displayName: Strip Outer Array
+        attributeName: stripouterarray
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+      
+      - displayName: Using vectorised scanner
+        attributeName: usevectscan
+        type: toggleButton
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
+        isRequired: false
+
+    - groupName: Extended CSV File Format Options
+      enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')%} true {% else %} false {% endif %}"
+      items:
+
+      - displayName: Skip blank lines
+        attributeName: skipBlankLines
+        enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
+        type: toggleButton
+        isRequired: false
 
       - displayName: Trim space
         attributeName: trimSpace
@@ -228,6 +266,13 @@ metadata:
         - "UTF8"
         isRequired: false
 
+      - displayName: Replace values with NULL
+        attributeName: nullchar
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')and config.inferschema == false) %} true {% else %} false {% endif %}"
+        default: ('\N')
+        isRequired: false   
+
       - displayName: Escape optionally enclosed by
         attributeName: escapeenclosed
         type: textBox
@@ -240,30 +285,6 @@ metadata:
         type: textBox
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
         isRequired: false 
-
-      - displayName: Strip Outer Array
-        attributeName: stripouterarray
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"
-        type: toggleButton
-        default: true
-        isRequired: false   
-      
-      - displayName: Using vectorised scanner
-        attributeName: usevectscan
-        type: toggleButton
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
-        isRequired: false
-      
-      - displayName: Redeployment Behavior
-        attributeName: redeploymentBehavior
-        type: dropdownSelector
-        default: Create or Replace
-        options:
-          - Create or Replace
-          - Alter existing table
-          - Drop existing table
-        isRequired: true
-
 
     systemColumns:
 

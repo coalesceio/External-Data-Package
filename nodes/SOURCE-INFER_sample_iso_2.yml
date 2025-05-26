@@ -1,0 +1,77 @@
+fileVersion: 1
+id: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
+name: INFER_sample_iso_2
+operation:
+  config:
+    binformat: HEX
+    bytemark: true
+    columnmismatch: false
+    compression: NONE
+    emptyfield: true
+    encoding: ISO885915
+    escapeenclosed: \134
+    escapeval: ""
+    fieldDelim: ;
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileNames: sample_iso8859_15.csv
+    fileType: CSV
+    mulline: true
+    parsehdr: true
+    parsehdr1: true
+    recDelim: |+
+
+    redeploymentBehavior: Create or Replace
+    replaceinvalidcharacters: true
+    stageName: STAGE_LOCAL
+    stageStorageLocationName: SOURCE
+    stripouterarray: true
+    subfolder: INFOLDER
+    trimSpace: false
+    usevectscan: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca8901f2-4849-4fcc-8be7-3009281bd356
+          stepCounter: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        dummycolumn: true
+        name: DATA
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: This column is not part of inferred table
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: INFER_sample_iso_2
+        noLinkRefs: []
+  name: INFER_sample_iso_2
+  overrideSQL: false
+  schema: ""
+  sqlType: "299"
+  type: sql
+  version: 1
+type: Node

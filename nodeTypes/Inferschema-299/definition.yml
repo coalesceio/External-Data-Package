@@ -264,7 +264,7 @@ metadata:
         attributeName: escapeenclosed
         type: textBox
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
-        default: "\\\\"
+        default: "\\134"
         isRequired: false   
 
       - displayName: Escape enclosed/unenclosed values

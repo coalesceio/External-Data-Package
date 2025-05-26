@@ -542,7 +542,7 @@ There are four configs within the **Node Properties** group.
 | **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when InferSchema toggle is true. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
 |**File Pattern**|A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
 
-<h4 id="external-tables-ile-format">External Tables  File Format</h4>
+<h4 id="external-tables-file-format">External Tables  File Format</h4>
 
 **InferSchema-true**
 
@@ -675,6 +675,14 @@ There are four configs within the **Node Properties** group.
 |**Redeployment Behavior**|**CREATE OR REPLACE**: Dynamically creates target table based on the inferred schema from file in staging area<br/>**ALTER EXISTING TABLE**: Dynamically alters inferred table by comparing the inferred schema of the same file (with changes if any)and created table<br/>**DROP EXISTING TABLE**: Drops the table inferred|
 
 <h4 id="inferschema-file-format-options"> InferSchema File Format Options </h4>
+
+##### File format config-Inferschema
+
+* It is not mandatory to create a file format in snowflake to infer the structure of the file
+* If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
+* If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
+* If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
+* The temporary file format created follows the naing convention ==>TEMP_{{file_type}}_((node name}}.Ensure that any predefined file formats created in snowflake does not have the same file format name.
 
 ##### File Format Definition - File Format Name
   

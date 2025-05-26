@@ -236,16 +236,29 @@ DECLARE
               file_format_options VARIANT;    
   {%-endif%}
   
-  
-                  columnlsadd STRING := 'SELECT COLUMN_NAME,TYPE
+                {% if desiredState.config.fileFormatType == 'File Format Values' or (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
+                  
+                     columnlsadd STRING := 'SELECT COLUMN_NAME,TYPE
                       FROM TABLE(
                         INFER_SCHEMA(
                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
                           {{fileNameSQL }}
-                          FILE_FORMAT=>''{{ dbff }}.{{ schff }}.{{ desiredState.config.fileFormatName}}''
+                          FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"''
+                        )
+                      )where COLUMN_NAME not in (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' AND TABLE_NAME = ''{{desiredState.node.name}}'')';
+
+                {%else%}
+
+                    columnlsadd STRING := 'SELECT COLUMN_NAME,TYPE
+                      FROM TABLE(
+                        INFER_SCHEMA(
+                         LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}'',
+                          {{fileNameSQL }}
+                          FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."{{ desiredState.config.fileFormatName}}"''
                         )
                       )where COLUMN_NAME not in (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ''{{sch|replace('"', '') }}'' 
-                          AND TABLE_NAME = ''{{desiredState.node.name}}''';
+                          AND TABLE_NAME = ''{{desiredState.node.name}}'')';
+                {%endif%}
 
 
                {% if desiredState.config.fileFormatType == 'File Format Values' or (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
@@ -291,7 +304,7 @@ DECLARE
 
 
               --Create temporary file format for inferring table structure 
-              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "ANANDHIS_DEV"."SOURCE_DATA"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
+              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
               RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
               FIELD_DELIMITER=''' || file_format_options:FIELD_DELIMITER || '''                                    
@@ -307,7 +320,7 @@ DECLARE
               TRIM_SPACE = '|| file_format_options:TRIM_SPACE ||'
               EMPTY_FIELD_AS_NULL = '|| file_format_options:EMPTY_FIELD_AS_NULL ||'
               SKIP_BYTE_ORDER_MARK = '|| file_format_options:SKIP_BYTE_ORDER_MARK ||'
-              MULTI_LINE = '|| file_format_options:MULTI_LINE ||''
+              MULTI_LINE = TRUE'
               ;
 
             {%endif-%}

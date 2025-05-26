@@ -63,6 +63,9 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.encoding != "" and  desiredState.config.fileType in ('CSV') %}
                                 {%set fileformatsql = fileformatsql + "\n"+ "ENCODING"+ "=''"+ desiredState.config.encoding+"''"%}
                             {%endif%}
+                            {% if desiredState.config.binformat != "" and  desiredState.config.fileType in ('CSV') %}
+                                {%set fileformatsql = fileformatsql + "\n"+ "BINARY_FORMAT"+ "=''"+ desiredState.config.binformat+"''"%}
+                            {%endif%}
                             {% if desiredState.config.replaceinvalidcharacters%}
                                  {%set fileformatsql = fileformatsql + "\n"+ "REPLACE_INVALID_CHARACTERS" + "="+ "TRUE" +""%}
                             {%endif%}

@@ -20,12 +20,12 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_ISO
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: sample_iso8859_15.csv
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     mulline: true
@@ -49,7 +49,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
+    truncateBefore: true
     truncateColumns: ""
     usevectscan: false
   database: ""

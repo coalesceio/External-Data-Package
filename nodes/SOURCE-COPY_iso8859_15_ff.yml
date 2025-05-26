@@ -6,26 +6,26 @@ operation:
     binformat: HEX
     bytemark: true
     columnmismatch: false
-    compression: ""
+    compression: NONE
     dateformat: ""
     emptyfield: true
-    encoding: UTF8
+    encoding: ISO885915
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: \\
+    escapeenclosed: \134
     escapeval: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
-    fieldDelim: ","
+    fieldDelim: ;
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_ISO
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: sample_iso8859_15.csv
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: true
     loadUncertainFiles: ""
     mulline: true
@@ -49,7 +49,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
+    truncateBefore: true
     truncateColumns: ""
     usevectscan: false
   database: ""

@@ -115,7 +115,7 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
                 ENCODING ='{{config.encoding}}'
           {%endif%}      
           {% if (config.binformat != "" and config.binformat is not none) and config.fileType in ('CSV')%}
-                ENCODING ='{{config.binformat}}'
+                BINARY_FORMAT ='{{config.binformat}}'
           {%endif%}                  
           {% if config.skipBlankLines and config.fileType in ('CSV')%}
              SKIP_BLANK_LINES =  {{ config.skipBlankLines }}

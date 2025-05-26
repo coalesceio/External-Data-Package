@@ -3,17 +3,24 @@ id: 7f11f16b-7962-4540-83bb-67f33e1ca2a3
 name: COPY_PARK1
 operation:
   config:
+    binformat: null
+    bytemark: false
+    columnmismatch: false
     compression: ""
     dateformat: ""
+    emptyfield: false
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: \134
+    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: MY_VEHICLE_DATA_FORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: Parkwork.CSV
     filePattern: ""
     fileType: CSV
@@ -21,11 +28,15 @@ operation:
     inferschema: false
     intextstage: true
     loadUncertainFiles: ""
+    mulline: false
+    nullchar: null
     onError: ""
+    parsehdr: true
+    parsehdr1: false
     purgeBehavior: ""
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     returnFailedOnly: ""
     sizeLimit: ""
     skipBlankLines: false
@@ -37,7 +48,7 @@ operation:
     subfolder: ""
     timeformat: ""
     timestampformat: ""
-    trimSpace: false
+    trimSpace: true
     truncateBefore: true
     truncateColumns: ""
   database: ""

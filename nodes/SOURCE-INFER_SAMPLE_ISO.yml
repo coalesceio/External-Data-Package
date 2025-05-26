@@ -1,6 +1,6 @@
 fileVersion: 1
-id: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
-name: INFER_sample_iso_2
+id: 023ba425-7d62-4dd6-b132-0772fa5f6feb
+name: INFER_SAMPLE_ISO
 operation:
   config:
     binformat: HEX
@@ -45,8 +45,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9a90cae6-a960-48ab-8706-940899faf2da
-          stepCounter: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
+          columnCounter: 0326d5db-627e-4d31-a856-4951cabd601c
+          stepCounter: 023ba425-7d62-4dd6-b132-0772fa5f6feb
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -64,8 +64,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 44bbeaef-3f57-469b-828e-4c206efa2681
-          stepCounter: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
+          columnCounter: 158bb0af-7a27-4c4e-9006-ca3b1b33a77c
+          stepCounter: 023ba425-7d62-4dd6-b132-0772fa5f6feb
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -83,8 +83,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9e350364-6f0f-4e8f-b0d5-34f98c48234d
-          stepCounter: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
+          columnCounter: f76fcd7a-8566-498c-a492-70e8ba2909ad
+          stepCounter: 023ba425-7d62-4dd6-b132-0772fa5f6feb
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -102,8 +102,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 26823daf-fdf0-45d0-958d-d646860adfa4
-          stepCounter: bd0263aa-7c11-448d-87a6-ab6c1e0ce939
+          columnCounter: 72fa6097-6bc7-4d97-bae4-66502863de4e
+          stepCounter: 023ba425-7d62-4dd6-b132-0772fa5f6feb
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -125,9 +125,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: INFER_sample_iso_2
+        name: INFER_SAMPLE_ISO
         noLinkRefs: []
-  name: INFER_sample_iso_2
+  name: INFER_SAMPLE_ISO
   overrideSQL: false
   schema: ""
   sqlType: "299"

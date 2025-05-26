@@ -32,12 +32,17 @@ does not permit copying or modification for any other purpose.
         {%- set filePatternSQL = "" -%} 
      {%- endif -%}
 
-     {%- if config.fileNames | length > 0 %} 
-       {% set fileNameSQL = 'FILES = (' + config.fileNames + ')' %} 
-     {%- else -%}
-       {% set fileNameSQL = "" %} 
-     {% endif %}
-	 
+    {%if config.fileNames | length > 0 and ',' in config.fileNames  %}
+    {% set formatted_variable = config.fileNames.split(',') | map('string') | join("','") %}
+    {% set final_variable = "'" + formatted_variable + "'" %}
+    {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
+
+    {%- elif config.fileNames | length > 0 %} 
+    {% set fileNameSQL = 'FILES = (' + "'"+config.fileNames + "'"+')' %}                               
+    {%- else -%}
+    {% set fileNameSQL = "" %} 
+    {% endif %}
+ 
 	 {% set fileFormatLocationName = config.fileFormatLoc %}
      {% set dbff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
      {% set schff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
@@ -168,7 +173,7 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
              {% if config.binformat != "" and  config.fileType in ('CSV')%}
                 BINARY_FORMAT  = '{{config.binformat}}'
             {%endif%}
-            {% if config.nullchar != "" and  config.fileType in ('CSV')%}
+            {% if (config.nullchar != "" and config.nullchar is not none) and  config.fileType in ('CSV')%}
                  NULL_IF = {{config.nullchar}}
             {%endif%}
             {% if config.mulline and  config.fileType in ('CSV')%}

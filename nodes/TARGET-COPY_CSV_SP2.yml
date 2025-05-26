@@ -14,18 +14,18 @@ operation:
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: \\
+    escapeenclosed: \134
     escapeval: null
-    fieldDelim: ","
+    fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Values
-    fileNames: "'health_pipe.csv'"
+    fileNames: health_pipe.csv
     filePattern: "'.*hea.*[.]csv'"
     fileType: CSV
     flagLoadHistorical: true
-    flagSnowpipe: Enable Snowpipe
+    flagSnowpipe: Test Copy Statement
     inferschema: false
     integration: ""
     mulline: false

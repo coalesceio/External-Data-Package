@@ -111,7 +111,7 @@ metadata:
         default: 'Enter folder name in stage if applicable-folder/subfolder'
         isRequired: false
 
-      - displayName: File Name(s) (Optional - Ex:'a.csv','b.csv' )
+      - displayName: File Name(s) (Optional - Ex:a.csv,b.csv )
         attributeName: fileNames
         type: textBox
         isRequired: false

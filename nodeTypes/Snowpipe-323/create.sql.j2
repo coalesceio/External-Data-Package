@@ -76,10 +76,17 @@ does not permit copying or modification for any other purpose.
 
                            {# File format locations #}
 
+                        {%-if desiredState.config.fileFormatType == 'File Format Name'-%}
                            {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
                            {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
                            {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
-                        
+                        {%else%}
+                            {% set fileFormatLocationName = desiredState.node.location.name %}
+                           {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+                           {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+                        {%endif%}
+                 
+                         
 
                           {# File format sql#}
                          {%-if desiredState.config.fileFormatType == 'File Format Values'-%}
@@ -150,13 +157,12 @@ does not permit copying or modification for any other purpose.
                           {%set subf = "/"+ subfolder_value %}
                         {%endif%}
 										
-
-                           {%- if ","  in desiredState.config.fileNames %} 
+                          {%- if ","  in desiredState.config.fileNames %} 
                                {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
-                               {% set final_variable = "'" + formatted_variable + "'" %}
-                               {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
+                               {% set final_variable = "''" + formatted_variable + "''" %}
+                               {% set fileNameSQL = " "+"FILES =>"+""+final_variable + "," %} 
                            {%- elif  desiredState.config.fileNames  -%}
-                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
+                               {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
                            {% endif %}
                     
                     {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
@@ -527,12 +533,17 @@ does not permit copying or modification for any other purpose.
         {%- set filePatternSQL = "" -%} 
      {%- endif -%}
 
-     {%- if desiredState.config.fileNames | length > 0 %} 
-       {% set fileNameSQL = 'FILES = (' + desiredState.config.fileNames + ')' %} 
-     {%- else -%}
+     {%if desiredState.config.fileNames | length > 0 and ',' in desiredState.config.fileNames  %}
+    {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("','") %}
+      {% set final_variable = "'" + formatted_variable + "'" %}
+      {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
+
+    {%- elif desiredState.config.fileNames | length > 0 %} 
+      {% set fileNameSQL = 'FILES = (' + "'"+desiredState.config.fileNames + "'"+')' %}                               
+    {%- else -%}
        {% set fileNameSQL = "" %} 
-     {% endif %}
-	 
+    {% endif %}
+
 	   {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
      {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
      {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
@@ -671,7 +682,7 @@ does not permit copying or modification for any other purpose.
                   {% if (desiredState.config.escapeval != "" and desiredState.config.escapeval is not none) and  desiredState.config.fileType in ('CSV')%}
                      ESCAPE = '{{desiredState.config.escapeval}}'
                   {%endif%}
-                  {% if (desiredState.config.binformat != "" and desiredState.config.binformat is not none  )desiredState.config.fileType in ('CSV')%}
+                  {% if (desiredState.config.binformat != "" and desiredState.config.binformat is not none  ) and desiredState.config.fileType in ('CSV')%}
                      BINARY_FORMAT  = '{{desiredState.config.binformat}}'
                   {%endif%}
                   {% if (desiredState.config.nullchar != "" and desiredState.config.nullchar is not none)and  desiredState.config.fileType in ('CSV')%}

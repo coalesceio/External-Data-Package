@@ -54,7 +54,7 @@ There are four configs within the **Node Properties** group.
 * This is mainly a test to make sure create will work
 * Hit Run button to execute DML
 
-![image](https://github.com/user-attachments/assets/de3c4ce2-370e-43d0-a010-fc6131cd8669)
+![Resync](https://github.com/user-attachments/assets/de3c4ce2-370e-43d0-a010-fc6131cd8669)
 
 If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table.
 

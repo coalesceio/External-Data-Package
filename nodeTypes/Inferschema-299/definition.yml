@@ -84,7 +84,7 @@ metadata:
        
       - displayName: Parse header
         attributeName: parsehdr1
-        enableIf: "{% if  config.inferschema == true and config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.fileType in ('CSV') and config.fileFormatType == 'File Format Name'   %} true {% else %} false {% endif %}"
         type: toggleButton
         default: true
         isRequired: false  
@@ -208,12 +208,6 @@ metadata:
       enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')%} true {% else %} false {% endif %}"
       items:
 
-      - displayName: Skip blank lines
-        attributeName: skipBlankLines
-        enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
-        type: toggleButton
-        isRequired: false
-
       - displayName: Trim space
         attributeName: trimSpace
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))%} true {% else %} false {% endif %}"
@@ -264,14 +258,7 @@ metadata:
         - "HEX"
         - "BASE64"
         - "UTF8"
-        isRequired: false
-
-      - displayName: Replace values with NULL
-        attributeName: nullchar
-        type: textBox
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')and config.inferschema == false) %} true {% else %} false {% endif %}"
-        default: ('\N')
-        isRequired: false   
+        isRequired: false 
 
       - displayName: Escape optionally enclosed by
         attributeName: escapeenclosed

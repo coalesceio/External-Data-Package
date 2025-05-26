@@ -261,7 +261,7 @@ does not permit copying or modification for any other purpose.
 CREATE OR REPLACE FUNCTION {{fqUdtfName}} (OPTION OBJECT, query STRING) 
   RETURNS TABLE(data OBJECT)
   LANGUAGE JAVA
-  RUNTIME_VERSION = '11'
+  RUNTIME_VERSION = '{{SP_configs.java_runtime_ver}}'
   IMPORTS = ('@{{tgtDb}}.{{tgtSch}}.{{desiredState.config.jar_loc}}/{{desiredState.config.jar_name}}')
   external_access_integrations=({{ desiredState.config.acc_int}})
   SECRETS = ('cred' = {{desiredState.config.secret }} )

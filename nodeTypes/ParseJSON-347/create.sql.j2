@@ -275,7 +275,7 @@ does not permit copying or modification for any other purpose.
 CREATE OR REPLACE FUNCTION {{ fqUdtfName }} (file_path string, array_name string)
 RETURNS  TABLE(src variant)
 LANGUAGE PYTHON
-RUNTIME_VERSION = '{{python_SP.runtime_version}}'
+RUNTIME_VERSION = '{{SP_configs.py_runtime_ver}}'
 PACKAGES = ('snowflake-snowpark-python')
 HANDLER = 'jsonparser'
 AS

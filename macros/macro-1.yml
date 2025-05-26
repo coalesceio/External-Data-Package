@@ -7,6 +7,6 @@ macroString: |
   {#-- The following variables can be customized to for python based procedures used in this package    --#}
   {#------------------------------------------------------------------------------------------------------#}
   
-  {%set python_SP = namespace(runtime_version="3.9")%}
+  {%set SP_configs = namespace(py_runtime_ver="3.9",java_runtime_ver="11")%}
 name: macro
 type: Macro

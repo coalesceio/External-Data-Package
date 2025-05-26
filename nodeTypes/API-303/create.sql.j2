@@ -250,7 +250,7 @@ does not permit copying or modification for any other purpose.
 CREATE OR REPLACE PROCEDURE {{ ref_no_link(desiredState.node.location.name, 'PROC_' + desiredState.node.name | upper) | trim }}()
 RETURNS STRING
 language python
-runtime_version= '{{python_SP.runtime_version}}'
+runtime_version= '{{SP_configs.py_runtime_ver}}'
 handler = 'call_api'
 external_access_integrations=({{desiredState.config.extIntegration}})
 packages = ('snowflake-snowpark-python','requests','pandas')

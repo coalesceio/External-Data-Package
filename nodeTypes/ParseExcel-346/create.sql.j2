@@ -276,7 +276,7 @@ does not permit copying or modification for any other purpose.
 CREATE OR REPLACE PROCEDURE {{ fqSpName }} (source_file_path string, target_table_name string)
 RETURNS VARIANT
 LANGUAGE PYTHON
-RUNTIME_VERSION = '{{python_SP.runtime_version}}'
+RUNTIME_VERSION = '{{SP_configs.py_runtime_ver}}'
 PACKAGES = ('snowflake-snowpark-python', 'pandas', 'openpyxl')
 HANDLER = 'main'
 AS

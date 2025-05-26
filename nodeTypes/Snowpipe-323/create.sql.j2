@@ -219,7 +219,7 @@ does not permit copying or modification for any other purpose.
 
 
               --Create temporary file format for inferring table structure 
-              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "ANANDHIS_DEV"."SOURCE_DATA"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
+              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
               RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
               FIELD_DELIMITER=''' || file_format_options:FIELD_DELIMITER || '''                                    

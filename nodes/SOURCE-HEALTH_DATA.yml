@@ -22,6 +22,7 @@ operation:
     intextstage: true
     loadUncertainFiles: ""
     onError: ""
+    parsehdr1: true
     purgeBehavior: ""
     recDelim: |+
 

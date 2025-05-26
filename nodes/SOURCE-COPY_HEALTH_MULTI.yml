@@ -3,10 +3,17 @@ id: 850f64a8-d2ef-4134-b424-7ddf87fe00e2
 name: COPY_HEALTH_MULTI
 operation:
   config:
+    binformat: HEX
+    bytemark: false
+    columnmismatch: false
     compression: NONE
     dateformat: ""
+    emptyfield: false
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: null
+    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
@@ -21,6 +28,7 @@ operation:
     inferschema: true
     intextstage: true
     loadUncertainFiles: ""
+    mulline: false
     onError: CONTINUE
     parsehdr: true
     purgeBehavior: ""

@@ -23,6 +23,7 @@ operation:
     loadUncertainFiles: ""
     onError: ""
     parsehdr: true
+    parsehdr1: false
     purgeBehavior: ""
     recDelim: ""
     replaceinvalidcharacters: true

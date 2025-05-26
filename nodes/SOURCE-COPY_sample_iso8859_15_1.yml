@@ -25,7 +25,7 @@ operation:
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     intextstage: true
     loadUncertainFiles: ""
     mulline: true

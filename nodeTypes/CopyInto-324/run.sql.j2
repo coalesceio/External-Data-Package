@@ -160,7 +160,7 @@ does not permit copying or modification for any other purpose.
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
             FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
           {%endif%}
-          {% if config.encoding != "" and config.fileType in ('CSV')%}
+          {% if (config.encoding != "" and config.encoding is not none) and config.fileType in ('CSV')%}
                 ENCODING ='{{config.encoding}}'
           {%endif%}                        
           {% if config.skipBlankLines and config.fileType in ('CSV')%}
@@ -211,7 +211,7 @@ does not permit copying or modification for any other purpose.
             {% if (config.escapeval != "" and config.escapeval is not none) and  config.fileType in ('CSV')%}
                 ESCAPE = '{{config.escapeval}}'
             {%endif%}
-             {% if config.binformat != "" and  config.fileType in ('CSV')%}
+             {% if (config.binformat != "" and config.binformat is not none)and  config.fileType in ('CSV')%}
                 BINARY_FORMAT  = '{{config.binformat}}'
             {%endif%}
             {% if (config.nullchar != "" and config.nullchar is not none ) and  config.fileType in ('CSV')%}

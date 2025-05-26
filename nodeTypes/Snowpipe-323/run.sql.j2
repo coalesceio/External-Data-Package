@@ -111,9 +111,12 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
             FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
           {%endif%}
-          {% if config.encoding != "" and config.fileType in ('CSV')%}
+          {% if (config.encoding != "" and config.encoding is not none) and config.fileType in ('CSV')%}
                 ENCODING ='{{config.encoding}}'
-          {%endif%}                        
+          {%endif%}      
+          {% if (config.binformat != "" and config.binformat is not none) and config.fileType in ('CSV')%}
+                ENCODING ='{{config.binformat}}'
+          {%endif%}                  
           {% if config.skipBlankLines and config.fileType in ('CSV')%}
              SKIP_BLANK_LINES =  {{ config.skipBlankLines }}
           {%endif%}

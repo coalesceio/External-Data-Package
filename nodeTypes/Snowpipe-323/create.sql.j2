@@ -102,10 +102,10 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.parsehdr and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "PARSE_HEADER" + "="+ "TRUE"+""%}
                             {%endif%}
-                            {% if desiredState.config.encoding != "" and  desiredState.config.fileType in ('CSV') %}
+                            {% if (desiredState.config.encoding != "" and desiredState.config.encoding is not none)and  desiredState.config.fileType in ('CSV') %}
                                 {%set fileformatsql = fileformatsql + "\n"+ "ENCODING"+ "=''"+ desiredState.config.encoding+"''"%}
                             {%endif%}
-                            {% if desiredState.config.binformat != "" and  desiredState.config.fileType in ('CSV') %}
+                            {% if (desiredState.config.binformat != "" and desiredState.config.binformat is not none )and  desiredState.config.fileType in ('CSV') %}
                                 {%set fileformatsql = fileformatsql + "\n"+ "BINARY_FORMAT"+ "=''"+ desiredState.config.binformat+"''"%}
                             {%endif%}
                             {% if desiredState.config.replaceinvalidcharacters%}

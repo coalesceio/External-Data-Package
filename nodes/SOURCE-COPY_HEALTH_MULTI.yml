@@ -4,15 +4,15 @@ name: COPY_HEALTH_MULTI
 operation:
   config:
     binformat: HEX
-    bytemark: false
+    bytemark: true
     columnmismatch: false
     compression: NONE
     dateformat: ""
-    emptyfield: false
+    emptyfield: true
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
+    escapeenclosed: \\
     escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
@@ -28,7 +28,7 @@ operation:
     inferschema: true
     intextstage: true
     loadUncertainFiles: ""
-    mulline: false
+    mulline: true
     onError: CONTINUE
     parsehdr: true
     purgeBehavior: ""

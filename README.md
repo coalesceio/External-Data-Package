@@ -24,6 +24,7 @@ The Copy-Into node type the following configurations available:
 * [General Options](#copy-into-general-options)
 * [Source Data](#copy-into-file-location)
 * [File Format](#copy-into-file-format)
+* [Extended CSV File Format Options](#extended-csv-file-format-options)
 * [Copy Options](#copy-into-copy-options)
 
 <h3 id="copy-into-node-properties">CopyInto - Node Properties</h3>
@@ -261,6 +262,7 @@ The Snowpipe node type the following configurations available:
 * [Snowpipe Options](#snowpipe-snowpipe-options)
 * [File Location](#snowpipe-file-location)
 * [File Format](#snowpipe-file-format)
+* [Extended CSV File Format Options](#snowpipe-file-format-options)
 * [Copy Options](#snowpipe-copy-options)
 
 **InferSchema-true**

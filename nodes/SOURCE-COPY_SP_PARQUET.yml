@@ -14,12 +14,12 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: PARQUETFILEFORMAT
     fileFormatType: File Format Values
-    fileNames: "'employees.parquet'"
+    fileNames: employees.parquet
     filePattern: ""
     fileType: PARQUET
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    inferschema: true
+    inferschema: false
     integration: ""
     onError: ""
     recDelim: |+

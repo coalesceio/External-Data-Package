@@ -5,7 +5,7 @@ operation:
   config:
     awsSnsTopic: ""
     binformat: HEX
-    bytemark: false
+    bytemark: true
     cloudProvider: AWS
     columnmismatch: false
     compression: NONE
@@ -25,10 +25,10 @@ operation:
     filePattern: "'.*hea.*[.]csv'"
     fileType: CSV
     flagLoadHistorical: true
-    flagSnowpipe: Test Copy Statement
+    flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""
-    mulline: false
+    mulline: true
     nullchar: null
     onError: CONTINUE
     parsehdr: true

@@ -4,28 +4,38 @@ name: COPY_BABY_PIPE
 operation:
   config:
     awsSnsTopic: ""
+    binformat: HEX
+    bytemark: true
     cloudProvider: AWS
+    columnmismatch: false
     compression: ""
     dateformat: ""
+    emptyfield: true
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    fieldDelim: ","
+    escapeenclosed: null
+    escapeval: null
+    fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: CSVFILEFORMAT
-    fileFormatType: File Format Name
-    fileNames: "'baby.csv'"
+    fileFormatName: CSV
+    fileFormatType: File Format Values
+    fileNames: baby.csv
     filePattern: "'.*bab.*[.]csv'"
     fileType: CSV
-    flagLoadHistorical: false
+    flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""
-    onError: ""
+    mulline: true
+    nullchar: null
+    onError: CONTINUE
     parsehdr: false
+    parsehdr1: false
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
     stageName: STAGE_LOCAL

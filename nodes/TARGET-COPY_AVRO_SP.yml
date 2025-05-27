@@ -14,12 +14,12 @@ operation:
     fileFormatLoc: SOURCE
     fileFormatName: AVROFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'twitter.avro'"
+    fileNames: twitter.avro
     filePattern: " '.*twi.*[.]avro'"
     fileType: AVRO
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    inferschema: true
+    inferschema: false
     integration: ""
     onError: ""
     recDelim: |+

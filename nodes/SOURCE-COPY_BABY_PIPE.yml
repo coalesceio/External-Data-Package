@@ -21,7 +21,7 @@ operation:
     fileFormatLoc: SOURCE
     fileFormatName: CSV
     fileFormatType: File Format Values
-    fileNames: baby.csv
+    fileNames: ""
     filePattern: "'.*bab.*[.]csv'"
     fileType: CSV
     flagLoadHistorical: true

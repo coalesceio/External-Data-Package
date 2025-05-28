@@ -12,8 +12,8 @@ operation:
     encoding: ISO885915
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: \\
-    escapeval: ""
+    escapeenclosed: \134
+    escapeval: \134
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ;
@@ -25,7 +25,7 @@ operation:
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     mulline: true

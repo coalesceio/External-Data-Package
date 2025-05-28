@@ -19,9 +19,10 @@ operation:
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    inferschema: false
+    inferschema: true
     integration: ""
     onError: ""
+    parsehdr1: false
     recDelim: |+
 
     replaceinvalidcharacters: false

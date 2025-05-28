@@ -12,15 +12,15 @@ operation:
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: \\
-    escapeval: null
+    escapeenclosed: \134
+    escapeval: \134
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
-    fieldDelim: ","
+    fieldDelim: ""
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSVFILEFORMAT
-    fileFormatType: File Format Values
+    fileFormatType: File Format Name
     fileNames: health.csv,health_pipe.csv
     filePattern: ""
     fileType: CSV
@@ -29,8 +29,10 @@ operation:
     intextstage: true
     loadUncertainFiles: ""
     mulline: true
+    nullchar: null
     onError: CONTINUE
     parsehdr: true
+    parsehdr1: false
     purgeBehavior: ""
     recDelim: |+
 
@@ -53,7 +55,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

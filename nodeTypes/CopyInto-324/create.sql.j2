@@ -122,7 +122,7 @@ does not permit copying or modification for any other purpose.
                               {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE_UNENCLOSED_FIELD" + "=''\\"+ desiredState.config.escapeenclosed+"''"%}
                             {%endif%}
                             {% if (desiredState.config.escapeval != "" and desiredState.config.escapeval is not none )and  desiredState.config.fileType in ('CSV')%}
-                              {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE" + "=''"+ desiredState.config.escapeval +"''"%}
+                              {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE" + "=''\\"+ desiredState.config.escapeval +"''"%}
                             {%endif%}
                             {% if desiredState.config.mulline and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "MULTI_LINE" + "="+ "TRUE"+""%}
@@ -218,7 +218,7 @@ does not permit copying or modification for any other purpose.
 			  PARSE_HEADER = {{desiredState.config.parsehdr1}}
               REPLACE_INVALID_CHARACTERS = TRUE
               ERROR_ON_COLUMN_COUNT_MISMATCH=FALSE
-              ESCAPE = ''' || file_format_options:ESCAPE || '''
+              ESCAPE = ''\\' || file_format_options:ESCAPE || '''
               ESCAPE_UNENCLOSED_FIELD = ''\\' || file_format_options:ESCAPE_UNENCLOSED_FIELD || ''' 
               TRIM_SPACE = '|| file_format_options:TRIM_SPACE ||'
               EMPTY_FIELD_AS_NULL = '|| file_format_options:EMPTY_FIELD_AS_NULL ||'

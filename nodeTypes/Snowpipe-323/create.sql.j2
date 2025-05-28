@@ -159,12 +159,12 @@ does not permit copying or modification for any other purpose.
 										
                           {%- if ","  in desiredState.config.fileNames %} 
                                {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
-                               {% set final_variable = "''" + formatted_variable + "''" %}
-                               {% set fileNameSQL = " "+"FILES =>"+""+final_variable + "," %} 
+                               {% set final_variable = "'" + formatted_variable + "'" %}
+                               {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
                            {%- elif  desiredState.config.fileNames  -%}
-                               {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
+                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
                            {% endif %}
-                    
+
                     {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
 
            -- Anonymous stored procedure block
@@ -532,17 +532,15 @@ does not permit copying or modification for any other purpose.
       {%- else -%}
         {%- set filePatternSQL = "" -%} 
      {%- endif -%}
-
-     {%if desiredState.config.fileNames | length > 0 and ',' in desiredState.config.fileNames  %}
-    {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("','") %}
-      {% set final_variable = "'" + formatted_variable + "'" %}
-      {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
-
-    {%- elif desiredState.config.fileNames | length > 0 %} 
-      {% set fileNameSQL = 'FILES = (' + "'"+desiredState.config.fileNames + "'"+')' %}                               
-    {%- else -%}
-       {% set fileNameSQL = "" %} 
+    
+    {%- if ","  in desiredState.config.fileNames %} 
+        {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
+        {% set final_variable = "'" + formatted_variable + "'" %}
+        {% set fileNameSQL = " "+"FILES = ("+ final_variable + ")" %} 
+    {%- elif  desiredState.config.fileNames  -%}
+        {% set fileNameSQL = " "+"FILES =("+desiredState.config.fileNames+")" %}
     {% endif %}
+
 
 	   {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
      {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
@@ -610,7 +608,7 @@ does not permit copying or modification for any other purpose.
                  {%- endfor %}
           
                   FROM '@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}{{subf}}') 
-                  {{ fileNameSQL }}
+                  {{fileNameSQL}}
                   {{ filePatternSQL }}
       
                     {%- if desiredState.config.fileFormatType == 'File Format Name' %}

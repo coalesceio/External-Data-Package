@@ -10,7 +10,7 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: health_pipe.csv
+    fileNames: health_pipe.csv,health1.csv
     fileType: CSV
     parsehdr: false
     parsehdr1: true
@@ -19,6 +19,7 @@ operation:
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
+    subfolder: null
     usevectscan: false
   database: ""
   deployEnabled: true

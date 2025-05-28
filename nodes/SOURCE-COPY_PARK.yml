@@ -3,17 +3,24 @@ id: fd911a5d-4428-44fb-9e37-4e7d2b786727
 name: COPY_PARK
 operation:
   config:
+    binformat: HEX
+    bytemark: false
+    columnmismatch: false
     compression: NONE
     dateformat: ""
+    emptyfield: false
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: null
+    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_COMMA_QUOTED
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: Parkwork1.CSV
     filePattern: ""
     fileType: CSV
@@ -21,12 +28,13 @@ operation:
     inferschema: true
     intextstage: true
     loadUncertainFiles: ""
+    mulline: false
     onError: ""
-    parsehdr: false
+    parsehdr: true
     parsehdr1: false
     purgeBehavior: ""
-    recDelim: |
-      \n
+    recDelim: |+
+
     replaceinvalidcharacters: false
     returnFailedOnly: ""
     sizeLimit: ""

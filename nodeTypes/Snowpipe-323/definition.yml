@@ -111,13 +111,13 @@ metadata:
         default: 'Enter folder name in stage if applicable-folder/subfolder'
         isRequired: false
 
-      - displayName: File Name(s) (Optional - Ex:a.csv,b.csv )
+      - displayName: File Name(s) (Optional - Ex:'a.csv','b.csv' ) Not supported by pipe
         attributeName: fileNames
         type: textBox
         isRequired: false
-        enableIf: "{% if config.flagSnowpipe != 'Enable Snowpipe' or config.inferschema == true %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.flagLoadHistorical == true or config.flagSnowpipe != 'Enable Snowpipe' or config.inferschema == true %} true {% else %} false {% endif %}"
 
-      - displayName: File Pattern (Optional - Ex:'.*hea.*[.]csv')
+      - displayName: File Pattern (Ex:'.*hea.*[.]csv') Mandatory for pipe
         attributeName: filePattern
         type: textBox
         isRequired: false
@@ -287,6 +287,20 @@ metadata:
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV'))  and config.inferschema == false%} true {% else %} false {% endif %}"
         isRequired: false
       
+      - displayName: Trim space
+        attributeName: trimSpace
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        isRequired: false
+
+      - displayName: Replace invalid characters
+        attributeName: replaceinvalidcharacters
+        enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false    
+     
+      
       - displayName: Using vectorised scanner
         attributeName: usevectscan
         type: toggleButton
@@ -302,20 +316,7 @@ metadata:
         enableIf: "{% if config.fileFormatType != 'File Format Name' and config.fileType in ('CSV') and config.inferschema == false %} true {% else %} false {% endif %}"
         type: toggleButton
         isRequired: false
-
-      - displayName: Trim space
-        attributeName: trimSpace
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))%} true {% else %} false {% endif %}"
-        type: toggleButton
-        isRequired: false
-
-      - displayName: Replace invalid characters
-        attributeName: replaceinvalidcharacters
-        enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
-        type: toggleButton
-        default: true
-        isRequired: false    
-      
+     
       - displayName: Nulls for empty field
         attributeName: emptyfield
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"

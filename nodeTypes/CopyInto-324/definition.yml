@@ -271,6 +271,19 @@ metadata:
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON','CSV'))  and config.inferschema == false%} true {% else %} false {% endif %}"
         isRequired: false
       
+      - displayName: Trim space
+        attributeName: trimSpace
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))%} true {% else %} false {% endif %}"
+        type: toggleButton
+        isRequired: false
+
+      - displayName: Replace invalid characters
+        attributeName: replaceinvalidcharacters
+        enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false    
+      
       - displayName: Using vectorised scanner
         attributeName: usevectscan
         type: toggleButton
@@ -287,19 +300,6 @@ metadata:
         type: toggleButton
         isRequired: false
 
-      - displayName: Trim space
-        attributeName: trimSpace
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType not in ('XML'))%} true {% else %} false {% endif %}"
-        type: toggleButton
-        isRequired: false
-
-      - displayName: Replace invalid characters
-        attributeName: replaceinvalidcharacters
-        enableIf: "{% if (config.fileFormatType != 'File Format Name')%} true {% else %} false {% endif %}"
-        type: toggleButton
-        default: true
-        isRequired: false    
-      
       - displayName: Nulls for empty field
         attributeName: emptyfield
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV'))%} true {% else %} false {% endif %}"

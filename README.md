@@ -120,7 +120,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 * If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
-* The temporary file format created follows the naing convention ==>TEMP_{{file_type}}_((node name}}.Ensure that any predefined file formats created in snowflake does not have the same file format name.
+* The temporary file format created follows the naing convention ==>`TEMP_{{file_type}}_{{node name}}`.Ensure that any predefined file formats created in snowflake does not have the same file format name.
   
 ##### File Format Definition - File Format Name
 
@@ -332,7 +332,7 @@ There are four configs within the **Node Properties** group.
 * If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
-* The temporary file format created follows the naing convention ==>TEMP_{{file_type}}_((node name}}.Ensure that any predefined file formats created in snowflake does not have the same file format name.
+* The temporary file format created follows the naing convention ==>`TEMP_{{file_type}}_{{node name}}`.Ensure that any predefined file formats created in snowflake does not have the same file format name.
 
 ##### File Format Definition - File Format Name
 
@@ -682,7 +682,7 @@ There are four configs within the **Node Properties** group.
 * If the file format definition is set to 'File format values',a temporary file format is created based on the config values and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
-* The temporary file format created follows the naing convention ==>TEMP_{{file_type}}_((node name}}.Ensure that any predefined file formats created in snowflake does not have the same file format name.
+* The temporary file format created follows the naing convention ==>`TEMP_{{file_type}}_{{node name}}`.Ensure that any predefined file formats created in snowflake does not have the same file format name.
 
 ##### File Format Definition - File Format Name
   

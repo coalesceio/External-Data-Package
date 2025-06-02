@@ -9,7 +9,7 @@ operation:
     compression: NONE
     emptyfield: true
     encoding: ISO885915
-    escapeenclosed: \\
+    escapeenclosed: \134
     escapeval: ""
     fieldDelim: ;
     fieldEnclosed: \042

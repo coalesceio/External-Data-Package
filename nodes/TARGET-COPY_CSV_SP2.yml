@@ -21,7 +21,7 @@ operation:
     fileFormatLoc: SOURCE
     fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Values
-    fileNames: health_pipe.csv
+    fileNames: "'health_pipe.csv'"
     filePattern: "'.*hea.*[.]csv'"
     fileType: CSV
     flagLoadHistorical: true

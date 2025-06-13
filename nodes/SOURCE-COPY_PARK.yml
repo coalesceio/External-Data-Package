@@ -8,7 +8,7 @@ operation:
     columnmismatch: false
     compression: NONE
     dateformat: ""
-    emptyfield: false
+    emptyfield: true
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
@@ -25,10 +25,11 @@ operation:
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     mulline: false
+    nullchar: ('\N')
     onError: ""
     parsehdr: true
     parsehdr1: false
@@ -70,7 +71,7 @@ operation:
         config: {}
         dataType: NUMBER(2,0)
         defaultValue: ""
-        description: ""
+        description: state '' checking for escape character
         name: STATE
         nullable: true
         primaryKey: false

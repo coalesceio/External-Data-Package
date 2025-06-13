@@ -2,10 +2,10 @@ fileVersion: 1
 id: "203"
 mappingDefinitions:
   SOURCE:
-    database: ANANDHIS_DEV
+    database: RUHULAMINS_DEV
     schema: SOURCE_DATA
   TARGET:
-    database: ANANDHIS_DEV
+    database: RUHULAMIN_QA
     schema: TARGET
 name: DEV
 type: Environment

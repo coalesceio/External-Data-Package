@@ -88,7 +88,7 @@ $$;
 
 {%elif  currentState != undefined and desiredState == undefined%}
 
-        {{ stage('Drop procedure', true, "sql", "drop") }}
+        {{ stage('Drop procedure') }}
          DROP PROCEDURE IF EXISTS {{ ref_no_link(currentState.node.location.name, 'PROC_' + currentState.node.name | upper) | trim }}()
 
 

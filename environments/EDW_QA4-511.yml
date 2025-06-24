@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "511"
+mappingDefinitions:
+  SOURCE:
+    database: RUHULAMINS_DEV
+    schema: SOURCE_DATA
+  TARGET:
+    database: RUHULAMIN_QA
+    schema: TARGE4
+name: EDW_QA4
+type: Environment

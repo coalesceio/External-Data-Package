@@ -1,6 +1,6 @@
 fileVersion: 1
 id: fd911a5d-4428-44fb-9e37-4e7d2b786727
-name: COPY_PARK
+name: COPY_PARK123
 operation:
   config:
     binformat: HEX
@@ -658,7 +658,7 @@ operation:
           columnCounter: c4f2863c-78e4-4851-b65e-6a14a09d9eb5
           stepCounter: fd911a5d-4428-44fb-9e37-4e7d2b786727
         config: {}
-        dataType: NUMBER(2,0)
+        dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
         name: PBODYTYP
@@ -2331,9 +2331,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_PARK
+        name: COPY_PARK123
         noLinkRefs: []
-  name: COPY_PARK
+  name: COPY_PARK123
   overrideSQL: false
   schema: ""
   sqlType: "324"

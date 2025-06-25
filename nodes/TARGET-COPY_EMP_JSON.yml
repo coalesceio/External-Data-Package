@@ -11,7 +11,7 @@ operation:
     extlocation: false
     fieldDelim: "|"
     fieldEnclosed: \042
-    fileFormatLoc: TARGET
+    fileFormatLoc: SOURCE
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: employees.json
@@ -34,8 +34,8 @@ operation:
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: spstagesample
-    stageStorageLocationName: TARGET
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
     subfolder: null

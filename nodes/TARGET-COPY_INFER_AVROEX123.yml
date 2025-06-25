@@ -1,6 +1,6 @@
 fileVersion: 1
 id: d7c3c70b-2409-4388-926b-3d7ce3322c28
-name: COPY_INFER_AVROEX1
+name: COPY_INFER_AVROEX123
 operation:
   config:
     compression: NONE
@@ -212,9 +212,9 @@ operation:
             nodeName: INFER_AVROEX1
         join:
           joinCondition: FROM {{ ref('TARGET', 'INFER_AVROEX1') }} "INFER_AVROEX1"
-        name: COPY_INFER_AVROEX1
+        name: COPY_INFER_AVROEX123
         noLinkRefs: []
-  name: COPY_INFER_AVROEX1
+  name: COPY_INFER_AVROEX123
   overrideSQL: false
   schema: ""
   sqlType: "324"

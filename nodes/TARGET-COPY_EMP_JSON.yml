@@ -333,7 +333,7 @@ operation:
           columnCounter: cb71de4c-5ef0-4b55-b36c-331188df3291
           stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
         config: {}
-        dataType: NUMBER(1,0)
+        dataType: NUMBER(5,0)
         defaultValue: ""
         description: ""
         name: ReportsTo

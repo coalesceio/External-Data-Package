@@ -100,7 +100,7 @@ operation:
           columnCounter: 01045bd5-222f-4f89-821e-c17fd3e36e7c
           stepCounter: c5f01a64-b827-4de3-842f-594179296917
         config: {}
-        dataType: NUMBER(2,0)
+        dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
         name: OrderLine

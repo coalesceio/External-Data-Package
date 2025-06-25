@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-name: EXT_ORDER_DETAILS123
+name: EXT_ORDER_DETAILS12345
 operation:
   config:
     autoRefresh: false
@@ -219,9 +219,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: EXT_ORDER_DETAILS123
+        name: EXT_ORDER_DETAILS12345
         noLinkRefs: []
-  name: EXT_ORDER_DETAILS123
+  name: EXT_ORDER_DETAILS12345
   overrideSQL: false
   schema: ""
   sqlType: "298"

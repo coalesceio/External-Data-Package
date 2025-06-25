@@ -9,7 +9,7 @@ operation:
     cpartexpression: split_part(metadata$filename,'/',2)
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE_ANANDHI
+    fileFormatLoc: SOURCE
     fileFormatName: avrofileformat
     fileFormatType: File Format Name
     fileNames: "'twitter_samp.avro'"
@@ -25,14 +25,14 @@ operation:
     skipHeader: "1"
     snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
     stageName: spstagesample/
-    stageStorageLocationName: SOURCE_ANANDHI
+    stageStorageLocationName: SOURCE
     stripouterarray: false
     trimSpace: true
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

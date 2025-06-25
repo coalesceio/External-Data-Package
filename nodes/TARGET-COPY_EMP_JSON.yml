@@ -11,7 +11,7 @@ operation:
     extlocation: false
     fieldDelim: "|"
     fieldEnclosed: \042
-    fileFormatLoc: TARGET_ANANDHI
+    fileFormatLoc: SOURCE
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: employees.json
@@ -35,7 +35,7 @@ operation:
     skipBlankLines: false
     skipHeader: "1"
     stageName: spstagesample
-    stageStorageLocationName: TARGET_ANANDHI
+    stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
     subfolder: null
@@ -48,7 +48,7 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []

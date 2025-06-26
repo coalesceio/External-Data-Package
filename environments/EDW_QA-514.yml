@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "514"
+mappingDefinitions:
+  SOURCE:
+    database: ANANDHIS_DEV
+    schema: SOURCE_DATA
+  TARGET:
+    database: ANANDHIS_DEV
+    schema: TARGET_QA
+name: EDW_QA
+type: Environment

@@ -16,7 +16,7 @@ operation:
     fileType: CSV
     file_ext: ""
     header: true
-    overwriteFiles: false
+    overwriteFiles: true
     partitionConfig: false
     partitionConfigExpressions: false
     partitionbyConfig:

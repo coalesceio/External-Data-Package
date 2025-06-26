@@ -14,7 +14,7 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: order_details.json
+    fileNames: "'order_details.json'"
     filePattern: |
       '.*ord.*[.]json'
     fileType: JSON

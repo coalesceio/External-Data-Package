@@ -39,10 +39,10 @@ operation:
     replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
     stripouterarray: true
-    subfolder: INFOLDER
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false

@@ -3,7 +3,7 @@ id: 1509b7d8-1310-428c-9052-5ab4efb27e42
 name: TWITTER_AVRO
 operation:
   config:
-    compression: null
+    compression: NONE
     encoding: null
     fieldDelim: null
     fieldEnclosed: null

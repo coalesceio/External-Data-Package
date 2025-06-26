@@ -1,0 +1,219 @@
+fileVersion: 1
+id: f02e206c-357d-4f06-bdaf-4df8235a2cef
+name: COPY_PARQUET
+operation:
+  config:
+    binformat: HEX
+    bytemark: true
+    columnmismatch: false
+    compression: ""
+    dateformat: ""
+    emptyfield: true
+    encoding: UTF8
+    enforceLength: ""
+    errornumber: ""
+    escapeenclosed: \134
+    escapeval: ""
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileNames: cities.parquet
+    filePattern: ""
+    fileType: PARQUET
+    forceLoad: ""
+    inferschema: false
+    intextstage: true
+    loadUncertainFiles: ""
+    mulline: true
+    nullchar: ('\N')
+    onError: ""
+    parsehdr: true
+    parsehdr1: true
+    purgeBehavior: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: true
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
+    skipHeader: "1"
+    stageName: CSV_FILE_STAGE
+    stageStorageLocationName: SOURCE
+    storageintegration: ""
+    stripouterarray: true
+    subfolder: tutorials/dataloading
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    truncateBefore: false
+    truncateColumns: ""
+    usevectscan: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f02247bd-ef5c-4bda-96e1-b06e2b6788f8
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: continent
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 54b1fb03-da50-4108-8fd0-3ec53abc32a3
+                stepCounter: 2eabcca8-8d21-4ca0-bdcc-0caf60693acf
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2279e9a9-f896-4f5f-89b4-bf25ea761956
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5a501377-73f3-44e9-a0fc-9ac4d8ac0495
+                stepCounter: 2eabcca8-8d21-4ca0-bdcc-0caf60693acf
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c12acc19-588a-49ba-98eb-928ae8947b38
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: $1
+        sysJSON: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00f73151-7d56-4a83-a2e3-4cd673b8ff5c
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: current_timestamp()::timestamp_ntz
+        sysLdTs: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 011fddde-ee4d-4860-ba9f-b98347122a8a
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f001cb2e-3545-4cdf-b587-f10effdbfa77
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_ROW_NUMBER
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1b7726eb-62cc-4424-b58d-1e82bd4b243f
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_LAST_MODIFIED
+        sysFlLtMd: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29922426-3d43-421b-b58d-ca3909496c8b
+          stepCounter: f02e206c-357d-4f06-bdaf-4df8235a2cef
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$START_SCAN_TIME
+        sysFlScTm: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          INFER_PARQUET: 2eabcca8-8d21-4ca0-bdcc-0caf60693acf
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: COPY_ORDERS_SAMP
+          - locationName: TARGET
+            nodeName: INFER_PARQUET
+        join:
+          joinCondition: |-
+            FROM {{ ref('TARGET', 'INFER_PARQUET') }} "INFER_PARQUET"
+            
+            -- {{ref ('TARGET','COPY_ORDERS_SAMP')}}
+        name: COPY_PARQUET
+        noLinkRefs: []
+  name: COPY_PARQUET
+  overrideSQL: false
+  schema: ""
+  sqlType: "324"
+  type: sql
+  version: 1
+type: Node

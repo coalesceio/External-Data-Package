@@ -1,0 +1,102 @@
+fileVersion: 1
+id: 4b0447ca-930c-41de-898a-ce615b8f8985
+name: WRK_ORDERS_TXT
+operation:
+  config:
+    asofColumn:
+      items:
+        - {}
+    asofJoin: true
+    asofJoinMain: false
+    asofJoinON: false
+    asofJoinUSING: false
+    groupByAll: false
+    insertStrategy: INSERT
+    orderby: false
+    orderbycolumn:
+      items:
+        - {}
+    postSQL: ""
+    preSQL: ""
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c932fa9f-28bf-463b-819c-673ddd2a35ae
+          stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
+        config: {}
+        dataType: NUMBER(3,0)
+        description: ""
+        name: OrderID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8e5e29f5-d673-4eab-9b3b-6ae652576914
+                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f0a58c41-e86c-4c5d-b367-5124031d1572
+          stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
+        config: {}
+        dataType: NUMBER(1,0)
+        description: ""
+        name: CustomerID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b2a32409-995f-450f-96f3-c7620a644b47
+                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4c9b1bbf-d549-4cc0-ae66-ee0959d3af96
+          stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
+        config: {}
+        dataType: NUMBER(5,2)
+        description: ""
+        name: OrderAmount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4564c7fb-688e-48eb-9d26-4e82ecf2fa65
+                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          COPY_ORDERS_TXT: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: COPY_CUSTOMERS
+          - locationName: TARGET
+            nodeName: COPY_ORDERS_TXT
+        join:
+          joinCondition: |-
+            
+            
+             
+              FROM  {{ ref('TARGET', 'COPY_ORDERS_TXT') }} COPY_ORDERS_TXT
+              -- {{ref('TARGET','COPY_CUSTOMERS')}}
+        name: WRK_ORDERS_TXT
+        noLinkRefs: []
+  name: WRK_ORDERS_TXT
+  overrideSQL: false
+  schema: ""
+  sqlType: bnt:::204
+  type: sql
+  version: 1
+type: Node

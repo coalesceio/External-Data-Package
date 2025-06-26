@@ -1,0 +1,98 @@
+fileVersion: 1
+id: 7a157cba-8898-45cf-8281-0eb378c0dc00
+name: WRK_CUSTOMERS
+operation:
+  config:
+    asofColumn:
+      items:
+        - {}
+    asofJoin: true
+    asofJoinMain: false
+    asofJoinON: false
+    asofJoinUSING: false
+    groupByAll: false
+    insertStrategy: INSERT
+    orderby: false
+    orderbycolumn:
+      items:
+        - {}
+    postSQL: ""
+    preSQL: ""
+    selectDistinct: false
+    testsEnabled: false
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ccb59435-d4cf-4f1f-97e9-311eb0051396
+          stepCounter: 7a157cba-8898-45cf-8281-0eb378c0dc00
+        config: {}
+        dataType: NUMBER(1,0)
+        description: ""
+        name: CustomerID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 327b78ef-071c-433c-ad42-1606259dcb84
+                stepCounter: 09945b06-9c1c-4964-9684-e06f6db7d3e0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dae374e3-e3f8-4456-a9d1-a4ff5edef79e
+          stepCounter: 7a157cba-8898-45cf-8281-0eb378c0dc00
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CustomerName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4a66c553-5baf-468c-aee2-a72dcb66a9bb
+                stepCounter: 09945b06-9c1c-4964-9684-e06f6db7d3e0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8ccd8791-8ea7-43ff-9115-923d5bf3ad23
+          stepCounter: 7a157cba-8898-45cf-8281-0eb378c0dc00
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ff9ba58d-c85b-4203-a70d-077014b68628
+                stepCounter: 09945b06-9c1c-4964-9684-e06f6db7d3e0
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: COPY_CUSTOMERS
+        join:
+          joinCondition: |2-
+
+
+             
+              FROM  {{ ref('TARGET', 'COPY_CUSTOMERS') }} COPY_CUSTOMERS
+        name: WRK_CUSTOMERS
+        noLinkRefs: []
+  name: WRK_CUSTOMERS
+  overrideSQL: false
+  schema: ""
+  sqlType: bnt:::204
+  type: sql
+  version: 1
+type: Node

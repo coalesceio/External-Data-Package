@@ -1,0 +1,135 @@
+fileVersion: 1
+id: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
+name: EXPORT_CUSTOMERS_ORDERS_TXT
+operation:
+  config:
+    compression: AUTO
+    compression1: AUTO
+    dateformat: AUTO
+    detailedOutput: false
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileLocation: STAGE_LOCAL
+    fileType: CSV
+    file_ext: ""
+    header: true
+    overwriteFiles: false
+    partitionConfig: false
+    partitionConfigExpressions: false
+    partitionbyConfig:
+      items:
+        - {}
+    partitionbyConfigExpressions:
+      items:
+        - {}
+    queryId: false
+    recDelim: |+
+
+    singleFile: false
+    sizeLimit: "16"
+    stageStorageLocationName: SOURCE
+    timeformat: AUTO
+    timestampformat: AUTO
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 26253e1b-683d-42b7-a8ed-3510ad7a4a73
+          stepCounter: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
+        config: {}
+        dataType: NUMBER(1,0)
+        description: ""
+        name: CustomerID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b0b8d0f6-7f5c-4f35-92c4-60da3011dc71
+                stepCounter: 91d7886a-c965-4f51-9d79-5691a11251f8
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 44f0452d-b8df-4e01-9b19-fc65e20318fd
+          stepCounter: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CustomerName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 08d2725d-0f2a-4f91-beb7-20fb8a239ba9
+                stepCounter: 91d7886a-c965-4f51-9d79-5691a11251f8
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f7ec2461-604d-4a86-a366-78c48af385e5
+          stepCounter: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f91e0a9e-28d2-4402-bd92-243062c60afa
+                stepCounter: 91d7886a-c965-4f51-9d79-5691a11251f8
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e095b9b4-9077-491f-b739-c1c2a68e60c3
+          stepCounter: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
+        config: {}
+        dataType: NUMBER(3,0)
+        description: ""
+        name: OrderID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aa7cf4b1-489e-4120-a897-77c4ebf74599
+                stepCounter: 91d7886a-c965-4f51-9d79-5691a11251f8
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 03a961ec-0160-4fcc-b7df-535a789f678c
+          stepCounter: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
+        config: {}
+        dataType: NUMBER(5,2)
+        description: ""
+        name: OrderAmount
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cb8613cc-26da-494a-acce-e0ab354c10b9
+                stepCounter: 91d7886a-c965-4f51-9d79-5691a11251f8
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          WRK_CUSTOMERS_ORDERS_TXT: 91d7886a-c965-4f51-9d79-5691a11251f8
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: WRK_CUSTOMERS_ORDERS_TXT
+        join:
+          joinCondition: FROM {{ ref('TARGET', 'WRK_CUSTOMERS_ORDERS_TXT') }} "WRK_CUSTOMERS_ORDERS_TXT"
+        name: EXPORT_CUSTOMERS_ORDERS_TXT
+        noLinkRefs: []
+  name: EXPORT_CUSTOMERS_ORDERS_TXT
+  overrideSQL: false
+  schema: ""
+  sqlType: "302"
+  type: sql
+  version: 1
+type: Node

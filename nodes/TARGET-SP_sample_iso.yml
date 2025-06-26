@@ -1,52 +1,58 @@
 fileVersion: 1
-id: 127ada21-159c-4d71-96b3-b930451a66d1
-name: COPY_ORDERS_JSON
+id: d6e05594-ad40-453e-adfb-1ca4c4febe8d
+name: SP_sample_iso
 operation:
   config:
-    compression: ""
+    awsSnsTopic: ""
+    binformat: HEX
+    bytemark: true
+    cloudProvider: AWS
+    columnmismatch: false
+    compression: NONE
     dateformat: ""
+    emptyfield: true
+    encoding: ISO885915
     enforceLength: ""
     errornumber: ""
-    externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
-    fieldDelim: ","
+    escapeenclosed: \134
+    escapeval: ""
+    fieldDelim: ;
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: MY_JSON_FORMAT
+    fileFormatName: CSV_ISO
     fileFormatType: File Format Values
-    fileNames: order_details.json
-    filePattern: ""
-    fileType: JSON
-    forceLoad: ""
+    fileNames: "'sample_iso8859_15.csv'"
+    filePattern: |
+      '.*iso.*[.]csv'
+    fileType: CSV
+    flagLoadHistorical: true
+    flagSnowpipe: Enable Snowpipe
     inferschema: false
-    intextstage: true
-    loadUncertainFiles: ""
-    onError: ""
-    parsehdr: false
-    purgeBehavior: ""
+    integration: ""
+    mulline: true
+    nullchar: ('\N')
+    onError: CONTINUE
+    parsehdr: true
+    parsehdr1: true
     recDelim: |+
 
     replaceinvalidcharacters: true
-    returnFailedOnly: ""
-    sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
-    storageintegration: ""
     stripouterarray: true
     subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
     truncateColumns: ""
     usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -56,13 +62,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e09661f8-3c3d-43b8-8bee-abf8e656fb22
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: 7055caaa-cc61-4325-8867-1eb6e14de674
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
-        dataType: NUMBER(11,10)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Discount
+        name: Name
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -75,13 +81,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 603f5a3b-5671-4733-a719-5b657ebcec50
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: 8ec306ea-5ebd-4bd9-8263-d87c15c4b37f
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
-        dataType: NUMBER(4,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: OrderID
+        name: City
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -94,13 +100,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 87c052bb-c1b8-4b49-b7cf-264decfd4799
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: bd73d62b-335c-48b1-8e34-3e17286af64a
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
-        dataType: NUMBER(2,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: OrderLine
+        name: Amount
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -113,13 +119,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d27ca3d-02e2-467c-8c49-ee4a9e7c30db
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: 4e8dc354-6f7a-4cb1-8768-31898a04fdbc
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
-        dataType: NUMBER(2,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: ProductID
+        name: Currency
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -132,46 +138,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7f11cb6d-b15c-4327-921f-6d5cf75667ba
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
-        config: {}
-        dataType: NUMBER(3,0)
-        defaultValue: ""
-        description: ""
-        name: Quantity
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e2163ad0-a5af-4df3-931b-6f1ea30434c9
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
-        config: {}
-        dataType: NUMBER(5,2)
-        defaultValue: ""
-        description: ""
-        name: UnitPrice
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: aa65adc2-5f6b-40a2-884b-fec18afeedc9
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: 5f7b0045-f055-46aa-b6f3-0a1c9c338b43
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -189,8 +157,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b0d1c384-8b05-4bcf-845a-400a1ef19102
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: 3ffaf9b5-93d8-4ccb-be7d-51d2d38b9783
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -208,8 +176,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fdbb6045-a636-4c93-9006-453934024a98
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: ec9978c7-b680-450d-89e1-0153ea996418
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -227,8 +195,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5779b2e8-7f8d-4d3e-a349-638f1721ce15
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: c5180711-fe83-4957-92f4-9b367c91c5c7
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -246,8 +214,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: f16806d7-be79-43eb-9495-5ca02273a218
-          stepCounter: 127ada21-159c-4d71-96b3-b930451a66d1
+          columnCounter: 3549a6b8-64fc-4606-adca-8043fc080a53
+          stepCounter: d6e05594-ad40-453e-adfb-1ca4c4febe8d
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -269,12 +237,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_ORDERS_JSON
+        name: SP_sample_iso
         noLinkRefs: []
-  name: COPY_ORDERS_JSON
+  name: SP_sample_iso
   overrideSQL: false
   schema: ""
-  sqlType: "324"
+  sqlType: "323"
   type: sql
   version: 1
 type: Node

@@ -1,78 +1,71 @@
 fileVersion: 1
-id: 141afbaa-b618-45a3-aff5-14df2a4690e4
-name: COPY_sample_iso8859_15_1
+id: 5dba23bf-13e0-4367-a146-ba67eb92a36e
+name: EXT_ORDER_DETAILS_NP
 operation:
   config:
-    binformat: HEX
-    bytemark: true
-    columnmismatch: false
-    compression: NONE
-    dateformat: ""
-    emptyfield: true
-    encoding: ISO885915
-    enforceLength: ""
-    errornumber: ""
-    escapeenclosed: \134
-    escapeval: \134
-    externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
-    fieldDelim: ;
+    autoRefresh: false
+    cloudProvider: AWS
+    compression: AUTO
+    cpartexpression: ""
+    fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: ""
-    fileFormatName: ""
-    fileFormatType: File Format Values
-    fileNames: sample_iso8859_15.csv
-    filePattern: ""
-    fileType: CSV
-    forceLoad: ""
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
+    fileFormatType: File Format Name
+    fileNames: "'order_details.json'"
+    filePattern: .*order.*[.]json
+    fileType: JSON
     inferschema: false
-    intextstage: true
-    loadUncertainFiles: ""
-    mulline: true
-    nullchar: ('\N')
-    onError: ""
-    parsehdr: true
-    parsehdr1: true
-    purgeBehavior: ""
+    integration: ""
+    partclause: false
     recDelim: |+
 
-    replaceinvalidcharacters: true
-    returnFailedOnly: ""
-    sizeLimit: ""
-    skipBlankLines: false
+    replaceinvalidcharacters: false
+    skipBlankLines: true
     skipHeader: "1"
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
-    storageintegration: ""
-    stripouterarray: true
-    subfolder: INFOLDER
-    timeformat: ""
-    timestampformat: ""
-    trimSpace: false
-    truncateBefore: false
-    truncateColumns: ""
-    usevectscan: false
+    snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
+    stageName: spstagesample/
+    stageStorageLocationName: TARGET
+    stripouterarray: false
+    trimSpace: true
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
+      - VALUE: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: efd9a204-8095-46e9-ab17-bf399922d386
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2af43b5b-0a82-44bd-a829-507db4dd902b
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
+          columnCounter: eaf7e0a0-449f-4b23-9da2-5fb002021f5e
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(11,10)
         defaultValue: ""
         description: ""
-        name: Name
+        name: Discount
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -85,13 +78,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 452232f3-8f52-477c-a71f-3fa302ebafb2
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
+          columnCounter: 50246d8e-b4ed-4599-afbf-1bf6acfc0a26
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
-        name: City
+        name: OrderID
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -104,13 +97,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8a423d41-259d-4d23-9671-ff6b1fb70aba
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
+          columnCounter: 30ad783f-df29-4db0-9bea-7382cf9649e5
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(2,0)
         defaultValue: ""
         description: ""
-        name: Amount
+        name: OrderLine
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -123,13 +116,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a88523e7-949b-48a1-9e23-a5089b9d4801
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
+          columnCounter: fe40c0f7-26c4-4ca2-ac7f-6ed2a09cfcb3
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: NUMBER(2,0)
         defaultValue: ""
         description: ""
-        name: Currency
+        name: ProductID
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -142,89 +135,51 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9060e505-25b0-4d42-bc4e-0f1a24508f06
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
+          columnCounter: 959828f6-cf88-413a-b739-3f8b67dd54da
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: Quantity
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15b46fd0-d615-4866-9d7a-fa389b11a3e1
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
+        config: {}
+        dataType: NUMBER(5,2)
+        defaultValue: ""
+        description: ""
+        name: UnitPrice
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2c2d2b76-1887-494c-84b6-72a5f883aaa9
+          stepCounter: 5dba23bf-13e0-4367-a146-ba67eb92a36e
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: FILENAME
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d4b077f4-d7b9-4af0-b8ec-db32fa7a5ff5
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: FILE_ROW_NUMBER
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 5473113b-aa8b-4f76-a263-a504dca22b0d
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: FILE_LAST_MODIFIED
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 8635526d-5048-4e40-8a58-06b7f6cec61b
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: eea58e80-1bdc-4170-9e53-090b0e2934cc
-          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: SCAN_TIME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -241,12 +196,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_sample_iso8859_15_1
+        name: EXT_ORDER_DETAILS_NP
         noLinkRefs: []
-  name: COPY_sample_iso8859_15_1
+  name: EXT_ORDER_DETAILS_NP
   overrideSQL: false
   schema: ""
-  sqlType: "324"
+  sqlType: "298"
   type: sql
   version: 1
 type: Node

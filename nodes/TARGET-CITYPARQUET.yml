@@ -3,12 +3,24 @@ id: 1af3a606-255e-4051-a27a-11129214c4af
 name: CITYPARQUET
 operation:
   config:
-    fileFormatLoc: TARGET
+    compression: null
+    encoding: null
+    fieldDelim: null
+    fieldEnclosed: null
+    fileFormatLoc: SOURCE
     fileFormatName: PARQUETFILEFORMAT
+    fileFormatType: File Format Name
     fileNames: cities.parquet
+    fileType: PARQUET
+    parsehdr: false
+    parsehdr1: false
+    recDelim: null
     redeploymentBehavior: Drop existing table
     stageName: csv_file_stage/tutorials/dataloading
     stageStorageLocationName: TARGET
+    stripouterarray: false
+    subfolder: null
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""

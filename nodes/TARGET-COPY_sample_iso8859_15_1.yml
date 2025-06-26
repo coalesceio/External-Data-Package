@@ -1,57 +1,62 @@
 fileVersion: 1
-id: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-name: COPY_BABY_PIPE
+id: 141afbaa-b618-45a3-aff5-14df2a4690e4
+name: COPY_sample_iso8859_15_1
 operation:
   config:
-    awsSnsTopic: ""
     binformat: HEX
     bytemark: true
-    cloudProvider: AWS
     columnmismatch: false
-    compression: ""
+    compression: NONE
     dateformat: ""
     emptyfield: true
-    encoding: UTF8
+    encoding: ISO885915
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
-    escapeval: null
-    fieldDelim: "|"
+    escapeenclosed: \134
+    escapeval: \134
+    externalURI: Enter external URI-Ex:s3://snowflake-docs
+    extlocation: false
+    fieldDelim: ;
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE
-    fileFormatName: CSV
+    fileFormatLoc: ""
+    fileFormatName: ""
     fileFormatType: File Format Values
-    fileNames: ""
-    filePattern: "'.*bab.*[.]csv'"
+    fileNames: sample_iso8859_15.csv
+    filePattern: ""
     fileType: CSV
-    flagLoadHistorical: true
-    flagSnowpipe: Enable Snowpipe
+    forceLoad: ""
     inferschema: false
-    integration: ""
+    intextstage: true
+    loadUncertainFiles: ""
     mulline: true
-    nullchar: null
-    onError: CONTINUE
-    parsehdr: false
-    parsehdr1: false
+    nullchar: ('\N')
+    onError: ""
+    parsehdr: true
+    parsehdr1: true
+    purgeBehavior: ""
     recDelim: |+
 
     replaceinvalidcharacters: true
+    returnFailedOnly: ""
+    sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: SPSTAGESAMPLE
-    stageStorageLocationName: TARGET
-    stripouterarray: false
-    subfolder: ""
+    stageName: STAGE_LOCAL
+    stageStorageLocationName: SOURCE
+    storageintegration: ""
+    stripouterarray: true
+    subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
+    truncateBefore: false
     truncateColumns: ""
     usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -61,32 +66,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0f24f671-61d0-414e-8bd5-c7fe3ce5cf67
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: Year
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 32fcc849-5d4c-4b52-a410-38c8dc29f038
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 2af43b5b-0a82-44bd-a829-507db4dd902b
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: FirstName
+        name: Name
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -99,13 +85,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a2ae4014-ca5b-43cc-a25c-29d685746649
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 452232f3-8f52-477c-a71f-3fa302ebafb2
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: County
+        name: City
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -118,13 +104,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 49d2e043-a7fc-4c53-92b5-88c5fbef3b6b
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 8a423d41-259d-4d23-9671-ff6b1fb70aba
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
-        dataType: VARCHAR
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Sex
+        name: Amount
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -137,13 +123,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 253c7e2b-a80f-4a63-a83e-84486b70709e
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: a88523e7-949b-48a1-9e23-a5089b9d4801
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
-        dataType: NUMBER(2,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Count
+        name: Currency
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -156,8 +142,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a8efae85-a4c0-4021-ab43-463cf13c0aad
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 9060e505-25b0-4d42-bc4e-0f1a24508f06
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -175,8 +161,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 59b642a6-faf5-4041-9f62-2259022ce4f0
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: d4b077f4-d7b9-4af0-b8ec-db32fa7a5ff5
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -194,8 +180,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d102b7a2-7a7b-40b8-a891-103fbc83858f
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 5473113b-aa8b-4f76-a263-a504dca22b0d
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -213,8 +199,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 788cef0b-e0f3-4e5a-9571-93e060fa75d7
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 8635526d-5048-4e40-8a58-06b7f6cec61b
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -232,8 +218,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2151e9e5-f524-4a67-b9d4-1c274b8f7285
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: eea58e80-1bdc-4170-9e53-090b0e2934cc
+          stepCounter: 141afbaa-b618-45a3-aff5-14df2a4690e4
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -255,12 +241,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_BABY_PIPE
+        name: COPY_sample_iso8859_15_1
         noLinkRefs: []
-  name: COPY_BABY_PIPE
+  name: COPY_sample_iso8859_15_1
   overrideSQL: false
   schema: ""
-  sqlType: "323"
+  sqlType: "324"
   type: sql
   version: 1
 type: Node

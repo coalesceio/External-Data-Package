@@ -124,7 +124,7 @@ does not permit copying or modification for any other purpose.
 # Infers schema of the file in internal or external stage and dynamically creates the target table
 
                     
-        {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
+        {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}') }}
 
            -- Anonymous stored procedure block
               DECLARE
@@ -366,7 +366,7 @@ END;
     {% set targetObjectSchema = ref_no_link(currentState.node.location.name, currentState.node.name).split('.')[1] %} 
     {% set fullyQualifiedTargetObjectName = ref_no_link(currentState.node.location.name, currentState.node.name) %}
     
-    {{ stage('Drop inferred table' , true, "sql", "drop") }}
+    {{ stage('Drop inferred table') }}
        DROP TABLE IF EXISTS {{ fullyQualifiedTargetObjectName }}
 
 

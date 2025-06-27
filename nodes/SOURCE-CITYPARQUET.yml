@@ -9,6 +9,7 @@ operation:
     redeploymentBehavior: Create or Replace
     stageName: csv_file_stage/tutorials/dataloading
     stageStorageLocationName: SOURCE
+    subfolder: null
   database: ""
   deployEnabled: true
   description: ""

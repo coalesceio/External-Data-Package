@@ -55,7 +55,7 @@ does not permit copying or modification for any other purpose.
                                {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
                            {% endif %}
                     
-                    {{ stage('Create inferred external table' , true, "sql", "create") }}
+                    {{ stage('Create inferred external table' ) }}
 
                        -- Anonymous stored procedure block
                           DECLARE

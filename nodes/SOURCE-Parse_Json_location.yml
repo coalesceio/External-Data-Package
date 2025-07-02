@@ -1,0 +1,54 @@
+fileVersion: 1
+id: 7c27c473-b0ec-434e-97a1-fa2e9b065258
+name: Parse_Json_location
+operation:
+  config:
+    srcFile: Tele_Sample_JSON.json
+    srcFileStrLoc: TARGET
+    srcJsonArr: list
+    srcStage: STAGE_LOCAL
+    udtfLocation: TARGET
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: da65b6d8-39f8-439f-a992-65b7069b7de9
+          stepCounter: 7c27c473-b0ec-434e-97a1-fa2e9b065258
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        src: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: Parse_Json_location
+        noLinkRefs: []
+  name: Parse_Json_location
+  overrideSQL: false
+  schema: ""
+  sqlType: "347"
+  type: sql
+  version: 1
+type: Node

@@ -172,7 +172,7 @@ does not permit copying or modification for any other purpose.
 
 
               --Create temporary file format for inferring table structure 
-              EXECUTE IMMEDIATE 'CREATE OR REPLACE TEMPORARY FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
+              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
               RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
               FIELD_DELIMITER=''' || file_format_options:FIELD_DELIMITER || '''                                    
@@ -200,18 +200,20 @@ does not permit copying or modification for any other purpose.
               
               
               EXECUTE IMMEDIATE :select_statement ;
-	
-	         
-            {%if desiredState.config.fileFormatType == 'File Format Values' or (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
-                -- Drop the temporary file format
-               EXECUTE IMMEDIATE 'DROP FILE FORMAT IF EXISTS "{{ dbff }}"."{{ schff }}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"';
-            {%endif%}
 
             -- Add metadata columns
                       -- Column: FILENAME
                       alter_sql := '
                       ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
                       ADD COLUMN FILENAME STRING AS METADATA$FILENAME';
+                      
+            EXECUTE IMMEDIATE :alter_sql;
+
+            	         
+            {%if desiredState.config.fileFormatType == 'File Format Values' or (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
+                -- Drop the temporary file format
+               EXECUTE IMMEDIATE 'DROP FILE FORMAT IF EXISTS "{{ dbff }}"."{{ schff }}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"';
+            {%endif%}
 
             -- Return a success message
               RETURN '{{desiredState.node.name}} table created successfully.';
@@ -270,7 +272,6 @@ does not permit copying or modification for any other purpose.
     {% if desiredState.config.fieldEnclosed != null %}field_optionally_enclosed_by = '{{ desiredState.config.fieldEnclosed }}'{% endif %}
     {% if desiredState.config.skipHeader != null %}skip_header = {{ desiredState.config.skipHeader }}{% endif %}
     {% if desiredState.config.skipBlankLines %}skip_blank_lines = {{ desiredState.config.skipBlankLines }}{% endif %}
-    {% if desiredState.config.trimSpace %}trim_space = {{ desiredState.config.trimSpace }}{% endif %}
     {% if desiredState.config.encoding != "" and desiredState.config.encoding is not none%}encoding ='{{desiredState.config.encoding}}'{%endif%}
   {%endif%}
   {% if desiredState.config.fileType == "JSON" %}
@@ -278,9 +279,13 @@ does not permit copying or modification for any other purpose.
       strip_outer_array = {{desiredState.config.stripouterarray}}
     {%endif%}
   {%endif%}
+  {% if desiredState.config.trimSpace and  desiredState.config.fileType in('CSV','ORC') %}trim_space = {{ desiredState.config.trimSpace }}{% endif %}
   {% if desiredState.config.replaceinvalidcharacters  %}
       replace_invalid_characters= {{desiredState.config.replaceinvalidcharacters}}
   {%endif%}
+   {%if  desiredState.config.usevectscan == true and  desiredState.config.fileType in ('PARQUET')%}
+      use_vectorised_scan = {{desiredState.config.usevectscan}}
+   {%endif%}
   {% endif %})
   auto_refresh = {{ desiredState.config.autoRefresh }}
 

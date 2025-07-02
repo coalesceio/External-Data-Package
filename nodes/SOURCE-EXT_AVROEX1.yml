@@ -30,7 +30,7 @@ operation:
     trimSpace: true
   database: ""
   deployEnabled: true
-  description: ""
+  description: Avro;example
   isMultisource: false
   locationName: SOURCE
   materializationType: table
@@ -64,7 +64,10 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
-        description: ""
+        description: |2-
+           - This column represents the username of a Twitter user. 
+           - Due to the coalesce transformation, this column does not have direct source columns; instead, it is populated based on the first non-null value encountered from the input columns.
+           - This column is used for identifying users in the data pipeline and may be used in downstream reports, KPIs, or business metrics related to user activity.
         name: username
         nullable: false
         primaryKey: false

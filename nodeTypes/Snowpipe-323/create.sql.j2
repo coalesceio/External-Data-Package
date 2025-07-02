@@ -463,7 +463,7 @@ does not permit copying or modification for any other purpose.
                         {% if descriptionTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
                             COLUMN "{{ desiredColumnName }}"
-                            COMMENT '{{ desiredDescription | escape }}'
+                            COMMENT '{{ desiredDescription }}'
                             {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
                         {% endif %}
                         {% if defaultValueTest == false %}

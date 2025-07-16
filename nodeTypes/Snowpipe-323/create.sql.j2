@@ -528,7 +528,7 @@ does not permit copying or modification for any other purpose.
      {% set ns = namespace(counter=1) %}
 	 
 	  {%- if desiredState.config.filePattern | length > 0 -%} 
-        {%- set filePatternSQL = 'PATTERN = ' + desiredState.config.filePattern -%} 
+        {%- set filePatternSQL = 'PATTERN = ' + "'"+desiredState.config.filePattern+"'" -%} 
       {%- else -%}
         {%- set filePatternSQL = "" -%} 
      {%- endif -%}
@@ -538,7 +538,7 @@ does not permit copying or modification for any other purpose.
         {% set final_variable = "'" + formatted_variable + "'" %}
         {% set fileNameSQL = " "+"FILES = ("+ final_variable + ")" %} 
     {%- elif  desiredState.config.fileNames  -%}
-        {% set fileNameSQL = " "+"FILES =("+desiredState.config.fileNames+")" %}
+        {% set fileNameSQL = " "+"FILES =("+"'"+desiredState.config.fileNames+"'"+")" %}
     {% endif %}
 
 

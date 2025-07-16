@@ -21,8 +21,8 @@ operation:
     fileFormatLoc: ""
     fileFormatName: ""
     fileFormatType: File Format Values
-    fileNames: "'contacts.csv'"
-    filePattern: "'.*con.*[.]csv'"
+    fileNames: contacts.csv
+    filePattern: .*con.*[.]csv
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe

@@ -39,7 +39,7 @@ does not permit copying or modification for any other purpose.
 # File pattern
 
 {%- if config.filePattern | length > 0 -%} 
-    {%- set filePatternSQL = 'PATTERN = ' + config.filePattern -%} 
+    {%- set filePatternSQL = 'PATTERN = ' + "'"+config.filePattern+"'" -%} 
 {%- else -%}
     {%- set filePatternSQL = "" -%} 
 {%- endif -%}

@@ -55,7 +55,7 @@ metadata:
         default: 'stage_name/folder/'
         isRequired: true
 
-      - displayName: File Name(s) (Ex:'a.csv','b.csv' )
+      - displayName: File Name(s) (Ex:a.csv,b.csv )
         attributeName: fileNames
         type: textBox
         enableIf: "{% if config.inferschema %} true {% else %} false {% endif %}"

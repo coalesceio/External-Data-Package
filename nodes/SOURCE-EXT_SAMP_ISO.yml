@@ -23,7 +23,7 @@ operation:
     fileNames: sample_iso8859_15.csv
     filePattern: .*iso.*[.]csv
     fileType: CSV
-    inferschema: false
+    inferschema: true
     integration: null
     mulline: true
     nullchar: ('\N')

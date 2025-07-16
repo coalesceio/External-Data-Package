@@ -26,7 +26,7 @@ operation:
     fileType: JSON
     flagLoadHistorical: false
     flagSnowpipe: Enable Snowpipe
-    inferschema: false
+    inferschema: true
     integration: ""
     mulline: true
     nullchar: ('\N')

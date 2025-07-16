@@ -1,0 +1,39 @@
+fileVersion: 1
+id: 8fa47f60-ffa6-4059-9472-3eb092574fdb
+name: API_NODE_UPD
+operation:
+  config:
+    api: COALESCE_API_TOKEN
+    extIntegration: COALESCE_INT
+    nodeconfig:
+      items:
+        - nodename: COPY_CUSTOMERS
+          storageLocation: ANANDHIS_DEV.TARGET
+          wksID: "510"
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns: []
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: API_NODE_UPD
+        noLinkRefs: []
+  name: API_NODE_UPD
+  overrideSQL: false
+  schema: ""
+  sqlType: "372"
+  type: sql
+  version: 1
+type: Node

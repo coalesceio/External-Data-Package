@@ -1,9 +1,9 @@
 fileVersion: 1
 id: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
-name: EXPORT_CUSTOMERS_ORDERS_TXT
+name: EXPORT_CUST_ORD_TXTex
 operation:
   config:
-    compression: AUTO
+    compression: NONE
     compression1: AUTO
     dateformat: AUTO
     detailedOutput: false
@@ -12,11 +12,11 @@ operation:
     fileFormatLoc: ""
     fileFormatName: ""
     fileFormatType: File Format Values
-    fileLocation: STAGE_LOCAL
+    fileLocation: STAGE_LOCAL/INFOLDER
     fileType: CSV
     file_ext: ""
     header: true
-    overwriteFiles: false
+    overwriteFiles: true
     partitionConfig: false
     partitionConfigExpressions: false
     partitionbyConfig:
@@ -28,7 +28,7 @@ operation:
     queryId: false
     recDelim: |+
 
-    singleFile: false
+    singleFile: true
     sizeLimit: "16"
     stageStorageLocationName: SOURCE
     timeformat: AUTO
@@ -124,9 +124,9 @@ operation:
             nodeName: WRK_CUSTOMERS_ORDERS_TXT
         join:
           joinCondition: FROM {{ ref('TARGET', 'WRK_CUSTOMERS_ORDERS_TXT') }} "WRK_CUSTOMERS_ORDERS_TXT"
-        name: EXPORT_CUSTOMERS_ORDERS_TXT
+        name: EXPORT_CUST_ORD_TXTex
         noLinkRefs: []
-  name: EXPORT_CUSTOMERS_ORDERS_TXT
+  name: EXPORT_CUST_ORD_TXTex
   overrideSQL: false
   schema: ""
   sqlType: "302"

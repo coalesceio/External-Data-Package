@@ -1,0 +1,165 @@
+fileVersion: 1
+id: e748d700-d9f3-4843-9ad8-f863a682cf79
+name: EXT_SAMP_ISO
+operation:
+  config:
+    autoRefresh: false
+    binformat: HEX
+    bytemark: true
+    cloudProvider: AWS
+    columnmismatch: false
+    compression: NONE
+    cpartexpression: ""
+    dateformat: ""
+    emptyfield: true
+    encoding: ISO885915
+    escapeenclosed: \134
+    escapeval: ""
+    fieldDelim: ;
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileNames: sample_iso8859_15.csv
+    filePattern: .*iso.*[.]csv
+    fileType: CSV
+    inferschema: false
+    integration: null
+    mulline: true
+    nullchar: ('\N')
+    parsehdr: true
+    parsehdr1: true
+    partclause: false
+    recDelim: |+
+
+    replaceinvalidcharacters: true
+    skipBlankLines: false
+    skipHeader: "1"
+    snsTopic: null
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
+    stripouterarray: true
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    usevectscan: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - VALUE: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1519bde-e802-4946-9fd4-3dddd295eb18
+          stepCounter: e748d700-d9f3-4843-9ad8-f863a682cf79
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 944fcccd-1f0f-4b01-bbd2-0130d2d7873a
+          stepCounter: e748d700-d9f3-4843-9ad8-f863a682cf79
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Name
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c432e483-7daf-4245-8369-a14a6ba41073
+          stepCounter: e748d700-d9f3-4843-9ad8-f863a682cf79
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: City
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e7b3854-4cca-4bd8-be7e-7456bb675715
+          stepCounter: e748d700-d9f3-4843-9ad8-f863a682cf79
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Amount
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 71286a94-217d-4868-97ae-d71ba6370d59
+          stepCounter: e748d700-d9f3-4843-9ad8-f863a682cf79
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Currency
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: EXT_SAMP_ISO
+        noLinkRefs: []
+  name: EXT_SAMP_ISO
+  overrideSQL: false
+  schema: ""
+  sqlType: "298"
+  type: sql
+  version: 1
+type: Node

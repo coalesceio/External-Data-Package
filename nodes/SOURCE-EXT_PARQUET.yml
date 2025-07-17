@@ -18,7 +18,7 @@ operation:
     fileNames: shippers.parquet
     filePattern: .*ship*[.]parquet
     fileType: PARQUET
-    inferschema: true
+    inferschema: false
     integration: ""
     mulline: true
     nullchar: ('\N')
@@ -27,7 +27,7 @@ operation:
     partclause: false
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
     snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
@@ -35,7 +35,7 @@ operation:
     stageStorageLocationName: TARGET
     stripouterarray: true
     trimSpace: false
-    usevectscan: false
+    usevectscan: true
   database: ""
   deployEnabled: true
   description: ""

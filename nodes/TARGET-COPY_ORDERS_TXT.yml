@@ -22,7 +22,7 @@ operation:
     fileFormatName: ""
     fileFormatType: File Format Values
     fileNames: Orders.txt
-    filePattern: ""
+    filePattern: .*Orders.*[.]txt
     fileType: CSV
     forceLoad: ""
     inferschema: false

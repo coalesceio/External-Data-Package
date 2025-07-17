@@ -223,12 +223,6 @@ metadata:
         type: toggleButton
         default: true
         isRequired: false    
-      
-      - displayName: Using vectorised scanner
-        attributeName: usevectscan
-        type: toggleButton
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
-        isRequired: false
 
       - displayName: Skip blank lines
         attributeName: skipBlankLines

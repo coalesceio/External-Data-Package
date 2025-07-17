@@ -110,7 +110,7 @@ does not permit copying or modification for any other purpose.
                                {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
                            {% endif %}
                     
-        {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}' , true, "sql", "create") }}
+        {{ stage('Create inferred external table') }}
 
            -- Anonymous stored procedure block
               DECLARE
@@ -274,7 +274,6 @@ does not permit copying or modification for any other purpose.
     {% if desiredState.config.fieldEnclosed != null %}field_optionally_enclosed_by = '{{ desiredState.config.fieldEnclosed }}'{% endif %}
     {% if desiredState.config.skipHeader != null %}skip_header = {{ desiredState.config.skipHeader }}{% endif %}
     {% if desiredState.config.skipBlankLines %}skip_blank_lines = {{ desiredState.config.skipBlankLines }}{% endif %}
-    {% if desiredState.config.trimSpace %}trim_space = {{ desiredState.config.trimSpace }}{% endif %}
     {% if desiredState.config.encoding != "" and desiredState.config.encoding is not none%}encoding ='{{desiredState.config.encoding}}'{%endif%}
   {%endif%}
   {% if desiredState.config.fileType == "JSON" %}
@@ -282,6 +281,7 @@ does not permit copying or modification for any other purpose.
       strip_outer_array = {{desiredState.config.stripouterarray}}
     {%endif%}
   {%endif%}
+  {% if desiredState.config.trimSpace and  desiredState.config.fileType in('CSV','ORC') %}trim_space = {{ desiredState.config.trimSpace }}{% endif %}
   {% if desiredState.config.replaceinvalidcharacters  %}
       replace_invalid_characters= {{desiredState.config.replaceinvalidcharacters}}
   {%endif%}

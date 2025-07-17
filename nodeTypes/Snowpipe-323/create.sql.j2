@@ -314,10 +314,6 @@ does not permit copying or modification for any other purpose.
 		  
 					 {%endif%}
         {% elif currentState != undefined and currentState.node.materializationType == desiredState.node.materializationType %}
-
-            {# Change Node Name or Change Storage Location #}
-            {# Storage Location Tests #}
-            {# Only need to account for updated Storage Location mappings   #}
             
             {# Desired Namespace Variables #}
             {% set nsVariables = namespace(
@@ -332,9 +328,18 @@ does not permit copying or modification for any other purpose.
             {%set currenttargetlocation = currentState.node.location.name %}
             {%set desiredtargetlocation = desiredState.node.location.name %}
      
-                {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currenttargetlocation) | map(attribute='database') | first %}
-                    {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currenttargetlocation) | map(attribute='schema') | first %}
-                  {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
+            {%if currentState.storageLocations|length == 0%}          
+              {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | string %}
+              {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | string %}
+               {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
+               
+               {%else %}   
+
+               {# Current target node mappings #}
+               {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | first %}
+               {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | first %}
+               {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}  
+			      {% endif %}
                 
                   {# Desired mappings#}
                   {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', desiredtargetlocation) | map(attribute='database') | first %}

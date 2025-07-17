@@ -35,7 +35,7 @@ operation:
     stageStorageLocationName: TARGET
     stripouterarray: true
     trimSpace: false
-    usevectscan: false
+    usevectscan: true
   database: ""
   deployEnabled: true
   description: ""

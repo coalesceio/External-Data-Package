@@ -88,7 +88,7 @@ metadata:
         enableIf: "{% if config.intextstage or config.inferschema %} true {% else %} false {% endif %}"
         isRequired: false
 
-      - displayName: File Pattern (Ex:'.*hea.*[.]csv')
+      - displayName: File Pattern (Ex:.*hea.*[.]csv)
         attributeName: filePattern
         type: textBox
         enableIf: "{% if config.intextstage and config.inferschema == false%} true {% else %} false {% endif %}"

@@ -172,7 +172,7 @@ does not permit copying or modification for any other purpose.
 
 
               --Create temporary file format for inferring table structure 
-              EXECUTE IMMEDIATE 'CREATE OR REPLACE FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
+              EXECUTE IMMEDIATE 'CREATE OR REPLACE TEMPORARY FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
               RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
               FIELD_DELIMITER=''' || file_format_options:FIELD_DELIMITER || '''                                    
@@ -200,20 +200,22 @@ does not permit copying or modification for any other purpose.
               
               
               EXECUTE IMMEDIATE :select_statement ;
+	
+	         
 
             -- Add metadata columns
                       -- Column: FILENAME
                       alter_sql := '
                       ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
                       ADD COLUMN FILENAME STRING AS METADATA$FILENAME';
-                      
-            EXECUTE IMMEDIATE :alter_sql;
 
-            	         
+                      EXECUTE IMMEDIATE :alter_sql;
+
             {%if desiredState.config.fileFormatType == 'File Format Values' or (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
                 -- Drop the temporary file format
                EXECUTE IMMEDIATE 'DROP FILE FORMAT IF EXISTS "{{ dbff }}"."{{ schff }}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"';
             {%endif%}
+
 
             -- Return a success message
               RETURN '{{desiredState.node.name}} table created successfully.';
@@ -283,9 +285,6 @@ does not permit copying or modification for any other purpose.
   {% if desiredState.config.replaceinvalidcharacters  %}
       replace_invalid_characters= {{desiredState.config.replaceinvalidcharacters}}
   {%endif%}
-   {%if  desiredState.config.usevectscan == true and  desiredState.config.fileType in ('PARQUET')%}
-      use_vectorised_scan = {{desiredState.config.usevectscan}}
-   {%endif%}
   {% endif %})
   auto_refresh = {{ desiredState.config.autoRefresh }}
 

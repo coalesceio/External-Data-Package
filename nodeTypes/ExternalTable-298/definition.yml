@@ -55,7 +55,7 @@ metadata:
         default: 'stage_name/folder/'
         isRequired: true
 
-      - displayName: File Name(s) (Ex:'a.csv','b.csv' )
+      - displayName: File Name(s) (Ex:a.csv,b.csv )
         attributeName: fileNames
         type: textBox
         enableIf: "{% if config.inferschema %} true {% else %} false {% endif %}"
@@ -223,12 +223,6 @@ metadata:
         type: toggleButton
         default: true
         isRequired: false    
-      
-      - displayName: Using vectorised scanner
-        attributeName: usevectscan
-        type: toggleButton
-        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('PARQUET') )   %} true {% else %} false {% endif %}"
-        isRequired: false
 
       - displayName: Skip blank lines
         attributeName: skipBlankLines

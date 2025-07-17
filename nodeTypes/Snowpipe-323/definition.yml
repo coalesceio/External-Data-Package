@@ -111,13 +111,13 @@ metadata:
         default: 'Enter folder name in stage if applicable-folder/subfolder'
         isRequired: false
 
-      - displayName: File Name(s) (Optional - Ex:'a.csv','b.csv' ) Not supported by pipe
+      - displayName: File Name(s) (Optional - Ex:a.csv,b.csv )
         attributeName: fileNames
         type: textBox
         isRequired: false
         enableIf: "{% if config.flagLoadHistorical == true or config.flagSnowpipe != 'Enable Snowpipe' or config.inferschema == true %} true {% else %} false {% endif %}"
 
-      - displayName: File Pattern (Ex:'.*hea.*[.]csv') Mandatory for pipe
+      - displayName: File Pattern (Ex:.*hea.*[.]csv) Mandatory for pipe
         attributeName: filePattern
         type: textBox
         isRequired: false

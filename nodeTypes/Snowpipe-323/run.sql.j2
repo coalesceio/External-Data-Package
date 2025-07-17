@@ -27,21 +27,20 @@ does not permit copying or modification for any other purpose.
      {% set ns = namespace(counter=1) %}
 	 
 	  {%- if config.filePattern | length > 0 -%} 
-        {%- set filePatternSQL = 'PATTERN = ' + config.filePattern -%} 
+        {%- set filePatternSQL = 'PATTERN = ' + "'"+config.filePattern+"'" -%} 
       {%- else -%}
         {%- set filePatternSQL = "" -%} 
      {%- endif -%}
 
-    {%if config.fileNames | length > 0 and ',' in config.fileNames  %}
-    {% set formatted_variable = config.fileNames.split(',') | map('string') | join(",") %}
-    {% set final_variable = "" + formatted_variable + "" %}
-    {% set fileNameSQL = 'FILES = (' + final_variable + ')' %}
-
-    {%- elif config.fileNames | length > 0 %} 
-    {% set fileNameSQL = 'FILES = ('+ config.fileNames + ')' %}                               
-    {%- else -%}
+ {%if config.fileNames | length > 0 and ',' in config.fileNames  %}
+    {% set formatted_variable = config.fileNames.split(',') | map('string') | join("','") %}
+    {% set final_variable = "'" + formatted_variable + "'" %}
+    {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
+  {%- elif config.fileNames | length > 0 %} 
+    {% set fileNameSQL = 'FILES = (' + "'"+config.fileNames + "'"+')' %}                               
+  {%- else -%}
     {% set fileNameSQL = "" %} 
-    {% endif %}
+  {% endif %}
  
 	 {% set fileFormatLocationName = config.fileFormatLoc %}
      {% set dbff = storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}

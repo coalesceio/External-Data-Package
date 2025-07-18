@@ -20,14 +20,14 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_ISO
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: sample_iso8859_15.csv
     filePattern: |
       .*iso.*[.]csv
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    inferschema: true
+    inferschema: false
     integration: ""
     mulline: true
     nullchar: ('\N')

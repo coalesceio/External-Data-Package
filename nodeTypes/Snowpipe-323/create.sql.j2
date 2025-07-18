@@ -157,13 +157,14 @@ does not permit copying or modification for any other purpose.
                           {%set subf = "/"+ subfolder_value %}
                         {%endif%}
 										
-                          {%- if ","  in desiredState.config.fileNames %} 
+                             {%- if ","  in desiredState.config.fileNames %} 
                                {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
-                               {% set final_variable = "'" + formatted_variable + "'" %}
-                               {% set fileNameSQL = " "+"FILES =>'"+ final_variable + "'," %} 
+                               {% set final_variable = "''" + formatted_variable + "''" %}
+                               {% set fileNameSQL = " "+"FILES =>"+""+final_variable + "," %} 
                            {%- elif  desiredState.config.fileNames  -%}
-                               {% set fileNameSQL = " "+"FILES =>'"+desiredState.config.fileNames+"'," %}
+                               {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
                            {% endif %}
+						   
 
                     {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}') }}
 

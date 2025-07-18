@@ -204,6 +204,13 @@ metadata:
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
       
+      - displayName: Escape optionally enclosed by
+        attributeName: escapeenclosed
+        type: textBox
+        enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
+        default: "\\134"
+        isRequired: false  
+
       - displayName: Strip Outer Array
         attributeName: stripouterarray
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('JSON') )  %} true {% else %} false {% endif %}"

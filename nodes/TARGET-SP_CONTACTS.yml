@@ -1,10 +1,12 @@
 fileVersion: 1
-id: efeb96ab-5589-4b7a-a4ea-f1daaafce236
-name: COPY_ORDERS_TXT
+id: 846f3237-1eb8-49df-8da8-49cc619bc9b5
+name: SP_CONTACTS
 operation:
   config:
+    awsSnsTopic: ""
     binformat: HEX
     bytemark: true
+    cloudProvider: AWS
     columnmismatch: false
     compression: ""
     dateformat: ""
@@ -14,42 +16,35 @@ operation:
     errornumber: ""
     escapeenclosed: \134
     escapeval: ""
-    externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: ""
     fileFormatName: ""
     fileFormatType: File Format Values
-    fileNames: Orders.txt
-    filePattern: .*Orders.*[.]txt
+    fileNames: contacts.csv
+    filePattern: .*con.*[.]csv
     fileType: CSV
-    forceLoad: ""
+    flagLoadHistorical: true
+    flagSnowpipe: Enable Snowpipe
     inferschema: false
-    intextstage: true
-    loadUncertainFiles: ""
+    integration: ""
     mulline: true
     nullchar: ('\N')
     onError: ""
-    parsehdr: true
+    parsehdr: false
     parsehdr1: true
-    purgeBehavior: ""
     recDelim: |+
 
     replaceinvalidcharacters: true
-    returnFailedOnly: ""
-    sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
-    storageintegration: ""
     stripouterarray: true
     subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
     truncateColumns: ""
     usevectscan: false
   database: ""
@@ -66,13 +61,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8e5e29f5-d673-4eab-9b3b-6ae652576914
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: e60e2938-b6ca-4d5d-ab62-e007320fc11d
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
-        dataType: NUMBER(3,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: OrderID
+        name: c1
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -85,13 +80,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b2a32409-995f-450f-96f3-c7620a644b47
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: ecf096cc-4395-45e0-ad66-70e912baaddf
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
-        dataType: NUMBER(1,0)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: CustomerID
+        name: c2
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -104,13 +99,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 4564c7fb-688e-48eb-9d26-4e82ecf2fa65
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: 7cb55ce3-6222-4746-9b3e-7e9a72431ff2
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
-        dataType: NUMBER(5,2)
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: OrderAmount
+        name: c3
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -123,8 +118,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ad2f9665-728c-4904-b6a4-4c476efd501c
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: 744a4391-673f-462c-b374-c5aa3de7f299
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -142,8 +137,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 920358b1-b94d-49fc-b202-0e2adedcedcb
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: ad9af29f-6506-4a06-881a-c92859504aa0
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -161,8 +156,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 03a054d8-376a-498d-b25d-67e1abe75f34
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: 42b1ea2c-9f38-4812-bbaf-8aba0bca837a
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -180,8 +175,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: dcd9012e-89b4-428c-8144-4cea317fe2f3
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: edeedd89-ac39-46d2-89c0-b944dddc28af
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -199,8 +194,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 093b6325-0207-42f9-86aa-5f1f7d3dd849
-          stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+          columnCounter: ae41e187-4168-4b9f-8b91-60f15fe9471d
+          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -222,12 +217,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_ORDERS_TXT
+        name: SP_CONTACTS
         noLinkRefs: []
-  name: COPY_ORDERS_TXT
+  name: SP_CONTACTS
   overrideSQL: false
   schema: ""
-  sqlType: "324"
+  sqlType: "323"
   type: sql
   version: 1
 type: Node

@@ -27,7 +27,7 @@ operation:
     partclause: false
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
     snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
@@ -112,25 +112,6 @@ operation:
         defaultValue: ""
         description: ""
         name: Phone
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: dcdc088b-2a94-4cdf-a233-8dfe4fd07aae
-          stepCounter: 9322d212-d290-45b0-9037-71d2f5b3d0af
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:

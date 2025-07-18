@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 0bcf7d23-dfbd-408d-b69b-83444f62d078
-name: SP_HEALTH123
+name: SP_HEALTH1234
 operation:
   config:
     awsSnsTopic: ""
@@ -216,7 +216,7 @@ operation:
           columnCounter: 0e2b75be-6e45-4f52-a1c0-e5faec47e1db
           stepCounter: 0bcf7d23-dfbd-408d-b69b-83444f62d078
         config: {}
-        dataType: VARCHAR(16777216)
+        dataType: STRING
         defaultValue: ""
         description: ""
         name: Region_Provider_Name
@@ -237,7 +237,7 @@ operation:
         config: {}
         dataType: NUMBER(10,9)
         defaultValue: ""
-        description: ""
+        description: Reimbursement's
         name: ReimbursementPercentage__
         nullable: true
         primaryKey: false
@@ -410,25 +410,6 @@ operation:
         defaultValue: ""
         description: ""
         name: of_Records_
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 64b53237-9a31-4c38-b024-4ffc02487269
-          stepCounter: 0bcf7d23-dfbd-408d-b69b-83444f62d078
-        config: {}
-        dataType: NUMBER(5,0)
-        defaultValue: ""
-        description: ""
-        name: POP_25_OVER__
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -616,9 +597,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: SP_HEALTH123
+        name: SP_HEALTH1234
         noLinkRefs: []
-  name: SP_HEALTH123
+  name: SP_HEALTH1234
   overrideSQL: false
   schema: ""
   sqlType: "323"

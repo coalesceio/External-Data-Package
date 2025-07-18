@@ -7,8 +7,5 @@ mappingDefinitions:
   TARGET:
     database: ANANDHIS_DEV
     schema: TARGET
-  TARGET_NEW:
-    database: ""
-    schema: ""
 name: DEV
 type: Environment

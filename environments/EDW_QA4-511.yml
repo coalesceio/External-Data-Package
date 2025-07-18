@@ -7,8 +7,5 @@ mappingDefinitions:
   TARGET:
     database: ANANDHIS_DEV
     schema: TARGET_QA
-  TARGET_NEW:
-    database: ""
-    schema: ""
 name: EDW_QA4
 type: Environment

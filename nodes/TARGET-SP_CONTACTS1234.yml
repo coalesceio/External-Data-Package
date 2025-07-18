@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 846f3237-1eb8-49df-8da8-49cc619bc9b5
-name: SP_CONTACTS
+name: SP_CONTACTS1234
 operation:
   config:
     awsSnsTopic: ""
@@ -49,7 +49,7 @@ operation:
     usevectscan: false
   database: ""
   deployEnabled: true
-  description: ""
+  description: Snowpipe contacts
   isMultisource: false
   locationName: TARGET
   materializationType: table
@@ -66,7 +66,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
-        description: ""
+        description: Column's
         name: c1
         nullable: true
         primaryKey: false
@@ -87,25 +87,6 @@ operation:
         defaultValue: ""
         description: ""
         name: c2
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7cb55ce3-6222-4746-9b3e-7e9a72431ff2
-          stepCounter: 846f3237-1eb8-49df-8da8-49cc619bc9b5
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: c3
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -217,9 +198,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: SP_CONTACTS
+        name: SP_CONTACTS1234
         noLinkRefs: []
-  name: SP_CONTACTS
+  name: SP_CONTACTS1234
   overrideSQL: false
   schema: ""
   sqlType: "323"

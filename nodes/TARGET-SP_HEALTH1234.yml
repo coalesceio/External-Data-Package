@@ -216,7 +216,7 @@ operation:
           columnCounter: 0e2b75be-6e45-4f52-a1c0-e5faec47e1db
           stepCounter: 0bcf7d23-dfbd-408d-b69b-83444f62d078
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
         name: Region_Provider_Name

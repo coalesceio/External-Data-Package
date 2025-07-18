@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 09945b06-9c1c-4964-9684-e06f6db7d3e0
-name: COPY_CUSTOMERS
+name: COPY_CUSTOMERS1
 operation:
   config:
     binformat: HEX
@@ -222,9 +222,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_CUSTOMERS
+        name: COPY_CUSTOMERS1
         noLinkRefs: []
-  name: COPY_CUSTOMERS
+  name: COPY_CUSTOMERS1
   overrideSQL: false
   schema: ""
   sqlType: "324"

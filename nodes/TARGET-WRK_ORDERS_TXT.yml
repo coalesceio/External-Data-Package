@@ -81,7 +81,7 @@ operation:
           customSQL: ""
         dependencies:
           - locationName: TARGET
-            nodeName: COPY_CUSTOMERS
+            nodeName: COPY_CUSTOMERS1
           - locationName: TARGET
             nodeName: COPY_ORDERS_TXT
         join:
@@ -90,7 +90,7 @@ operation:
             
              
               FROM  {{ ref('TARGET', 'COPY_ORDERS_TXT') }} COPY_ORDERS_TXT
-              -- {{ref('TARGET','COPY_CUSTOMERS')}}
+              -- {{ref('TARGET','COPY_CUSTOMERS1')}}
         name: WRK_ORDERS_TXT
         noLinkRefs: []
   name: WRK_ORDERS_TXT

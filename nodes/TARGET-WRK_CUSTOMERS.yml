@@ -75,18 +75,19 @@ operation:
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases: {}
+      - aliases:
+          COPY_CUSTOMERS1: 09945b06-9c1c-4964-9684-e06f6db7d3e0
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TARGET
-            nodeName: COPY_CUSTOMERS
+            nodeName: COPY_CUSTOMERS1
         join:
-          joinCondition: |2-
-
-
+          joinCondition: |-
+            
+            
              
-              FROM  {{ ref('TARGET', 'COPY_CUSTOMERS') }} COPY_CUSTOMERS
+              FROM  {{ ref('TARGET', 'COPY_CUSTOMERS1') }} COPY_CUSTOMERS1
         name: WRK_CUSTOMERS
         noLinkRefs: []
   name: WRK_CUSTOMERS

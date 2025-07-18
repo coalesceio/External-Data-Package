@@ -252,7 +252,7 @@ does not permit copying or modification for any other purpose.
       {%elif col.transform !=""%}
 	          "{{ col.name }}" {{col.dataType}} AS {{ get_source_transform(col) }} 		  
       {%endif%}
-      {%- if col.description | length > 0 %} COMMENT '{{ col.description }}'{% endif %}
+      {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
       {%- if not loop.last -%}, {% else %}){% endif %}
     {% endfor %}
   {%if desiredState.config.partclause == true%}
@@ -294,7 +294,7 @@ does not permit copying or modification for any other purpose.
     {% if desiredState.config.autoRefresh and desiredState.config.cloudProvider != 'AWS' and  desiredState.config.snsTopic !=""%}
   integration = '{{ desiredState.config.integration }}'{% endif %}
   
-  {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description }}'{% endif %}
+  {%- if desiredState.node.description | length > 0 %} COMMENT = '{{ desiredState.node.description |escape }}'{% endif %}
 
 {%endif%}
 {%endif%}

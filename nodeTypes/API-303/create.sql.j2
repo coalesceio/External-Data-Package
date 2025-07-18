@@ -36,61 +36,43 @@ does not permit copying or modification for any other purpose.
 		
 	  {%elif currentState != undefined and desiredState!=currentState %}
 	  
-            {# Change Node Name or Change Storage Location #}
-            {# Storage Location Tests #}
-            {# Only need to account for updated Storage Location mappings   #}
-            {# Current Namespace Varialbes #}
-            {% set nsVariables = namespace(nsCurrentDepStorageLocations="") %}
-            {% set nsVariables = namespace(nsCurrentSourceStorageLocations="") %}
-            {% set nsVariables = namespace(nsCurrentTargetStorageLocations="") %}
-            {% set nsVariables = namespace(nsCurrentUsedStorageLocations="") %}
-
-            {# Current State Storage Location Info #}
-
-            {% set nsVariables.nsCurrentTargetStorageLocations = currentState.node.location.name  %}
-
-            {% set nsVariables.nsCurrentUsedStorageLocations =  nsVariables.nsCurrentTargetStorageLocations %}
-
-            {% set currentStorageLocations = (nsVariables.nsCurrentUsedStorageLocations).split(',') | list %}
-            {% set currentUniqueStorageLocations = currentStorageLocations | unique | sort | list %}
-
             {# Desired Namespace Variables #}
-            {% set nsVariables = namespace(nsDesiredDepStorageLocations="") %}
-            {% set nsVariables = namespace(nsDesiredSourceStorageLocations="") %}
-            {% set nsVariables = namespace(nsDesiredTargetStorageLocations="") %}
-            {% set nsVariables = namespace(nsDesiredUsedStorageLocations="") %}
-
-            {% set nsVariables = namespace(storageLocationTest="") %}
-
-            {# Desired State Storage Location Info #}
-
-            {% set nsVariables.nsDesiredTargetStorageLocations = desiredState.node.location.name  %}
-
-            {% set nsVariables.nsDesiredUsedStorageLocations =  nsVariables.nsDesiredTargetStorageLocations %}
-
-            {% set desiredStorageLocations = (nsVariables.nsDesiredUsedStorageLocations).split(',') | list %}
-            {% set desiredUniqueStorageLocations = desiredStorageLocations | unique | sort | list %}
-
+            {% set nsVariables = namespace(
+			colchanges=0,
+			storageLocationTest=true) %}
+               
             {# Test  #}
             {% set nsVariables.storageLocationTest = true %}
             {% set nodeCommentTest = currentState.node.description == desiredState.node.description %}
-
-            {% for name in desiredUniqueStorageLocations if nsVariables.storageLocationTest == true %}
-                {# Current mappings #}
-                {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
-                {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
-                {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
                 
-                {# Desired mappings #}
-                {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='database') | first %}
-                {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', name) | map(attribute='schema') | first %}
-                {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}
+            {# Change Node Name or Change Storage Location #}
+            {# Storage Location Tests #}
+            {# Test  #}
+            {%if currentState.storageLocations|length == 0%}    
 
-                {% if currentDatabaseSchema != desiredDatabaseSchema %}
-                    {% set nsVariables.storageLocationTest = false %}
+              {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | string %}
+              {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | string %}
+               {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}
+               
+            {%else %}   
+
+               {# Current target node mappings #}
+               {% set currentDatabase = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='database') | first | default('') %}
+               {% set currentSchema = currentState.storageLocations | selectattr('name', 'equalto', currentState.node.location.name) | map(attribute='schema') | first | default('') %}
+               {% set currentDatabaseSchema = currentDatabase + '.' + currentSchema %}  
+			
+            {% endif %}		
+                
+                  ## Desired mappings
+                  {% set desiredDatabase = desiredState.storageLocations | selectattr('name', 'equalto', desiredState.node.location.name) | map(attribute='database') | first |default('') %}
+                  {% set desiredSchema = desiredState.storageLocations | selectattr('name', 'equalto', desiredState.node.location.name) | map(attribute='schema') | first | default('')%}
+            
+                 {% set desiredDatabaseSchema = desiredDatabase + '.' + desiredSchema %}
+
+                {% if currentDatabaseSchema != desiredDatabaseSchema%}
+                   {% set nsVariables.storageLocationTest = false %}
                 {% endif %}
-            {% endfor %}
-
+           
             {# Rename / Move Object #}
             {% if (nsVariables.storageLocationTest == false or currentState.node.name != desiredState.node.name) %}
                 {{ stage('Rename and / or Move Table') }}

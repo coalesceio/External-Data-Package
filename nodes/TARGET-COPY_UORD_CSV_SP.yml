@@ -23,7 +23,7 @@ operation:
     fileFormatType: File Format Values
     fileNames: ""
     filePattern: |
-      '.*hea.*[.]csv'
+      .*hea.*[.]csv
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe

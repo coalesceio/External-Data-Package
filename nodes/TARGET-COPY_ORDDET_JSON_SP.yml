@@ -16,7 +16,7 @@ operation:
     fileFormatType: File Format Name
     fileNames: order_details.json
     filePattern: |
-      '.*ord.*[.]json'
+      .*ord.*[.]json
     fileType: JSON
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe

@@ -225,6 +225,14 @@ does not permit copying or modification for any other purpose.
 			
 {{ stage('Create External Table') }}
 
+ {# File format locations #}
+
+{%-if desiredState.config.fileFormatType == 'File Format Name'-%}
+   {% set fileFormatLocationName = desiredState.config.fileFormatLoc %}
+   {% set dbff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='database') | first %}
+   {% set schff = desiredState.storageLocations | selectattr('name', 'equalto',fileFormatLocationName) | map(attribute='schema') | first %}
+{%endif%}
+
  CREATE OR REPLACE EXTERNAL TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
 
 
@@ -284,8 +292,8 @@ does not permit copying or modification for any other purpose.
   {% if desiredState.config.trimSpace and  desiredState.config.fileType in('CSV','ORC') %}trim_space = {{ desiredState.config.trimSpace }}{% endif %}
   {% if desiredState.config.replaceinvalidcharacters  %}
       replace_invalid_characters= {{desiredState.config.replaceinvalidcharacters}}
-  {%endif%}
-  {% endif %})
+  {%endif%})
+  {% endif %}
   auto_refresh = {{ desiredState.config.autoRefresh }}
 
   {% if desiredState.config.autoRefresh and desiredState.config.cloudProvider == 'AWS' and  desiredState.config.snsTopic !=""%}

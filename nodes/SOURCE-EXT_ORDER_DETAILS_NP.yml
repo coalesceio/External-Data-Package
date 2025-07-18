@@ -9,7 +9,7 @@ operation:
     cpartexpression: ""
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: TARGET
+    fileFormatLoc: SOURCE
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: "'order_details.json'"

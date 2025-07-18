@@ -20,14 +20,14 @@ operation:
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_ISO
-    fileFormatType: File Format Values
-    fileNames: "'sample_iso8859_15.csv'"
+    fileFormatType: File Format Name
+    fileNames: sample_iso8859_15.csv
     filePattern: |
-      '.*iso.*[.]csv'
+      .*iso.*[.]csv
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
-    inferschema: false
+    inferschema: true
     integration: ""
     mulline: true
     nullchar: ('\N')
@@ -39,10 +39,10 @@ operation:
     replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
     stripouterarray: true
-    subfolder: INFOLDER
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false

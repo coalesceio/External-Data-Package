@@ -30,7 +30,7 @@ operation:
     skipHeader: "1"
     snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
     stageName: spstagesample/
-    stageStorageLocationName: SOURCE
+    stageStorageLocationName: TARGET
     stripouterarray: false
     trimSpace: true
   database: ""

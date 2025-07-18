@@ -22,7 +22,7 @@ operation:
     fileFormatName: CSV
     fileFormatType: File Format Values
     fileNames: ""
-    filePattern: "'.*bab.*[.]csv'"
+    filePattern: .*bab.*[.]csv
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
@@ -38,10 +38,10 @@ operation:
     replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
     stripouterarray: false
-    subfolder: INFOLDER
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false

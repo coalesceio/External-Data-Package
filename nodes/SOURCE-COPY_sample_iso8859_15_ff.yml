@@ -19,7 +19,7 @@ operation:
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     onError: ""

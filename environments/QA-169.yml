@@ -7,5 +7,8 @@ mappingDefinitions:
   TARGET:
     database: ANANDHIS_DEV
     schema: TARGET_DEV
+  TARGET_NEW:
+    database: ""
+    schema: ""
 name: QA
 type: Environment

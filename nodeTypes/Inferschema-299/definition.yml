@@ -115,8 +115,8 @@ metadata:
         - "DEFLATE"
         - "RAW_DEFLATE"
         - "NONE"
-        isRequired: false
-        
+        - ""
+        isRequired: false 
 
       - displayName: Record delimiter
         attributeName: recDelim
@@ -146,7 +146,6 @@ metadata:
         default: true
         isRequired: false  
       
-
       - displayName: Encoding
         attributeName: encoding
         type: dropdownSelector
@@ -188,6 +187,7 @@ metadata:
         - "WINDOWS1254"
         - "WINDOWS1255"
         - "WINDOWS1256"
+        - ""
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
       
@@ -258,6 +258,7 @@ metadata:
         - "HEX"
         - "BASE64"
         - "UTF8"
+        - ""
         isRequired: false 
 
       - displayName: Escape optionally enclosed by

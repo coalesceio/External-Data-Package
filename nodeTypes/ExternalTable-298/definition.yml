@@ -122,9 +122,9 @@ metadata:
         - "DEFLATE"
         - "RAW_DEFLATE"
         - "NONE"
+        - ""
         isRequired: false
         
-
       - displayName: Record delimiter
         attributeName: recDelim
         type: textBox
@@ -201,6 +201,7 @@ metadata:
         - "WINDOWS1254"
         - "WINDOWS1255"
         - "WINDOWS1256"
+        - ""
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
       

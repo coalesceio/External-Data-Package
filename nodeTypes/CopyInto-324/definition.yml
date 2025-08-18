@@ -432,9 +432,7 @@ metadata:
         options:
         - "TRUE"
         - "FALSE"
-        isRequired: false
-
-      
+        isRequired: false  
         
     systemColumns:
 

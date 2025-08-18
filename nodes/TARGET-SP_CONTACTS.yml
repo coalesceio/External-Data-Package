@@ -3,6 +3,7 @@ id: 846f3237-1eb8-49df-8da8-49cc619bc9b5
 name: SP_CONTACTS
 operation:
   config:
+    SNS: false
     awsSnsTopic: ""
     binformat: HEX
     bytemark: true

@@ -3,6 +3,7 @@ id: 3e2927f9-9b78-4f18-b71b-3b447c85ea94
 name: SP_EMP_JSON
 operation:
   config:
+    SNS: true
     awsSnsTopic: ""
     binformat: HEX
     bytemark: true
@@ -21,10 +22,10 @@ operation:
     fileFormatLoc: ""
     fileFormatName: ""
     fileFormatType: File Format Values
-    fileNames: "'employees.json'"
-    filePattern: ""
+    fileNames: employees.json
+    filePattern: .*emp.*[.]json
     fileType: JSON
-    flagLoadHistorical: false
+    flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
     inferschema: false
     integration: ""

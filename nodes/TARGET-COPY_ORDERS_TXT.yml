@@ -30,7 +30,7 @@ operation:
     loadUncertainFiles: ""
     mulline: true
     nullchar: ('\N')
-    onError: ""
+    onError: CONTINUE
     parsehdr: true
     parsehdr1: true
     purgeBehavior: ""

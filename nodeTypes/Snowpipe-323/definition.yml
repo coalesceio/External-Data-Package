@@ -4,7 +4,7 @@ isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
-  nodeMetadataSpec: |+
+  nodeMetadataSpec: |-
     capitalized: SNOWPIPE 
     short: 'COPY'
     tagColor: '#6ca37b'
@@ -56,10 +56,9 @@ metadata:
         displayName: 
                        "NOTE:
                        \n
-                       Ensure the parameter targetIntegration for Azure and GCP cloud providers added in Workspace and 
+                       Ensure the parameter targetIntegration is added for Azure and GCP cloud providers in Workspace and 
                        deployment environment if the snowpipe is enabled.
-                       Parameter targetAwsSNSTopic can be added if u wish 
-                       Refer documentation for more information"
+                       Parameter targetAwsSNSTopic can be added if SNS service is preferred.            Refer documentation for more information"
         enableIf: "{%- if (parameters == {} or  'targetIntegrationOrAwsSNSTopic' not in parameters) and config.flagSnowpipe == 'Enable Snowpipe'  -%} true {%- else -%} false {%- endif -%}"
 
       - displayName: SNS service
@@ -185,6 +184,7 @@ metadata:
         - "DEFLATE"
         - "RAW_DEFLATE"
         - "NONE"
+        - ""
         isRequired: false
         
 
@@ -223,7 +223,6 @@ metadata:
         default: true
         isRequired: false  
       
-
       - displayName: Encoding
         attributeName: encoding
         type: dropdownSelector
@@ -265,6 +264,7 @@ metadata:
         - "WINDOWS1254"
         - "WINDOWS1255"
         - "WINDOWS1256"
+        - ""
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
 
@@ -360,6 +360,7 @@ metadata:
         - "HEX"
         - "BASE64"
         - "UTF8"
+        - ""
         isRequired: false
 
       - displayName: Replace values with NULL
@@ -389,11 +390,13 @@ metadata:
       - displayName: On Error Behavior
         attributeName: onError
         type: dropdownSelector
+        default: ""
         options:
         - "CONTINUE"
         - "SKIP_FILE"
         - "SKIP_FILE_<num>"
         - "SKIP_FILE_<num>%"
+        - ""
         isRequired: false
 
       - displayName: Specify the number of errors that can be skipped
@@ -405,17 +408,21 @@ metadata:
       - displayName: Enforce Length
         attributeName: enforceLength
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false
 
       - displayName: Truncate Columns
         attributeName: truncateColumns
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""    
         isRequired: false
 
     systemColumns:
@@ -455,7 +462,5 @@ metadata:
       dataType: TIMESTAMP_NTZ
       placement: end
       attributeName: sysFlScTm
-
-
 name: Snowpipe
 type: NodeType

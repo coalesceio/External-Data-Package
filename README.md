@@ -43,7 +43,8 @@ There are four configs within the **Node Properties** group.
 * CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
 * The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
-*The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
+* The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
+* Blank options added to Copy-Into and CSV file format options to revert any specific option
 
 ### Use CopyInto node with InferSchema option
 * Set Infer Schema toggle to true
@@ -154,7 +155,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **Setting** | **Description** |
 |---------|-------------|
 |**On Error Behavior**|-String (constant) that specifies the error handling for the load operation|
-|                     |* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT|
+|                     |* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT<br/>* BLANK OPTION|
 |**Specify the number of errors that can be skipped**|-Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped.|
 |**Size Limit**|-Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
 |**Purge Behavior**|-Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully|
@@ -297,7 +298,7 @@ There are four configs within the **Node Properties** group.
 
 | **Setting** | **Description** |
 |-------------|-----------------|
-|**Enable Snowpipe**| Drop down that helps us to create a pipe to auto ingest files from external stage or validate the Copy-Into statement.<br/>* Enable Snowpipe - Load data auto ingesting files from AWS, Azure, or GCP. Choose your<br/>**Cloud Provider.** * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.<br/>* Azure - Integration. Specifies the existing notification integration used to access the storage queue.<br/>* GCP -  Integration. Specifies the existing notification integration used to access the storage queue.<br/>* Test Copy Statement - To validate the Copy-into statement before we use it to create PIPE|
+|**Enable Snowpipe**| Drop down that helps us to create a pipe to auto ingest files from external stage or validate the Copy-Into statement.<br/>* Enable Snowpipe - Load data auto ingesting files from AWS, Azure, or GCP. Choose your<br/><br/>**SNS service** Toggle to check if we need to use Notification Service.If false,default Snowflake notification is used<br/>**Cloud Provider.** * AWS - AWS SNS Topic. Specifies the Amazon Resource Name (ARN) for the SNS topic for your S3 bucket.<br/>* Azure - Integration. Specifies the existing notification integration used to access the storage queue.<br/>* GCP -  Integration. Specifies the existing notification integration used to access the storage queue.<br/>* Test Copy Statement - To validate the Copy-into statement before we use it to create PIPE|
 |**Load historical data**|Loads the historic data into the target table by executing a COPY_INTO statement|
 
 <h3 id="snowpipe-file-location"> Snowpipe File Location </h3>
@@ -333,6 +334,7 @@ There are four configs within the **Node Properties** group.
 * If the file format definition is set to 'File format name' and is of file type csv,a temporary file format is created to adapt the same to infer the structure and dropped on successfully inferring the structure of the table
 * If the file format definition is set to 'File format name' and the file types except csv,the same file format is used for inferring.No temporary file formts are created.
 * The temporary file format created follows the naing convention ==>`TEMP_{{file_type}}_{{node name}}`.Ensure that any predefined file formats created in snowflake does not have the same file format name.
+* Blank options have been added for few config options if u want to exclude any file format option
 
 ##### File Format Definition - File Format Name
 
@@ -365,7 +367,7 @@ There are four configs within the **Node Properties** group.
 If you toggle Enable Snowpipe under Snowpipe Options to *ON*, these configuration options are available.
 | **Setting** | **Description** |
 |---------|-------------|
-|**On Error Behavior**|String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num <br/>* Specify the number of errors that can be skipped.<br/>* SKIP_FILE_num%<br/>* Specify the number of errors that can be skipped|
+|**On Error Behavior**|String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num <br/>* Specify the number of errors that can be skipped.<br/>* SKIP_FILE_num%<br/>* Specify the number of errors that can be skipped<br/>* BLANK OPTION|
 |**Enforce Length**|Boolean that specifies whether to truncate text strings that exceed the target column length|
 |**Truncate Columns**|Boolean that specifies whether to truncate text strings that exceed the target column length|
 
@@ -373,7 +375,7 @@ If you toggle Enable Snowpipe under Snowpipe Options to *OFF*, these configurati
 
 | **Setting** | **Description** |
 |---------|-------------|
-|**On Error Behavior** | String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT|
+|**On Error Behavior** | String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT<br/>* BLANK OPTION|
 |**Specify the number of errors that can be skipped** | Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped|
 |**Size Limit**| Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
 |**Purge Behavior**| Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully |
@@ -415,7 +417,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 The Snowpipe includes twp environment parameters.The parameter `loadType` allows you to specify if you want to perform a full load or a reload based on the load type 
 when you are performing a Copy-Into operation.
-The another parameter `targetIntegrationOrAwsSNSTopic` allows you to specify the AWS SNS Topic or Integration name to be used for auto ingesting files from Clous providers
+The another parameter `targetIntegration` allows you to specify the Integration name to be used for auto ingesting files from Clous providers
 
 The parameter name is `loadType` and the default value is ``.
 
@@ -428,23 +430,42 @@ The parameter name is `loadType` and the default value is ``.
 When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously 
 and have not changed since they were loaded.
 
-The parameter name is targetIntegrationOrAwsSNSTopic and the default value is DEV ENVIRONMENT.
+The parameter name is targetIntegration and the default value is DEV ENVIRONMENT.
 
-When set to DEV ENVIRONMENT the value entered in the Snowpipe Options config AWS SNS TOpic/Integration is used for ingesting files from Cloud providers.
+When set to DEV ENVIRONMENT the value entered in the Snowpipe Options config Integration is used for ingesting files from Azure/GCP Cloud providers.
 
 ```json
 {
-    "targetIntegrationOrAwsSNSTopic": "DEV ENVIRONMENT"
+    "targetIntegration": "DEV ENVIRONMENT"
 }
 ```
 
-When set to any value other than DEV ENVIRONMENT the node will use the specified value for AWS SNS TOpic/Integration.
+When set to any value other than DEV ENVIRONMENT the node will use the specified value for Integration.
 
 For example, the Snowpipe node will use the specific value for auto ingestion.
 
 ```json
 {
-    "targetIntegrationOrAwsSNSTopic": "arn:aws:sqs:us-east-1:832620633027:sf-snowpipe-AIDA4DXAOTPB7IF437EPD-lZe8ciYpPqGgC9KwWLmiIQ"
+    "targetIntegration": "arn:aws:sqs:us-east-1:832620633027:sf-snowpipe-AIDA4DXAOTPB7IF437EPD-lZe8ciYpPqGgC9KwWLmiIQ"
+}
+```
+The parameter name is targetAWSSNSTopic and the default value is DEV ENVIRONMENT.
+
+When set to DEV ENVIRONMENT the value entered in the Snowpipe Options config AWS SNS Topic is used for ingesting files from AWS Cloud providers where a customer prefers SNS service.
+
+```json
+{
+    "targetAWSSNSTopic": "DEV ENVIRONMENT"
+}
+```
+
+When set to any value other than DEV ENVIRONMENT the node will use the specified value for Integration.
+
+For example, the Snowpipe node will use the specific value for auto ingestion.
+
+```json
+{
+    "targetAWSSNSTopic": "arn:aws:sqs:us-east-1:832620633027:sf-snowpipe-AIDA4DXAOTPB7IF437EPD-lZe8ciYpPqGgC9KwWLmiIQ"
 }
 ```
 

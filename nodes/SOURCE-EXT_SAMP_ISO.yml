@@ -8,7 +8,7 @@ operation:
     bytemark: true
     cloudProvider: AWS
     columnmismatch: false
-    compression: NONE
+    compression: ""
     cpartexpression: ""
     dateformat: ""
     emptyfield: true
@@ -23,7 +23,7 @@ operation:
     fileNames: sample_iso8859_15.csv
     filePattern: .*iso.*[.]csv
     fileType: CSV
-    inferschema: true
+    inferschema: false
     integration: null
     mulline: true
     nullchar: ('\N')

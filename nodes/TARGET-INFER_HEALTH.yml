@@ -3,23 +3,32 @@ id: 6a5c837e-9fc9-4c7e-bda3-97f6614a8ac1
 name: INFER_HEALTH
 operation:
   config:
-    compression: null
-    encoding: null
-    fieldDelim: null
-    fieldEnclosed: null
+    binformat: ""
+    bytemark: false
+    columnmismatch: false
+    compression: AUTO
+    emptyfield: false
+    encoding: UTF8
+    escapeenclosed: ""
+    escapeval: ""
+    fieldDelim: ""
+    fieldEnclosed: ""
     fileFormatLoc: TARGET
     fileFormatName: CSVFILEFORMAT
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: health_pipe.csv,health1.csv
     fileType: CSV
+    mulline: false
     parsehdr: false
     parsehdr1: true
-    recDelim: null
+    recDelim: ""
     redeploymentBehavior: Create or Replace
+    replaceinvalidcharacters: false
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
-    subfolder: null
+    subfolder: ""
+    trimSpace: false
     usevectscan: false
   database: ""
   deployEnabled: true

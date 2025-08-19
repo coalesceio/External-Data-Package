@@ -27,7 +27,7 @@ operation:
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: true
-    subfolder: null
+    subfolder: ""
     trimSpace: false
     usevectscan: false
   database: ""

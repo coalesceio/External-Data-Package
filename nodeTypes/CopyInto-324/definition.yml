@@ -163,6 +163,7 @@ metadata:
         - "DEFLATE"
         - "RAW_DEFLATE"
         - "NONE"
+        - ""
         isRequired: false
         
 
@@ -243,6 +244,7 @@ metadata:
         - "WINDOWS1254"
         - "WINDOWS1255"
         - "WINDOWS1256"
+        - ""
         isRequired: false
         enableIf: "{% if (config.fileFormatType != 'File Format Name' and config.fileType in ('CSV')) %} true {% else %} false {% endif %}"
       
@@ -337,6 +339,7 @@ metadata:
         - "HEX"
         - "BASE64"
         - "UTF8"
+        - ""
         isRequired: false
 
       - displayName: Replace values with NULL
@@ -366,12 +369,14 @@ metadata:
       - displayName: On Error Behavior
         attributeName: onError
         type: dropdownSelector
+        default: ""
         options:
         - "CONTINUE"
         - "SKIP_FILE"
         - "SKIP_FILE_<num>"
         - "SKIP_FILE_<num>%"
         - "ABORT_STATEMENT"
+        - ""
         isRequired: false
 
       - displayName: Specify the number of errors that can be skipped
@@ -388,50 +393,62 @@ metadata:
       - displayName: Purge Behavior
         attributeName: purgeBehavior
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false
         
       - displayName: Return Failed Only
         attributeName: returnFailedOnly
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false
 
       - displayName: Enforce Length
         attributeName: enforceLength
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false
 
       - displayName: Truncate Columns
         attributeName: truncateColumns
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false
 
       - displayName: Force
         attributeName: forceLoad
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false
         enableIf: "{% if parameters.loadType != 'Reload'  %} true {% else %} false {% endif %}"
 
       - displayName: Load Uncertain Files
         attributeName: loadUncertainFiles
         type: dropdownSelector
+        default: ""
         options:
         - "TRUE"
         - "FALSE"
+        - ""
         isRequired: false  
         
     systemColumns:

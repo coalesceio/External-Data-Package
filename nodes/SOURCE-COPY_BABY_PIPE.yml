@@ -3,19 +3,20 @@ id: 6dc51a6e-1112-4f50-8bab-d65069f94de6
 name: COPY_BABY_PIPE
 operation:
   config:
+    SNS: true
     awsSnsTopic: ""
-    binformat: HEX
+    binformat: ""
     bytemark: true
     cloudProvider: AWS
     columnmismatch: false
     compression: ""
     dateformat: ""
     emptyfield: true
-    encoding: UTF8
+    encoding: ""
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
-    escapeval: null
+    escapeenclosed: ""
+    escapeval: ""
     fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
@@ -29,8 +30,8 @@ operation:
     inferschema: false
     integration: ""
     mulline: true
-    nullchar: null
-    onError: CONTINUE
+    nullchar: ""
+    onError: ""
     parsehdr: false
     parsehdr1: false
     recDelim: |+

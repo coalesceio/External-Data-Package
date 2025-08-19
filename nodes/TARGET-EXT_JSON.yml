@@ -5,7 +5,7 @@ operation:
   config:
     autoRefresh: false
     cloudProvider: AWS
-    compression: AUTO
+    compression: ""
     cpartexpression: ""
     dateformat: null
     fieldDelim: ","

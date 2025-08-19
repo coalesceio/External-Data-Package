@@ -58,8 +58,8 @@ metadata:
                        \n
                        Ensure the parameter targetIntegration is added for Azure and GCP cloud providers in Workspace and 
                        deployment environment if the snowpipe is enabled.
-                       Parameter targetAwsSNSTopic can be added if SNS service is preferred.            Refer documentation for more information"
-        enableIf: "{%- if (parameters == {} or  'targetIntegrationOrAwsSNSTopic' not in parameters) and config.flagSnowpipe == 'Enable Snowpipe'  -%} true {%- else -%} false {%- endif -%}"
+                       Parameter targetAwsSNSTopic can be added if SNS service is preferred for AWS cloud providers.Refer documentation for more information"
+        enableIf: "{%- if (parameters == {} or  'targetIntegration' not in parameters or 'targetAwsSNSTopic' not in parameters) and config.flagSnowpipe == 'Enable Snowpipe'  -%} true {%- else -%} false {%- endif -%}"
 
       - displayName: SNS service
         type: toggleButton

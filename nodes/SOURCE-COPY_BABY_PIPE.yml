@@ -3,6 +3,7 @@ id: 6dc51a6e-1112-4f50-8bab-d65069f94de6
 name: COPY_BABY_PIPE
 operation:
   config:
+    SNS: true
     awsSnsTopic: ""
     binformat: HEX
     bytemark: true

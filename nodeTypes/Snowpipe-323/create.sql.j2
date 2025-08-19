@@ -10,7 +10,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
 
 {%if desiredState and currentState != desiredState%}
-    {% if desiredState.config.SNS == true and desiredState.config.flagSnowpipe == 'Enable Snowpipe' and desiredState.config.cloudProvider == 'AWS' and (desiredState.parameters == {} or 'targetAwsSNSTopic' not in desiredState.parameters or desiredState.parameters.targetIntegration == '') %}
+    {% if desiredState.config.SNS == true and desiredState.config.flagSnowpipe == 'Enable Snowpipe' and desiredState.config.cloudProvider == 'AWS' and (desiredState.parameters == {} or 'targetAwsSNSTopic' not in desiredState.parameters or desiredState.parameters.targetAwsSNSTopic == '') %}
 
      {{stage('WARNING')}}   
          /*
@@ -28,7 +28,7 @@ does not permit copying or modification for any other purpose.
 
          {{stage('WARNING')}}   
          /*
-
+           
          1.Add parameter loadType in Workspace and 
           deployment environment if you intend to reload data from source files
          

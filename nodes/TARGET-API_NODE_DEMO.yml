@@ -7,12 +7,9 @@ operation:
     extIntegration: COALESCE_INT
     nodeconfig:
       items:
-        - nodename: COPY_SP_AVRO12
+        - nodename: WRK_ORDERS_TXT
           storageLocation: POONAMM_DEV.EDW_QA
-          wksID: "315"
-        - nodename: STG_ORDERS_1
-          storageLocation: POONAMM_DEV.EDW_QA
-          wksID: "315"
+          wksID: "168"
   database: ""
   deployEnabled: false
   description: ""

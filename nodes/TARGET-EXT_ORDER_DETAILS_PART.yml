@@ -9,7 +9,7 @@ operation:
     cpartexpression: split_part(metadata$filename,'/',2)
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE
+    fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: "'order_details.json'"
@@ -25,7 +25,7 @@ operation:
     skipHeader: "1"
     snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
     stageName: spstagesample/
-    stageStorageLocationName: SOURCE
+    stageStorageLocationName: TARGET
     stripouterarray: false
     trimSpace: true
   database: ""
@@ -180,6 +180,25 @@ operation:
         defaultValue: ""
         description: ""
         name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 06f9331e-5a79-4c08-946f-7a12670d7d94
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: PARTITION_COLUMN
         nullable: true
         primaryKey: false
         sourceColumnReferences:

@@ -121,6 +121,7 @@ metadata:
         - "DEFLATE"
         - "RAW_DEFLATE"
         - "NONE"
+        - ""
         isRequired: false
 
       - displayName: Record delimiter
@@ -140,6 +141,7 @@ metadata:
         - "LZO"
         - "SNAPPY"
         - "NONE"
+        - ""
         isRequired: false
 
       - displayName: Field delimiter

@@ -18,7 +18,7 @@ operation:
     fileType: JSON
     inferschema: false
     integration: ""
-    partclause: false
+    partclause: true
     recDelim: |+
 
     replaceinvalidcharacters: true

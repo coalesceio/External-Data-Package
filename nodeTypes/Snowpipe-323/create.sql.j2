@@ -10,7 +10,21 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates target table to load data from internal or external stages using Copy-Into.Also creates a pipe to  loads data from files as soon as they are available in a stage external == #}
 
 {%if desiredState and currentState != desiredState%}
-     {%if (desiredState.parameters == {} or 'targetIntegrationOrAwsSNSTopic' not in desiredState.parameters or desiredState.parameters.targetIntegrationOrAwsSNSTopic == '') and (desiredState.config.flagSnowpipe == 'Enable Snowpipe')%}
+    {% if desiredState.config.SNS == true and desiredState.config.flagSnowpipe == 'Enable Snowpipe' and desiredState.config.cloudProvider == 'AWS' and (desiredState.parameters == {} or 'targetAwsSNSTopic' not in desiredState.parameters or desiredState.parameters.targetIntegration == '') %}
+
+     {{stage('WARNING')}}   
+         /*
+
+         1.Add parameter loadType in Workspace and 
+          deployment environment if you intend to reload data from source files
+         
+         2.Add parameter targetIntegration or targetAwsSNSTopic in Workspace and 
+          deployment environment if the snowpipe is enabled for successful execution of node.
+         The default value for the parameter is 'DEV ENVIRONMENT'.
+
+         Refer to documentation for more information */
+
+    {%elif desiredState.config.flagSnowpipe == 'Enable Snowpipe' and desiredState.config.cloudProvider != 'AWS' and (desiredState.parameters == {} or 'targetIntegration' not in desiredState.parameters or desiredState.parameters.targetIntegration == '') %}
 
          {{stage('WARNING')}}   
          /*
@@ -18,13 +32,14 @@ does not permit copying or modification for any other purpose.
          1.Add parameter loadType in Workspace and 
           deployment environment if you intend to reload data from source files
          
-         2.Add parameter targetIntegrationOrAwsSNSTopic in Workspace and 
+         2.Add parameter targetIntegration or targetAwsSNSTopic in Workspace and 
           deployment environment if the snowpipe is enabled for successful execution of node.
          The default value for the parameter is 'DEV ENVIRONMENT'.
 
          Refer to documentation for more information */
 
-      {%endif%}
+      
+    {%endif%}
 {%endif%}
 
 
@@ -727,15 +742,15 @@ does not permit copying or modification for any other purpose.
 	                   {{ stage('Create Pipe')}}
 
                   CREATE OR REPLACE PIPE {{ fqPipeName }}  AUTO_INGEST = TRUE  
-                 {%- if desiredState.parameters.targetIntegrationOrAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' %}
+                 {%- if desiredState.parameters.targetAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' and desiredState.config.SNS == true%}
                          AWS_SNS_TOPIC = '{{ desiredState.config.awsSnsTopic }}'
-                       {% elif desiredState.parameters.targetIntegrationOrAwsSNSTopic == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider != 'AWS'  %}
+                  {% elif desiredState.parameters.targetIntegration == 'DEV ENVIRONMENT' and desiredState.config.cloudProvider != 'AWS'  %}
                           INTEGRATION = '{{ desiredState.config.integration }}'
-		               {%- elif desiredState.parameters.targetIntegrationOrAwsSNSTopic != 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' %}
-		                  AWS_SNS_TOPIC = '{{ desiredState.parameters.targetIntegrationOrAwsSNSTopic }}'
-		               {%-elif desiredState.parameters.targetIntegrationOrAwsSNSTopic != 'DEV ENVIRONMENT' and desiredState.config.cloudProvider != 'AWS' %}
-		                   INTEGRATION = '{{ desiredState.parameters.targetIntegrationOrAwsSNSTopic }}'
-                        {%- endif %}
+		               {%- elif desiredState.parameters.targetAwsSNSTopic != 'DEV ENVIRONMENT' and desiredState.config.cloudProvider == 'AWS' and desiredState.config.SNS == true%}
+		                  AWS_SNS_TOPIC = '{{ desiredState.parameters.targetAwsSNSTopic }}'
+		               {%-elif desiredState.parameters.targetIntegration != 'DEV ENVIRONMENT' and desiredState.config.cloudProvider != 'AWS' %}
+		                   INTEGRATION = '{{ desiredState.parameters.targetIntegration }}'
+                 {%- endif %}
 
                          AS
                         COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (

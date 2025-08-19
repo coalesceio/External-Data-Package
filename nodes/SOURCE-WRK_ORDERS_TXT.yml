@@ -1,5 +1,5 @@
 fileVersion: 1
-id: 4b0447ca-930c-41de-898a-ce615b8f8985
+id: b78f8583-05a1-45ce-9ee5-b3e579789ee4
 name: WRK_ORDERS_TXT
 operation:
   config:
@@ -25,15 +25,15 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
+  locationName: SOURCE
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c932fa9f-28bf-463b-819c-673ddd2a35ae
-          stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
+          columnCounter: c3e2cc4d-8bc5-46bd-8c7e-ffe7742f18e4
+          stepCounter: b78f8583-05a1-45ce-9ee5-b3e579789ee4
         config: {}
         dataType: NUMBER(3,0)
         description: "{{ add_desc()}}"
@@ -41,13 +41,13 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 8e5e29f5-d673-4eab-9b3b-6ae652576914
-                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+              - columnCounter: c932fa9f-28bf-463b-819c-673ddd2a35ae
+                stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: f0a58c41-e86c-4c5d-b367-5124031d1572
-          stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
+          columnCounter: cfea1e6a-4979-43fe-ba26-23496fd28ad8
+          stepCounter: b78f8583-05a1-45ce-9ee5-b3e579789ee4
         config: {}
         dataType: NUMBER(1,0)
         description: ""
@@ -55,13 +55,13 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: b2a32409-995f-450f-96f3-c7620a644b47
-                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+              - columnCounter: f0a58c41-e86c-4c5d-b367-5124031d1572
+                stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 4c9b1bbf-d549-4cc0-ae66-ee0959d3af96
-          stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
+          columnCounter: 89138786-66fa-4eec-b32d-3cb774d470bb
+          stepCounter: b78f8583-05a1-45ce-9ee5-b3e579789ee4
         config: {}
         dataType: NUMBER(5,2)
         description: ""
@@ -69,28 +69,26 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 4564c7fb-688e-48eb-9d26-4e82ecf2fa65
-                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+              - columnCounter: 4c9b1bbf-d549-4cc0-ae66-ee0959d3af96
+                stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
             transform: ""
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
-      - aliases:
-          COPY_ORDERS_TXT: efeb96ab-5589-4b7a-a4ea-f1daaafce236
+      - aliases: {}
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: TARGET
-            nodeName: COPY_CUSTOMERS
-          - locationName: TARGET
-            nodeName: COPY_ORDERS_TXT
+            nodeName: WRK_ORDERS_TXT
         join:
-          joinCondition: |-
-            
-            
+          joinCondition: |2-
+
+
+
+
              
-              FROM  {{ ref('TARGET', 'COPY_ORDERS_TXT') }} COPY_ORDERS_TXT
-              -- {{ref('TARGET','COPY_CUSTOMERS')}}
+              FROM  {{ ref('TARGET', 'WRK_ORDERS_TXT') }} WRK_ORDERS_TXT
         name: WRK_ORDERS_TXT
         noLinkRefs: []
   name: WRK_ORDERS_TXT

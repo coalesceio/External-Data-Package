@@ -1,38 +1,43 @@
 fileVersion: 1
-id: c5f01a64-b827-4de3-842f-594179296917
-name: EXT_ORDER_DETAILS_PART
+id: a842c7b5-3522-4fb3-94fe-9349ed3e3268
+name: EXT_NODE1
 operation:
   config:
     autoRefresh: false
     cloudProvider: AWS
-    compression: AUTO
-    cpartexpression: split_part(metadata$filename,'/',2)
+    compression: ""
+    emptyfield: true
+    encoding: UTF8
+    escapeenclosed: \134
+    escapeval: ""
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: order_details.json
-    filePattern: .*order.*[.]json
+    filePattern: .*[.]json
     fileType: JSON
-    inferschema: true
+    inferschema: false
     integration: ""
+    mulline: true
+    nullchar: ('\N')
+    parsehdr: true
+    parsehdr1: true
     partby:
       items:
-        - columnName:
-            columnCounter: 06f9331e-5a79-4c08-946f-7a12670d7d94
-            stepCounter: c5f01a64-b827-4de3-842f-594179296917
-    partclause: true
+        - {}
+    partclause: false
     recDelim: |+
 
-    replaceinvalidcharacters: false
-    skipBlankLines: true
+    replaceinvalidcharacters: true
+    skipBlankLines: false
     skipHeader: "1"
     snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
     stageName: spstagesample/
     stageStorageLocationName: TARGET
-    stripouterarray: false
-    trimSpace: true
+    stripouterarray: true
+    trimSpace: false
   database: ""
   deployEnabled: true
   description: ""
@@ -48,8 +53,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: af232556-a9d2-4506-aa1c-9f212e733ab7
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: 96cafe45-1dff-4346-9d4c-157397b1ddf5
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -64,8 +69,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e24f0c38-bd17-4b3d-9f1d-f19ff8d8ef32
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: 1f10838a-a51a-4e97-80bf-ed48b09bdce8
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: NUMBER(11,10)
         defaultValue: ""
@@ -83,8 +88,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: f4b086af-e258-4cf8-be9e-733654021d34
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: d122f3e5-362c-44fa-b9a4-2778268255bf
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: NUMBER(4,0)
         defaultValue: ""
@@ -102,10 +107,10 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 01045bd5-222f-4f89-821e-c17fd3e36e7c
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: 54ed605f-c7d6-41f0-9bcd-31fbb95cdb30
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
-        dataType: NUMBER(4,0)
+        dataType: NUMBER(2,0)
         defaultValue: ""
         description: ""
         name: OrderLine
@@ -121,8 +126,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 47071188-a9b9-4ff8-9115-939a6f35be23
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: 9f54fe57-803b-4d4c-8747-6cd9ef0016ca
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: NUMBER(2,0)
         defaultValue: ""
@@ -140,8 +145,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0ab25fc3-3608-4f38-ae0b-0c64ba886140
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: f3421b95-76a6-4538-b384-305f22bf0b6e
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: NUMBER(3,0)
         defaultValue: ""
@@ -159,8 +164,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 94242a0c-fcd0-46bf-bcc4-c9e7105af07e
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: d3edbb3a-1442-4a51-b761-5a21ef96a0b5
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: NUMBER(5,2)
         defaultValue: ""
@@ -178,8 +183,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 15c40ca1-7156-47ef-85f2-91af96c598bb
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: 11981d45-a123-4f2c-9304-4bc073861f5c
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -197,8 +202,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 06f9331e-5a79-4c08-946f-7a12670d7d94
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+          columnCounter: 8b00d3d5-94c0-483a-9b6d-974a821c57cb
+          stepCounter: a842c7b5-3522-4fb3-94fe-9349ed3e3268
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -208,7 +213,7 @@ operation:
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
-            transform: split_part(metadata$filename,'/',2)
+            transform: ""
         transform: ""
         uniqueKey: false
     cteString: ""
@@ -220,9 +225,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: EXT_ORDER_DETAILS_PART
+        name: EXT_NODE1
         noLinkRefs: []
-  name: EXT_ORDER_DETAILS_PART
+  name: EXT_NODE1
   overrideSQL: false
   schema: ""
   sqlType: "298"

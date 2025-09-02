@@ -536,14 +536,14 @@ There are four configs within the **Node Properties** group.
 
 <h4 id="external-tables-general-options"> General Options </h4>
 
-![image](https://github.com/user-attachments/assets/c5873765-d4a3-4d12-b509-e6626d506c3d)
+<img width="454" height="433" alt="External_table_config" src="https://github.com/user-attachments/assets/b3f5f117-0e9e-4069-a7d7-440dbe9f1f66" />
 
 
 | **Settings** | **Description** |
 |--------------|-----------------|
 |**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading<br/> * True -The node is created with the inferred columns<br/>* False -No infer table step is executed|
-|**Partition by**|A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME.By default the partitioning is done by FILENAME column|
-|**Partition by Expression(Partition by toggle true)**|A partition by expression based on METADATA$FILENAME to partition External table|
+|**Partition by toggle**|When set to true,we get to choose partition column from dropdown.A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME.By default the partitioning is done by FILENAME column|
+|**Partition Column dropdown(Partition by toggle true)**|Get to choose the partition column with appropriate trnasformation from dropdown |
 
 <h4 id="external-tables-file-location"> External Tables Node File Location </h4>
 
@@ -605,10 +605,12 @@ The set of columns which has source data and file metadata information.
 
 * **VALUE** - The data from the file is loaded into this variant column
 * **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
+* **PARTITION_COLUMN** - A column with default transformation split_part(metadata$filename,'/',2) is added to partition external table.
 
 ### Key points to use External table node
 * External table node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * External node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add External node on top of it.
+* A column with default transformation split_part(metadata$filename,'/',2) is added to partition external table.The user can rename the column and modify the transformation as per their requirement.Also,we can use any other column with appropriate transformation for partitioning external table
 
 ### Use External table with InferSchema option
 * Set Infer Schema toggle to true

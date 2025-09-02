@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 5b8efb2b-2b0e-4118-ac70-6bd36eb69781
-name: EXPORT_CUST_ORD_TXTex
+name: EXPORT_CUST_ORD_TXTex1234
 operation:
   config:
     compression: NONE
@@ -124,9 +124,9 @@ operation:
             nodeName: WRK_CUSTOMERS_ORDERS_TXT
         join:
           joinCondition: FROM {{ ref('TARGET', 'WRK_CUSTOMERS_ORDERS_TXT') }} "WRK_CUSTOMERS_ORDERS_TXT"
-        name: EXPORT_CUST_ORD_TXTex
+        name: EXPORT_CUST_ORD_TXTex1234
         noLinkRefs: []
-  name: EXPORT_CUST_ORD_TXTex
+  name: EXPORT_CUST_ORD_TXTex1234
   overrideSQL: false
   schema: ""
   sqlType: "302"

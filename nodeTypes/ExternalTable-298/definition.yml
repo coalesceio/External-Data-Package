@@ -4,7 +4,7 @@ isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
-  nodeMetadataSpec: |
+  nodeMetadataSpec: |+
     capitalized: External Table
     short: 'EXT'
     tagColor: '#C39BD3'
@@ -32,13 +32,20 @@ metadata:
       - type: label
         displayName: A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME
         enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+        
+      - type: tabular
+        displayName: 'Partition by'
+        attributeName: partby
+        columns:
 
-      - type: textBox
-        displayName: Partition by Expression(Ex:split_part(metadata$filename,'/',2))
-        attributeName: cpartexpression
-        default: ""
+        -  type: columnDropdownSelector
+           displayName: Column Name
+           attributeName: columnName
+           isRequired: false
+      
         isRequired: false
         enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+
 
     - groupName: File Location
       items:
@@ -319,5 +326,12 @@ metadata:
       dataType: STRING
       placement: end
       attributeName: sysFlNm
+
+    - displayName: PARTITION_COLUMN
+      transform: "split_part(metadata$filename,'/',2)"
+      dataType: STRING
+      placement: end
+      attributeName: partcol
+
 name: External Table
 type: NodeType

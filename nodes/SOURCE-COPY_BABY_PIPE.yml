@@ -15,8 +15,6 @@ operation:
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
-    escapeval: null
     fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
@@ -30,7 +28,6 @@ operation:
     inferschema: false
     integration: ""
     mulline: true
-    nullchar: null
     onError: CONTINUE
     parsehdr: false
     parsehdr1: false

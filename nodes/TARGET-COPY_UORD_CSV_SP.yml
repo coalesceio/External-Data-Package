@@ -4,18 +4,14 @@ name: COPY_UORD_CSV_SP
 operation:
   config:
     awsSnsTopic: ""
-    binformat: null
     bytemark: false
     cloudProvider: AWS
     columnmismatch: false
     compression: NONE
     dateformat: ""
     emptyfield: false
-    encoding: null
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
-    escapeval: null
     fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: TARGET
@@ -30,7 +26,6 @@ operation:
     inferschema: false
     integration: ""
     mulline: false
-    nullchar: null
     onError: CONTINUE
     parsehdr: true
     recDelim: ""
@@ -40,7 +35,6 @@ operation:
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
-    subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false

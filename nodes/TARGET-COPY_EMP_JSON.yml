@@ -18,13 +18,8 @@ operation:
     filePattern: "'.*.*[.]json'"
     fileType: JSON
     forceLoad: ""
-    ifileFormatLoc: null
-    ifileFormatName: null
-    ifileNames: null
     inferschema: false
     intextstage: true
-    istageName: null
-    istageStorageLocationName: null
     loadUncertainFiles: ""
     onError: ""
     purgeBehavior: ""
@@ -38,7 +33,6 @@ operation:
     stageStorageLocationName: TARGET
     storageintegration: ""
     stripouterarray: false
-    subfolder: null
     timeformat: ""
     timestampformat: ""
     trimSpace: false

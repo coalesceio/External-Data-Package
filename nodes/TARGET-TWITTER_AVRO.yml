@@ -3,10 +3,6 @@ id: 1509b7d8-1310-428c-9052-5ab4efb27e42
 name: TWITTER_AVRO
 operation:
   config:
-    compression: null
-    encoding: null
-    fieldDelim: null
-    fieldEnclosed: null
     fileFormatLoc: SOURCE
     fileFormatName: AVROFILEFORMAT
     fileFormatType: File Format Name
@@ -14,12 +10,10 @@ operation:
     fileType: AVRO
     parsehdr: false
     parsehdr1: false
-    recDelim: null
     redeploymentBehavior: Create or Replace
     stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     stripouterarray: false
-    subfolder: null
     usevectscan: false
   database: ""
   deployEnabled: true

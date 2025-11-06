@@ -12,8 +12,6 @@ operation:
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
-    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","

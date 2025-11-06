@@ -15,7 +15,7 @@ operation:
     escapeenclosed: \134
     escapeval: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
+    extlocation: true
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: ""
@@ -26,7 +26,7 @@ operation:
     fileType: CSV
     forceLoad: ""
     inferschema: false
-    intextstage: true
+    intextstage: false
     loadUncertainFiles: ""
     mulline: true
     nullchar: ('\N')

@@ -29,7 +29,6 @@ operation:
     intextstage: true
     loadUncertainFiles: ""
     mulline: true
-    nullchar: null
     onError: CONTINUE
     parsehdr: true
     parsehdr1: false

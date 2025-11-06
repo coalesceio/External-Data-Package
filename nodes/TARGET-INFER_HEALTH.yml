@@ -3,10 +3,6 @@ id: 6a5c837e-9fc9-4c7e-bda3-97f6614a8ac1
 name: INFER_HEALTH
 operation:
   config:
-    compression: null
-    encoding: null
-    fieldDelim: null
-    fieldEnclosed: null
     fileFormatLoc: TARGET
     fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Name
@@ -14,12 +10,10 @@ operation:
     fileType: CSV
     parsehdr: false
     parsehdr1: true
-    recDelim: null
     redeploymentBehavior: Create or Replace
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
-    subfolder: null
     usevectscan: false
   database: ""
   deployEnabled: true

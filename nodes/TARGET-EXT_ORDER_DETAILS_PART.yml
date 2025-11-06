@@ -17,6 +17,11 @@ operation:
     fileType: JSON
     inferschema: false
     integration: ""
+    partby:
+      items:
+        - columnName:
+            columnCounter: 06f9331e-5a79-4c08-946f-7a12670d7d94
+            stepCounter: c5f01a64-b827-4de3-842f-594179296917
     partclause: true
     recDelim: |+
 

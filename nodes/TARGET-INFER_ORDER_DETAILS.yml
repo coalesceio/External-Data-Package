@@ -8,11 +8,6 @@ operation:
     columnmismatch: false
     compression: NONE
     emptyfield: false
-    encoding: null
-    escapeenclosed: null
-    escapeval: null
-    fieldDelim: null
-    fieldEnclosed: null
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Values
@@ -21,13 +16,11 @@ operation:
     mulline: false
     parsehdr: false
     parsehdr1: false
-    recDelim: null
     redeploymentBehavior: Create or Replace
     replaceinvalidcharacters: false
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: true
-    subfolder: null
     trimSpace: false
     usevectscan: false
   database: ""

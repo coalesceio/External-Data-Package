@@ -24,7 +24,6 @@ operation:
     filePattern: .*iso.*[.]csv
     fileType: CSV
     inferschema: true
-    integration: null
     mulline: true
     nullchar: ('\N')
     parsehdr: true
@@ -35,7 +34,6 @@ operation:
     replaceinvalidcharacters: true
     skipBlankLines: false
     skipHeader: "1"
-    snsTopic: null
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: true

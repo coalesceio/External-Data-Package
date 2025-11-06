@@ -3,7 +3,6 @@ id: 7f11f16b-7962-4540-83bb-67f33e1ca2a3
 name: COPY_PARK1
 operation:
   config:
-    binformat: null
     bytemark: false
     columnmismatch: false
     compression: ""
@@ -13,7 +12,6 @@ operation:
     enforceLength: ""
     errornumber: ""
     escapeenclosed: \134
-    escapeval: null
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
@@ -29,7 +27,6 @@ operation:
     intextstage: true
     loadUncertainFiles: ""
     mulline: false
-    nullchar: null
     onError: ""
     parsehdr: true
     parsehdr1: false

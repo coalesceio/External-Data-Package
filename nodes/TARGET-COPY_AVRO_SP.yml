@@ -3,6 +3,7 @@ id: d83e922e-af27-48a2-9103-818f0c96e549
 name: COPY_AVRO_SP
 operation:
   config:
+    SNS: false
     awsSnsTopic: ""
     cloudProvider: AWS
     compression: ""
@@ -30,7 +31,7 @@ operation:
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
-    subfolder: null
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false

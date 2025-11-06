@@ -3,19 +3,19 @@ id: 6e98cc56-7caf-4417-b077-950ced0d60ca
 name: COPY_BABY
 operation:
   config:
-    binformat: null
+    binformat: ""
     bytemark: false
     columnmismatch: false
     compression: ""
     dateformat: ""
     emptyfield: false
-    encoding: null
+    encoding: ""
     enforceLength: ""
     errornumber: ""
-    escapeenclosed: null
-    escapeval: null
+    escapeenclosed: ""
+    escapeval: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
+    extlocation: true
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
@@ -26,7 +26,7 @@ operation:
     fileType: CSV
     forceLoad: ""
     inferschema: true
-    intextstage: true
+    intextstage: false
     loadUncertainFiles: ""
     mulline: false
     onError: ""

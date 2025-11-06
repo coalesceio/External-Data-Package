@@ -34,6 +34,7 @@ operation:
     stageStorageLocationName: SOURCE
     storageintegration: ""
     stripouterarray: false
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false

@@ -15,8 +15,13 @@ operation:
     fileNames: "'twitter_samp.avro'"
     filePattern: .*[.]avro
     fileType: AVRO
-    inferschema: false
+    inferschema: true
     integration: ""
+    partby:
+      items:
+        - columnName:
+            columnCounter: 6fefca0c-b9f8-40be-9bb5-085fc65bc1f7
+            stepCounter: 4f94cca5-78a0-4a28-aaff-7cde7da77cb4
     partclause: true
     recDelim: |+
 
@@ -133,6 +138,26 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6fefca0c-b9f8-40be-9bb5-085fc65bc1f7
+          stepCounter: 4f94cca5-78a0-4a28-aaff-7cde7da77cb4
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: PARTITION_COLUMN
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: ""
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

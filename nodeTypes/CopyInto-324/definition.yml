@@ -98,13 +98,13 @@ metadata:
         attributeName: externalURI
         type: textBox
         default: 'Enter external URI-Ex:s3://snowflake-docs'
-        enableIf: "{% if config.extlocation %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.extlocation and config.inferschema == false %} true {% else %} false {% endif %}"
         isRequired: false
 
-      - displayName: Storage Integration
+      - displayName: Storage Integration (Mandatory for Private External URIs)
         attributeName: storageintegration
         type: textBox
-        enableIf: "{% if config.extlocation %} true {% else %} false {% endif %}"
+        enableIf: "{% if config.extlocation and config.inferschema == false %} true {% else %} false {% endif %}"
         isRequired: false
 
     - groupName: File Format Options

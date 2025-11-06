@@ -101,8 +101,8 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 ##### External location
 | **Setting** | **Description** |
 |---------|-------------|
-| **External URI** | Enter the URI of the External location|
-| **Storage Integration** | Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity|
+| **External URI** | Enter the URI of the External location.\nThis URI can point to either a private or public bucket/container.|
+| **Storage Integration** | Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity. This field is **not mandatory** for publicly accessible buckets or when another authentication method (such as presigned URLs or public access) is used. |
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 

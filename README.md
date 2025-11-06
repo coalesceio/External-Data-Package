@@ -364,24 +364,9 @@ There are four configs within the **Node Properties** group.
 
 <h3 id="snowpipe-copy-options"> Snowpipe Copy Options </h3>
 
-If you toggle Enable Snowpipe under Snowpipe Options to *ON*, these configuration options are available.
 | **Setting** | **Description** |
 |---------|-------------|
 |**On Error Behavior**|String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num <br/>* Specify the number of errors that can be skipped.<br/>* SKIP_FILE_num%<br/>* Specify the number of errors that can be skipped<br/>* BLANK OPTION|
-|**Enforce Length**|Boolean that specifies whether to truncate text strings that exceed the target column length|
-|**Truncate Columns**|Boolean that specifies whether to truncate text strings that exceed the target column length|
-
-If you toggle Enable Snowpipe under Snowpipe Options to *OFF*, these configuration options are available.
-
-| **Setting** | **Description** |
-|---------|-------------|
-|**On Error Behavior** | String (constant) that specifies the error handling for the load operation<br/>* CONTINUE<br/>* SKIP_FILE<br/>* SKIP_FILE_num<br/>* SKIP_FILE_num%<br/>* ABORT_STATEMENT<br/>* BLANK OPTION|
-|**Specify the number of errors that can be skipped** | Required when On Error Behavior is either `SKIP_FILE_num` or `SKIP_FILE_num%`.Specify the number of errors that can be skipped|
-|**Size Limit**| Number (> 0) that specifies the maximum size (in bytes) of data to be loaded for a given COPY statement|
-|**Purge Behavior**| Boolean that specifies whether to remove the data files from the stage automatically after the data is loaded successfully |
-|**Return Failed Only**|Boolean that specifies whether to return only files that have failed to load in the statement result|
-|**Force**|Boolean that specifies to load all files, regardless of whether they’ve been loaded previously and have not changed since they were loaded| 
-|**Load Uncertain Files**|Boolean that specifies to load files for which the load status is unknown. The COPY command skips these files by default|
 |**Enforce Length**|Boolean that specifies whether to truncate text strings that exceed the target column length|
 |**Truncate Columns**|Boolean that specifies whether to truncate text strings that exceed the target column length|
 

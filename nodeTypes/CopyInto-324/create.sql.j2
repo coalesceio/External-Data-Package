@@ -37,7 +37,7 @@ does not permit copying or modification for any other purpose.
                CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
                 (
                 {% for col in desiredState.columns %}
-                    "{{ col.name }}" {{ col.dataType }}
+                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }} {{ col.dataType }}
                     {%- if not col.nullable %} NOT NULL
                         {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
                     {% endif %}
@@ -283,7 +283,7 @@ does not permit copying or modification for any other purpose.
                                CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
                                (
                                  {% for col in desiredState.columns %}
-                                    "{{ col.name }}" {{ col.dataType }}
+                                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }} {{ col.dataType }}
                                  {%- if not col.nullable %} NOT NULL
                                  {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
                                  {% endif %}
@@ -382,7 +382,7 @@ does not permit copying or modification for any other purpose.
                     {% else %}
                         ,
                     {% endif %}
-                        "{{ addDesCol.name }}" {{ addDesCol.dataType }}
+                        {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, addDesCol.name) }} {{ addDesCol.dataType }}
                         {%- if not addDesCol.nullable %} NOT NULL
                             {%- if addDesCol.defaultValue | length > 0 %} DEFAULT {{ addDesCol.defaultValue }}{% endif %}
                         {% endif %}

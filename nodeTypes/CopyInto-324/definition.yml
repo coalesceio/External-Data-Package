@@ -35,6 +35,12 @@ metadata:
         attributeName: inferschema
         type: toggleButton
         default: false
+      
+      - displayName: DDL Case Insensitive
+        attributeName: ddlCaseInsensitive
+        type: toggleButton
+        default: false
+        enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
 
     - groupName: Source Data
       items:

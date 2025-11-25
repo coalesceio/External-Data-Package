@@ -395,7 +395,7 @@ does not permit copying or modification for any other purpose.
                     {% else %}
                         , 
                     {% endif %}
-                    "{{ dropCurCol.name }}"
+                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  dropCurCol.name) }}
                 {% endif %}
             {% endfor %}
 
@@ -412,7 +412,7 @@ does not permit copying or modification for any other purpose.
                     {% else %}
                         ,
                     {% endif %}
-                        "{{ addDesCol.name }}" {{ addDesCol.dataType }}
+                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  addDesCol.name) }}{{ addDesCol.dataType }}
                         {%- if not addDesCol.nullable %} NOT NULL
                             {%- if addDesCol.defaultValue | length > 0 %} DEFAULT {{ addDesCol.defaultValue }}{% endif %}
                         {% endif %}
@@ -427,8 +427,8 @@ does not permit copying or modification for any other purpose.
                     {% if renameCurCol.name != desiredColumnName %}
                         {{ stage('Rename Column ' + renameCurCol.name) }}
                         ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
-                        RENAME COLUMN "{{ renameCurCol.name }}"
-                        TO "{{ desiredColumnName }}"
+                        RENAME COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  renameCurCol.name) }}
+                        TO  {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  desiredColumnName) }}
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -466,13 +466,13 @@ does not permit copying or modification for any other purpose.
                         {% endif %}
                         {% if datatypeTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  desiredColumnName) }}
                             SET DATA TYPE {{ desiredDatatype }}
                             {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
                         {% endif %}
                         {% if nullableTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  desiredColumnName) }}
                             {% if currentNullable == true %}
                                 SET
                             {% else %}
@@ -483,13 +483,13 @@ does not permit copying or modification for any other purpose.
                         {% endif %}
                         {% if descriptionTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  desiredColumnName) }}
                             COMMENT '{{ desiredDescription | escape }}'
                             {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
                         {% endif %}
                         {% if defaultValueTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive,  desiredColumnName) }}
                             {% if desiredDefaultValue == '' %}
                                 DROP DEFAULT
                             {% else %}
@@ -772,15 +772,15 @@ does not permit copying or modification for any other purpose.
                        {%elif col.sysLdTs == true and col.transform == ""%}
                           current_timestamp()::timestamp_ntz AS "{{col.name}}"
                         {%elif col.sysFlNm == true and col.transform == "" %}
-                          METADATA$FILENAME AS "{{col.name}}"
+                          METADATA$FILENAME AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                        {%elif col.sysFlRwNm == true and col.transform == "" %}
-                           METADATA$FILE_ROW_NUMBER AS "{{col.name}}"
+                           METADATA$FILE_ROW_NUMBER AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                        {%elif col.sysFlLtMd == true and col.transform == "" %}
-                            METADATA$FILE_LAST_MODIFIED AS "{{col.name}}"
+                            METADATA$FILE_LAST_MODIFIED AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                         {%elif col.sysFlScTm == true and col.transform == "" %}
-                            METADATA$START_SCAN_TIME   AS "{{col.name}}"   
+                            METADATA$START_SCAN_TIME   AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}   
 	                    {% else %}
-	                      {{ get_source_transform(col) }} AS "{{ col.name }}"
+	                      {{ get_source_transform(col) }} AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
 	                  {%endif%}
                       {%- if not loop.last -%}, {% endif %}
                       {%- endfor %}

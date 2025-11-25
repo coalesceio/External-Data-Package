@@ -66,7 +66,7 @@ does not permit copying or modification for any other purpose.
                CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
                 (
                 {% for col in desiredState.columns %}
-                    "{{ col.name }}" {{ col.dataType }}
+                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }} {{ col.dataType }}
                     {%- if not col.nullable %} NOT NULL
                         {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
                     {% endif %}
@@ -317,7 +317,7 @@ does not permit copying or modification for any other purpose.
                                CREATE OR REPLACE {{desiredState.node.materializationType}} {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
                                (
                                  {% for col in desiredState.columns %}
-                                    "{{ col.name }}" {{ col.dataType }}
+                                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }} {{ col.dataType }}
                                  {%- if not col.nullable %} NOT NULL
                                  {%- if col.defaultValue | length > 0 %} DEFAULT {{ col.defaultValue }}{% endif %}
                                  {% endif %}
@@ -598,7 +598,7 @@ does not permit copying or modification for any other purpose.
 
                  COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
                    {%- for col in desiredState.columns %}
-                   "{{ col.name }}"
+                   {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                    {%- if not loop.last -%}, {% endif %}
                    {%- endfor %}
                    )
@@ -607,21 +607,21 @@ does not permit copying or modification for any other purpose.
                  {%- for col in desiredState.sources[0].columns %}
 	               {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                       {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
-                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}"
+                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                       {%else%}
-                        ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}" 
+                        ${{ ns.counter}}::{{ col.dataType}}   AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }} 
                         {% set ns.counter = ns.counter + 1 %}       
                       {%endif%}
                   {%elif col.sysLdTs == true and col.transform == ""%}
-                      current_timestamp()::timestamp_ntz AS "{{col.name}}"
+                      current_timestamp()::timestamp_ntz AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                   {%elif col.sysFlNm == true and col.transform == "" %}
-                    METADATA$FILENAME AS "{{col.name}}"
+                    METADATA$FILENAME AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                   {%elif col.sysFlRwNm == true and col.transform == "" %}
-                    METADATA$FILE_ROW_NUMBER AS "{{col.name}}"
+                    METADATA$FILE_ROW_NUMBER AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                   {%elif col.sysFlLtMd == true and col.transform == "" %}
-                    METADATA$FILE_LAST_MODIFIED AS "{{col.name}}"
+                    METADATA$FILE_LAST_MODIFIED AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                   {%elif col.sysFlScTm == true and col.transform == "" %}
-                   METADATA$START_SCAN_TIME   AS "{{col.name}}"           
+                   METADATA$START_SCAN_TIME   AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}           
 	                {% else %}
 	                  {{ get_source_transform(col) }} AS "{{ col.name }}"
 	                {%endif%}
@@ -755,7 +755,7 @@ does not permit copying or modification for any other purpose.
                          AS
                         COPY INTO "{{ db }}"."{{ sch }}"."{{ desiredState.node.name }}" (
                        {%- for col in desiredState.columns %}
-                           "{{ col.name }}"
+                           {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                        {%- if not loop.last -%}, {% endif %}
                        {%- endfor %}
                        )
@@ -764,9 +764,9 @@ does not permit copying or modification for any other purpose.
                       {%- for col in desiredState.sources[0].columns %}
 	                    {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON )%}
                          {%if (desiredState.config.fileType == 'JSON') or (desiredState.config.fileType == 'PARQUET') or (desiredState.config.fileType == 'ORC') or (desiredState.config.fileType == 'AVRO')%}
-                           ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}"  
+                           ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}  
                          {%else%}
-                           ${{ ns.counter}}::{{ col.dataType}}  AS "{{ col.name }}"    
+                           ${{ ns.counter}}::{{ col.dataType}}  AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}    
                             {% set ns.counter = ns.counter + 1 %}       
                          {%endif%}    
                        {%elif col.sysLdTs == true and col.transform == ""%}

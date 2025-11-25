@@ -1,15 +1,16 @@
 fileVersion: 1
-id: 6e98cc56-7caf-4417-b077-950ced0d60ca
-name: COPY_BABY
+id: e574abd8-d430-411d-ac29-1ebbffec1ab9
+name: COPY_BABY_INSENSITIVE
 operation:
   config:
     binformat: HEX
-    bytemark: false
+    bytemark: true
     columnmismatch: false
     compression: ""
     dateformat: ""
+    ddlCaseInsensitive: true
     emptyfield: true
-    encoding: ""
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
     escapeenclosed: \134
@@ -18,8 +19,8 @@ operation:
     extlocation: false
     fieldDelim: "|"
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE
-    fileFormatName: CSVFILEFORMAT
+    fileFormatLoc: ""
+    fileFormatName: ""
     fileFormatType: File Format Values
     fileNames: baby.csv
     filePattern: ""
@@ -31,12 +32,12 @@ operation:
     mulline: true
     nullchar: ('\N')
     onError: ""
-    parsehdr: false
+    parsehdr: true
     parsehdr1: true
     purgeBehavior: ""
     recDelim: |+
 
-    replaceinvalidcharacters: false
+    replaceinvalidcharacters: true
     returnFailedOnly: ""
     sizeLimit: ""
     skipBlankLines: false
@@ -44,18 +45,19 @@ operation:
     stageName: STAGE_LOCAL
     stageStorageLocationName: SOURCE
     storageintegration: ""
-    stripouterarray: false
+    stripouterarray: true
     subfolder: INFOLDER
     timeformat: ""
     timestampformat: ""
     trimSpace: false
     truncateBefore: true
     truncateColumns: ""
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -65,103 +67,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e38e57dd-cd40-4dc3-a120-f6a91cf6eb59
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: Year
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 700225ae-75b4-4b6a-8698-2c5b1a9f8fb1
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FirstName
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 89aa854b-14b6-4aa3-95e7-ac0dc1e008fd
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: County
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7c4d616d-d21c-4119-8361-7e15f0291999
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
-        config: {}
-        dataType: BOOLEAN
-        defaultValue: ""
-        description: ""
-        name: Sex
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: c4da2971-36a1-4634-b76e-e7ad368a3737
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: Count
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 14e0d856-0e91-416f-bb8e-73f6348096d2
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+          columnCounter: d6548967-79b0-4fa5-bd63-e7b8c9384bf4
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -179,8 +86,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7b5627db-fd9d-4ed5-8fa9-d888d709aaf2
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+          columnCounter: 6a90e8fe-de33-421c-98b5-60e522899b1c
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -198,8 +105,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fed1a5e0-8c73-4ceb-b67a-a88b3dee7c55
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+          columnCounter: 4c8f8e56-d816-4688-a53d-ebe5cd0956fb
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -217,8 +124,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 1898e61c-d022-4d03-b56e-887407cae92e
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+          columnCounter: b8c61475-e0ff-4973-b0d9-4eb79a480473
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -236,8 +143,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 67210a77-feee-45f9-9c62-0021d09a3005
-          stepCounter: 6e98cc56-7caf-4417-b077-950ced0d60ca
+          columnCounter: b27dbfc8-df7f-4af8-a834-4ad219288712
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -250,6 +157,121 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ad886e6-d9f6-4678-a78a-e958d8028b1a
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: YEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e0de0a0-beb3-4984-a127-e43acaa09a5c
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FIRSTNAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5ad35096-3587-4643-af27-85e6d8e52d4a
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: COUNTY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2de73a13-e187-4683-8e22-08822463ab4a
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: SEX
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b997d01-8a06-494f-a15f-d0b4df2c6518
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: COUNT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 49b8c972-5f0d-4e7c-a0d5-65484b28507c
+          stepCounter: e574abd8-d430-411d-ac29-1ebbffec1ab9
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: NAMCOUNTY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: CONCAT(FIRSTNAME,COUNTY)
+        systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -259,9 +281,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_BABY
+        name: COPY_BABY_INSENSITIVE
         noLinkRefs: []
-  name: COPY_BABY
+  name: COPY_BABY_INSENSITIVE
   overrideSQL: false
   schema: ""
   sqlType: "324"

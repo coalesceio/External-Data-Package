@@ -365,7 +365,7 @@ does not permit copying or modification for any other purpose.
                     {% else %}
                         , 
                     {% endif %}
-                    "{{ dropCurCol.name }}"
+                    {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, dropCurCol.name) }} 
                 {% endif %}
             {% endfor %}
 
@@ -397,8 +397,8 @@ does not permit copying or modification for any other purpose.
                     {% if renameCurCol.name != desiredColumnName %}
                         {{ stage('Rename Column ' + renameCurCol.name) }}
                         ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
-                        RENAME COLUMN "{{ renameCurCol.name }}"
-                        TO "{{ desiredColumnName }}"
+                        RENAME COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, renameCurCol.name) }}
+                        TO {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, desiredColumnName) }}
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -436,13 +436,13 @@ does not permit copying or modification for any other purpose.
                         {% endif %}
                         {% if datatypeTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, desiredColumnName) }}
                             SET DATA TYPE {{ desiredDatatype }}
                             {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
                         {% endif %}
                         {% if nullableTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, desiredColumnName) }}
                             {% if currentNullable == true %}
                                 SET
                             {% else %}
@@ -453,13 +453,13 @@ does not permit copying or modification for any other purpose.
                         {% endif %}
                         {% if descriptionTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, desiredColumnName) }}
                             COMMENT '{{ desiredDescription | escape }}'
                             {% set nsVariables.colchanges = nsVariables.colchanges + 1 %}
                         {% endif %}
                         {% if defaultValueTest == false %}
                             {% if nsVariables.colchanges > 1 %},{% endif %}
-                            COLUMN "{{ desiredColumnName }}"
+                            COLUMN {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, desiredColumnName) }}
                             {% if desiredDefaultValue == '' %}
                                 DROP DEFAULT
                             {% else %}

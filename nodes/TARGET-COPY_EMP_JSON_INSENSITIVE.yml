@@ -1,10 +1,11 @@
 fileVersion: 1
-id: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-name: COPY_EMP_JSON
+id: 22bda303-a688-4660-bd83-daec7e47e0fe
+name: COPY_EMP_JSON_INSENSITIVE
 operation:
   config:
     compression: AUTO
     dateformat: ""
+    ddlCaseInsensitive: true
     enforceLength: ""
     errornumber: ""
     externalURI: Enter external URI-Ex:s3://snowflake-docs
@@ -15,7 +16,7 @@ operation:
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: employees.json
-    filePattern: ""
+    filePattern: .*.*[.]json
     fileType: JSON
     forceLoad: ""
     inferschema: false
@@ -48,10 +49,29 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e70fcc55-0718-4ad2-8312-8a961f44af58
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: a81d97b0-2ae0-423c-aca8-b8b3dc7066d1
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: a87a062b-47b5-4525-84f7-b27b1eba22e1
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -61,8 +81,8 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 29f03181-ad0b-4f12-abe1-dce8d32f2ad1
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 466cb73a-3d68-408b-9320-1b862d34d161
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -72,8 +92,8 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 7f977298-7eeb-47b7-b4b8-93ab99e5f345
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: b32c56a8-18d5-4669-9878-d32f1acb98d7
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -83,8 +103,8 @@ operation:
         sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 474671ba-fb13-4d76-af00-015c8a11b2cd
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: af61ebef-4a0f-4886-a0dc-658e78b26967
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -97,13 +117,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 829a7bea-e9c3-42d0-9bde-a43865781650
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 21d98f1b-6db2-488b-885b-e02bff58815e
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Address
+        name: ADDRESS
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -116,13 +136,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50b9c502-e4bb-4f9f-b986-31fdfccd0e84
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 965c6987-6e25-4d51-9c04-d6d828fdb0c9
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
-        name: BirthDate
+        name: BIRTHDATE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -135,13 +155,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a9b92924-7bd5-4696-85c1-7ff1476ed2f5
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 2a4cb069-500c-4a7d-9c88-d6d6fbbbf220
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: City
+        name: CITY
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -154,13 +174,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fdb511d6-ffea-4db8-84d5-4f6c393bedb0
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 54faaea6-cdff-41b8-94cc-90486df542a0
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Country
+        name: COUNTRY
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -173,13 +193,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 17fcde37-5e94-4a71-86ce-f751f23e49f2
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 55253ed0-88ef-4159-8a3f-9d6d9d56f252
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: NUMBER(1,0)
         defaultValue: ""
         description: ""
-        name: EmployeeID
+        name: EMPLOYEEID
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -192,13 +212,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: f38b9ac2-5edf-4cc4-9da1-387c8e4d79ef
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: e36a84cb-e9fe-4b31-85a7-00d979e6c491
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: NUMBER(4,0)
         defaultValue: ""
         description: ""
-        name: Extension
+        name: EXTENSION
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -211,13 +231,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9a355dbb-8365-4fb6-b093-076e8db9fb70
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 0e081a1f-865a-4376-8f72-a54c8ff911eb
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: FirstName
+        name: FIRSTNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -230,13 +250,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fce563f5-423d-407b-b004-f835d5610eab
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 7ff90532-5ed6-4957-b617-5eaa0e23f996
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
-        name: HireDate
+        name: HIREDATE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -249,13 +269,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ab2d0057-889b-4a04-80f4-d320dbdf0ce6
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 1727e25c-1440-48c7-91c5-ba7586a0db37
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: HomePhone
+        name: HOMEPHONE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -268,13 +288,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9e0b0125-1437-4ca0-abc9-25a79024f95a
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 12d44cb8-1f3a-4297-a15c-5457b63ffb69
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: LastName
+        name: LASTNAME
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -287,13 +307,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c4d49b03-d1ab-4144-a690-04b41a4b10c8
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: edd7dc09-f5c1-4ec9-96e1-2176385d4250
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: NUMBER(5,0)
         defaultValue: ""
         description: ""
-        name: PostalCode
+        name: POSTALCODE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -306,13 +326,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a19fc148-d95a-439c-b863-9d4c4654a3aa
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 4b66df71-6a1c-4f9a-93c1-1ede56502081
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Region
+        name: REGION
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -325,13 +345,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cb71de4c-5ef0-4b55-b36c-331188df3291
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 004ebb81-57d3-409b-a4d3-8b7680fae982
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: NUMBER(1,0)
         defaultValue: ""
         description: ""
-        name: ReportsTo
+        name: REPORTSTO
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -344,13 +364,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: dc67cbad-fa57-4c4b-bbec-d4d7830a1295
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 8037b4ca-18cc-46b3-857d-f903c3e769c4
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: Title
+        name: TITLE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -363,32 +383,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5d879c68-38cd-4eb5-8c3e-c0fa707524e5
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 32752429-0797-40ee-949e-1f7c0620274c
+          stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: TitleOfCourtesy
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: b1bc04bd-ff9c-467f-86d1-693690be2392
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
+        name: TITLEOFCOURTESY
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -408,9 +409,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_EMP_JSON
+        name: COPY_EMP_JSON_INSENSITIVE
         noLinkRefs: []
-  name: COPY_EMP_JSON
+  name: COPY_EMP_JSON_INSENSITIVE
   overrideSQL: false
   schema: ""
   sqlType: "324"

@@ -108,17 +108,17 @@ does not permit copying or modification for any other purpose.
                         {% set ns.counter = ns.counter + 1 %}       
                       {%endif%}    
                 {%elif col.sysLdTs == true and col.transform == ""%}
-                    current_timestamp()::timestamp_ntz AS "{{col.name}}"
+                    current_timestamp()::timestamp_ntz AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                 {%elif col.sysFlNm == true and col.transform == "" %}
-                    METADATA$FILENAME AS "{{col.name}}"
+                    METADATA$FILENAME AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                 {%elif col.sysFlRwNm == true and col.transform == "" %}
-                    METADATA$FILE_ROW_NUMBER AS "{{col.name}}"
+                    METADATA$FILE_ROW_NUMBER AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                 {%elif col.sysFlLtMd == true and col.transform == "" %}
-                    METADATA$FILE_LAST_MODIFIED AS "{{col.name}}"
+                    METADATA$FILE_LAST_MODIFIED AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                {%elif col.sysFlScTm == true and col.transform == "" %}
-                   METADATA$START_SCAN_TIME   AS "{{col.name}}"   
+                   METADATA$START_SCAN_TIME   AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}   
 	           {% else %}
-	                {{ get_source_transform(col) }} AS "{{ col.name }}" 
+	                {{ get_source_transform(col) }} AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }} 
 	           {%endif%}
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}

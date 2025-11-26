@@ -1,0 +1,349 @@
+fileVersion: 1
+id: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+name: STG_JSON
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d8239e0-9589-4402-a4fe-dccb4fac4366
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 714a9362-5d2c-482c-bf92-fca69c30dd7c
+                stepCounter: b5711a4a-d328-4d64-8319-5929987c9b81
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b2ea26c-95d3-4491-8887-589d99efd022
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b85e9bd1-3f51-4ca5-891a-a97dd459c012
+                stepCounter: b5711a4a-d328-4d64-8319-5929987c9b81
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a83722e3-77ec-48d7-8b1b-bf6514238a5a
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2169abaa-833c-4b2c-9096-36b4dae21f77
+                stepCounter: b5711a4a-d328-4d64-8319-5929987c9b81
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5a3ee846-f793-4e4f-8da4-ce63ce7df8f3
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8c3b2cf5-ee37-4b6a-8501-b12e5b5eeb86
+                stepCounter: b5711a4a-d328-4d64-8319-5929987c9b81
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 557e41f4-24c7-4d7d-9a16-b081297ab8f0
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5afd4b01-785a-4b19-82b5-5a22736e2a44
+                stepCounter: b5711a4a-d328-4d64-8319-5929987c9b81
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 251f1ab7-a190-4bb2-8629-9bd35ec5735f
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 45f3d494-07ec-439a-bc36-2fe472e031ee
+                stepCounter: b5711a4a-d328-4d64-8319-5929987c9b81
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a60ce38f-5965-4c1a-83a6-3ab1f346ea89
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: Address
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"Address\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 01a3e438-51f9-44a2-8a2f-b1258980b579
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: BirthDate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"BirthDate\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2515b1bf-b184-4268-b04b-14d1cd78818d
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: City
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"City\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8e65f976-f4fc-4669-8e88-8b1a01990439
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: Country
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"Country\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2bb0c242-345c-467a-b4c8-d06ce498e97a
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: DOUBLE
+        description: ""
+        name: EmployeeID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"EmployeeID\"::DOUBLE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb3dd4c2-32bd-4267-ab13-1865ce280862
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: DOUBLE
+        description: ""
+        name: Extension
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"Extension\"::DOUBLE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d8cfa8b-1101-4008-8657-f8e27607bd3d
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: FirstName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"FirstName\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6e2d176-2f94-4f18-8230-175b381109f3
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: HireDate
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"HireDate\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6731f5fb-91c6-40bc-a9bd-752cccaf0b96
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: HomePhone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"HomePhone\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 402d332f-77b1-4f56-9cc0-6b8c31191c3b
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: LastName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"LastName\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 94a86551-c01d-4e2f-831e-d306023a889b
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: DOUBLE
+        description: ""
+        name: PostalCode
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"PostalCode\"::DOUBLE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a51e479-b721-43f3-bf9d-b725b8f93fc6
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: Region
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"Region\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 00632cdb-701c-4b12-a679-bb6897d6896d
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: DOUBLE
+        description: ""
+        name: ReportsTo
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"ReportsTo\"::DOUBLE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2cbbe9fe-b951-42c7-9564-cf597aaeefef
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: Title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"Title\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbdea791-b67f-4732-9f68-f9d202328d46
+          stepCounter: 16514357-4ef3-4546-ae2e-16c665e0d3f8
+        config: {}
+        dataType: STRING
+        description: ""
+        name: TitleOfCourtesy
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"COPY_JSON\".\"SRC\":\"TitleOfCourtesy\"::STRING"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          COPY_JSON: b5711a4a-d328-4d64-8319-5929987c9b81
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SOURCE
+            nodeName: COPY_JSON
+        join:
+          joinCondition: FROM {{ ref('SOURCE', 'COPY_JSON') }} "COPY_JSON"
+        name: STG_JSON
+        noLinkRefs: []
+  name: STG_JSON
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

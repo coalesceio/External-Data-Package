@@ -1,6 +1,6 @@
 fileVersion: 1
 id: "1"
-macroString: |
+macroString: |-
   {#-------------------------------------------------------------------------------------------------------------#}
   {#-- Global variables of external data package                                                               --#}
   {#--                                                                                                         --#}
@@ -8,5 +8,18 @@ macroString: |
   {#-------------------------------------------------------------------------------------------------------------#}
 
   {%set SP_configs = namespace(py_runtime_ver="3.9",java_runtime_ver="11")%}
+
+  {# ----------------------------------------------------------------------
+    Macro: ddlColumnCasing
+    Purpose: Conditionally quotes column identifiers based on the toggle 
+  ---------------------------------------------------------------------- #}
+
+  {%- macro ddlColumnCasing(inputConfig, columnName) -%}
+      {%- if inputConfig == true -%}
+          {{ columnName }}
+      {%- else -%}
+          "{{ columnName }}"
+      {%- endif -%}
+  {%- endmacro -%}
 name: macro
 type: Macro

@@ -17,8 +17,10 @@ ALTER EXTERNAL TABLE IF EXISTS {{ ref_no_link(node.location.name, node.name) }} 
 
 {% else %}
 
-{{ stage('Autorefresh Enabled - Nothing to do.') }}
+{{ stage('Autorefresh Enabled') }}
    
-    select 1 = 0
-	
+    -- This node is configured to refresh the external table only when auto refresh is not enabled
+   
+        SELECT 1 AS INFO_MESSAGE WHERE FALSE;
+  
 {% endif %}

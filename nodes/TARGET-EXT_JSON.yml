@@ -15,7 +15,7 @@ operation:
     fileNames: employees.json
     filePattern: .*employees*[.]json
     fileType: JSON
-    inferschema: false
+    inferschema: true
     integration: ""
     partby:
       items:

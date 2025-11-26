@@ -45,6 +45,12 @@ metadata:
       
         isRequired: false
         enableIf: "{% if (config.partclause) %} true {% else %} false {% endif %}"
+      
+      - displayName: DDL Case Insensitive
+        attributeName: ddlCaseInsensitive
+        type: toggleButton
+        default: false
+        enableIf: "{%if config.inferschema %} false {%else%} true {%endif%}"
 
 
     - groupName: File Location

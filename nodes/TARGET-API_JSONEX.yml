@@ -59,7 +59,9 @@ operation:
           customSQL: ""
         dependencies: []
         join:
-          joinCondition: ""
+          joinCondition: |-
+            sdkfk
+            jklsadfjl
         name: API_JSONEX
         noLinkRefs: []
   name: API_JSONEX

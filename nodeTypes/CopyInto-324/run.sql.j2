@@ -93,7 +93,7 @@ does not permit copying or modification for any other purpose.
     {%if config.intextstage %}
              COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
             {%- for col in columns %}
-                "{{ col.name }}"
+                {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
         )
@@ -102,23 +102,23 @@ does not permit copying or modification for any other purpose.
             {%- for col in sources[0].columns %}
 	           {% if not( col.sysLdTs or col.sysFlNm or col.sysFlRwNm or col.sysFlLtMd or col.sysFlScTm or col.sysJSON or col.transform != "" ) %}
                       {%if (config.fileType == 'JSON') or (config.fileType == 'PARQUET') or (config.fileType == 'ORC') or (config.fileType == 'AVRO')   %}
-                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}}  AS "{{ col.name }}" 
+                         ${{ ns.counter}}:{{col.name}}::{{ col.dataType}} AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                       {%else%}
-                        ${{ ns.counter}}::{{ col.dataType}}   AS "{{ col.name }}"  
+                        ${{ ns.counter}}::{{ col.dataType}} AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}  
                         {% set ns.counter = ns.counter + 1 %}       
                       {%endif%}    
                 {%elif col.sysLdTs == true and col.transform == ""%}
-                    current_timestamp()::timestamp_ntz AS "{{col.name}}"
+                    current_timestamp()::timestamp_ntz AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                 {%elif col.sysFlNm == true and col.transform == "" %}
-                    METADATA$FILENAME AS "{{col.name}}"
+                    METADATA$FILENAME AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                 {%elif col.sysFlRwNm == true and col.transform == "" %}
-                    METADATA$FILE_ROW_NUMBER AS "{{col.name}}"
+                    METADATA$FILE_ROW_NUMBER AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                 {%elif col.sysFlLtMd == true and col.transform == "" %}
-                    METADATA$FILE_LAST_MODIFIED AS "{{col.name}}"
+                    METADATA$FILE_LAST_MODIFIED AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
                {%elif col.sysFlScTm == true and col.transform == "" %}
-                   METADATA$START_SCAN_TIME   AS "{{col.name}}"   
+                   METADATA$START_SCAN_TIME   AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}   
 	           {% else %}
-	                {{ get_source_transform(col) }} AS "{{ col.name }}" 
+	                {{ get_source_transform(col) }} AS {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }} 
 	           {%endif%}
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}

@@ -5,8 +5,8 @@ mappingDefinitions:
     database: ANANDHIS_DEV
     schema: SOURCE_DATA
   SOURCE2:
-    database: ""
-    schema: ""
+    database: TANVI_DEV
+    schema: SOURCE
   TARGET:
     database: ANANDHIS_DEV
     schema: TARGET_DEV

@@ -46,6 +46,16 @@ There are four configs within the **Node Properties** group.
 * The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
 * Blank options added to Copy-Into and CSV file format options to revert any specific option
 
+### Use CopyInto to load columns with insensitive case
+* Set Infer Schema toggle to true
+* Hit Create button to Infer Schema
+* To choose the file format configs,[refer link](#file-format-config-inferschema)
+* Click on Re-Sync Columns button
+* If all looks good, set Infer Schema button to false
+* Hit Create button with DDLCaseInsensitive toggle ON to execute create table based on inferred schema
+* Table is created with column names in default case followed by Snowflake(UPPERCASE)
+* Re-Sync columns to have all the columns with default case in mapping grid,so that the nodes added upstream follow the same.
+
 ### Use CopyInto node with InferSchema option
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
@@ -75,6 +85,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **Create As** | Select from the options to create as Table or Transient Table<br/>- **Transient table**<br/>  -**Table** |
 | **TruncateBefore(Disabled when Inferschema is true)** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
+| **DDL Case Insensitive**| True/False toggle that determines whether to preserve the case of columns from source file <br/>- **True**: The create and data load preserves the case of columns<br/>- **False**: The columns used in create and data load are case insensitive[How to use the toggle](#use-copyinto-to-load-columns-with-insensitive-case) |
       
 <h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
 
@@ -291,6 +302,7 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Create As** | Dropdown that helps us to create a table or Transient table to load data from external stage. <br/> * Table <br/>* Transient Table|
 |**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading<br/> * True -The node is created with the inferred columns<br/>* False -No infer table step is executed|
+| **DDL Case Insensitive**| True/False toggle that determines whether to preserve the case of columns from source file <br/>- **True**: The create and data load preserves the case of columns<br/>- **False**: The columns used in create and data load are case insensitive[How to use the toggle](#use-copyinto-to-load-columns-with-insensitive-case) |
 
 <h3 id="snowpipe-snowpipe-options"> Snowpipe Options </h3>
 
@@ -521,12 +533,13 @@ There are four configs within the **Node Properties** group.
 
 <h4 id="external-tables-general-options"> General Options </h4>
 
-<img width="454" height="433" alt="External_table_config" src="https://github.com/user-attachments/assets/b3f5f117-0e9e-4069-a7d7-440dbe9f1f66" />
+<img width="297" height="259" alt="General-external-table" src="https://github.com/user-attachments/assets/a36bce8f-0cf0-4abd-9e0d-2a1396366131" />
 
 
 | **Settings** | **Description** |
 |--------------|-----------------|
 |**InferSchema**|True / False toggle that determines whether or not to infer the columns of file before loading<br/> * True -The node is created with the inferred columns<br/>* False -No infer table step is executed|
+| **DDL Case Insensitive**| True/False toggle that determines whether to preserve the case of columns from source file <br/>- **True**: The create and data load preserves the case of columns<br/>- **False**: The columns used in create and data load are case insensitive.[How to use the toggle](#use-copyinto-to-load-columns-with-insensitive-case) |
 |**Partition by toggle**|When set to true,we get to choose partition column from dropdown.A partition column must evaluate as an expression that parses the path and/or filename information in the METADATA$FILENAME.By default the partitioning is done by FILENAME column|
 |**Partition Column dropdown(Partition by toggle true)**|Get to choose the partition column with appropriate trnasformation from dropdown |
 

@@ -4,6 +4,9 @@ mappingDefinitions:
   SOURCE:
     database: ANANDHIS_DEV
     schema: SOURCE_DATA
+  SOURCE2:
+    database: ""
+    schema: ""
   TARGET:
     database: ANANDHIS_DEV
     schema: TARGET

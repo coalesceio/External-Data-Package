@@ -1,18 +1,19 @@
 fileVersion: 1
-id: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-name: EXT_ORDER_DETAILS12345EX
+id: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+name: EXT_ORDER_DETAILS_PART_INSENSITIVE
 operation:
   config:
     autoRefresh: false
     cloudProvider: AWS
     compression: AUTO
     cpartexpression: split_part(metadata$filename,'/',2)
+    ddlCaseInsensitive: true
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: SOURCE
+    fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'order_details.json'"
+    fileNames: order_details.json
     filePattern: .*order.*[.]json
     fileType: JSON
     inferschema: false
@@ -20,14 +21,9 @@ operation:
     partby:
       items:
         - columnName:
-            columnCounter: a7abe76f-7c42-4954-bec3-3f6693bd3a9f
-            stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+            columnCounter: 7a276b6b-392b-4d5a-a689-218ef1c2fa01
+            stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
     partclause: true
-    partitionclause:
-      items:
-        - partname:
-            columnCounter: 5e6fb24d-e4c9-4955-b521-621ffc187f1a
-            stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
     recDelim: |+
 
     replaceinvalidcharacters: false
@@ -53,8 +49,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fc491b03-9584-4492-9e0d-214981e0d590
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+          columnCounter: b2730747-c747-447f-a767-57a63e304bf5
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -69,122 +65,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: bc85f593-f429-418e-b714-dc13512c70e9
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-        config: {}
-        dataType: NUMBER(11,10)
-        defaultValue: ""
-        description: ""
-        name: Discount
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f2cc902d-6e56-44b9-ad02-f1d8581bdfe2
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: OrderID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 4530cd77-e7b8-4429-8240-7b29108f60ff
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: OrderLine
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: d2c45f10-9a5f-4906-858b-b714b5ded6f7
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: ProductID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: eccf14e8-c7c4-4a55-8d9b-94effdd88ceb
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-        config: {}
-        dataType: NUMBER(3,0)
-        defaultValue: ""
-        description: ""
-        name: Quantity
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: ab58ea4c-5527-4fe9-82a2-ad49f17f69a9
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
-        config: {}
-        dataType: NUMBER(5,2)
-        defaultValue: ""
-        description: ""
-        name: UnitPrice
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 14cca9df-4498-480e-a51b-3d393d285cb2
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+          columnCounter: ee5ad870-aefc-4a16-9753-6762525e218b
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -202,19 +84,134 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a7abe76f-7c42-4954-bec3-3f6693bd3a9f
-          stepCounter: 1a5db430-198c-48a5-92c0-c423a13cb2e4
+          columnCounter: 7a276b6b-392b-4d5a-a689-218ef1c2fa01
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        name: file
+        name: PARTITION_COLUMN
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
-            transform: substr(metadata$filename,1,10)
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2c8770f3-6c51-45bf-ae28-7035d4dd161a
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+        config: {}
+        dataType: NUMBER(11,10)
+        defaultValue: ""
+        description: ""
+        name: DISCOUNT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 920221bd-7cd8-4334-b916-1cefa1d4f1b7
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: ORDERID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07c7b725-caf5-424d-bb1c-e27e7880ed45
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: ORDERLINE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29307d07-13fc-451d-b4de-d2a24c153467
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: PRODUCTID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 37dd9df6-ad92-4140-a693-95c0058463a9
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: QUANTITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4a5b928d-f8ff-44ea-862c-e7beb5bdd9b8
+          stepCounter: 36571ab4-68d5-4c4f-8097-cfd811f018f7
+        config: {}
+        dataType: NUMBER(5,2)
+        defaultValue: ""
+        description: ""
+        name: UNITPRICE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -224,9 +221,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: EXT_ORDER_DETAILS12345EX
+        name: EXT_ORDER_DETAILS_PART_INSENSITIVE
         noLinkRefs: []
-  name: EXT_ORDER_DETAILS12345EX
+  name: EXT_ORDER_DETAILS_PART_INSENSITIVE
   overrideSQL: false
   schema: ""
   sqlType: "298"

@@ -770,7 +770,7 @@ does not permit copying or modification for any other purpose.
                             {% set ns.counter = ns.counter + 1 %}       
                          {%endif%}    
                        {%elif col.sysLdTs == true and col.transform == ""%}
-                          current_timestamp()::timestamp_ntz AS "{{col.name}}"
+                          current_timestamp()::timestamp_ntz AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                         {%elif col.sysFlNm == true and col.transform == "" %}
                           METADATA$FILENAME AS {{ ddlColumnCasing(desiredState.config.ddlCaseInsensitive, col.name) }}
                        {%elif col.sysFlRwNm == true and col.transform == "" %}

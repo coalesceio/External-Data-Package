@@ -12,7 +12,7 @@ operation:
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
-    fileNames: "'order_details.json'"
+    fileNames: order_details.json
     filePattern: .*order.*[.]json
     fileType: JSON
     inferschema: false
@@ -64,120 +64,6 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: e24f0c38-bd17-4b3d-9f1d-f19ff8d8ef32
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
-        config: {}
-        dataType: NUMBER(11,10)
-        defaultValue: ""
-        description: ""
-        name: Discount
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: f4b086af-e258-4cf8-be9e-733654021d34
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: OrderID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 01045bd5-222f-4f89-821e-c17fd3e36e7c
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
-        config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: OrderLine
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 47071188-a9b9-4ff8-9115-939a6f35be23
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: ProductID
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 0ab25fc3-3608-4f38-ae0b-0c64ba886140
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
-        config: {}
-        dataType: NUMBER(3,0)
-        defaultValue: ""
-        description: ""
-        name: Quantity
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 94242a0c-fcd0-46bf-bcc4-c9e7105af07e
-          stepCounter: c5f01a64-b827-4de3-842f-594179296917
-        config: {}
-        dataType: NUMBER(5,2)
-        defaultValue: ""
-        description: ""
-        name: UnitPrice
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: 15c40ca1-7156-47ef-85f2-91af96c598bb
           stepCounter: c5f01a64-b827-4de3-842f-594179296917
         config: {}
@@ -204,6 +90,120 @@ operation:
         defaultValue: ""
         description: ""
         name: PARTITION_COLUMN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7398b862-baf7-4f75-8016-61f424175c88
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: NUMBER(11,10)
+        defaultValue: ""
+        description: ""
+        name: Discount
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6de57ba-b424-4b4b-aad4-4b21102e0487
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: OrderID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e7bba452-7980-42e4-a02e-26a69421141a
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: OrderLine
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f670dee0-a6f7-4aa2-b11f-783a2353a61f
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: ProductID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5eefbf42-be98-4732-ae45-b8c8f642f68c
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: NUMBER(3,0)
+        defaultValue: ""
+        description: ""
+        name: Quantity
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 819a8567-324c-4f9d-8ec4-a925bbb0de25
+          stepCounter: c5f01a64-b827-4de3-842f-594179296917
+        config: {}
+        dataType: NUMBER(5,2)
+        defaultValue: ""
+        description: ""
+        name: UnitPrice
         nullable: true
         primaryKey: false
         sourceColumnReferences:

@@ -1,47 +1,52 @@
 fileVersion: 1
-id: fc7e0a05-1d12-4416-a16b-4e81469e0f09
-name: COPY_sample_iso8859_15_ff
+id: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+name: COPY_SP_SAMPLE_ISO_INSENSITIVE
 operation:
   config:
-    compression: ""
+    awsSnsTopic: ""
+    binformat: HEX
+    bytemark: true
+    cloudProvider: AWS
+    columnmismatch: false
+    compression: NONE
     dateformat: ""
-    encoding: UTF8
+    ddlCaseInsensitive: true
+    emptyfield: true
+    encoding: ISO885915
     enforceLength: ""
     errornumber: ""
-    externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
-    fieldDelim: ","
+    escapeenclosed: \134
+    escapeval: ""
+    fieldDelim: ;
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
     fileFormatName: CSV_ISO
-    fileFormatType: File Format Name
+    fileFormatType: File Format Values
     fileNames: sample_iso8859_15.csv
-    filePattern: ""
+    filePattern: |
+      .*iso.*[.]csv
     fileType: CSV
-    forceLoad: ""
+    flagLoadHistorical: true
+    flagSnowpipe: Enable Snowpipe
     inferschema: false
-    intextstage: true
-    loadUncertainFiles: ""
-    onError: ""
+    integration: ""
+    mulline: true
+    nullchar: ('\N')
+    onError: CONTINUE
     parsehdr: true
     parsehdr1: true
-    purgeBehavior: ""
     recDelim: |+
 
     replaceinvalidcharacters: true
-    returnFailedOnly: ""
-    sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: STAGE_LOCAL
-    stageStorageLocationName: SOURCE
-    storageintegration: ""
-    stripouterarray: false
-    subfolder: INFOLDER
+    stageName: SPSTAGESAMPLE
+    stageStorageLocationName: TARGET
+    stripouterarray: true
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: true
     truncateColumns: ""
     usevectscan: false
   database: ""
@@ -58,84 +63,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 19883851-9394-4d2c-9c91-fcc7c1281921
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: Name
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 07cd5de9-4c51-4cff-addb-cdfe1e763186
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: City
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a56edaab-2ee6-419e-b817-e4c6d8b457f5
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: Amount
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: e858e7d6-f0ad-42cb-b3d8-a12577809f73
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: Currency
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: cdfa4f67-6c38-49d8-858b-f109380d675d
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
+          columnCounter: 9936539d-26f9-4ee5-a8c4-ff91ea20a689
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -153,8 +82,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 599be5b0-2ae2-4571-88e3-0d6dfb7c3a0f
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
+          columnCounter: 4249e7f8-fb4f-4410-bc7b-722f558dcd57
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
@@ -172,8 +101,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 471d4085-c91d-4046-a5fa-c1834a8f2d25
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
+          columnCounter: 9eca0f6f-6dd6-41db-990f-08a4f597bcbc
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -191,8 +120,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 7aefe778-336c-4b9c-abc9-e3bcbe8a1378
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
+          columnCounter: e7d664ea-7616-43e1-a102-6cd5a4c3e0e4
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -210,13 +139,89 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 94a457d7-8df7-4778-abae-f6c975812062
-          stepCounter: fc7e0a05-1d12-4416-a16b-4e81469e0f09
+          columnCounter: bb013016-ffe7-485f-a698-215e2c55cec2
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b78828ec-7d6e-4692-b358-998f5abce2cd
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 730dbdf7-5618-43dd-b1c4-008436fa952d
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f025386-8e5e-463b-9962-11f4626c0697
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: AMOUNT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c808c2ec-9835-41ff-a4a2-e7bba6ca647e
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: CURRENCY
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -233,12 +238,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_sample_iso8859_15_ff
+        name: COPY_SP_SAMPLE_ISO_INSENSITIVE
         noLinkRefs: []
-  name: COPY_sample_iso8859_15_ff
+  name: COPY_SP_SAMPLE_ISO_INSENSITIVE
   overrideSQL: false
   schema: ""
-  sqlType: "324"
+  sqlType: "323"
   type: sql
   version: 1
 type: Node

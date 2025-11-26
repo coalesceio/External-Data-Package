@@ -199,5 +199,14 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
         {% if config.truncateColumns != ""%}
               TRUNCATECOLUMNS = {{ config.truncateColumns }}
         {%endif%}
-	     
+
+{%else%}
+
+    {{ stage('Automatic data ingestion process - No Manual Run') }}
+    
+    -- This node is configured to run as a automatic data ingestion process using a PIPE
+    -- To test the copy statement used in pipe enable 'Test Copy Statement' in snowpipe config options
+
+        SELECT 1 AS INFO_MESSAGE WHERE FALSE;
+  
 {%endif%}

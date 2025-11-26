@@ -9,6 +9,6 @@ mappingDefinitions:
     schema: SOURCE
   TARGET:
     database: ANANDHIS_DEV
-    schema: TARGET_DEV
+    schema: TARGET_QA
 name: EDW_QA1
 type: Environment

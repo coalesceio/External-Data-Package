@@ -78,7 +78,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 **InferSchema-False**
 
-![Copy-Into](https://github.com/user-attachments/assets/60b01ca8-2b99-46ec-8e5c-1491266f2333)
+<img width="304" height="341" alt="Copy-Into-image" src="https://github.com/user-attachments/assets/c3496f30-0552-49b4-bba7-c805893047e5" />
 
 | **Option** | **Description** |
 |------------|----------------|
@@ -297,6 +297,9 @@ There are four configs within the **Node Properties** group.
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h3 id="snowpipe-general-options"> General Options </h3>
+
+<img width="290" height="251" alt="snowpipe-general-options-image" src="https://github.com/user-attachments/assets/b141e0e8-6dde-4b5f-b63a-94f5f7b28aa1" />
+
 
 | **Setting** | **Description** |
 |-------------|-----------------|

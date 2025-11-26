@@ -57,11 +57,11 @@ operation:
           columnCounter: e70fcc55-0718-4ad2-8312-8a961f44af58
           stepCounter: 22bda303-a688-4660-bd83-daec7e47e0fe
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FILENAME
-        nullable: true
+        dataType: STRING
+        defaultValue: "'abc'"
+        description: File name
+        name: FILENAME1
+        nullable: false
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []

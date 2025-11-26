@@ -66,9 +66,9 @@ operation:
           columnCounter: 9936539d-26f9-4ee5-a8c4-ff91ea20a689
           stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
+        dataType: STRING
+        defaultValue: abc
+        description: filename
         name: FILENAME
         nullable: true
         primaryKey: false
@@ -88,7 +88,7 @@ operation:
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
-        name: FILE_ROW_NUMBER
+        name: FILE_ROW_NUMBER1
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -108,7 +108,7 @@ operation:
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
-        nullable: true
+        nullable: false
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []

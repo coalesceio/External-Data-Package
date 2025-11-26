@@ -3,7 +3,7 @@ id: fc210ff0-a3f6-4f12-8a0b-9eb27e2ada22
 name: EXT_PARQUET_INSENSITIVE
 operation:
   config:
-    autoRefresh: true
+    autoRefresh: false
     cloudProvider: AWS
     compression: NONE
     cpartexpression: ""

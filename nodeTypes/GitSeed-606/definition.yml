@@ -1,0 +1,70 @@
+fileVersion: 1
+id: "606"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |
+    capitalized: GIT Seed
+    short: 'SEED'
+    tagColor: '#C39BD3'
+    isDisabled: false
+    plural: GIT SEEDS
+
+    config:
+    - groupName: File Location
+      items: 
+
+      - displayName: Truncate Before
+        attributeName: truncateBefore
+        type: toggleButton
+        default: true
+
+      - displayName: GIT Fetch
+        attributeName: fetchBefore
+        type: toggleButton
+        default: true
+
+      - displayName: Coalesce Storage Location of Stage
+        attributeName: stageStorageLocationName
+        type: textBox
+        default: 'Enter Storage Location name'
+        isRequired: true
+
+      - displayName: GIT Stage Name
+        attributeName: stageName
+        type: textBox
+        default: 'Enter GIT Stage'
+        isRequired: true
+
+      - displayName: GIT Branch
+        attributeName: branchName
+        type: textBox
+        default: 'Enter GIT Branch eg main '
+        isRequired: true
+
+      - displayName: GIT Folder / Path
+        attributeName: folderName
+        type: textBox
+        default: 'Enter GIT Folder eg seeds '
+        isRequired: true
+
+      - displayName: File Pattern
+        attributeName: filePattern
+        type: textBox
+        default: ".*[.]csv"
+
+    - groupName: File Format 
+      items:
+      - displayName: Coalesce Storage Location of File Format 
+        attributeName: fileFormatLoc
+        type: textBox
+        default: ""
+
+      - displayName: File Format Name
+        attributeName: fileFormatName
+        type: textBox
+        default: ""
+        isRequired: false
+name: Git Seed
+type: NodeType

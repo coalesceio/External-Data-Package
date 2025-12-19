@@ -8,12 +8,6 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Version        : 1  == #}
 {# == Node Type Name           : CopyInto with Full Load Option == #}
 {# == Node Type Description    : This node creates target table to load data from internal or external stages == #}
-{#Release date:20240531 Version:1.0.0#}
-{#Release date:20240822  Version:1.1.1 Released By:AS  Description: Materialization type transient table added #}
-{#Release date:20241025  Version:1.1.4 Released By:AS  Description: Unified Storage and file format inputs #}
-{#Release date:20241105  Version:1.1.5 Released By:AS  Description: Truncate option added in config #}
-{#Release date:20250109  Version:1.1.8 Released By:AS  Description:  Path config added under Source data and new config added for PARQUET fileformat#}
-
 
 
 {% if desiredState %}
@@ -171,7 +165,7 @@ does not permit copying or modification for any other purpose.
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(
-                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}{{subf}}'',
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}/branches/{{ config.branchName }}/{{subf}}'',
                           {{fileNameSQL }}
                           FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"''
                         )

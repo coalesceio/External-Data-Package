@@ -236,6 +236,7 @@ runtime_version= '{{SP_configs.py_runtime_ver}}'
 handler = 'call_api'
 external_access_integrations=({{desiredState.config.extIntegration}})
 packages = ('snowflake-snowpark-python','requests','pandas')
+secrets = ('cred' = {{desiredState.config.api_token}})
 as
 $$
 import _snowflake
@@ -247,10 +248,26 @@ from snowflake.snowpark.functions import lit
 
 def call_api(snowpark_session):
 
-   {% if desiredState.config.headers != "" %}h = {{desiredState.config.headers}}{% endif%}
-   {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif%}
+   # Define the API URL,headers and payloads
+   
    uri = '{{desiredState.config.uri}}'
-   response = requests.{{ desiredState.config.method }}(uri  {%- if desiredState.config.headers != ""%}, headers=h {%- endif%} {%- if desiredState.config.payload != ""%}, json=p {%- endif%})
+   {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif%}
+   {% if desiredState.config.api_token !="" and  desiredState.config.headers != "" %}
+
+   # Retrieve the access token from Snowflake secret
+
+   access_token = _snowflake.get_generic_secret_string('cred')
+   hd ={"Authorization":f{access_token}} 
+   headers = h |hd
+   {%elif desiredState.config.api_token !="" and  desiredState.config.headers == ""%}
+   hd ={"Authorization":f{access_token}}
+   headers = hd 
+   {%endif%}
+
+   # Make the API request
+   response = requests.{{ desiredState.config.method }}(uri  {%- if desiredState.config.headers != ""%}, headers=headers {%- endif%} {%- if desiredState.config.payload != ""%}, json=p {%- endif%})
+
+   # Create Snowpark DataFrame
    data = response.text
    df = snowpark_session.create_dataframe([data]).to_df("RESPONSE")
    df = df.withColumn("RESPONSE",sql_expr("parse_json(RESPONSE)"))
@@ -259,8 +276,7 @@ def call_api(snowpark_session):
    return str(data)
 $$;
 
-
-	{%endif%}
+{%endif%}
 
 {%elif  currentState != undefined and desiredState == undefined%}
 

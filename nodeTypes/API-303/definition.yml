@@ -21,6 +21,12 @@ metadata:
         attributeName: extIntegration
         type: textBox
         default: "COALESCE_API_INTEGRATION"
+      
+      - displayName: Snowlake secret for Coalesce API token 
+        attributeName: api_token
+        type: textBox
+        default: "COALESCE_API_TOKEN"
+        isRequired: false
 
       - displayName: Method
         attributeName: method
@@ -44,7 +50,6 @@ metadata:
         type: textBox
         default: ''
         isRequired: false
-
 
       - displayName: Payload
         attributeName: payload

@@ -74,6 +74,11 @@ metadata:
         default: 'Enter GIT Folder eg seeds '
         isRequired: true
 
+      - displayName: File Name(s) (Ex:a.csv,b.csv )
+        attributeName: fileNames
+        type: textBox
+        isRequired: false
+
       - displayName: File Pattern
         attributeName: filePattern
         type: textBox

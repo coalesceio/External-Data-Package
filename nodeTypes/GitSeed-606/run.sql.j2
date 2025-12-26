@@ -44,9 +44,10 @@ does not permit copying or modification for any other purpose.
     {% set formatted_variable = config.fileNames.split(',') | map('string') | join("','") %}
     {% set final_variable = "'" + formatted_variable + "'" %}
     {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
-
+    {% set fileNameSQLcopy = 'FILES = ('' + final_variable + '')' %}
 {%- elif config.fileNames | length > 0 %} 
-    {% set fileNameSQL = 'FILES = (' + "'"+config.fileNames + "'"+')' %}                               
+    {% set fileNameSQL = 'FILES = (' + "'"+config.fileNames + "'"+')' %}  
+    {% set fileNameSQLcopy = 'FILES = ( + "'"+config.fileNames + "'"+)' %}                             
 {%- else -%}
     {% set fileNameSQL = "" %} 
 {% endif %}
@@ -70,7 +71,42 @@ does not permit copying or modification for any other purpose.
                         {% set ns.countercol = ns.countercol + 1 %}       
 	    {%endif%}
     {%- endfor %}
-									
+
+{{stage('Alter-Fetch GIT repo')}}
+
+    ALTER GIT REPOSITORY {{dbStage}}.{{schStage}}.{{config.stageName }} FETCH
+
+{{stage('Copy files from GIT repo to temporary stage')}}
+
+DECLARE
+    file_count INTEGER;
+    
+    target_stage STRING := '{{dbStage}}.{{schStage}}.TEMP_STAGE_{{node.name}}';
+BEGIN
+    -- 1. Create the internal stage if it doesn't exist
+    EXECUTE IMMEDIATE 'CREATE STAGE IF NOT EXISTS ' || :target_stage;
+
+    -- 2. Check if the specific file exists in the target stage
+    -- Note: We use LIST. If the file isn't there, the result set will be empty (0 rows).
+    -- We use the specific filename to avoid counting other unrelated files.
+    EXECUTE IMMEDIATE 'LIST @' || :target_stage || '/{{config.filePattern}}'; 
+    
+    SELECT count(*) INTO :file_count FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()));
+
+    -- 3. Logic: If file_count is 0, the file is missing, so we copy it.
+    IF (:file_count = 0) THEN
+        EXECUTE IMMEDIATE 'COPY FILES 
+                           INTO @' || :target_stage || '
+                           FROM @{{dbStage}}.{{schStage}}.{{config.stageName }}/branches/{{config.branchName}}{{subf}}
+                           {{fileNameSQLcopy}}';
+                           
+        RETURN 'File(s) copied into ' || :target_stage;
+    ELSE
+        -- 4. Logic: If file_count > 0, we skip.
+        RETURN 'File(s) already exist in ' || :target_stage || '. Copy skipped.';
+    END IF;
+
+END;
 {%- if parameters.loadType == 'Reload' or config.truncateBefore == true %}
 
    {{ stage('Truncate Target Table') }}
@@ -84,8 +120,7 @@ does not permit copying or modification for any other purpose.
  
 {%endif%}
 
-    
-             COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
+    COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
             {%- for col in columns %}
                 {{ ddlColumnCasing(config.ddlCaseInsensitive, col.name) }}
             {%- if not loop.last -%}, {% endif %}
@@ -117,13 +152,11 @@ does not permit copying or modification for any other purpose.
             {%- if not loop.last -%}, {% endif %}
             {%- endfor %}
 
-           FROM @{{ dbStage }}.{{ schStage }}.{{ config.stageName }}/branches/{{ config.branchName }}/{{ subf}}) 
+           FROM @{{dbStage}}.{{schStage}}.TEMP_STAGE_{{node.name}}) 
            {{fileNameSQL}}
            {{ filePatternSQL }}
-      
-   
-         
-          {%- if config.fileFormatType == 'File Format Name' %}           
+
+           {%- if config.fileFormatType == 'File Format Name' %}           
               FILE_FORMAT = (FORMAT_NAME = '"{{ dbff }}"."{{ schff }}"."{{ config.fileFormatName}}"')             
           {%else%}
             FILE_FORMAT = ( TYPE = {{ config.fileType}}

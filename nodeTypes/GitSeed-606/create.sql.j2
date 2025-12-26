@@ -10,9 +10,7 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates target table to load data from internal or external stages == #}
 
 
-{% if desiredState %}
-
-    
+{% if desiredState %}    
     {% if desiredState.node.materializationType == 'table' or desiredState.node.materializationType == 'transient table'  %}     
 
         {% if currentState != undefined and currentState.node.materializationType != desiredState.node.materializationType %}
@@ -139,10 +137,16 @@ does not permit copying or modification for any other purpose.
                                {% set formatted_variable = desiredState.config.fileNames.split(',') | map('string') | join("'',''") %}
                                {% set final_variable = "''" + formatted_variable + "''" %}
                                {% set fileNameSQL = " "+"FILES =>"+""+final_variable + "," %} 
+                               {% set fileNameSQLcopy = " "+"FILES ="+"("+final_variable +")" %}
                            {%- elif  desiredState.config.fileNames  -%}
                                {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
+                               {% set fileNameSQLcopy = " "+"FILES ="+"("+"''"+ desiredState.config.fileNames+"''"+")" %}
                            {% endif %}
                     
+        {{stage('Alter-Fetch')}}
+          ALTER GIT REPOSITORY {{dbStage}}.{{schStage}}.{{ desiredState.config.stageName }} FETCH
+
+
         {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}') }}
 
            -- Anonymous stored procedure block
@@ -165,7 +169,7 @@ does not permit copying or modification for any other purpose.
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(
-                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}/branches/{{ config.branchName }}/{{subf}}'',
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}."TEMP_STAGE_{{desiredState.node.name}}"'',
                           {{fileNameSQL }}
                           FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"''
                         )
@@ -175,7 +179,7 @@ does not permit copying or modification for any other purpose.
                        USING TEMPLATE (SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))
                       FROM TABLE(
                         INFER_SCHEMA(
-                          LOCATION=>''@{{ dbStage }}.{{ schStage }}.{{ desiredState.config.stageName }}{{subf}}'',
+                          LOCATION=>''@{{ dbStage }}.{{ schStage }}."TEMP_STAGE_{{desiredState.node.name}}"'',
                           {{fileNameSQL }}
                           FILE_FORMAT=>''"{{ dbff }}"."{{ schff }}"."{{ desiredState.config.fileFormatName}}"''
                         )
@@ -200,7 +204,7 @@ does not permit copying or modification for any other purpose.
             FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()));
 
 
-              --Create temporary file format for inferring table structure 
+              --1.Create temporary file format for inferring table structure 
               EXECUTE IMMEDIATE 'CREATE OR REPLACE TEMPORARY FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
               RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
@@ -223,43 +227,34 @@ does not permit copying or modification for any other purpose.
             {%endif-%}
           
             {%if desiredState.config.fileFormatType == 'File Format Values'-%}
-                      -- Create temporary file format
-                       EXECUTE IMMEDIATE {{fileformatsql}};
+                -- 1.Create temporary file format
+                EXECUTE IMMEDIATE {{fileformatsql}};
             {%- endif %}
               
+            
+               -- 2. Create temporary internal stage
+               EXECUTE IMMEDIATE 'CREATE OR REPLACE  STAGE {{dbStage}}.{{schStage}}."TEMP_STAGE_{{desiredState.node.name}}"';
               
-              EXECUTE IMMEDIATE :select_statement ;
-	
-	        -- Add metadata columns
-            -- Column: FILENAME
-             alter_sql := '
-              ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
-              ADD COLUMN FILENAME STRING';
-             EXECUTE IMMEDIATE :alter_sql;
+               -- 3. Copy the file from Git to the internal temporary stage
+               -- Note: COPY FILES is used to move files between stages
+                EXECUTE IMMEDIATE 'COPY FILES 
+                     INTO @{{dbStage}}.{{schStage}}."TEMP_STAGE_{{desiredState.node.name}}"
+                     FROM @{{dbStage}}.{{schStage}}.{{ desiredState.config.stageName }}/branches/{{ desiredState.config.branchName}}{{subf}}/
+                     {{fileNameSQLcopy}}';
+                
+                -- 4. Infer table from file copied to temporary internal stage
+                EXECUTE IMMEDIATE :select_statement;
 
-            -- Column: FILE_ROW_NUMBER
-             alter_sql := '
-             ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
-             ADD COLUMN FILE_ROW_NUMBER NUMBER';
-             EXECUTE IMMEDIATE :alter_sql;
+                -- 5. Add metadata columns
+                alter_sql := 'ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}" ADD 
+                COLUMN FILENAME STRING,
+                COLUMN FILE_ROW_NUMBER NUMBER,
+                COLUMN FILE_LAST_MODIFIED TIMESTAMP_NTZ,
+                COLUMN LOAD_TIMESTAMP TIMESTAMP_NTZ ,
+                COLUMN SCAN_TIME TIMESTAMP_NTZ';
+                
+                EXECUTE IMMEDIATE :alter_sql;
 
-            -- Column: FILE_LAST_MODIFIED
-             alter_sql := '
-             ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
-             ADD COLUMN FILE_LAST_MODIFIED TIMESTAMP_NTZ';
-             EXECUTE IMMEDIATE :alter_sql;
-
-            -- Column: LOAD_TIMESTAMP
-              alter_sql := '
-              ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
-              ADD COLUMN LOAD_TIMESTAMP TIMESTAMP_NTZ';
-              EXECUTE IMMEDIATE :alter_sql;
-
-            -- Column: SCAN_TIME
-               alter_sql := '
-               ALTER TABLE {{db}}.{{sch}}."{{desiredState.node.name}}"
-               ADD COLUMN SCAN_TIME TIMESTAMP_NTZ';
-               EXECUTE IMMEDIATE :alter_sql;
            
             {%if desiredState.config.fileFormatType == 'File Format Values' or (desiredState.config.fileFormatType == 'File Format Name' and desiredState.config.fileType == 'CSV' )-%}
                 -- Drop the temporary file format
@@ -269,6 +264,7 @@ does not permit copying or modification for any other purpose.
 
             -- Return a success message
               RETURN '{{desiredState.node.name}} table created successfully.';
+              
             END;
 					  				  
 	    	{%else%}

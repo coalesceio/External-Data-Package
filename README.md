@@ -909,14 +909,14 @@ There are four configs within the **Node Properties** group.
 |**URI(Required)**|Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API|
 |**Bearer/Token Authorization**|True/False toggle.If enabled provide Snowflake secret for API token.[How to pass Credentials for API](#Credentials-API)|
 |**Snowlake secret for API token**|Enabled if Bearer Authorisation is chosen.Provide the snowflake secret created for API token|
-|**ClientID/Secret Authorization**|True/False toggle.If enabled provide Snowflake secret for API Client ID and another snowflake secret for API password.[How to pass Credentials for API](Credentials-API)|
+|**ClientID/Secret Authorization**|True/False toggle.If enabled provide Snowflake secret for API Client ID and another snowflake secret for API password.[How to pass Credentials for API](#Credentials-API)|
 |**Snowflake secret for API Client ID**|Provide the snowflake secret created for a specific Client ID|
 |**Snowflake secret for API Client password**|Provide the snowflake secret created for password of specific Client ID|
 |**Headers**|headers are used to provide additional context and information about the request|
 |**Payload**|when making HTTP requests to a URI, the request may include a payload (also known as a body)|
 |**Note:**|Payload applicable only to Put & Post API method calls|
 
-<h4 id="api-node-properties"> Credentials-API</h4>
+<h4 id="CREDENTIALS-API"> Credentials-API</h4>
 * When using Bearer Authorisation,ensure that you prefix token with Bearer when you create Snowflake secret
 <img width="829" height="76" alt="image" src="https://github.com/user-attachments/assets/ca3edfa3-ec3a-42e6-9a31-1d54582f8d6a" />
 

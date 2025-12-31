@@ -917,6 +917,7 @@ There are four configs within the **Node Properties** group.
 |**Note:**|Payload applicable only to Put & Post API method calls|
 
 <h4 id="CREDENTIALS-API"> Credentials-API</h4>
+* Bearer/authorisation tokens need not be added to URL headers
 * When using Bearer Authorisation,ensure that you prefix token with Bearer when you create Snowflake secret
 <img width="829" height="76" alt="image" src="https://github.com/user-attachments/assets/ca3edfa3-ec3a-42e6-9a31-1d54582f8d6a" />
 

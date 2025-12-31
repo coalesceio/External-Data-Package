@@ -1,19 +1,19 @@
 fileVersion: 1
-id: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
-name: API_NODE1
+id: 96125db9-cb24-44a4-ab08-911502671d70
+name: API_AUTHAPI
 operation:
   config:
-    api_token: COALESCE_API_TOKEN
-    extIntegration: COALESCE_API_INTEGRATION
+    api_token: COALESCE_API_SECRET
+    extIntegration: COALESCE_INT_TANVI
     headers: ""
     method: get
     payload: ""
-    uri: ""
+    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -23,8 +23,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8fec1df1-c17b-4555-abb6-dae7cfeb899d
-          stepCounter: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
+          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
+          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -40,8 +40,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 02321744-98b1-4df0-a244-d7298f48eb67
-          stepCounter: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
+          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
+          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -61,9 +61,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_NODE1
+        name: API_AUTHAPI
         noLinkRefs: []
-  name: API_NODE1
+  name: API_AUTHAPI
   overrideSQL: false
   schema: ""
   sqlType: "303"

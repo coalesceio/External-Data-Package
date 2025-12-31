@@ -1,19 +1,19 @@
 fileVersion: 1
-id: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
-name: API_NODE1
+id: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
+name: API_PUBLICURL
 operation:
   config:
-    api_token: COALESCE_API_TOKEN
-    extIntegration: COALESCE_API_INTEGRATION
+    api_token: ""
+    extIntegration: RAN_TEST_INT
     headers: ""
     method: get
     payload: ""
-    uri: ""
+    uri: https://jsonplaceholder.typicode.com/users
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -23,8 +23,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8fec1df1-c17b-4555-abb6-dae7cfeb899d
-          stepCounter: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
+          columnCounter: bad29bf0-eda6-45d8-ae9f-8388b7f076a9
+          stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -40,8 +40,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 02321744-98b1-4df0-a244-d7298f48eb67
-          stepCounter: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
+          columnCounter: a4274ea3-185e-4092-ab31-6b6222792cf7
+          stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -61,9 +61,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_NODE1
+        name: API_PUBLICURL
         noLinkRefs: []
-  name: API_NODE1
+  name: API_PUBLICURL
   overrideSQL: false
   schema: ""
   sqlType: "303"

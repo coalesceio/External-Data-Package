@@ -21,13 +21,38 @@ metadata:
         attributeName: extIntegration
         type: textBox
         default: "COALESCE_API_INTEGRATION"
-      
-      - displayName: Snowlake secret for Coalesce API token 
+
+      - displayName: Bearer Authorization
+        type: toggleButton
+        attributeName: bauth
+        enableif: "{%if config.cauth %} false {%else%} true {%endif%}"
+
+      - displayName: ClientID/Secret Authorization
+        type: toggleButton
+        attributeName: cauth
+        enableIF: "{%if config.bauth %} false {%else%} true {%endif%}"
+
+      - displayName: Snowlake secret for API token 
         attributeName: api_token
         type: textBox
         default: "COALESCE_API_TOKEN"
         isRequired: false
+        enableIF: "{%if config.bauth %} true {%else%} false  {%endif%}"
 
+      - displayName: Snowlake secret for API Client ID 
+        attributeName: api_id
+        type: textBox
+        default: "COALESCE_API_TOKEN"
+        isRequired: false
+        enableIF: "{%if config.cauth %} true {%else%} false  {%endif%}"
+
+      - displayName: Snowlake secret for API Client password
+        attributeName: sapi_token
+        type: textBox
+        default: "COALESCE_API_TOKEN"
+        isRequired: false
+        enableIF: "{%if config.cauth %} true {%else%} false  {%endif%}"
+      
       - displayName: Method
         attributeName: method
         type: dropdownSelector

@@ -236,7 +236,9 @@ runtime_version= '{{SP_configs.py_runtime_ver}}'
 handler = 'call_api'
 external_access_integrations=({{desiredState.config.extIntegration}})
 packages = ('snowflake-snowpark-python','requests','pandas')
+{% if desiredState.config.api_token !=""%}
 secrets = ('cred' = {{desiredState.config.api_token}})
+{%endif%}
 as
 $$
 import _snowflake
@@ -257,7 +259,8 @@ def call_api(snowpark_session):
    # Retrieve the access token from Snowflake secret
 
    access_token = _snowflake.get_generic_secret_string('cred')
-   hd ={"Authorization":f{access_token}} 
+   h = {{desiredState.config.headers}}
+   hd ={"Authorization":f"{access_token}"} 
    headers = h |hd
    {%elif desiredState.config.api_token !="" and  desiredState.config.headers == ""%}
    hd ={"Authorization":f{access_token}}

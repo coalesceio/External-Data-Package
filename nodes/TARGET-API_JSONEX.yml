@@ -3,11 +3,12 @@ id: 0a5212be-4894-4e91-b761-d33dbfed9380
 name: API_JSONEX
 operation:
   config:
-    extIntegration: apis_access_integration
+    api_token: ""
+    extIntegration: JSONPLACEHOLDER_INT
     headers: ""
     method: get
     payload: ""
-    uri: https://jsonplaceholder/typicode.com/todos
+    uri: https://jsonplaceholder.typicode.com/todos
   database: ""
   deployEnabled: true
   description: ""

@@ -3,7 +3,7 @@ id: 189b769b-f21b-4b88-bad7-e00ba95385cc
 name: API_NODE_DEMO_1
 operation:
   config:
-    api: COALESCE_API_TOKEN
+    api: COALESCE_API_TOKEN_NEW
     extIntegration: COALESCE_INT
     nodeconfig:
       items:

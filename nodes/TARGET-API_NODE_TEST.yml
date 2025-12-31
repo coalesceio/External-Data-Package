@@ -1,20 +1,20 @@
 fileVersion: 1
 id: 0e861252-57bb-4d9a-af7c-f0e02c0fd496
-name: API_NODE
+name: API_NODE_TEST
 operation:
   config:
-    api: COALESCE_API_TOKEN
-    extIntegration: COALESCE_API_INTEGRATION
+    api: COALESCE_API_SECRET
+    extIntegration: COALESCE_INT_TANVI
     nodeconfig:
       items:
-        - nodename: null
-          storageLocation: null
-          wksID: null
+        - nodename: APIJSONEX
+          storageLocation: TARGET
+          wksID: "168"
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -28,9 +28,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_NODE
+        name: API_NODE_TEST
         noLinkRefs: []
-  name: API_NODE
+  name: API_NODE_TEST
   overrideSQL: false
   schema: ""
   sqlType: "372"

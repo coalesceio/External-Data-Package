@@ -1,14 +1,14 @@
 fileVersion: 1
-id: 0a5212be-4894-4e91-b761-d33dbfed9380
-name: API_JSONEX
+id: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
+name: API_PUBLICURL
 operation:
   config:
     api_token: ""
-    extIntegration: JSONPLACEHOLDER_INT
+    extIntegration: RAN_TEST_INT
     headers: ""
     method: get
     payload: ""
-    uri: https://jsonplaceholder.typicode.com/todos
+    uri: https://jsonplaceholder.typicode.com/users
   database: ""
   deployEnabled: true
   description: ""
@@ -23,8 +23,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d9f9fb45-b808-4bb8-9509-cb3f667e0448
-          stepCounter: 0a5212be-4894-4e91-b761-d33dbfed9380
+          columnCounter: bad29bf0-eda6-45d8-ae9f-8388b7f076a9
+          stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -40,8 +40,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 471e0046-6ced-4588-a52d-cd831fe75771
-          stepCounter: 0a5212be-4894-4e91-b761-d33dbfed9380
+          columnCounter: a4274ea3-185e-4092-ab31-6b6222792cf7
+          stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -60,12 +60,10 @@ operation:
           customSQL: ""
         dependencies: []
         join:
-          joinCondition: |-
-            sdkfk
-            jklsadfjl
-        name: API_JSONEX
+          joinCondition: ""
+        name: API_PUBLICURL
         noLinkRefs: []
-  name: API_JSONEX
+  name: API_PUBLICURL
   overrideSQL: false
   schema: ""
   sqlType: "303"

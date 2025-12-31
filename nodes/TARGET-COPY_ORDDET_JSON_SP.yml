@@ -15,8 +15,7 @@ operation:
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: order_details.json
-    filePattern: |
-      .*ord.*[.]json
+    filePattern: ""
     fileType: JSON
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
@@ -31,6 +30,7 @@ operation:
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
     stripouterarray: false
+    subfolder: ""
     timeformat: ""
     timestampformat: ""
     trimSpace: false

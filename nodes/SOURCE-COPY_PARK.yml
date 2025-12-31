@@ -8,10 +8,12 @@ operation:
     columnmismatch: false
     compression: NONE
     dateformat: ""
-    emptyfield: false
+    emptyfield: true
     encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: \134
+    escapeval: \134
     externalURI: Enter external URI-Ex:s3://snowflake-docs
     extlocation: false
     fieldDelim: ","
@@ -23,10 +25,11 @@ operation:
     filePattern: ""
     fileType: CSV
     forceLoad: ""
-    inferschema: true
+    inferschema: false
     intextstage: true
     loadUncertainFiles: ""
     mulline: false
+    nullchar: ('\N')
     onError: ""
     parsehdr: true
     parsehdr1: false

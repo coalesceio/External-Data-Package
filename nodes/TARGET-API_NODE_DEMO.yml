@@ -3,12 +3,12 @@ id: b7f42157-fa12-47c4-bd17-262fcfb78569
 name: API_NODE_DEMO
 operation:
   config:
-    api: COALESCE_API_TOKEN
+    api: COALESCE_API_TOKEN_NEW
     extIntegration: COALESCE_INT
     nodeconfig:
       items:
-        - nodename: WRK_ORDERS_TXT
-          storageLocation: POONAMM_DEV.EDW_QA
+        - nodename: COPY_EMP_JSON
+          storageLocation: ANANDHIS_DEV.TARGET
           wksID: "168"
   database: ""
   deployEnabled: false

@@ -32,48 +32,44 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c3e2cc4d-8bc5-46bd-8c7e-ffe7742f18e4
+          columnCounter: 9c68b54b-c035-43b3-b5ff-f2cc665996c9
           stepCounter: b78f8583-05a1-45ce-9ee5-b3e579789ee4
         config: {}
         dataType: NUMBER(3,0)
-        description: "{{ add_desc()}}"
+        defaultValue: ""
+        description: |
+
+          abc
         name: OrderID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: c932fa9f-28bf-463b-819c-673ddd2a35ae
-                stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
-            transform: ""
+        nullable: false
+        sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: cfea1e6a-4979-43fe-ba26-23496fd28ad8
+          columnCounter: a5bf9ff4-8f69-48cc-a018-59c0efdb959e
           stepCounter: b78f8583-05a1-45ce-9ee5-b3e579789ee4
         config: {}
         dataType: NUMBER(1,0)
+        defaultValue: ""
         description: ""
         name: CustomerID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: f0a58c41-e86c-4c5d-b367-5124031d1572
-                stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
-            transform: ""
+        nullable: false
+        sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 89138786-66fa-4eec-b32d-3cb774d470bb
+          columnCounter: 1a6143ac-498f-4878-9502-a903fd119749
           stepCounter: b78f8583-05a1-45ce-9ee5-b3e579789ee4
         config: {}
         dataType: NUMBER(5,2)
+        defaultValue: ""
         description: ""
         name: OrderAmount
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4c9b1bbf-d549-4cc0-ae66-ee0959d3af96
-                stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
-            transform: ""
+        nullable: false
+        sourceColumnReferences: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:

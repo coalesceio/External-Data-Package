@@ -22,6 +22,37 @@ metadata:
         type: textBox
         default: "COALESCE_API_INTEGRATION"
 
+      - displayName: Bearer/Token Authorization
+        type: toggleButton
+        attributeName: bauth
+        enableIf: "{%if config.cauth %} false {%else%} true {%endif%}"
+        default: false
+
+      - displayName: ClientID/Secret Authorization
+        type: toggleButton
+        attributeName: cauth
+        enableIf: "{%if config.bauth %} false {%else%} true {%endif%}"
+        default: false
+
+      - displayName: Snowlake secret for API token 
+        attributeName: api_token
+        type: textBox
+        default: "COALESCE_API_TOKEN"
+        enableIf: "{%if config.bauth == true %} true {%else%} false  {%endif%}"
+
+      - displayName: Snowlake secret for API Client ID 
+        attributeName: api_id
+        type: textBox
+        default: "COALESCE_API_TOKEN"
+        enableIf: "{%if config.cauth == true %} true {%else%} false  {%endif%}"
+
+      - displayName: Snowlake secret for API Client password
+        attributeName: sapi_token
+        type: textBox
+        default: "COALESCE_API_TOKEN"
+        isRequired: false
+        enableIf: "{%if config.cauth == true %} true {%else%} false  {%endif%}"
+      
       - displayName: Method
         attributeName: method
         type: dropdownSelector
@@ -44,7 +75,6 @@ metadata:
         type: textBox
         default: ''
         isRequired: false
-
 
       - displayName: Payload
         attributeName: payload

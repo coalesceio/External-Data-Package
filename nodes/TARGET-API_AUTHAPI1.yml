@@ -1,14 +1,17 @@
 fileVersion: 1
-id: 0a5212be-4894-4e91-b761-d33dbfed9380
-name: API_JSONEX
+id: f246bc90-e4b5-43e0-8114-bb7605a65930
+name: API_AUTHAPI1
 operation:
   config:
-    api_token: ""
-    extIntegration: JSONPLACEHOLDER_INT
+    api_id: COALESCE_API_TOKEN
+    api_token: HTTPBIN_TOKEN_VALUE
+    bauth: true
+    extIntegration: HTTPBIN_QUERY_INT
     headers: ""
     method: get
     payload: ""
-    uri: https://jsonplaceholder.typicode.com/todos
+    sapi_token: COALESCE_API_TOKEN
+    uri: https://httpbin.org/anything
   database: ""
   deployEnabled: true
   description: ""
@@ -23,8 +26,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d9f9fb45-b808-4bb8-9509-cb3f667e0448
-          stepCounter: 0a5212be-4894-4e91-b761-d33dbfed9380
+          columnCounter: be7b879c-689e-4dd3-93ed-0c3768007462
+          stepCounter: f246bc90-e4b5-43e0-8114-bb7605a65930
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -40,8 +43,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 471e0046-6ced-4588-a52d-cd831fe75771
-          stepCounter: 0a5212be-4894-4e91-b761-d33dbfed9380
+          columnCounter: 8cb2e109-8c1a-4ae8-8288-845b00a6a411
+          stepCounter: f246bc90-e4b5-43e0-8114-bb7605a65930
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -60,12 +63,10 @@ operation:
           customSQL: ""
         dependencies: []
         join:
-          joinCondition: |-
-            sdkfk
-            jklsadfjl
-        name: API_JSONEX
+          joinCondition: ""
+        name: API_AUTHAPI1
         noLinkRefs: []
-  name: API_JSONEX
+  name: API_AUTHAPI1
   overrideSQL: false
   schema: ""
   sqlType: "303"

@@ -236,31 +236,92 @@ runtime_version= '{{SP_configs.py_runtime_ver}}'
 handler = 'call_api'
 external_access_integrations=({{desiredState.config.extIntegration}})
 packages = ('snowflake-snowpark-python','requests','pandas')
+{% if desiredState.config.bauth == true and desiredState.config.api_token !=""%}
+secrets = ('cred' = {{desiredState.config.api_token}})
+{%elif desiredState.config.cauth == true and desiredState.config.sapi_token !="" and desiredState.config.api_id != ""%}
+secrets = ('id_alias' = {{desiredState.config.api_id}},'cred_alias' = {{desiredState.config.sapi_token}})
+{%endif%}
 as
 $$
 import _snowflake
 import requests
 import json
+import base64
 from snowflake.snowpark.functions import sql_expr
 from snowflake.snowpark.functions import lit
 
 
 def call_api(snowpark_session):
 
-   {% if desiredState.config.headers != "" %}h = {{desiredState.config.headers}}{% endif%}
-   {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif%}
-   uri = '{{desiredState.config.uri}}'
-   response = requests.{{ desiredState.config.method }}(uri  {%- if desiredState.config.headers != ""%}, headers=h {%- endif%} {%- if desiredState.config.payload != ""%}, json=p {%- endif%})
-   data = response.text
-   df = snowpark_session.create_dataframe([data]).to_df("RESPONSE")
-   df = df.withColumn("RESPONSE",sql_expr("parse_json(RESPONSE)"))
-   df = df.with_column('URI', lit(uri))
-   df.write.mode("overwrite").save_as_table('{{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}')
-   return str(data)
+  # Define the API URL,headers and payloads
+   
+  uri = '{{desiredState.config.uri}}'
+  {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif%}
+  {% if desiredState.config.api_token !="" and  desiredState.config.headers != "" and desiredState.config.bauth == true %}
+
+  # Retrieve the access token from Snowflake secret
+
+  access_token = _snowflake.get_generic_secret_string('cred')
+  h = {{desiredState.config.headers}}
+  hd ={"Authorization":f"{access_token}"} 
+  headers = h |hd
+
+   {%elif desiredState.config.api_token !="" and  desiredState.config.headers == "" and desiredState.config.bauth == true %}
+
+   # Retrieve the access token from Snowflake secret
+
+  access_token = _snowflake.get_generic_secret_string('cred')
+  hd ={"Authorization":f"{access_token}"}
+  headers = hd 
+
+   {%elif desiredState.config.cauth == true and desiredState.config.sapi_token !="" and desiredState.config.api_id != "" and  desiredState.config.headers == "" %}
+
+ # Retrieve the access token from Snowflake secret
+
+ client_id = _snowflake.get_generic_secret_string('id_alias')
+ client_secret = _snowflake.get_generic_secret_string('cred_alias')
+
+ # Format: "client_id:client_secret"
+ credentials = f"{client_id}:{client_secret}"
+    
+ # Base64 Encode the string
+ encoded_creds = base64.b64encode(credentials.encode()).decode()
+    
+ hd ={"Authorization":f"Basic {encoded_creds}""}
+ headers = hd
+
+    {%elif desiredState.config.cauth == true and desiredState.config.sapi_token !="" and desiredState.config.api_id != "" and  desiredState.config.headers != "" %}
+
+  # Retrieve the access token from Snowflake secret
+
+  client_id = _snowflake.get_generic_secret_string('id_alias')
+  client_secret = _snowflake.get_generic_secret_string('cred_alias')
+
+  # Format: "client_id:client_secret"
+  credentials = f"{client_id}:{client_secret}"
+    
+  # Base64 Encode the string
+  encoded_creds = base64.b64encode(credentials.encode()).decode()
+   
+  h = {{desiredState.config.headers}}
+  hd ={"Authorization":f"Basic {encoded_creds}"} 
+  headers = h |hd
+
+   {%endif%}
+
+  # Make the API request
+  response = requests.{{ desiredState.config.method }}(uri  {%- if desiredState.config.headers != ""%}, headers=headers {%- endif%} {%- if desiredState.config.payload != ""%}, json=p {%- endif%})
+
+  # Create Snowpark DataFrame
+  data = response.text
+  df = snowpark_session.create_dataframe([data]).to_df("RESPONSE")
+  df = df.withColumn("RESPONSE",sql_expr("parse_json(RESPONSE)"))
+  df = df.with_column('URI', lit(uri))
+  df.write.mode("overwrite").save_as_table('{{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}')
+  return str(data)
 $$;
 
-
-	{%endif%}
+{%endif%}
 
 {%elif  currentState != undefined and desiredState == undefined%}
 

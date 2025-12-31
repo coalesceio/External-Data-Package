@@ -32,48 +32,44 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c932fa9f-28bf-463b-819c-673ddd2a35ae
+          columnCounter: 1ca3e693-7d7a-4cca-ab55-6e25aa9d12e9
           stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
         config: {}
         dataType: NUMBER(3,0)
-        description: "{{ add_desc()}}"
+        defaultValue: ""
+        description: |
+
+          abc
         name: OrderID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 8e5e29f5-d673-4eab-9b3b-6ae652576914
-                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
-            transform: ""
+        nullable: false
+        sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: f0a58c41-e86c-4c5d-b367-5124031d1572
+          columnCounter: ed996e2d-dee8-4671-81cf-d5eed990988f
           stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
         config: {}
         dataType: NUMBER(1,0)
+        defaultValue: ""
         description: ""
         name: CustomerID
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: b2a32409-995f-450f-96f3-c7620a644b47
-                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
-            transform: ""
+        nullable: false
+        sourceColumnReferences: []
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 4c9b1bbf-d549-4cc0-ae66-ee0959d3af96
+          columnCounter: 79a4a670-b14b-47a7-81e1-4ae68ada6a8f
           stepCounter: 4b0447ca-930c-41de-898a-ce615b8f8985
         config: {}
         dataType: NUMBER(5,2)
+        defaultValue: ""
         description: ""
         name: OrderAmount
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 4564c7fb-688e-48eb-9d26-4e82ecf2fa65
-                stepCounter: efeb96ab-5589-4b7a-a4ea-f1daaafce236
-            transform: ""
+        nullable: false
+        sourceColumnReferences: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases:
           COPY_ORDERS_TXT: efeb96ab-5589-4b7a-a4ea-f1daaafce236
@@ -86,11 +82,11 @@ operation:
             nodeName: COPY_ORDERS_TXT
         join:
           joinCondition: |-
-            
-            
-             
-              FROM  {{ ref('TARGET', 'COPY_ORDERS_TXT') }} COPY_ORDERS_TXT
-              -- {{ref('TARGET','COPY_CUSTOMERS')}}
+
+
+
+            FROM  {{ ref('TARGET', 'COPY_ORDERS_TXT') }} COPY_ORDERS_TXT
+            -- {{ref('TARGET','COPY_CUSTOMERS')}}
         name: WRK_ORDERS_TXT
         noLinkRefs: []
   name: WRK_ORDERS_TXT

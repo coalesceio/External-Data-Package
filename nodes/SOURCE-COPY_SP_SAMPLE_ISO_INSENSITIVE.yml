@@ -1,29 +1,30 @@
 fileVersion: 1
-id: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-name: COPY_BABY_PIPE
+id: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+name: COPY_SP_SAMPLE_ISO_INSENSITIVE
 operation:
   config:
-    SNS: true
     awsSnsTopic: ""
     binformat: HEX
     bytemark: true
     cloudProvider: AWS
     columnmismatch: false
-    compression: ""
+    compression: NONE
     dateformat: ""
+    ddlCaseInsensitive: true
     emptyfield: true
-    encoding: UTF8
+    encoding: ISO885915
     enforceLength: ""
     errornumber: ""
     escapeenclosed: \134
     escapeval: ""
-    fieldDelim: "|"
+    fieldDelim: ;
     fieldEnclosed: \042
     fileFormatLoc: SOURCE
-    fileFormatName: CSV
+    fileFormatName: CSV_ISO
     fileFormatType: File Format Values
-    fileNames: ""
-    filePattern: .*bab.*[.]csv
+    fileNames: sample_iso8859_15.csv
+    filePattern: |
+      .*iso.*[.]csv
     fileType: CSV
     flagLoadHistorical: true
     flagSnowpipe: Enable Snowpipe
@@ -32,8 +33,8 @@ operation:
     mulline: true
     nullchar: ('\N')
     onError: CONTINUE
-    parsehdr: false
-    parsehdr1: false
+    parsehdr: true
+    parsehdr1: true
     recDelim: |+
 
     replaceinvalidcharacters: true
@@ -41,7 +42,7 @@ operation:
     skipHeader: "1"
     stageName: SPSTAGESAMPLE
     stageStorageLocationName: TARGET
-    stripouterarray: false
+    stripouterarray: true
     subfolder: ""
     timeformat: ""
     timestampformat: ""
@@ -62,107 +63,12 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 0f24f671-61d0-414e-8bd5-c7fe3ce5cf67
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 9936539d-26f9-4ee5-a8c4-ff91ea20a689
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
-        dataType: NUMBER(4,0)
-        defaultValue: ""
-        description: ""
-        name: Year
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 32fcc849-5d4c-4b52-a410-38c8dc29f038
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: FirstName
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a2ae4014-ca5b-43cc-a25c-29d685746649
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
-        name: County
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 49d2e043-a7fc-4c53-92b5-88c5fbef3b6b
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-        config: {}
-        dataType: VARCHAR
-        defaultValue: ""
-        description: ""
-        name: Sex
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: 253c7e2b-a80f-4a63-a83e-84486b70709e
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-        config: {}
-        dataType: NUMBER(2,0)
-        defaultValue: ""
-        description: ""
-        name: Count
-        nullable: true
-        primaryKey: false
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-        uniqueKey: false
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a8efae85-a4c0-4021-ab43-463cf13c0aad
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
-        config: {}
-        dataType: VARCHAR(16777216)
-        defaultValue: ""
-        description: ""
+        dataType: STRING
+        defaultValue: abc
+        description: filename
         name: FILENAME
         nullable: true
         primaryKey: false
@@ -176,13 +82,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 59b642a6-faf5-4041-9f62-2259022ce4f0
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 4249e7f8-fb4f-4410-bc7b-722f558dcd57
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: NUMBER(38,0)
         defaultValue: ""
         description: ""
-        name: FILE_ROW_NUMBER
+        name: FILE_ROW_NUMBER1
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -195,14 +101,14 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d102b7a2-7a7b-40b8-a891-103fbc83858f
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: 9eca0f6f-6dd6-41db-990f-08a4f597bcbc
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: FILE_LAST_MODIFIED
-        nullable: true
+        nullable: false
         primaryKey: false
         sourceColumnReferences:
           - columnReferences: []
@@ -214,8 +120,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 788cef0b-e0f3-4e5a-9571-93e060fa75d7
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: e7d664ea-7616-43e1-a102-6cd5a4c3e0e4
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -233,13 +139,89 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2151e9e5-f524-4a67-b9d4-1c274b8f7285
-          stepCounter: 6dc51a6e-1112-4f50-8bab-d65069f94de6
+          columnCounter: bb013016-ffe7-485f-a698-215e2c55cec2
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
         description: ""
         name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b78828ec-7d6e-4692-b358-998f5abce2cd
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 730dbdf7-5618-43dd-b1c4-008436fa952d
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: CITY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f025386-8e5e-463b-9962-11f4626c0697
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: AMOUNT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c808c2ec-9835-41ff-a4a2-e7bba6ca647e
+          stepCounter: 525bedc0-32a8-4e3b-ab5b-b6d6676c8ebc
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: CURRENCY
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -256,9 +238,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_BABY_PIPE
+        name: COPY_SP_SAMPLE_ISO_INSENSITIVE
         noLinkRefs: []
-  name: COPY_BABY_PIPE
+  name: COPY_SP_SAMPLE_ISO_INSENSITIVE
   overrideSQL: false
   schema: ""
   sqlType: "323"

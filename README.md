@@ -907,9 +907,23 @@ There are four configs within the **Node Properties** group.
 |**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**|EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
 |**Method(Required)**|HTTP Request methods Get,Put,Post<br/>**Get**: API Call to retrieve data<br/>**Put**: API Call to update existing data<br/>**Post**: API Call to create new data|  
 |**URI(Required)**|Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API|
+|**Bearer/Token Authorization**|True/False toggle.If enabled provide Snowflake secret for API token.[How to pass Credentials for API](Credentials-API)|
+|**Snowlake secret for API token**|Enabled if Bearer Authorisation is chosen.Provide the snowflake secret created for API token|
+|**ClientID/Secret Authorization**|True/False toggle.If enabled provide Snowflake secret for API Client ID and another snowflake secret for API password.[How to pass Credentials for API](Credentials-API)|
+|**Snowflake secret for API Client ID**|Provide the snowflake secret created for a specific Client ID|
+|**Snowflake secret for API Client password**|Provide the snowflake secret created for password of specific Client ID|
 |**Headers**|headers are used to provide additional context and information about the request|
 |**Payload**|when making HTTP requests to a URI, the request may include a payload (also known as a body)|
 |**Note:**|Payload applicable only to Put & Post API method calls|
+
+<h4 id="api-node-properties"> Credentials-API</h4>
+* When using Bearer Authorisation,ensure that you prefix token with Bearer when you create Snowflake secret
+<img width="829" height="76" alt="image" src="https://github.com/user-attachments/assets/ca3edfa3-ec3a-42e6-9a31-1d54582f8d6a" />
+
+* When using Client ID/Secret Authorisation,create secrets as below.
+<img width="606" height="92" alt="image" src="https://github.com/user-attachments/assets/4aaed698-559f-4642-9d25-cb58ae061769" />
+<img width="608" height="101" alt="image" src="https://github.com/user-attachments/assets/9e259d9b-908f-4b4b-a540-7a5ae6100774" />
+<img width="759" height="121" alt="image" src="https://github.com/user-attachments/assets/2c464d9d-0e7a-43ae-b8e2-32f2bec10240" />
 
 <h2 id="API">API-NODEUPDATE</h2>
 

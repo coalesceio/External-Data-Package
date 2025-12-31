@@ -907,7 +907,7 @@ There are four configs within the **Node Properties** group.
 |**Snowflake EXTERNAL ACCESS INTEGRATION Name (Required)**|EXTERNAL ACCESS INTEGRATION Name has a network rule which allows access to external network locations external to snowflake using procedure|
 |**Method(Required)**|HTTP Request methods Get,Put,Post<br/>**Get**: API Call to retrieve data<br/>**Put**: API Call to update existing data<br/>**Post**: API Call to create new data|  
 |**URI(Required)**|Uniform Resoure Identifier to be provided to locate and interact with resources within a specific API|
-|**Bearer/Token Authorization**|True/False toggle.If enabled provide Snowflake secret for API token.[How to pass Credentials for API](Credentials-API)|
+|**Bearer/Token Authorization**|True/False toggle.If enabled provide Snowflake secret for API token.[How to pass Credentials for API](#Credentials-API)|
 |**Snowlake secret for API token**|Enabled if Bearer Authorisation is chosen.Provide the snowflake secret created for API token|
 |**ClientID/Secret Authorization**|True/False toggle.If enabled provide Snowflake secret for API Client ID and another snowflake secret for API password.[How to pass Credentials for API](Credentials-API)|
 |**Snowflake secret for API Client ID**|Provide the snowflake secret created for a specific Client ID|

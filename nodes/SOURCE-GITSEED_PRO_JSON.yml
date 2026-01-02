@@ -48,7 +48,7 @@ operation:
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
+    truncateBefore: true
     truncateColumns: ""
     usevectscan: false
   database: ""

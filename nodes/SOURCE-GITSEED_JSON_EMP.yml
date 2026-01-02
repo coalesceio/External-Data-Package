@@ -1,103 +1,72 @@
 fileVersion: 1
-id: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-name: COPY_EMP_JSON
+id: 7926c896-908a-4667-b3b7-979f392995f6
+name: GITSEED_JSON_EMP
 operation:
   config:
-    compression: AUTO
+    binformat: HEX
+    branchName: main
+    bytemark: true
+    columnmismatch: false
+    compression: NONE
     dateformat: ""
+    ddlCaseInsensitive: false
+    emptyfield: true
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
-    externalURI: Enter external URI-Ex:s3://snowflake-docs
-    extlocation: false
-    fieldDelim: "|"
+    escapeenclosed: \134
+    escapeval: ""
+    fetchBefore: true
+    fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: TARGET
     fileFormatName: JSONFILEFORMAT
     fileFormatType: File Format Name
     fileNames: employees.json
-    filePattern: "'.*.*[.]json'"
+    filePattern: .*emp.*[.]json
     fileType: JSON
     forceLoad: ""
     inferschema: false
-    intextstage: true
     loadUncertainFiles: ""
+    mulline: true
+    nullchar: ('\N')
     onError: ""
+    parsehdr: true
+    parsehdr1: true
     purgeBehavior: ""
-    recDelim: \n
+    recDelim: |+
+
     replaceinvalidcharacters: false
-    returnFailedOnly: ""
+    returnFailedOnly: "FALSE"
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
-    stageName: spstagesample
+    stageName: COA_GIT_REPO
     stageStorageLocationName: TARGET
-    storageintegration: ""
-    stripouterarray: false
+    stripouterarray: true
+    subfolder: csv_files
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
-    truncateColumns: ""
+    truncateBefore: true
+    truncateColumns: "FALSE"
+    usevectscan: false
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
+  locationName: SOURCE
   materializationType: table
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: a81d97b0-2ae0-423c-aca8-b8b3dc7066d1
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: NUMBER(38,0)
-        defaultValue: ""
-        description: ""
-        name: FILE_ROW_NUMBER
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 29f03181-ad0b-4f12-abe1-dce8d32f2ad1
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: FILE_LAST_MODIFIED
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 7f977298-7eeb-47b7-b4b8-93ab99e5f345
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: false
-        sourceColumnReferences: []
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: 474671ba-fb13-4d76-af00-015c8a11b2cd
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
-        config: {}
-        dataType: TIMESTAMP_NTZ(9)
-        defaultValue: ""
-        description: ""
-        name: SCAN_TIME
-        nullable: false
-        sourceColumnReferences: []
       - acceptedValues:
           strictMatch: true
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 829a7bea-e9c3-42d0-9bde-a43865781650
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: c4b82813-44e2-43a6-8241-bdfb4f637dc2
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -115,8 +84,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50b9c502-e4bb-4f9f-b986-31fdfccd0e84
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 14cbdeef-f13e-4789-b2b0-d60215546556
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -134,8 +103,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a9b92924-7bd5-4696-85c1-7ff1476ed2f5
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: fdd10589-6e1c-4c11-9655-e07de699a9ea
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -153,8 +122,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fdb511d6-ffea-4db8-84d5-4f6c393bedb0
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 82f777af-1719-447e-9ad5-4777285dfeba
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -172,8 +141,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 17fcde37-5e94-4a71-86ce-f751f23e49f2
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: ab527c68-d6ce-49e2-bf57-0a867d8d04a2
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: NUMBER(1,0)
         defaultValue: ""
@@ -191,8 +160,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: f38b9ac2-5edf-4cc4-9da1-387c8e4d79ef
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 7280e310-e010-4770-a5ad-deac50aa1f0e
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: NUMBER(4,0)
         defaultValue: ""
@@ -210,8 +179,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9a355dbb-8365-4fb6-b093-076e8db9fb70
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 5f7764bf-f422-46ee-966d-d8d86655230d
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -229,8 +198,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: fce563f5-423d-407b-b004-f835d5610eab
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 00a8260d-e719-4adc-a4c0-f12c6ee4f5d0
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         defaultValue: ""
@@ -248,8 +217,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: ab2d0057-889b-4a04-80f4-d320dbdf0ce6
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: a5eae4f2-403b-403c-9c43-f3f6fde9c4b4
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -267,8 +236,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9e0b0125-1437-4ca0-abc9-25a79024f95a
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 14393940-028b-4b85-b3e8-d0e18af7047a
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -286,8 +255,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: c4d49b03-d1ab-4144-a690-04b41a4b10c8
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 36b65250-8880-42c0-a570-7330ab8bbab2
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: NUMBER(5,0)
         defaultValue: ""
@@ -305,8 +274,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a19fc148-d95a-439c-b863-9d4c4654a3aa
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 38495507-61c4-4370-957f-7b079c77b4eb
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -324,8 +293,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: cb71de4c-5ef0-4b55-b36c-331188df3291
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: e8b1c38e-ae98-42aa-a8f2-53223e07df65
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: NUMBER(1,0)
         defaultValue: ""
@@ -343,8 +312,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: dc67cbad-fa57-4c4b-bbec-d4d7830a1295
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 1b4358e0-3e62-4af1-b622-bf24b4a6443e
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -362,8 +331,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 5d879c68-38cd-4eb5-8c3e-c0fa707524e5
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: c2a230c8-16da-4d0b-9311-6c145367e0d2
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -381,8 +350,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b1bc04bd-ff9c-467f-86d1-693690be2392
-          stepCounter: f22f41e5-713a-4f04-96e2-82b1b23dd8fa
+          columnCounter: 690ed7b1-3130-4134-9d03-33bdc52f0272
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
@@ -395,11 +364,84 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 38ebeb76-e6c7-4014-9487-a8bf6f191fed
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c984df6d-e854-4f10-a6ac-2ea0b0d2155f
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fd0596a5-d758-4cd5-bec6-16cc9adad79c
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a3547fab-2f59-4b74-9578-00fe76e16369
+          stepCounter: 7926c896-908a-4667-b3b7-979f392995f6
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
     cteString: ""
-    description: ""
-    destinationName: ""
     enabledColumnTestIDs: []
-    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:
@@ -407,12 +449,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: COPY_EMP_JSON
+        name: GITSEED_JSON_EMP
         noLinkRefs: []
-  name: COPY_EMP_JSON
+  name: GITSEED_JSON_EMP
   overrideSQL: false
   schema: ""
-  sqlType: "324"
+  sqlType: "606"
   type: sql
   version: 1
 type: Node

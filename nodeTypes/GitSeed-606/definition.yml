@@ -83,6 +83,7 @@ metadata:
         attributeName: filePattern
         type: textBox
         default: ".*[.]csv"
+        enableIf: "{% if config.inferschema == false%} true {% else %} false {% endif %}"    
 
     - groupName: File Format Options
       items:

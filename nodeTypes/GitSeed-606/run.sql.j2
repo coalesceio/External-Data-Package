@@ -17,7 +17,7 @@ does not permit copying or modification for any other purpose.
 {% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
 
 # GIT seed locations
-
+PATT
 {% set stageStorageLocationName = config.stageStorageLocationName %}
 {% set dbStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
 {% set schStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}
@@ -34,6 +34,7 @@ does not permit copying or modification for any other purpose.
 
 {%- if config.filePattern | length > 0 -%} 
     {%- set filePatternSQL = 'PATTERN = ' + "'"+config.filePattern+"'" -%} 
+    {%- set filePatternSQLcpy = 'PATTERN = ' + "''"+config.filePattern+"''" -%} 
 {%- else -%}
     {%- set filePatternSQL = "" -%} 
 {%- endif -%}
@@ -43,11 +44,13 @@ does not permit copying or modification for any other purpose.
 {%if config.fileNames | length > 0 and ',' in config.fileNames  %}
     {% set formatted_variable = config.fileNames.split(',') | map('string') | join("','") %}
     {% set final_variable = "'" + formatted_variable + "'" %}
+      {% set formatted_variablecpy = config.fileNames.split(',') | map('string') | join("'',''") %}
+    {% set final_variablecpy = "''" + formatted_variablecpy + "''" %}
     {% set fileNameSQL = 'FILES = (' + final_variable +')' %}
-    {% set fileNameSQLcopy = 'FILES = ('' + final_variable + '')' %}
+    {% set fileNameSQLcopy = 'FILES = (' + final_variablecpy +')' %}
 {%- elif config.fileNames | length > 0 %} 
     {% set fileNameSQL = 'FILES = (' + "'"+config.fileNames + "'"+')' %}  
-    {% set fileNameSQLcopy = 'FILES = ( + "'"+config.fileNames + "'"+)' %}                             
+    {% set fileNameSQLcopy = 'FILES = (' + "''"+config.fileNames + "''"+ ')' %}                             
 {%- else -%}
     {% set fileNameSQL = "" %} 
 {% endif %}
@@ -89,7 +92,15 @@ BEGIN
     -- 2. Check if the specific file exists in the target stage
     -- Note: We use LIST. If the file isn't there, the result set will be empty (0 rows).
     -- We use the specific filename to avoid counting other unrelated files.
-    EXECUTE IMMEDIATE 'LIST @' || :target_stage || '/{{config.filePattern}}'; 
+    {%if config.fileNames == "" and config.filePattern != ""%}
+    EXECUTE IMMEDIATE 'LIST @' || target_stage || ' PATTERN = ''{{config.filePattern}}'''; 
+    {%elif config.fileNames != "" and ',' in config.fileNames and config.filePattern == "" %}
+    EXECUTE IMMEDIATE 'LIST @' || :target_stage || '/{{config.fileNames.split(',')[0]}}';  
+    {%elif config.fileNames != "" and config.filePattern == "" %}
+    EXECUTE IMMEDIATE 'LIST @' || :target_stage || '/{{config.fileNames}}';
+    {%elif config.fileNames != "" and config.filePattern != "" %}
+    EXECUTE IMMEDIATE 'LIST @' || target_stage || ' PATTERN = ''{{config.filePattern}}''';
+    {%endif%}
     
     SELECT count(*) INTO :file_count FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()));
 
@@ -98,7 +109,8 @@ BEGIN
         EXECUTE IMMEDIATE 'COPY FILES 
                            INTO @' || :target_stage || '
                            FROM @{{dbStage}}.{{schStage}}.{{config.stageName }}/branches/{{config.branchName}}{{subf}}
-                           {{fileNameSQLcopy}}';
+                           {{fileNameSQLcopy}}
+                           {{filePatternSQLcpy}}';
                            
         RETURN 'File(s) copied into ' || :target_stage;
     ELSE
@@ -270,5 +282,8 @@ END;
         {%- if parameters.loadType == 'Reload' or config.truncateBefore == true -%}
 		     FORCE=TRUE
 		    {%endif%}
- 
+
+{{stage('Drop temporary internal stage')}} 
+
+DROP STAGE IF EXISTS {{dbStage}}.{{schStage}}.TEMP_STAGE_{{node.name}}
          

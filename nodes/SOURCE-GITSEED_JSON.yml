@@ -4,7 +4,7 @@ name: GITSEED_JSON
 operation:
   config:
     binformat: HEX
-    branchName: branches
+    branchName: main
     bytemark: true
     columnmismatch: false
     compression: NONE
@@ -19,9 +19,9 @@ operation:
     fetchBefore: true
     fieldDelim: ","
     fieldEnclosed: \042
-    fileFormatLoc: ""
-    fileFormatName: ""
-    fileFormatType: File Format Values
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
+    fileFormatType: File Format Name
     fileNames: employees.json
     filePattern: ""
     fileType: JSON
@@ -37,19 +37,19 @@ operation:
     recDelim: |+
 
     replaceinvalidcharacters: false
-    returnFailedOnly: ""
+    returnFailedOnly: "FALSE"
     sizeLimit: ""
     skipBlankLines: false
     skipHeader: "1"
     stageName: COA_GIT_REPO
     stageStorageLocationName: TARGET
     stripouterarray: true
-    subfolder: main/csv_files
+    subfolder: csv_files
     timeformat: ""
     timestampformat: ""
     trimSpace: false
-    truncateBefore: false
-    truncateColumns: ""
+    truncateBefore: true
+    truncateColumns: "FALSE"
     usevectscan: false
   database: ""
   deployEnabled: true

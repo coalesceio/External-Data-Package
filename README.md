@@ -1159,6 +1159,16 @@ There are four configs within the **Node Properties** group.
 | **Description** | A description of the node's purpose |
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
+### Prerequisites
+
+We require few setups done in Snowflake before we use the Gitseed node type
+
+* Create Snowflake secret containing the credentials to use for authenticating with the remote Git repository.
+* Create an API INTEGRATION that contains information about the remote Git repository such as allowed credentials and prefixes for target URLs.
+* Using GIT Secret and GIT API INTEGRATION ,create a local clone of GIT Repo in Snowflake.
+
+<img width="569" height="298" alt="GIT" src="https://github.com/user-attachments/assets/f404a5a2-eefd-4b5a-91f7-bbb0790e1dde" />
+
 ### Key points to use Gitseed Node
 
 * Gitseed node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
@@ -1212,17 +1222,21 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 **InferSchema-true**
 
+<img width="440" height="515" alt="git-seed-image1" src="https://github.com/user-attachments/assets/94a64368-ebfb-4856-a6da-fafa0e802856" />
 
 **InferSchema-false**
 
+<img width="440" height="639" alt="git-seed-image2" src="https://github.com/user-attachments/assets/013d9001-4df8-4833-b18c-07282d5656d9" />
 
 
 | **Setting** | **Description** |
-|---------|-------------|
-| **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
-| **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
+|-------------|-----------------|
+|**GIT Fetch**| If enabled,an alter statement to fetch files from GIT repository is executed |
+| **Coalesce Storage Location of Snowflake GIT repository** | A storage location in Coalesce where the Snowflake GIT repo resides.[Pre-requisites for GIT repo setup in Snowflake](#Prerequisites)|
+| **Snowflake GIT repository (Required)**| Local Clone of the remote GIT repo in Snowflake where the files containing data to be loaded are staged|
+| **GIT Branch (Ex:main) (Required)**| Specifies the GIT branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
+| **GIT Folder / Path (Ex:seeds)**| Specifies the GIT folder inside the branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
-| **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
 <h3 id="gitseed-file-format"> Gitseed - File Format </h3>

@@ -50,29 +50,26 @@ metadata:
         type: toggleButton
         default: true
 
-      - displayName: Coalesce Storage Location of Stage
+      - displayName: Coalesce Storage Location of Snowflake GIT repository 
         attributeName: stageStorageLocationName
         type: textBox
         default: 'Enter Storage Location name'
         isRequired: true
 
-      - displayName: GIT Stage Name
+      - displayName: Snowflake GIT Repository Name 
         attributeName: stageName
         type: textBox
-        default: 'Enter GIT Stage'
         isRequired: true
 
-      - displayName: GIT Branch
+      - displayName: GIT Branch (Ex:main)
         attributeName: branchName
         type: textBox
-        default: 'Enter GIT Branch eg main '
         isRequired: true
 
-      - displayName: GIT Folder / Path
+      - displayName: GIT Folder / Path (Ex:seeds)
         attributeName: subfolder
         type: textBox
-        default: 'Enter GIT Folder eg seeds '
-        isRequired: true
+        isRequired: false
 
       - displayName: File Name(s) (Ex:a.csv,b.csv )
         attributeName: fileNames
@@ -82,7 +79,7 @@ metadata:
       - displayName: File Pattern
         attributeName: filePattern
         type: textBox
-        default: ".*[.]csv"
+        default: ".*.*[.]csv"
         enableIf: "{% if config.inferschema == false%} true {% else %} false {% endif %}"    
 
     - groupName: File Format Options

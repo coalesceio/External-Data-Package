@@ -1418,6 +1418,11 @@ If the CopyInto node is deleted from a Workspace, that Workspace is committed to
 * [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)
 * [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)
 
-  
+### Gitseed
+
+* [Node definition](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/GitSeed-606/definition.yml)
+* [Create Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/GitSeed-606/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/External-Data-Package/blob/main/nodeTypes/GitSeed-606/run.sql.j2)
+
 ### Macros
  * [Macros/Node configs](https://github.com/coalesceio/External-Data-Package/blob/main/macros/macro-1.yml)

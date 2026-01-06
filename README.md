@@ -1351,7 +1351,7 @@ When the materialization type of Copy-Into node is changed from table to transie
 
 * **Drop table/transient table**
 * **Create transient table/table**
-* 
+   
 ### Redeployment with no changes 
 
 If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed

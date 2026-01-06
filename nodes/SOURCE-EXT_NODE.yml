@@ -1,0 +1,119 @@
+fileVersion: 1
+id: ae3ef61a-3530-475b-8388-31460c6813ca
+name: EXT_NODE
+operation:
+  config:
+    autoRefresh: false
+    cloudProvider: AWS
+    compression: ""
+    ddlCaseInsensitive: false
+    emptyfield: true
+    encoding: UTF8
+    escapeenclosed: \134
+    escapeval: ""
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Name
+    fileNames: ""
+    filePattern: .*[.]json
+    fileType: CSV
+    inferschema: false
+    integration: ""
+    mulline: true
+    nullchar: ('\N')
+    parsehdr: true
+    parsehdr1: true
+    partby:
+      items:
+        - {}
+    partclause: false
+    recDelim: |+
+
+    replaceinvalidcharacters: true
+    skipBlankLines: false
+    skipHeader: "1"
+    snsTopic: arn:aws:sns:us-east-1:121674918127:prod-emea-s3-notification
+    stageName: stage_name/folder/
+    stageStorageLocationName: Enter Storage Location name
+    stripouterarray: true
+    trimSpace: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - VALUE: true
+        acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 084b905c-ea31-4cf4-87a9-bd7dcd64ddbb
+          stepCounter: ae3ef61a-3530-475b-8388-31460c6813ca
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: VALUE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0abc9b0c-fc22-4576-b825-395dd833a3bd
+          stepCounter: ae3ef61a-3530-475b-8388-31460c6813ca
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3adaefbf-e365-4cf5-8d6c-9a87bcbe0828
+          stepCounter: ae3ef61a-3530-475b-8388-31460c6813ca
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: PARTITION_COLUMN
+        nullable: true
+        partcol: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: split_part(metadata$filename,'/',2)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: EXT_NODE
+        noLinkRefs: []
+  name: EXT_NODE
+  overrideSQL: false
+  schema: ""
+  sqlType: "298"
+  type: sql
+  version: 1
+type: Node

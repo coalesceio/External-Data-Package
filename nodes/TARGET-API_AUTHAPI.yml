@@ -69,7 +69,7 @@ operation:
   name: API_AUTHAPI
   overrideSQL: false
   schema: ""
-  sqlType: "303"
+  sqlType: edp:::303
   type: sql
   version: 1
 type: Node

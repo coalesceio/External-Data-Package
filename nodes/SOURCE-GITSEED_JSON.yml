@@ -1,0 +1,182 @@
+fileVersion: 1
+id: 072899dc-5c72-4b93-b630-da152682c58a
+name: GITSEED_JSON
+operation:
+  config:
+    binformat: HEX
+    branchName: main
+    bytemark: true
+    columnmismatch: false
+    compression: NONE
+    dateformat: ""
+    ddlCaseInsensitive: false
+    emptyfield: true
+    encoding: UTF8
+    enforceLength: ""
+    errornumber: ""
+    escapeenclosed: \134
+    escapeval: ""
+    fetchBefore: true
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: TARGET
+    fileFormatName: JSONFILEFORMAT
+    fileFormatType: File Format Name
+    fileNames: employees.json
+    filePattern: ""
+    fileType: JSON
+    forceLoad: ""
+    inferschema: false
+    loadUncertainFiles: ""
+    mulline: true
+    nullchar: ('\N')
+    onError: ""
+    parsehdr: true
+    parsehdr1: true
+    purgeBehavior: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: false
+    returnFailedOnly: "FALSE"
+    sizeLimit: ""
+    skipBlankLines: false
+    skipHeader: "1"
+    stageName: COA_GIT_REPO
+    stageStorageLocationName: TARGET
+    stripouterarray: true
+    subfolder: csv_files
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    truncateBefore: true
+    truncateColumns: "FALSE"
+    usevectscan: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: df753b56-aff5-4409-9f2d-3760ebdf8e06
+          stepCounter: 072899dc-5c72-4b93-b630-da152682c58a
+        config: {}
+        dataType: VARIANT
+        defaultValue: ""
+        description: ""
+        name: SRC
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: $1
+        sysJSON: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 892cc114-abc9-4b25-aa8e-d859c42a523b
+          stepCounter: 072899dc-5c72-4b93-b630-da152682c58a
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: current_timestamp()::timestamp_ntz
+        sysLdTs: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d9ab1d92-e119-499e-8956-5116564dbce9
+          stepCounter: 072899dc-5c72-4b93-b630-da152682c58a
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILENAME
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 74585722-c10c-42f8-946e-ed1c08517cf6
+          stepCounter: 072899dc-5c72-4b93-b630-da152682c58a
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_ROW_NUMBER
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 349c5788-ac93-4e99-8cf2-fcd6d1c17642
+          stepCounter: 072899dc-5c72-4b93-b630-da152682c58a
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$FILE_LAST_MODIFIED
+        sysFlLtMd: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 89fb6c4f-dc7f-4d53-a90c-8778d83ea45b
+          stepCounter: 072899dc-5c72-4b93-b630-da152682c58a
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: METADATA$START_SCAN_TIME
+        sysFlScTm: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: GITSEED_JSON
+        noLinkRefs: []
+  name: GITSEED_JSON
+  overrideSQL: false
+  schema: ""
+  sqlType: "606"
+  type: sql
+  version: 1
+type: Node

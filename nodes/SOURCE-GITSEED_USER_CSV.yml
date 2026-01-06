@@ -1,0 +1,317 @@
+fileVersion: 1
+id: fad9bade-b382-4238-9b24-2dbbc31754e9
+name: GITSEED_USER_CSV
+operation:
+  config:
+    binformat: HEX
+    branchName: main
+    compression: NONE
+    dateformat: ""
+    ddlCaseInsensitive: false
+    encoding: UTF8
+    enforceLength: ""
+    escapeenclosed: \134
+    escapeval: ""
+    fetchBefore: true
+    fieldDelim: "|"
+    fieldEnclosed: \042
+    fileFormatLoc: TARGET
+    fileFormatName: CSVFILEFORMAT
+    fileFormatType: File Format Values
+    fileNames: user.csv
+    filePattern: ""
+    fileType: CSV
+    folderName: "Enter GIT Folder eg seeds "
+    forceLoad: ""
+    inferschema: false
+    loadUncertainFiles: ""
+    nullchar: ('\N')
+    onError: ""
+    parsehdr: true
+    parsehdr1: true
+    purgeBehavior: ""
+    recDelim: ""
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipHeader: "1"
+    stageName: COA_GIT_REPO
+    stageStorageLocationName: TARGET
+    subfolder: csv_files
+    timeformat: ""
+    timestampformat: ""
+    truncateBefore: true
+    truncateColumns: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0570fa24-8876-44c6-90f7-1226ea1016f5
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dc134809-a71a-46db-8a73-1e00c0a03b96
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32e45ce6-8216-4e3c-904f-3fb0a9eb30ed
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: fa5e3cbc-2da1-4040-8dec-dbf9b5045646
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17ce15bb-9f6f-4d03-b404-499200961d14
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1ca360b4-2c2d-4800-a7f9-1ca77d4ddded
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Username
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0af47573-48b6-4800-a50d-abfafb2bad25
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: NUMBER(4,0)
+        defaultValue: ""
+        description: ""
+        name: Identifier
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cf629e6a-8c12-4666-acf3-d9957229f668
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Onetime_password
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 430cc302-fdd8-4094-b154-6a60474b923a
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Recovery_code
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e154bc4-f8aa-40dd-91af-14b15129e8d5
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: First_name
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 879560cd-ba64-4ea3-9046-af719b4f1796
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Last_name
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2e1d60a4-6958-4727-b8ec-89462de828d8
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Department
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 34c71385-2af7-4a95-bee5-65aa55cc4756
+          stepCounter: fad9bade-b382-4238-9b24-2dbbc31754e9
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Location
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: GITSEED_USER_CSV
+        noLinkRefs: []
+  name: GITSEED_USER_CSV
+  overrideSQL: false
+  schema: ""
+  sqlType: "606"
+  type: sql
+  version: 1
+type: Node

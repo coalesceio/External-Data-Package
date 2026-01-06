@@ -1,0 +1,220 @@
+fileVersion: 1
+id: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+name: GITSEED_TXT
+operation:
+  config:
+    binformat: HEX
+    branchName: branches
+    compression: NONE
+    dateformat: ""
+    ddlCaseInsensitive: false
+    encoding: UTF8
+    enforceLength: ""
+    escapeenclosed: \134
+    escapeval: ""
+    fetchBefore: true
+    fieldDelim: ","
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileNames: sample.csv
+    filePattern: sample.csv
+    fileType: CSV
+    folderName: "Enter GIT Folder eg seeds "
+    forceLoad: ""
+    inferschema: false
+    loadUncertainFiles: ""
+    nullchar: ('\N')
+    onError: ""
+    purgeBehavior: ""
+    recDelim: ""
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipHeader: "1"
+    stageName: COA_GIT_REPO
+    stageStorageLocationName: TARGET
+    subfolder: main/csv_files
+    timeformat: ""
+    timestampformat: ""
+    truncateBefore: false
+    truncateColumns: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29b93ced-613a-4877-9be5-02e81bc06248
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: c1
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4bd2acd8-4a06-4db2-b549-2ece1d1ba20c
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: c2
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64ad3d20-c175-419a-8619-a02bc10271b7
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: c3
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8e249049-8881-4e24-bf54-ad1b497b8b30
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 425b3cd9-800e-4e91-84cf-05bc1244aad2
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 026eb47c-db34-4e1b-a30e-c8cfab8c5a04
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1eaf6a89-3faf-43bc-826d-c252bf634303
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 66adb41e-6cbd-4451-9ba8-66702dc5e44e
+          stepCounter: 563ea2f4-eabd-462c-898c-d13b9c4ae4e0
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: GITSEED_TXT
+        noLinkRefs: []
+  name: GITSEED_TXT
+  overrideSQL: false
+  schema: ""
+  sqlType: "606"
+  type: sql
+  version: 1
+type: Node

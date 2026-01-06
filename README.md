@@ -1137,37 +1137,37 @@ If the Parse Json node is deleted from a Workspace, that Workspace is committed 
 
 <h2 id="gitseed"> GITSEED </h2>
 
-### CopyInto Node Configuration
+### Gitseed Node Configuration
 
-The Copy-Into node type the following configurations available:
+The Gitseed node type the following configurations available:
 
-* [Node Properties](#copy-into-node-properties)
-* [General Options](#copy-into-general-options)
-* [Source Data](#copy-into-file-location)
-* [File Format](#copy-into-file-format)
+* [Node Properties](#gitseed-node-properties)
+* [General Options](#gitseed-general-options)
+* [Git Repository Configuration](#gitrepo-file-location)
+* [File Format](#copy-into-file-format
 * [Extended CSV File Format Options](#extended-csv-file-format-options)
-* [Copy Options](#copy-into-copy-options)
+* [Copy Options](#gitseed-copy-options)
 
-<h3 id="copy-into-node-properties">CopyInto - Node Properties</h3>
+<h3 id="gitseed-node-properties">Gitseed - Node Properties</h3>
 
 There are four configs within the **Node Properties** group.
 
 | **Property** | **Description** |
 |-------------|-----------------|
-| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Storage Location** | Storage Location where the target table will be created |
 | **Node Type** | Name of template used to create node objects |
 | **Description** | A description of the node's purpose |
 | **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
-### Key points to use CopyInto Node
+### Key points to use Gitseed Node
 
-* CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
-* CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
+* Gitseed node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
+* Gitseed node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Gitseed on top of it.
 * The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
 * The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
 * Blank options added to Copy-Into and CSV file format options to revert any specific option
 
-### Use CopyInto to load columns with insensitive case
+### Use Gitseed to load columns with insensitive case
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -1177,7 +1177,7 @@ There are four configs within the **Node Properties** group.
 * Table is created with column names in default case followed by Snowflake(UPPERCASE)
 * Re-Sync columns to have all the columns with default case in mapping grid,so that the nodes added upstream follow the same.
 
-### Use CopyInto node with InferSchema option
+### Use Gitseed node with InferSchema option
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -1191,7 +1191,7 @@ There are four configs within the **Node Properties** group.
 
 If the above works, it should be deployable as is.  Deploy will simply take the columns and execute a create table.
 
-<h3 id="copy-into-general-options">  CopyInto - General Options </h3>
+<h3 id="gitseed-general-options">  Gitseed - General Options </h3>
 
 **InferSchema-True**
 
@@ -1208,17 +1208,14 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
 | **DDL Case Insensitive**| True/False toggle that determines whether to preserve the case of columns from source file <br/>- **True**: The create and data load preserves the case of columns<br/>- **False**: The columns used in create and data load are case insensitive[How to use the toggle](#use-copyinto-to-load-columns-with-insensitive-case) |
       
-<h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
+<h3 id="gitrepo-file-location">  Git Repository Configuration </h3>
 
 **InferSchema-true**
 
-![image](https://github.com/user-attachments/assets/2f549fe3-648f-4132-bcdf-2ab92f6554bd)
 
 **InferSchema-false**
 
-![image](https://github.com/user-attachments/assets/c1071dff-da18-45fc-9e43-1dd5cdd03329)
 
-##### Internal or External Stage
 
 | **Setting** | **Description** |
 |---------|-------------|
@@ -1228,15 +1225,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
-![CopyInto-file location2](https://github.com/user-attachments/assets/0c5949c4-0286-4250-91cf-38325e2c312a)
-
-##### External location
-| **Setting** | **Description** |
-|---------|-------------|
-| **External URI** | Enter the URI of the External location. This URI can point to either a private or public bucket/container.|
-| **Storage Integration** | Specifies the name of the storage integration used to delegate authentication responsibility for external cloud storage to a Snowflake identity and access management (IAM) entity. This field is **not mandatory** for publicly accessible buckets or when another authentication method (such as presigned URLs or public access) is used. |
-
-<h3 id="copy-into-file-format"> CopyInto - File Format </h3>
+<h3 id="gitseed-file-format"> Gitseed - File Format </h3>
 
 **File format definition-File format name**
 
@@ -1282,7 +1271,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 |**CSV**|**Skip blank lines**- Boolean that specifies to skip any blank lines encountered in the data files <br/> **Nulls for empty field**- When loading data, specifies whether to insert SQL NULL for empty fields in an input file<br/>**Skip byte order mark**-Boolean that specifies whether to skip the BOM (byte order mark), if present in a data file.<br/>**Parsing error for column mismatch**-Boolean that specifies whether to generate a parsing error if the number of delimited columns (i.e. fields) in an input file does not match the number of columns in the corresponding table.<br/>**Multiple lines**-Boolean that specifies whether multiple lines are allowed.If MULTI_LINE is set to FALSE and the specified record delimiter is present within a CSV field, the record containing the field will be interpreted as an error.<br/>**Binary format**-Defines the encoding format for binary input or output. <br/> **Replace values with NULL**-o specify more than one string, enclose the list of strings in parentheses and use commas to separate each value. <br/>**Escape optionally enclosed by**-A singlebyte character string used as the escape character for unenclosed field values only.Octal notation is preferred.<br/>**Escape enclosed/unenclosed values**-A singlebyte character string used as the escape character for enclosed or unenclosed field values.Octal notation is preferred<br/>|
 
 
-<h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
+<h3 id="copy-into-copy-options"> Gitseed - Copy Options </h3>
 
 | **Setting** | **Description** |
 |---------|-------------|
@@ -1297,7 +1286,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 |**Enforce Length**|-Boolean that specifies whether to truncate text strings that exceed the target column length|
 |**Truncate Columns**|-Boolean that specifies whether to truncate text strings that exceed the target column length|
 
-### CopyInto - System Columns
+### Gitseed - System Columns
 
 The set of columns which has source data and file metadata information.
 
@@ -1308,11 +1297,11 @@ The set of columns which has source data and file metadata information.
 * **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
 * **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
 
-### CopyInto Deployment
+### Gitseed Deployment
 
-#### CopyInto Deployment Parameters
+#### Gitseed Deployment Parameters
 
-The CopyInto node typeincludes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
+The Gitseed node typeincludes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
 
 The parameter name is `loadType` and the default value is ``.
 
@@ -1324,7 +1313,7 @@ The parameter name is `loadType` and the default value is ``.
 
 When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.As a alternate option we can use TruncateBefore option in node config
 
-#### CopyInto Initial Deployment
+#### Gitseed Initial Deployment
 When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:
 
 | Deployment Behavior  | Load Type | Stages Executed |
@@ -1332,9 +1321,9 @@ When deployed for the first time into an environment the Copy-into node of mater
 | Initial Deployment | ``|Create Table/Transient Table
 | Initial Deployment | Reload|Create Table/Transient Table
 
-### CopyInto Redeployment
+### Gitseed Redeployment
 
-#### Altering the CopyInto Tables
+#### Altering the Gitseed Tables
 
 There are few column or table changes like Change in table name,Dropping existing column, Alter Column data type,Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the Work Table in the target environment.
 
@@ -1342,7 +1331,7 @@ The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-#### Copy-Into change in materialization type
+#### Gitseed change in materialization type
 
 When the materialization type of Copy-Into node is changed from table to transient table or viceversa,the below stages are executed:
 
@@ -1353,7 +1342,7 @@ When the materialization type of Copy-Into node is changed from table to transie
 
 If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
 
-### CopyInto Undeployment
+### Gitseed Undeployment
 
 If the CopyInto node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 

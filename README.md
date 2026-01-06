@@ -1144,7 +1144,7 @@ The Gitseed node type the following configurations available:
 * [Node Properties](#gitseed-node-properties)
 * [General Options](#gitseed-general-options)
 * [Git Repository Configuration](#gitrepo-file-location)
-* [File Format](#copy-into-file-format
+* [File Format](#copy-into-file-format)
 * [Extended CSV File Format Options](#extended-csv-file-format-options)
 * [Copy Options](#gitseed-copy-options)
 

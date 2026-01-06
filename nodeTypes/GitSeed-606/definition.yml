@@ -69,7 +69,10 @@ metadata:
       - displayName: GIT Folder / Path (Ex:seeds)
         attributeName: subfolder
         type: textBox
-        isRequired: false
+        isRequired: false 
+      
+      - displayName: ⚠️ File Name is mandatory for Infer processing.When loading file ,you can either use pattern or filenames
+        type: Label
 
       - displayName: File Name(s) (Ex:a.csv,b.csv )
         attributeName: fileNames

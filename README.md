@@ -1166,6 +1166,7 @@ We require few setups done in Snowflake before we use the Gitseed node type
 * Create Snowflake secret containing the credentials to use for authenticating with the remote Git repository.
 * Create an API INTEGRATION that contains information about the remote Git repository such as allowed credentials and prefixes for target URLs.
 * Using GIT Secret and GIT API INTEGRATION ,create a local clone of GIT Repo in Snowflake.
+* Ideally the local clone of GIT repo in snowflake is refreshed with files or folders only after GIT fetch operation is performed.This can handled during node execution using GIT Fetch toggle in config or as a precursor in Snowflake
 
 <img width="569" height="298" alt="GIT" src="https://github.com/user-attachments/assets/f404a5a2-eefd-4b5a-91f7-bbb0790e1dde" />
 
@@ -1231,7 +1232,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 | **Setting** | **Description** |
 |-------------|-----------------|
-|**GIT Fetch**| If enabled,an alter statement to fetch files from GIT repository is executed |
+|**GIT Fetch**| If enabled,an alter statement to fetch files from GIT repository is executed.Ideally the local clone of GIT repo in snowflake is refreshed with files or folders only after GIT fetch operation is performed|
 | **Coalesce Storage Location of Snowflake GIT repository** | A storage location in Coalesce where the Snowflake GIT repo resides.[Pre-requisites for GIT repo setup in Snowflake](#Prerequisites)|
 | **Snowflake GIT repository (Required)**| Local Clone of the remote GIT repo in Snowflake where the files containing data to be loaded are staged|
 | **GIT Branch (Ex:main) (Required)**| Specifies the GIT branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|

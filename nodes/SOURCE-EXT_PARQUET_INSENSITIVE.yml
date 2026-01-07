@@ -19,7 +19,7 @@ operation:
     fileNames: shippers.parquet
     filePattern: .*ship*[.]parquet
     fileType: PARQUET
-    inferschema: false
+    inferschema: true
     integration: ""
     mulline: true
     nullchar: ('\N')

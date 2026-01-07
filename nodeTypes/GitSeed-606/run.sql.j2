@@ -6,9 +6,8 @@ Coalesce permits you to copy and modify this script for the purposes of using wi
 does not permit copying or modification for any other purpose.  
 #}
 {# == Node Type Version        : 1  == #}
-{# == Node Type Name           : Git Seed == #}
-{# == Node Type Description    : This node loads data from internal or external stages to target table using full load or reload option == #}
-
+{# == Node Type Name           : Git Seed node type == #}
+{# == Node Type Description    : This node creates target table to load files from GIT repository branches == #}
 
 # Storage Location-database and schema
 
@@ -17,7 +16,7 @@ does not permit copying or modification for any other purpose.
 {% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
 
 # GIT seed locations
-PATT
+
 {% set stageStorageLocationName = config.stageStorageLocationName %}
 {% set dbStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='database') | first %}
 {% set schStage = storageLocations | selectattr('name', 'equalto', stageStorageLocationName) | map(attribute='schema') | first %}

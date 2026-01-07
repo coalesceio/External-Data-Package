@@ -74,10 +74,11 @@ PATT
                         {% set ns.countercol = ns.countercol + 1 %}       
 	    {%endif%}
     {%- endfor %}
-
+{%if config.fetchBefore %}
 {{stage('Alter-Fetch GIT repo')}}
 
     ALTER GIT REPOSITORY {{dbStage}}.{{schStage}}.{{config.stageName }} FETCH
+{%endif%}
 
 {{stage('Copy files from GIT repo to temporary stage')}}
 

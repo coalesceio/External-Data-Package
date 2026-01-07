@@ -1,0 +1,631 @@
+fileVersion: 1
+id: bdd1b38e-5285-4533-8c38-9289944145cd
+name: GITSEED_SUB
+operation:
+  config:
+    binformat: HEX
+    branchName: testbranch
+    bytemark: true
+    columnmismatch: false
+    compression: AUTO
+    dateformat: ""
+    ddlCaseInsensitive: false
+    emptyfield: true
+    encoding: UTF8
+    enforceLength: ""
+    errornumber: ""
+    escapeenclosed: \134
+    escapeval: ""
+    fetchBefore: false
+    fieldDelim: "|"
+    fieldEnclosed: \042
+    fileFormatLoc: ""
+    fileFormatName: ""
+    fileFormatType: File Format Values
+    fileNames: health_pipe123.csv
+    filePattern: .*.*[.]csv
+    fileType: CSV
+    forceLoad: ""
+    inferschema: false
+    loadUncertainFiles: ""
+    mulline: true
+    nullchar: ('\N')
+    onError: ""
+    parsehdr: true
+    parsehdr1: true
+    purgeBehavior: ""
+    recDelim: |+
+
+    replaceinvalidcharacters: true
+    returnFailedOnly: ""
+    sizeLimit: ""
+    skipBlankLines: false
+    skipHeader: "1"
+    stageName: COA_GIT_REPO
+    stageStorageLocationName: TARGET
+    stripouterarray: true
+    subfolder: subf/subf
+    timeformat: ""
+    timestampformat: ""
+    trimSpace: false
+    truncateBefore: false
+    truncateColumns: ""
+    usevectscan: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: SOURCE
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9b121cdb-c7e4-47d4-8fc1-86d3ae345e5f
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(11,5)
+        defaultValue: ""
+        description: ""
+        name: Average_Covered_Charges
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4e7c8e68-5816-4c8c-abe2-4b949f528031
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(11,6)
+        defaultValue: ""
+        description: ""
+        name: Average_Total_Payments
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 027d363f-f852-41f6-af64-c152d63b6faa
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(2,0)
+        defaultValue: ""
+        description: ""
+        name: Total_Discharges_
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d2c627a6-30ea-4045-9908-ea8a66571aba
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(3,1)
+        defaultValue: ""
+        description: ""
+        name: Bachelor's_or_Higher
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6259e91d-ce5b-4cbb-82df-e5f33f112713
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(3,1)
+        defaultValue: ""
+        description: ""
+        name: HS_Grad_or
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0400e839-c8ea-4105-875a-52e1d6626f24
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Payments__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 444e045d-720a-41d8-b863-90c10408f580
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Reimbursement__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 64f3fe56-f7bf-43bb-ae09-ba874fb88069
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Covered_Charges_
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2114dfb2-a24e-4aca-9518-7273221f017c
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Region_Provider_Name
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3093c714-33c1-4563-85ee-a4cc87cfa8f3
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(10,9)
+        defaultValue: ""
+        description: ""
+        name: ReimbursementPercentage__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f68f0e4-89b9-4b33-866a-c00829bfba0e
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Definition__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 36e4eef9-c5cd-41e6-939b-053309b16306
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Region__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7bda27d1-b904-4108-9289-4a35f96b5b70
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: INCOME_PER_CAPITA__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 40b47f68-22d5-4c6f-8c60-7c1eae0cb57a
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: EARNINGS_-_BACHELORS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c8c18524-e475-4c8d-89be-b8964a04a3b0
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: EARNINGS_-_GRADUATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 546af243-8333-4a21-b266-bfda4acb4896
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: EARNINGS_-_HS
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42afa178-e468-447f-92dd-30691a672f8b
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: EARNINGS-_LESS_THAN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 607f4fa7-9847-439c-9afe-5551be264b3b
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: MEDIAN_FAMILY_INCOME__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 14b92f62-980a-429d-8c38-9f24fecbebba
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(1,0)
+        defaultValue: ""
+        description: ""
+        name: of_Records_
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 53600200-79da-47aa-be60-5f62f9b208e9
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(5,0)
+        defaultValue: ""
+        description: ""
+        name: POP_25_OVER__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: cdfd007a-77eb-4b71-a0ca-cccc0cbbe6b7
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: City__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1e4efb9-14b6-4988-ac24-649d1e405489
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(6,0)
+        defaultValue: ""
+        description: ""
+        name: Id__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b687a42-71ab-4247-b15b-db755fe38d66
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: Name__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e43dd54-65bc-4957-a617-c92ab3bea745
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: State__
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7c419285-244d-4cd0-82dc-720640d114d3
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a2d44de-c294-40bb-a6af-b57f15b74bcb
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: FILE_ROW_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68c09887-75e9-4fec-82d8-8ae104569c91
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b926b789-18f7-4692-842d-5dbabe76e673
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0c1766ab-8fbe-4bce-8491-c4e5fe6f0c57
+          stepCounter: bdd1b38e-5285-4533-8c38-9289944145cd
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SCAN_TIME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: GITSEED_SUB
+        noLinkRefs: []
+  name: GITSEED_SUB
+  overrideSQL: false
+  schema: ""
+  sqlType: "606"
+  type: sql
+  version: 1
+type: Node

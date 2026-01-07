@@ -15,7 +15,7 @@ operation:
     fileNames: twitter_samp.avro
     filePattern: .*[.]avro
     fileType: AVRO
-    inferschema: true
+    inferschema: false
     integration: ""
     partby:
       items:
@@ -146,18 +146,17 @@ operation:
           columnCounter: 6fefca0c-b9f8-40be-9bb5-085fc65bc1f7
           stepCounter: 4f94cca5-78a0-4a28-aaff-7cde7da77cb4
         config: {}
-        dataType: STRING
+        dataType: VARCHAR(16777216)
         defaultValue: ""
         description: ""
-        keyColumnType: None
         name: PARTITION_COLUMN
         nullable: true
+        primaryKey: false
         sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: "0"
-                stepCounter: "0"
+          - columnReferences: []
             transform: ""
-        systemColumnType: None
+        transform: ""
+        uniqueKey: false
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:

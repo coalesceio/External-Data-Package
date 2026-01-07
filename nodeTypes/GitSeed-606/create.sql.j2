@@ -142,10 +142,11 @@ does not permit copying or modification for any other purpose.
                                {% set fileNameSQL = " "+"FILES =>"+"''"+desiredState.config.fileNames+"''," %}
                                {% set fileNameSQLcopy = " "+"FILES ="+"("+"''"+ desiredState.config.fileNames+"''"+")" %}
                            {% endif %}
-                    
+
+        {%if desiredState.config.fetchBefore%}            
         {{stage('Alter-Fetch')}}
           ALTER GIT REPOSITORY {{dbStage}}.{{schStage}}.{{ desiredState.config.stageName }} FETCH
-
+        {%endif%}
 
         {{ stage('Create inferred  '+ ' {{desiredState.node.materializationType}}') }}
 

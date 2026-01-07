@@ -25,7 +25,12 @@ operation:
     nullchar: ('\N')
     parsehdr: true
     parsehdr1: true
-    partclause: false
+    partby:
+      items:
+        - columnName:
+            columnCounter: dea56b5a-a2c0-464e-a600-dce5199260fb
+            stepCounter: fc210ff0-a3f6-4f12-8a0b-9eb27e2ada22
+    partclause: true
     recDelim: |+
 
     replaceinvalidcharacters: true

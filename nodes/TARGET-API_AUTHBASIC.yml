@@ -1,19 +1,23 @@
 fileVersion: 1
-id: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
-name: API_NODE1
+id: 9a1bd141-790b-4ff4-9e2d-7f2804d2b374
+name: API_AUTHBASIC
 operation:
   config:
+    api_id: TEST_CLIENT_ID
     api_token: COALESCE_API_TOKEN
-    extIntegration: COALESCE_API_INTEGRATION
-    headers: ""
+    bauth: false
+    cauth: true
+    extIntegration: HTTPBIN_TEST_INT
+    headers: "{\"Content-Type\": \"application/json\"}"
     method: get
     payload: ""
-    uri: ""
+    sapi_token: TEST_CLIENT_SECRET
+    uri: https://httpbin.org/anything
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: SOURCE
+  locationName: TARGET
   materializationType: table
   metadata:
     appliedNodeTests: []
@@ -23,8 +27,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 8fec1df1-c17b-4555-abb6-dae7cfeb899d
-          stepCounter: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
+          columnCounter: 5a4e9b27-435b-4f73-a692-4259d0604813
+          stepCounter: 9a1bd141-790b-4ff4-9e2d-7f2804d2b374
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -40,8 +44,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 02321744-98b1-4df0-a244-d7298f48eb67
-          stepCounter: aea1ac5d-dec1-4f83-b166-36fc6f15c82e
+          columnCounter: 0c2e6d1b-47e6-4435-aa66-28cb22499a57
+          stepCounter: 9a1bd141-790b-4ff4-9e2d-7f2804d2b374
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -61,9 +65,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_NODE1
+        name: API_AUTHBASIC
         noLinkRefs: []
-  name: API_NODE1
+  name: API_AUTHBASIC
   overrideSQL: false
   schema: ""
   sqlType: "303"

@@ -1,17 +1,19 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: 67f26099-14d1-4049-9067-07b3a247443b
+name: API_AUTHAPI2
 operation:
   config:
-    api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
+    api_id: NEURAPULSE_API_KEY1
+    api_token: NEURAPULSE_API_KEY1
     bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
+    cauth: false
+    extIntegration: EXT_NEURAPULSE
+    headers: ""
+    headertype: Authorization
     method: get
     payload: ""
-    sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    sapi_token: NEURAPULSE_API_PSWD
+    uri: https://api.neurapulse.com/api/v1/projects/4d4d4ec4-f072-4084-a252-e8caa9b0eec1/testtakers
   database: ""
   deployEnabled: true
   description: ""
@@ -26,8 +28,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: fcc9607b-d11c-425f-9431-f7d3448e0c89
+          stepCounter: 67f26099-14d1-4049-9067-07b3a247443b
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -43,8 +45,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 7643c2ef-4c12-4adc-8420-19070f6ccc9f
+          stepCounter: 67f26099-14d1-4049-9067-07b3a247443b
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -64,12 +66,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_AUTHAPI
+        name: API_AUTHAPI2
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_AUTHAPI2
   overrideSQL: false
   schema: ""
-  sqlType: "303"
+  sqlType: "614"
   type: sql
   version: 1
 type: Node

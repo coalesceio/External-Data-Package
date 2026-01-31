@@ -1,0 +1,20 @@
+config:
+  entities:
+    nodeTypes:
+      "606":
+        defaultStorageLocation: null
+        isDisabled: false
+  packageVariables: |-
+    {#-------------------------------------------------------------------------------------------------------------#}
+    {#-- Global configs of external data package                                                               --#}
+    {#--                                                                                                         --#}
+    {#-- The following variables can be customized to for python and JAVA based procedures used in this package  --#}
+    {#-------------------------------------------------------------------------------------------------------------#}
+
+    {%set SP_configs = namespace(py_runtime_ver="3.9",java_runtime_ver="11")%}
+fileVersion: 1
+id: "@coalesce/snowflake/external-data-package"
+name: ext12
+packageID: "@coalesce/snowflake/external-data-package"
+releaseID: 00e29ddd-8da3-4dec-aa67-cbd4a523772e
+type: Package

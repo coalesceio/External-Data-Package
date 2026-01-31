@@ -4,12 +4,12 @@ name: API_NODEUPDT
 operation:
   config:
     api: COALESCE_API_TOKEN
-    extIntegration: COALESCE_INT
+    extIntegration: COALESCE_INT_EX
     nodeconfig:
       items:
-        - nodename: CITYPARQUET
+        - nodename: API_PUBLICURL
           storageLocation: ANANDHIS_DEV.TARGET
-          wksID: "315"
+          wksID: "663"
   database: ""
   deployEnabled: true
   description: ""

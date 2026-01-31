@@ -1,11 +1,11 @@
 fileVersion: 1
-id: "303"
+id: "614"
 isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
   nodeMetadataSpec: |
-    capitalized: API Call
+    capitalized: Copy of API Call
     short: API
     plural: Excel Files
     tagColor: 'orange'
@@ -39,6 +39,13 @@ metadata:
         type: textBox
         default: "COALESCE_API_TOKEN"
         enableIf: "{%if config.bauth == true %} true {%else%} false  {%endif%}"
+
+      - displayName: HTTP headers(Ex:Authorization,x-api-key')
+        attributeName: headertype
+        type: textBox
+        default: "Authorization"
+        enableIf: "{%if config.bauth == true %} true {%else%} false  {%endif%}"
+
 
       - displayName: Snowlake secret for API Client ID 
         attributeName: api_id
@@ -96,5 +103,5 @@ metadata:
       transform: ''
       dataType: VARIANT
       placement: end
-name: API
+name: Copy of API
 type: NodeType

@@ -1,17 +1,17 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: f246bc90-e4b5-43e0-8114-bb7605a65930
+name: API_AUTHAPI1
 operation:
   config:
     api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
+    api_token: HTTPBIN_TOKEN_VALUE
     bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
+    extIntegration: HTTPBIN_QUERY_INT
+    headers: ""
     method: get
     payload: ""
     sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    uri: https://httpbin.org/anything
   database: ""
   deployEnabled: true
   description: ""
@@ -26,8 +26,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: be7b879c-689e-4dd3-93ed-0c3768007462
+          stepCounter: f246bc90-e4b5-43e0-8114-bb7605a65930
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -43,8 +43,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 8cb2e109-8c1a-4ae8-8288-845b00a6a411
+          stepCounter: f246bc90-e4b5-43e0-8114-bb7605a65930
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -64,9 +64,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_AUTHAPI
+        name: API_AUTHAPI1
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_AUTHAPI1
   overrideSQL: false
   schema: ""
   sqlType: "303"

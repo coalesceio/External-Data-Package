@@ -1,17 +1,18 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: 2a634a93-70e2-4eb7-8ad0-2c66a2dafa98
+name: API_JSONEX_POST
 operation:
   config:
-    api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
-    bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
-    method: get
-    payload: ""
-    sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    api_token: ""
+    extIntegration: JSONPLACEHOLDER_INT
+    headers: ""
+    method: post
+    payload: |-
+      {
+        "userId": 1,
+        "title": "Finish the project documentation"
+      }
+    uri: https://jsonplaceholder.typicode.com/todos
   database: ""
   deployEnabled: true
   description: ""
@@ -26,8 +27,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: bec3afb5-f67c-4704-aa06-28d5d1441579
+          stepCounter: 2a634a93-70e2-4eb7-8ad0-2c66a2dafa98
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -43,8 +44,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 27925025-129f-4ae2-a861-057b8c91ae66
+          stepCounter: 2a634a93-70e2-4eb7-8ad0-2c66a2dafa98
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -63,10 +64,12 @@ operation:
           customSQL: ""
         dependencies: []
         join:
-          joinCondition: ""
-        name: API_AUTHAPI
+          joinCondition: |-
+            sdkfk
+            jklsadfjl
+        name: API_JSONEX_POST
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_JSONEX_POST
   overrideSQL: false
   schema: ""
   sqlType: "303"

@@ -1,17 +1,19 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: f0af685c-3ce4-4af3-a5f4-98f8f0da3de1
+name: API_JSONEX_PUT
 operation:
   config:
-    api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
-    bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
-    method: get
-    payload: ""
-    sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    api_token: ""
+    extIntegration: JSONPLACEHOLDER_INT
+    headers: ""
+    method: post
+    payload: |-
+      {
+        "id": 1,
+        "userId": 1,
+        "title": "Corrected title: Finish the documentation"
+      }
+    uri: https://jsonplaceholder.typicode.com/todos
   database: ""
   deployEnabled: true
   description: ""
@@ -26,8 +28,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 030fde1c-b7c3-4fd9-a606-72bf41fda2d3
+          stepCounter: f0af685c-3ce4-4af3-a5f4-98f8f0da3de1
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -43,8 +45,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: aafeff5a-4088-4761-a364-6382253fa6ef
+          stepCounter: f0af685c-3ce4-4af3-a5f4-98f8f0da3de1
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -63,10 +65,12 @@ operation:
           customSQL: ""
         dependencies: []
         join:
-          joinCondition: ""
-        name: API_AUTHAPI
+          joinCondition: |-
+            sdkfk
+            jklsadfjl
+        name: API_JSONEX_PUT
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_JSONEX_PUT
   overrideSQL: false
   schema: ""
   sqlType: "303"

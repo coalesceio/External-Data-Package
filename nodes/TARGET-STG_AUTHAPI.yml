@@ -1,0 +1,220 @@
+fileVersion: 1
+id: a3e696da-06f5-457d-969d-b52c102ffdd3
+name: STG_AUTHAPI
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7fcdc56d-aba2-48e7-bb81-aee0f3284874
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: URI
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
+                stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 041f33e8-3d33-4f10-8000-0bc5a6c67283
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: VARIANT
+        description: ""
+        name: RESPONSE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
+                stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61ae0aaa-fd4d-4403-bb54-1f5007cd2efe
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: data_database
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"RESPONSE_data\".value:\"database\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73cdcc3d-8479-4d48-9201-fc7cc8818161
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: data_id
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"RESPONSE_data\".value:\"id\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 51afa0d1-e711-4b00-af8b-d2ed1a1ae5e1
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: data_locationName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"RESPONSE_data\".value:\"locationName\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 994cd63a-1208-469c-9842-b4aa66d58f7d
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: data_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"RESPONSE_data\".value:\"name\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c2dcd6fe-94a7-4e2f-9d1a-6d811e89ea8c
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: data_nodeType
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"RESPONSE_data\".value:\"nodeType\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2366947e-b693-4960-b9fe-a75af5d1eccb
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: data_schema
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"RESPONSE_data\".value:\"schema\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0ea18ed3-44d5-42a4-84c8-5ef1f8334487
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: DOUBLE
+        description: ""
+        name: limit
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"API_AUTHAPI\".\"RESPONSE\":\"limit\"::DOUBLE"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8af476b2-2da2-4035-8157-2da92f940734
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: next
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"API_AUTHAPI\".\"RESPONSE\":\"next\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e43fb3db-2170-4286-9094-fa5a98e57801
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: STRING
+        description: ""
+        name: orderBy
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"API_AUTHAPI\".\"RESPONSE\":\"orderBy\"::STRING"
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5afa6e16-cad1-4ebe-aa56-a987414ceae5
+          stepCounter: a3e696da-06f5-457d-969d-b52c102ffdd3
+        config: {}
+        dataType: DOUBLE
+        description: ""
+        name: total
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "\"API_AUTHAPI\".\"RESPONSE\":\"total\"::DOUBLE"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          API_AUTHAPI: 96125db9-cb24-44a4-ab08-911502671d70
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TARGET
+            nodeName: API_AUTHAPI
+        join:
+          joinCondition: |-
+            FROM {{ ref('TARGET', 'API_AUTHAPI') }} "API_AUTHAPI", 
+            lateral flatten(input => "RESPONSE":"data", OUTER => TRUE) "RESPONSE_data"
+        name: STG_AUTHAPI
+        noLinkRefs: []
+  name: STG_AUTHAPI
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

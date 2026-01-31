@@ -1,17 +1,23 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: 2c01fad0-42d3-4ce0-92b3-71a1f54de35d
+name: API_AUTHAPI_PUT
 operation:
   config:
     api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
+    api_token: HTTPBIN_TOKEN_VALUE
     bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
-    method: get
-    payload: ""
+    extIntegration: HTTPBIN_QUERY_INT
+    headers: ""
+    method: post
+    payload: |-
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "message": "Hello from the POST request!",
+        "tags": ["testing", "httpbin"]
+      }
     sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    uri: https://httpbin.org/anything
   database: ""
   deployEnabled: true
   description: ""
@@ -26,8 +32,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 23733521-ba3c-470e-95b5-1eb3106ef01b
+          stepCounter: 2c01fad0-42d3-4ce0-92b3-71a1f54de35d
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -43,8 +49,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 4796d926-6cf5-425a-8cbd-919bda8dac79
+          stepCounter: 2c01fad0-42d3-4ce0-92b3-71a1f54de35d
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -64,9 +70,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_AUTHAPI
+        name: API_AUTHAPI_PUT
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_AUTHAPI_PUT
   overrideSQL: false
   schema: ""
   sqlType: "303"

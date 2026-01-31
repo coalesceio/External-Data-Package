@@ -256,27 +256,25 @@ def call_api(snowpark_session):
   # Define the API URL,headers and payloads
    
   uri = '{{desiredState.config.uri}}'
-  {%if %} 
-  {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif%}
-  {% if desiredState.config.api_token !="" and  desiredState.config.headers != "" and desiredState.config.bauth == true %}
+  headers = {}
+  h = ''
+  hd = ''
+  {%set header = false-%}
+  {%set headertype = 'Authorization' %}
+  {%if desiredState.config.headertype != '' -%} {%set headertype = {{desiredState.config.headertype}} -%}  {%else%}   
+  {%set headertype = 'Authorization' -%}
+  {%endif%}
+  {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif-%}
+  {% if desiredState.config.headers != "" %}h = {{desiredState.config.headers}} {%set header = true -%}{% endif-%}
+  {%- if desiredState.config.api_token !="" and desiredState.config.bauth == true -%}
 
   # Retrieve the access token from Snowflake secret
-
+  {%set header = true -%}
   access_token = _snowflake.get_generic_secret_string('cred')
-  h = {{desiredState.config.headers}}
-  hd ={"Authorization":f"{access_token}"} 
-  headers = h |hd
-
-   {%elif desiredState.config.api_token !="" and  desiredState.config.headers == "" and desiredState.config.bauth == true %}
-
-   # Retrieve the access token from Snowflake secret
-
-  access_token = _snowflake.get_generic_secret_string('cred')
-  hd ={"Authorization":f"{access_token}"}
-  headers = hd 
-
-   {%elif desiredState.config.cauth == true and desiredState.config.sapi_token !="" and desiredState.config.api_id != "" and  desiredState.config.headers == "" %}
-
+  hd ={"{{headertype}}":f"{access_token}"} 
+  
+   {%- elif desiredState.config.cauth == true and desiredState.config.sapi_token !="" and desiredState.config.api_id != "" and  desiredState.config.headers == "" -%}
+ {%set header = true -%}
  # Retrieve the access token from Snowflake secret
 
  client_id = _snowflake.get_generic_secret_string('id_alias')
@@ -289,29 +287,17 @@ def call_api(snowpark_session):
  encoded_creds = base64.b64encode(credentials.encode()).decode()
     
  hd ={"Authorization":f"Basic {encoded_creds}""}
- headers = hd
+ 
+  {%-endif%} 
+  
+  if h:
+    headers.update(h)
 
-    {%elif desiredState.config.cauth == true and desiredState.config.sapi_token !="" and desiredState.config.api_id != "" and  desiredState.config.headers != "" %}
-
-  # Retrieve the access token from Snowflake secret
-
-  client_id = _snowflake.get_generic_secret_string('id_alias')
-  client_secret = _snowflake.get_generic_secret_string('cred_alias')
-
-  # Format: "client_id:client_secret"
-  credentials = f"{client_id}:{client_secret}"
-    
-  # Base64 Encode the string
-  encoded_creds = base64.b64encode(credentials.encode()).decode()
-   
-  h = {{desiredState.config.headers}}
-  hd ={"Authorization":f"Basic {encoded_creds}"} 
-  headers = h |hd
-
-   {%endif%}
+  if hd:
+    headers.update(hd)
 
   # Make the API request
-  response = requests.{{ desiredState.config.method }}(uri  {%- if desiredState.config.headers != ""%}, headers=headers {%- endif%} {%- if desiredState.config.payload != ""%}, json=p {%- endif%})
+  response = requests.{{ desiredState.config.method }}(uri  {% if header == true -%}, headers=headers {%- endif%} {%- if desiredState.config.payload != ""-%}, json=p {% endif -%})
 
   # Create Snowpark DataFrame
   data = response.text

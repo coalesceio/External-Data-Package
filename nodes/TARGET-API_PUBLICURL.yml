@@ -18,42 +18,33 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
-          columnCounter: bad29bf0-eda6-45d8-ae9f-8388b7f076a9
-          stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
-        config: {}
-        dataType: STRING
-        defaultValue: ""
-        description: ""
-        name: URI
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        uri: true
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
-          columnCounter: a4274ea3-185e-4092-ab31-6b6222792cf7
+          columnCounter: eb3b7cae-fb4a-43f3-a5af-799659f080ac
           stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
         config: {}
         dataType: VARIANT
         defaultValue: ""
         description: ""
         name: RESPONSE
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        value: true
+        nullable: false
+        sourceColumnReferences: []
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2382335-1624-4def-bed1-d7939215289e
+          stepCounter: 7cdd3b69-5a6f-4140-a650-adfffbf82c52
+        config: {}
+        dataType: VARCHAR(42)
+        defaultValue: ""
+        description: ""
+        name: URI
+        nullable: false
+        sourceColumnReferences: []
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases: {}
         customSQL:

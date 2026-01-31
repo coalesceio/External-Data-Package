@@ -1,17 +1,23 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: 124f5b66-46f4-4a8d-963c-90048220fdb6
+name: API_AUTHAPI_POST
 operation:
   config:
     api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
+    api_token: HTTPBIN_TOKEN_VALUE
     bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
-    method: get
-    payload: ""
+    extIntegration: HTTPBIN_QUERY_INT
+    headers: ""
+    method: post
+    payload: |-
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "message": "Hello from the POST request!",
+        "tags": ["testing", "httpbin"]
+      }
     sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    uri: https://httpbin.org/anything
   database: ""
   deployEnabled: true
   description: ""
@@ -26,8 +32,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: b348ac0e-28b5-4df7-a3db-24bb95e40003
+          stepCounter: 124f5b66-46f4-4a8d-963c-90048220fdb6
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -43,8 +49,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: ce00ff6c-96e4-4109-8a99-f220beac700e
+          stepCounter: 124f5b66-46f4-4a8d-963c-90048220fdb6
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -64,9 +70,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_AUTHAPI
+        name: API_AUTHAPI_POST
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_AUTHAPI_POST
   overrideSQL: false
   schema: ""
   sqlType: "303"

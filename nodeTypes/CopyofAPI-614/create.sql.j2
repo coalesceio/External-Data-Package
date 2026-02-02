@@ -12,12 +12,13 @@ does not permit copying or modification for any other purpose.
 
 
 {# Check if security information is shared in header #}
-{%if desiredState and ('Authorization' in desiredState.config.headers or 'x-api-key' in desiredState.config.headers) and (desiredState.config.forceauth == false or desiredState.config.forceauth is undefined)%}
+{%if desiredState.config.bauth == false and desiredState.config.bauth == false %}
+{%if desiredState and ('Authorization' in desiredState.config.headers or 'x-api-key' in desiredState.config.headers) and (desiredState.config.forceauth == false or desiredState.config.forceauth is undefined)%} 
          {{stage('WARNING')}}
          
           /*It is a security threat to add tokens/credentials in headers.
 		    If you want to proceed aware of the risk enable 'Forcibly add security credentials in header' toggle */
-
+   {%endif%}
 {%endif%}
 
 

@@ -10,7 +10,18 @@ does not permit copying or modification for any other purpose.
 {# == Node Type Description    : This node creates target table to load data from API URL == #}
 
 
-# Create table first
+
+{# Check if security information is shared in header #}
+{%if desiredState and ('Authorization' in desiredState.config.headers or 'x-api-key' in desiredState.config.headers) and (desiredState.config.forceauth == false or desiredState.config.forceauth is undefined)%}
+         {{stage('WARNING')}}
+         
+          /*It is a security threat to add tokens/credentials in headers.
+		    If you want to proceed aware of the risk enable 'Forcibly add security credentials in header' toggle */
+
+{%endif%}
+
+
+{# Create table first #}
 
 {% if desiredState %}
 
@@ -261,7 +272,7 @@ def call_api(snowpark_session):
   hd = ''
   {%set header = false-%}
   {%set headertype = 'Authorization' %}
-  {%if desiredState.config.headertype != '' -%} {%set headertype = {{desiredState.config.headertype}} -%}  {%else%}   
+  {%if desiredState.config.headertype != '' -%} {%set headertype = desiredState.config.headertype %}  {%else%}   
   {%set headertype = 'Authorization' -%}
   {%endif%}
   {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif-%}

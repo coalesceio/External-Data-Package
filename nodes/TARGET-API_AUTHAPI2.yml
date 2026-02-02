@@ -5,11 +5,12 @@ operation:
   config:
     api_id: NEURAPULSE_API_KEY1
     api_token: NEURAPULSE_API_KEY1
-    bauth: true
+    bauth: false
     cauth: false
     extIntegration: EXT_NEURAPULSE
-    headers: ""
-    headertype: Authorization
+    forceauth: true
+    headers: "{\"x-api-key\":\"75b8f36c3fe6a94a4428d3d060b40b5532d842c609a3b3eb6acd48d928acd711\"}"
+    headertype: x-api-key
     method: get
     payload: ""
     sapi_token: NEURAPULSE_API_PSWD

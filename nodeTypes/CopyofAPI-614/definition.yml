@@ -44,8 +44,7 @@ metadata:
         attributeName: headertype
         type: textBox
         default: "Authorization"
-        enableIf: "{%if config.bauth == true %} true {%else%} false  {%endif%}"
-
+        enableIf: "{%if config.bauth == true %} true {%else%} false  {%endif%}"   
 
       - displayName: Snowlake secret for API Client ID 
         attributeName: api_id
@@ -75,14 +74,24 @@ metadata:
         type: textBox
         placeholder: Ex:'https://app.coalescesoftware.io/api/v1/runs'
         isRequired: true
-
-
+      
+      - displayName: Forcibly add security credentials in header
+        type: toggleButton
+        attributeName: forceauth
+        default: false
+        enableif: "{%if config.bauth == false and config.cauth == false %}"
+      
+      - type: label
+        displayName: ⚠️ It is a security threat to add tokens/credentials in headers.If you want to proceed aware of the risk enable 'Forcibly add security credentials in header' toggle
+        attributeName: warlabel
+        enableIf:  "{%if ('Authorization' in config.headers or 'x-api-key' in config.headers) and ((config.forceauth == false or config.forceauth is undefined) and(config.bauth == false and config.cauth == false))%} true {%else%} false {%endif%}"
+     
       - displayName: Headers
         attributeName: headers
         type: textBox
         default: ''
         isRequired: false
-
+      
       - displayName: Payload
         attributeName: payload
         type: textBox

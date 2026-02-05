@@ -1,18 +1,20 @@
 fileVersion: 1
-id: 96125db9-cb24-44a4-ab08-911502671d70
-name: API_AUTHAPI
+id: e5eb37ff-b907-4eff-86e9-8e9a7b75eb18
+name: API_AUTHAPI2
 operation:
   config:
     api_id: COALESCE_API_TOKEN
-    api_token: COALESCE_API_TOKEN
+    api_token: NEURAPULSE_API_KEY1
     bauth: true
-    extIntegration: COALESCE_INT_EX
-    headers: "{\"Content-Type\": \"application/json\"}"
-    headertype: Authorization
+    cauth: false
+    extIntegration: EXT_NEURAPULSE
+    forceauth: false
+    headers: ""
+    headertype: x-api-key
     method: get
     payload: ""
     sapi_token: COALESCE_API_TOKEN
-    uri: https://app.coalescesoftware.io/api/v1/workspaces/663/nodes?detail=false
+    uri: https://api.neurapulse.com/api/v1/projects/4d4d4ec4-f072-4084-a252-e8caa9b0eec1/testtakers
   database: ""
   deployEnabled: true
   description: ""
@@ -27,8 +29,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 50d2376f-2612-489d-87d2-3905e4e66d63
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 46e33b73-44ff-4272-9ec7-d9470bc5e3c3
+          stepCounter: e5eb37ff-b907-4eff-86e9-8e9a7b75eb18
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -44,8 +46,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 2d31b30a-70a0-4d42-add9-68213daf7c74
-          stepCounter: 96125db9-cb24-44a4-ab08-911502671d70
+          columnCounter: 5b43be46-0550-4831-b07a-6f1edc39ca01
+          stepCounter: e5eb37ff-b907-4eff-86e9-8e9a7b75eb18
         config: {}
         dataType: VARIANT
         defaultValue: ""
@@ -65,12 +67,12 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: API_AUTHAPI
+        name: API_AUTHAPI2
         noLinkRefs: []
-  name: API_AUTHAPI
+  name: API_AUTHAPI2
   overrideSQL: false
   schema: ""
-  sqlType: "614"
+  sqlType: "303"
   type: sql
   version: 1
 type: Node

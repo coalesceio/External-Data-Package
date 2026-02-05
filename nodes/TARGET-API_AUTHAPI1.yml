@@ -8,6 +8,7 @@ operation:
     bauth: true
     extIntegration: HTTPBIN_QUERY_INT
     headers: ""
+    headertype: Authorization
     method: get
     payload: ""
     sapi_token: COALESCE_API_TOKEN

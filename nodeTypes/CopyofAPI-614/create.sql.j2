@@ -273,7 +273,7 @@ def call_api(snowpark_session):
   hd = ''
   {%set header = false-%}
   {%set headertype = 'Authorization' %}
-  {%if desiredState.config.headertype != '' -%} {%set headertype = desiredState.config.headertype %}  {%else%}   
+  {%if desiredState.config.headertype != '' -%} {%set headertype = desiredState.config.headertype | trim %}  {%else%}   
   {%set headertype = 'Authorization' -%}
   {%endif%}
   {% if desiredState.config.payload != "" %}p = {{desiredState.config.payload}}{% endif-%}

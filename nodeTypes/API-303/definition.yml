@@ -22,7 +22,7 @@ metadata:
         type: textBox
         default: "COALESCE_API_INTEGRATION"
 
-      - displayName: Bearer/Token Authorization
+      - displayName: Bearer token/Token/API-key Authorization
         type: toggleButton
         attributeName: bauth
         enableIf: "{%if config.cauth %} false {%else%} true {%endif%}"
@@ -39,6 +39,12 @@ metadata:
         type: textBox
         default: "COALESCE_API_TOKEN"
         enableIf: "{%if config.bauth == true %} true {%else%} false  {%endif%}"
+
+      - displayName: HTTP headers(Ex:Authorization,x-api-key')
+        attributeName: headertype
+        type: textBox
+        default: ""
+        enableIf: "{%if config.bauth == true or config.cauth == true%} true {%else%} false  {%endif%}"   
 
       - displayName: Snowlake secret for API Client ID 
         attributeName: api_id
@@ -68,14 +74,24 @@ metadata:
         type: textBox
         placeholder: Ex:'https://app.coalescesoftware.io/api/v1/runs'
         isRequired: true
-
-
+      
+      - displayName: Forcibly add security credentials in header
+        type: toggleButton
+        attributeName: forceauth
+        default: false
+        enableif: "{%if config.bauth == false and config.cauth == false %}"
+      
+      - type: label
+        displayName: ⚠️ It is a security threat to add tokens/credentials in headers.If you want to proceed aware of the risk enable 'Forcibly add security credentials in header' toggle
+        attributeName: warlabel
+        enableIf:  "{%if ('Authorization' in config.headers or 'x-api-key' in config.headers) and ((config.forceauth == false or config.forceauth is undefined))%} true {%else%} false {%endif%}"
+     
       - displayName: Headers
         attributeName: headers
         type: textBox
         default: ''
         isRequired: false
-
+      
       - displayName: Payload
         attributeName: payload
         type: textBox

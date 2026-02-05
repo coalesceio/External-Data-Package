@@ -4,7 +4,7 @@ name: GITSEED_TXT
 operation:
   config:
     binformat: HEX
-    branchName: branches
+    branchName: main
     compression: NONE
     dateformat: ""
     ddlCaseInsensitive: false
@@ -12,14 +12,14 @@ operation:
     enforceLength: ""
     escapeenclosed: \134
     escapeval: ""
-    fetchBefore: true
+    fetchBefore: false
     fieldDelim: ","
     fieldEnclosed: \042
     fileFormatLoc: ""
     fileFormatName: ""
     fileFormatType: File Format Values
     fileNames: sample.csv
-    filePattern: sample.csv
+    filePattern: ""
     fileType: CSV
     folderName: "Enter GIT Folder eg seeds "
     forceLoad: ""
@@ -34,7 +34,7 @@ operation:
     skipHeader: "1"
     stageName: COA_GIT_REPO
     stageStorageLocationName: TARGET
-    subfolder: main/csv_files
+    subfolder: csv_files
     timeformat: ""
     timestampformat: ""
     truncateBefore: false

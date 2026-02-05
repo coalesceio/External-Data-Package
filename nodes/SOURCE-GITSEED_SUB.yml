@@ -16,7 +16,7 @@ operation:
     errornumber: ""
     escapeenclosed: \134
     escapeval: ""
-    fetchBefore: false
+    fetchBefore: true
     fieldDelim: "|"
     fieldEnclosed: \042
     fileFormatLoc: ""
@@ -26,7 +26,7 @@ operation:
     filePattern: .*.*[.]csv
     fileType: CSV
     forceLoad: ""
-    inferschema: false
+    inferschema: true
     loadUncertainFiles: ""
     mulline: true
     nullchar: ('\N')

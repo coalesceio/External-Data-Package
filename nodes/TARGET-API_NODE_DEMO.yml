@@ -33,7 +33,7 @@ operation:
   name: API_NODE_DEMO
   overrideSQL: false
   schema: ""
-  sqlType: "372"
+  sqlType: edp:::372
   type: sql
   version: 1
 type: Node

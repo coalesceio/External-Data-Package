@@ -925,8 +925,7 @@ There are four configs within the **Node Properties** group.
 <img width="829" height="76" alt="image" src="https://github.com/user-attachments/assets/ca3edfa3-ec3a-42e6-9a31-1d54582f8d6a" />
 
 * API-key authorisation keys need not be added to URL headers
-  <img width="683" height="199" alt="image" src="https://github.com/user-attachments/assets/4a3603c9-41d2-4c35-aed2-0d780ce217b0" />
-
+  
 * When using Client ID/Secret Authorisation,create secrets as below.
 <img width="606" height="92" alt="image" src="https://github.com/user-attachments/assets/4aaed698-559f-4642-9d25-cb58ae061769" />
 <img width="608" height="101" alt="image" src="https://github.com/user-attachments/assets/9e259d9b-908f-4b4b-a540-7a5ae6100774" />

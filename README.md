@@ -901,7 +901,9 @@ There are four configs within the **Node Properties** group.
 
 <h4 id="api-node-options"> API Node Options </h4>
 
-![Options](https://github.com/coalesceio/External-Data-Package/assets/169126315/07bac308-b260-4281-82e7-1836e6fc0530)
+![Options]
+<img width="434" height="743" alt="api-options" src="https://github.com/user-attachments/assets/d83e9926-3c9b-4ae1-afe8-7fb65f04ca50" />
+
 
 | **Setting** | **Description** |
 |---------|-------------|
@@ -922,14 +924,15 @@ There are four configs within the **Node Properties** group.
 <h4 id="CREDENTIALS-API">Credentials-API</h4>
 * Bearer/authorisation tokens need not be added to URL headers
 * When using Bearer Authorisation,ensure that you prefix token with Bearer when you create Snowflake secret
-<img width="829" height="76" alt="image" src="https://github.com/user-attachments/assets/ca3edfa3-ec3a-42e6-9a31-1d54582f8d6a" />
+<img width="829" height="76" alt="bearer-token" src="https://github.com/user-attachments/assets/ca3edfa3-ec3a-42e6-9a31-1d54582f8d6a" />
 
 * API-key authorisation keys need not be added to URL headers
-  
+  <img width="740" height="293" alt="api-key" src="https://github.com/user-attachments/assets/371f9c4f-23ae-4605-878f-2ef4017fa548" />
+
 * When using Client ID/Secret Authorisation,create secrets as below.
-<img width="606" height="92" alt="image" src="https://github.com/user-attachments/assets/4aaed698-559f-4642-9d25-cb58ae061769" />
-<img width="608" height="101" alt="image" src="https://github.com/user-attachments/assets/9e259d9b-908f-4b4b-a540-7a5ae6100774" />
-<img width="759" height="121" alt="image" src="https://github.com/user-attachments/assets/2c464d9d-0e7a-43ae-b8e2-32f2bec10240" />
+<img width="606" height="92" alt="a1" src="https://github.com/user-attachments/assets/4aaed698-559f-4642-9d25-cb58ae061769" />
+<img width="608" height="101" alt="a2" src="https://github.com/user-attachments/assets/9e259d9b-908f-4b4b-a540-7a5ae6100774" />
+<img width="759" height="121" alt="a3" src="https://github.com/user-attachments/assets/2c464d9d-0e7a-43ae-b8e2-32f2bec10240" />
 
 <h2 id="API">API-NODEUPDATE</h2>
 

@@ -118,9 +118,13 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.fieldDelim and desiredState.config.fileType in ('CSV')%}
                                 {%set fileformatsql = fileformatsql + "\n"+ "FIELD_DELIMITER"+ "=''"+ desiredState.config.fieldDelim+"''"%}
                             {%endif%}
+							
                             {% if desiredState.config.fieldEnclosed and desiredState.config.fileType in ('CSV')%}
-                                {%set fileformatsql = fileformatsql + "\n"+ "FIELD_OPTIONALLY_ENCLOSED_BY"+ "=''"+ desiredState.config.fieldEnclosed+"''"%}
+						       {% set val = desiredState.config.fieldEnclosed %}
+							   {% set fileformatsql = fileformatsql + "\nFIELD_OPTIONALLY_ENCLOSED_BY=" + ( "NONE" if val | upper == "NONE" 
+                               else "''\\" ~ val ~ "''" ) %}
                             {%endif%}
+
                             {% if desiredState.config.parsehdr and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "PARSE_HEADER" + "="+ "TRUE"+""%}
                             {%endif%}
@@ -145,12 +149,19 @@ does not permit copying or modification for any other purpose.
                             {% if desiredState.config.bytemark and  desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "SKIP_BYTE_ORDER_MARK" + "="+ "TRUE"+""%}
                             {%endif%}
-                            {% if (desiredState.config.escapeenclosed != "" and desiredState.config.escapeenclosed is not none)and  desiredState.config.fileType in ('CSV')%}
-                              {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE_UNENCLOSED_FIELD" + "=''\\"+ desiredState.config.escapeenclosed+"''"%}
-                            {%endif%}
+							
+							{% if desiredState.config.fileType in ('CSV') and desiredState.config.escapeenclosed is not none and desiredState.config.escapeenclosed != "" %}
+                               {% set val = desiredState.config.escapeenclosed %}
+					           {% set fileformatsql = fileformatsql + "\nESCAPE_UNENCLOSED_FIELD=" + ( "NONE" if val | upper == "NONE" 
+                               else "''\\" ~ val ~ "''" ) %}
+                            {% endif %}
+							
                             {% if (desiredState.config.escapeval != "" and desiredState.config.escapeval is not none ) and  desiredState.config.fileType in ('CSV')%}
-                              {%set fileformatsql = fileformatsql + "\n"+ "ESCAPE" + "=''\\"+ desiredState.config.escapeval +"''"%}
+							   {% set val = desiredState.config.escapeval %}
+							   {% set fileformatsql = fileformatsql + "\nESCAPE=" + ( "NONE" if val | upper == "NONE" 
+                               else "''\\" ~ val ~ "''" ) %}
                             {%endif%}
+							
                             {% if (desiredState.config.binformat != "" and desiredState.config.binformat is not none ) and desiredState.config.fileType in ('CSV')%}
                               {%set fileformatsql = fileformatsql + "\n"+ "BINARY_FORMAT" + "=''"+ desiredState.config.binformat +"''"%}
                             {%endif%}
@@ -243,8 +254,8 @@ does not permit copying or modification for any other purpose.
               --Create temporary file format for inferring table structure 
               EXECUTE IMMEDIATE 'CREATE OR REPLACE TEMPORARY FILE FORMAT "{{dbff}}"."{{schff}}"."TEMP_{{ desiredState.config.fileType}}_{{desiredState.node.name}}"
               TYPE =''CSV''
-              RECORD_DELIMITER=''' || file_format_options:RECORD_DELIMITER || '''
-              FIELD_DELIMITER=''' || file_format_options:FIELD_DELIMITER || '''                                    
+              RECORD_DELIMITER = ''' || file_format_options:RECORD_DELIMITER || '''
+              FIELD_DELIMITER = ''' || file_format_options:FIELD_DELIMITER || '''                                    
 			        FIELD_OPTIONALLY_ENCLOSED_BY='''||file_format_options:FIELD_OPTIONALLY_ENCLOSED_BY || '''
 			        BINARY_FORMAT =''' || file_format_options:BINARY_FORMAT || '''
               COMPRESSION = ''' || file_format_options:COMPRESSION || '''
@@ -648,7 +659,7 @@ does not permit copying or modification for any other purpose.
                        FIELD_DELIMITER = '{{ desiredState.config.fieldDelim}}'
                     {%endif%}
                     {% if desiredState.config.fieldEnclosed and desiredState.config.fileType in ('CSV')%}
-                         FIELD_OPTIONALLY_ENCLOSED_BY ='{{ desiredState.config.fieldEnclosed }}'
+						 FIELD_OPTIONALLY_ENCLOSED_BY = {{ "NONE" if desiredState.config.fieldEnclosed | upper == "NONE" else "'" ~ desiredState.config.fieldEnclosed ~ "'" }}
                     {%endif%}
                     {% if (desiredState.config.encoding != "" and desiredState.config.encoding is not none) and desiredState.config.fileType in ('CSV')%}
                        ENCODING ='{{desiredState.config.encoding}}'								 
@@ -696,10 +707,10 @@ does not permit copying or modification for any other purpose.
                       SKIP_BYTE_ORDER_MARK = TRUE 
                   {%endif%}
                   {% if (desiredState.config.escapeenclosed != "" and desiredState.config.escapeenclosed is not none ) and  desiredState.config.fileType in ('CSV')%}
-                     ESCAPE_UNENCLOSED_FIELD= '{{desiredState.config.escapeenclosed}}'
+					 ESCAPE_UNENCLOSED_FIELD = {{ "NONE" if desiredState.config.escapeenclosed | upper == "NONE" else "'" ~ desiredState.config.escapeenclosed ~ "'" }}
                   {%endif%}
                   {% if (desiredState.config.escapeval != "" and desiredState.config.escapeval is not none) and  desiredState.config.fileType in ('CSV')%}
-                     ESCAPE = '{{desiredState.config.escapeval}}'
+				     ESCAPE = {{ "NONE" if desiredState.config.escapeval | upper == "NONE" else "'" ~ desiredState.config.escapeval ~ "'" }}
                   {%endif%}
                   {% if (desiredState.config.binformat != "" and desiredState.config.binformat is not none  ) and desiredState.config.fileType in ('CSV')%}
                      BINARY_FORMAT  = '{{desiredState.config.binformat}}'
@@ -805,7 +816,7 @@ does not permit copying or modification for any other purpose.
                         FIELD_DELIMITER = '{{ desiredState.config.fieldDelim}}'
                      {%endif%}
                      {% if desiredState.config.fieldEnclosed and desiredState.config.fileType in ('CSV')%}
-                         FIELD_OPTIONALLY_ENCLOSED_BY ='{{ desiredState.config.fieldEnclosed }}'
+						 FIELD_OPTIONALLY_ENCLOSED_BY = {{ "NONE" if desiredState.config.fieldEnclosed | upper == "NONE" else "'" ~ desiredState.config.fieldEnclosed ~ "'" }}
                      {%endif%}
                       {% if (desiredState.config.encoding != "" and  desiredState.config.encoding is not none) and desiredState.config.fileType in ('CSV')%}
                          ENCODING ='{{desiredState.config.encoding}}'															   
@@ -853,10 +864,10 @@ does not permit copying or modification for any other purpose.
                       SKIP_BYTE_ORDER_MARK = TRUE 
                   {%endif%}
                   {% if (desiredState.config.escapeenclosed != "" and desiredState.config.escapeenclosed is not none )and  desiredState.config.fileType in ('CSV')%}
-                     ESCAPE_UNENCLOSED_FIELD= '{{desiredState.config.escapeenclosed}}'
+					 ESCAPE_UNENCLOSED_FIELD = {{ "NONE" if desiredState.config.escapeenclosed | upper == "NONE" else "'" ~ desiredState.config.escapeenclosed ~ "'" }}
                   {%endif%}
                   {% if (desiredState.config.escapeval != ""  and desiredState.config.escapeval is not none)and  desiredState.config.fileType in ('CSV')%}
-                     ESCAPE = '{{desiredState.config.escapeval}}'
+                     ESCAPE = {{ "NONE" if desiredState.config.escapeval | upper == "NONE" else "'" ~ desiredState.config.escapeval ~ "'" }}
                   {%endif%}
                   {% if (desiredState.config.binformat != "" and desiredState.config.binformat is not none) and  desiredState.config.fileType in ('CSV')%}
                      BINARY_FORMAT  = '{{desiredState.config.binformat}}'

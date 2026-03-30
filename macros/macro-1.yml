@@ -14,5 +14,13 @@ macroString: |-
           "{{ columnName }}"
       {%- endif -%}
   {%- endmacro -%}
+
+  {#-------------------------------------------------------------------------------------------------------------#}
+  {#-- Global configs of external data package                                                               --#}
+  {#--                                                                                                         --#}
+  {#-- The following variables can be customized to for python and JAVA based procedures used in this package  --#}
+  {#-------------------------------------------------------------------------------------------------------------#}
+
+  {%set SP_configs = namespace(py_runtime_ver="3.9",java_runtime_ver="11")%}
 name: macro
 type: Macro

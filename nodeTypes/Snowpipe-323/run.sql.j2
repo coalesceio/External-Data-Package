@@ -113,7 +113,7 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
               FIELD_DELIMITER = '{{ config.fieldDelim}}'
             {%endif%}
           {% if config.fieldEnclosed and config.fileType in ('CSV')%}
-            FIELD_OPTIONALLY_ENCLOSED_BY ='{{ config.fieldEnclosed }}'
+		    FIELD_OPTIONALLY_ENCLOSED_BY = {{ "NONE" if config.fieldEnclosed | upper == "NONE" else "'" ~ config.fieldEnclosed ~ "'" }}
           {%endif%}
           {% if (config.encoding != "" and config.encoding is not none) and config.fileType in ('CSV')%}
                 ENCODING ='{{config.encoding}}'
@@ -164,10 +164,10 @@ COPY INTO "{{ db }}"."{{ sch }}"."{{ node.name }}" (
               SKIP_BYTE_ORDER_MARK = TRUE 
             {%endif%}
             {% if (config.escapeenclosed != "" and config.escapeenclosed is not none) and  config.fileType in ('CSV')%}
-                ESCAPE_UNENCLOSED_FIELD= '{{config.escapeenclosed}}'
+			    ESCAPE_UNENCLOSED_FIELD = {{ "NONE" if config.escapeenclosed | upper == "NONE" else "'" ~ config.escapeenclosed ~ "'" }}
             {%endif%}
             {% if (config.escapeval != "" and config.escapeval is not none )and  config.fileType in ('CSV')%}
-                ESCAPE = '{{config.escapeval}}'
+			    ESCAPE = {{ "NONE" if config.escapeval | upper == "NONE" else "'" ~ config.escapeval ~ "'" }}
             {%endif%}
              {% if config.binformat != "" and  config.fileType in ('CSV')%}
                 BINARY_FORMAT  = '{{config.binformat}}'

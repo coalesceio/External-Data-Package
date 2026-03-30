@@ -6,8 +6,11 @@ operation:
     api_id: COALESCE_API_TOKEN
     api_token: COALESCE_API_TOKEN
     bauth: true
+    cauth: false
     extIntegration: COALESCE_INT_EX
+    forceauth: false
     headers: "{\"Content-Type\": \"application/json\"}"
+    headertype: Authorization
     method: get
     payload: ""
     sapi_token: COALESCE_API_TOKEN
@@ -69,7 +72,7 @@ operation:
   name: API_AUTHAPI
   overrideSQL: false
   schema: ""
-  sqlType: edp:::303
+  sqlType: "303"
   type: sql
   version: 1
 type: Node

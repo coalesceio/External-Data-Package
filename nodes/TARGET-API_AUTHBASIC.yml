@@ -9,6 +9,7 @@ operation:
     cauth: true
     extIntegration: HTTPBIN_TEST_INT
     headers: "{\"Content-Type\": \"application/json\"}"
+    headertype: ""
     method: get
     payload: ""
     sapi_token: TEST_CLIENT_SECRET

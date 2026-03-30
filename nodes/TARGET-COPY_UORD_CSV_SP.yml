@@ -4,16 +4,20 @@ name: COPY_UORD_CSV_SP
 operation:
   config:
     awsSnsTopic: ""
+    binformat: HEX
     bytemark: false
     cloudProvider: AWS
     columnmismatch: false
     compression: NONE
     dateformat: ""
     emptyfield: false
+    encoding: UTF8
     enforceLength: ""
     errornumber: ""
+    escapeenclosed: NONE
+    escapeval: NONE
     fieldDelim: "|"
-    fieldEnclosed: \042
+    fieldEnclosed: NONE
     fileFormatLoc: TARGET
     fileFormatName: CSVFILEFORMAT
     fileFormatType: File Format Values
@@ -26,6 +30,7 @@ operation:
     inferschema: false
     integration: ""
     mulline: false
+    nullchar: ('\N')
     onError: CONTINUE
     parsehdr: true
     recDelim: ""

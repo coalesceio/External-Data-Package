@@ -89,8 +89,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 ### Key points to use CopyInto Node
 
@@ -157,7 +157,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 |---------|-------------|
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **File Names (Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
 | **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
@@ -284,7 +284,7 @@ When the materialization type of Copy-Into node is changed from table to transie
 * 
 ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### CopyInto Undeployment
 
@@ -347,8 +347,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h3 id="snowpipe-general-options"> General Options </h3>
 
@@ -382,7 +382,7 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
+| **File Names (Ex:'a.csv','b.csv')** | Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
 | **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
   
@@ -550,7 +550,7 @@ The following stages are executed:
 
 ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Snowpipe Undeployment
 
@@ -585,8 +585,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="external-tables-general-options"> General Options </h4>
 
@@ -615,7 +615,7 @@ There are four configs within the **Node Properties** group.
 |--------------|-----------------|
 |**Coalesce Stage Storage Location of Stage(Required)**|A storage location in Coalesce where the stage is located|
 |**Stage Name (Required)**|Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when InferSchema toggle is true. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
+| **File Names (Ex:'a.csv','b.csv')** | Enabled when InferSchema toggle is true. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
 |**File Pattern**|A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
 
 <h4 id="external-tables-file-format">External Tables  File Format</h4>
@@ -698,7 +698,7 @@ The following stages are executed:
   
 ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Undeployment
 
@@ -737,8 +737,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
@@ -847,7 +847,7 @@ If you want to drop the inferred table you can redeploy the Infer Schema node wi
 
 ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
   
 ### InferSchema Undeployment
 
@@ -876,8 +876,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="copy-unload-file-location"> Copy Unload Node File Location </h4>
 
@@ -949,8 +949,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="api-node-options"> API Node Options </h4>
 
@@ -1003,8 +1003,8 @@ The API-NODEUPDATE Node Configuration type has two configuration groups:
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="api-nodeup-options"> API-NODEUPDATE Node Options </h4>
 
@@ -1035,8 +1035,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="JDBC-load-options"> JDBC Load Options </h4>
 
@@ -1073,8 +1073,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="parse-excel-stored-procedure-options"> Parse Excel Stored Procedure Options </h4>
 
@@ -1115,7 +1115,7 @@ The following stages are executed:
 
 ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Undeployment
 
@@ -1144,8 +1144,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="parse-json-UDTF-procedure-options"> Parse JSON UDTF Procedure Options </h4>
 
@@ -1187,7 +1187,7 @@ The following stages are executed:
 
  ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Undeployment
 
@@ -1217,8 +1217,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the target table will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 ### Prerequisites
 
@@ -1298,7 +1298,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **Snowflake GIT repository (Required)**| Local Clone of the remote GIT repo in Snowflake where the files containing data to be loaded are staged|
 | **GIT Branch (Ex:main) (Required)**| Specifies the GIT branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **GIT Folder / Path (Ex:seeds)**| Specifies the GIT folder inside the branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
-| **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **File Names (Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
 <h3 id="gitseed-file-format"> Gitseed - File Format </h3>
@@ -1416,7 +1416,7 @@ When the materialization type of Copy-Into node is changed from table to transie
    
 ### Redeployment with no changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Gitseed Undeployment
 

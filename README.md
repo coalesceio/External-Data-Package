@@ -89,10 +89,10 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
-### Key points to use CopyInto Node
+### Key Points To Use CopyInto Node
 
 * CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * CopyInto node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
@@ -100,7 +100,7 @@ There are four configs within the **Node Properties** group.
 * The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
 * Blank options added to Copy-Into and CSV file format options to revert any specific option
 
-### Use CopyInto to load columns with insensitive case
+### Use CopyInto To Load Columns With Insensitive Case
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -110,7 +110,7 @@ There are four configs within the **Node Properties** group.
 * Table is created with column names in default case followed by Snowflake(UPPERCASE)
 * Re-Sync columns to have all the columns with default case in mapping grid,so that the nodes added upstream follow the same.
 
-### Use CopyInto node with InferSchema option
+### Use CopyInto Node With InferSchema Option
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -157,7 +157,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 |---------|-------------|
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **File Names (Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
 | **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
@@ -275,16 +275,16 @@ The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-#### Copy-Into change in materialization type
+#### Copy-Into ChanGE in Materialization Type
 
 When the materialization type of Copy-Into node is changed from table to transient table or viceversa,the below stages are executed:
 
 * **Drop table/transient table**
 * **Create transient table/table**
 * 
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### CopyInto Undeployment
 
@@ -301,14 +301,14 @@ The Coalesce Snowpipe node is a node that performs two operations. It can be use
 
 This means you can load data from files in micro-batches, making it available to users within minutes, rather than manually executing COPY statements on a schedule to load larger batches.
 
-### Key points to use Snowpipe Node
+### Key Points To Use Snowpipe Node
 
 * Snowpipe node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * Snowpipe node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Copy-Into on top of it.
 * The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
 *The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
 
-### Use Snowpipe node with InferSchema option
+### Use Snowpipe Node With InferSchema Option
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -347,8 +347,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h3 id="snowpipe-general-options"> General Options </h3>
 
@@ -382,7 +382,7 @@ There are four configs within the **Node Properties** group.
 |---------|-------------|
 | **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
 | **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
+| **File Names (Ex:'a.csv','b.csv')** | Enabled when 'Enable Snowpipe' under Snowpipe Options is toggled off. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
 | **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
   
@@ -536,7 +536,7 @@ When deployed for the first time into an environment the Snowpipe node will exec
 
 ### Snowpipe Redeployment
 
-#### Altering the Snowpipe node
+#### Altering the Snowpipe Node
 
 There are few column or table changes like Change in table name, Dropping existing column,  Alter Column data type, Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the target Table in the target environment.Any table level changes or node config changes results in recreation of pipe
 
@@ -548,9 +548,9 @@ The following stages are executed:
 * **Create Pipe**: Pipe is recreated if enable snowpipe option is true
 * **Alter Pipe**:Pipe is refreshed if 'Load Historical' toggle is on.
 
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Snowpipe Undeployment
 
@@ -585,8 +585,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="external-tables-general-options"> General Options </h4>
 
@@ -615,7 +615,7 @@ There are four configs within the **Node Properties** group.
 |--------------|-----------------|
 |**Coalesce Stage Storage Location of Stage(Required)**|A storage location in Coalesce where the stage is located|
 |**Stage Name (Required)**|Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:'a.csv','b.csv')** | Enabled when InferSchema toggle is true. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
+| **File Names (Ex:'a.csv','b.csv')** | Enabled when InferSchema toggle is true. Specifies a list of one or more files names (separated by commas) to be loaded. For example, `'a.csv','b.csv'`|
 |**File Pattern**|A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match. For example, `*hea.*[.]csv'`|
 
 <h4 id="external-tables-file-format">External Tables  File Format</h4>
@@ -696,9 +696,9 @@ The following stages are executed:
 
 * **Create External Table**
   
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Undeployment
 
@@ -737,8 +737,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
   
 <h4 id="inferschema-source-data"> InferSchema Source Data </h4>
 
@@ -845,9 +845,9 @@ If all Source Data options remain same and only there are changes in the existin
 
 If you want to drop the inferred table you can redeploy the Infer Schema node with redeployment behaviour “Drop existing table”.
 
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
   
 ### InferSchema Undeployment
 
@@ -876,8 +876,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="copy-unload-file-location"> Copy Unload Node File Location </h4>
 
@@ -949,8 +949,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="api-node-options"> API Node Options </h4>
 
@@ -1003,8 +1003,8 @@ The API-NODEUPDATE Node Configuration type has two configuration groups:
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="api-nodeup-options"> API-NODEUPDATE Node Options </h4>
 
@@ -1035,8 +1035,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="JDBC-load-options"> JDBC Load Options </h4>
 
@@ -1073,8 +1073,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="parse-excel-stored-procedure-options"> Parse Excel Stored Procedure Options </h4>
 
@@ -1113,9 +1113,9 @@ The following stages are executed:
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description** -  Alter table statement is executed to perform the alter operation.
 * **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the specified target environment  
 
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Undeployment
 
@@ -1144,8 +1144,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the Materialized View will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 <h4 id="parse-json-UDTF-procedure-options"> Parse JSON UDTF Procedure Options </h4>
 
@@ -1185,9 +1185,9 @@ The following stages are executed:
 * **Rename Table| Alter Column | Delete Column | Add Column| Edit table description** -  Alter table statement is executed to perform the alter operation.
 * **Create OR Replace Stored Procedure** - This will create a Stored Procedure in the specified target environment  
 
- ### Redeployment with no changes 
+ ### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Undeployment
 
@@ -1217,8 +1217,8 @@ There are four configs within the **Node Properties** group.
 |-------------|-----------------|
 | **Storage Location** | Storage Location where the target table will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the node will be deployed or redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
 
 ### Prerequisites
 
@@ -1231,7 +1231,7 @@ We require few setups done in Snowflake before we use the Gitseed node type
 
 <img width="569" height="298" alt="GIT" src="https://github.com/user-attachments/assets/f404a5a2-eefd-4b5a-91f7-bbb0790e1dde" />
 
-### Key points to use Gitseed Node
+### Key Points To Use Gitseed Node
 
 * Gitseed node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
 * Gitseed node can be added on top of an inferred table(table created by running the inferschema node) if you want to load data into specific columns as defined in the files.Refer to Inferschema to know more on how to use the node and add Gitseed on top of it.
@@ -1239,7 +1239,7 @@ We require few setups done in Snowflake before we use the Gitseed node type
 * The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
 * Blank options added to Copy-Into and CSV file format options to revert any specific option
 
-### Use Gitseed to load columns with insensitive case
+### Use Gitseed To Load Columns With Insensitive Case
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -1249,7 +1249,7 @@ We require few setups done in Snowflake before we use the Gitseed node type
 * Table is created with column names in default case followed by Snowflake(UPPERCASE)
 * Re-Sync columns to have all the columns with default case in mapping grid,so that the nodes added upstream follow the same.
 
-### Use Gitseed node with InferSchema option
+### Use Gitseed Node With InferSchema Option
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs,[refer link](#file-format-config-inferschema)
@@ -1298,7 +1298,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **Snowflake GIT repository (Required)**| Local Clone of the remote GIT repo in Snowflake where the files containing data to be loaded are staged|
 | **GIT Branch (Ex:main) (Required)**| Specifies the GIT branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
 | **GIT Folder / Path (Ex:seeds)**| Specifies the GIT folder inside the branch where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
-| **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **File Names (Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
 | **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
 
 <h3 id="gitseed-file-format"> Gitseed - File Format </h3>
@@ -1407,16 +1407,16 @@ The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-#### Gitseed change in materialization type
+#### Gitseed ChanGE in Materialization Type
 
 When the materialization type of Copy-Into node is changed from table to transient table or viceversa,the below stages are executed:
 
 * **Drop table/transient table**
 * **Create transient table/table**
    
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the nodes are redeployed with no changes compared to previous deployment, then no stages are executed
 
 ### Gitseed Undeployment
 
@@ -1474,7 +1474,7 @@ If the CopyInto node is deleted from a Workspace, that Workspace is committed to
 * [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseExcel-346)
 * [Run Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseExcel-346)
 
-### Parse Json
+### Parse JSON
 
 * [Node definition](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)
 * [Create Template](https://github.com/coalesceio/External-Data-Package/tree/86f1d8f019493de644094a2139a8e1a3a0a510be/nodeTypes/ParseJSON-347)

@@ -34,7 +34,7 @@ operation:
     timeformat: AUTO
     timestampformat: AUTO
   database: ""
-  deployEnabled: true
+  deployEnabled: false
   description: ""
   isMultisource: false
   locationName: TARGET2

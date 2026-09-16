@@ -1,0 +1,8 @@
+fileVersion: 1
+id: "910"
+mappingDefinitions:
+  TARGET2:
+    database: ""
+    schema: ""
+name: New Environment
+type: Environment
